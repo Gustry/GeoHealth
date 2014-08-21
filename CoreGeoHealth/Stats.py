@@ -22,6 +22,7 @@
 """
 
 import math
+from numpy import median, average, mean, var
 
 class Stats:
 
@@ -43,15 +44,14 @@ class Stats:
         return self.max() - self.min()
 
     def average(self) :
-        return sum(self.listStats) / self.nbItems
-    
-    def stat_variance(self) :
-        mq = self.average()**2
-        s = sum( [ x**2 for x in self.listStats ] )
-        variance = s / self.nbItems - mq
-        return variance
+        return mean(self.listStats)
 
-    def stat_ecart_type(self):
+    def mean(self):
+        return mean(self.listStats)
+
+    def variance(self) :
+        return var(self.listStats)
+
+    def ecart_type(self):
         variance = self.stat_variance()
-        ecart_type = math.sqrt(variance)
-        return ecart_type       
+        return math.sqrt(variance)

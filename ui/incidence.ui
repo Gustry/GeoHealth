@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>GeoHealthDialogBase</class>
- <widget class="QDialog" name="GeoHealthDialogBase">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>461</width>
-    <height>585</height>
+    <width>577</width>
+    <height>517</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>GeoHealth</string>
+   <string>Incidence - Density</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -74,7 +74,7 @@
      <item row="5" column="1">
       <widget class="QRadioButton" name="radioButton_incidence_area">
        <property name="text">
-        <string>Surface</string>
+        <string>Area</string>
        </property>
        <property name="checked">
         <bool>false</bool>

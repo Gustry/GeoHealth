@@ -10,5 +10,6 @@
 	<file>resources/about.png</file>
 	<file>resources/info.png</file>
 	<file>resources/sigma.png</file>
+	<file>resources/incidence.png</file>
     </qresource>
 </RCC>

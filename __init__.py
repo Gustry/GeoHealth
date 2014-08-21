@@ -21,9 +21,20 @@
  This script initializes the plugin, making it known to QGIS.
 """
 
+from PyQt4.QtGui import *
+from PyQt4.QtCore import *
+from qgis.core import *
+from qgis.gui import *
+from qgis.utils import iface
+from CoreGeoHealth.Tools import *
+from CoreGeoHealth.Stats import *
+from CoreGeoHealth.Blurring.ExceptionBlurring import *
+from processing.core.GeoAlgorithmExecutionException import GeoAlgorithmExecutionException
 
+import os.path
+import resources_rc
 
 def classFactory(iface):
         
-    from .GeoHealth import GeoHealth
+    from geohealth import GeoHealth
     return GeoHealth(iface)

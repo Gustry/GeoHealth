@@ -9,7 +9,7 @@
 [general]
 name=GeoHealth
 qgisMinimumVersion=2.0
-description=GeoHealth
+description=GeoHealth aims to provide a simplified interface for users in epidemiology : blurring a point layer, incidence map, run statistics ...
 version=0.1
 author=Etienne Trimaille
 email=etienne@trimaille.eu
@@ -24,9 +24,9 @@ email=etienne@trimaille.eu
 # Tags are comma separated with spaces allowed
 tags=health,epidemiolgy,blur
 
-homepage=
-tracker=
-repository=
+homepage=https://github.com/Gustry/GeoHealth
+tracker=https://github.com/Gustry/GeoHealth/issues
+repository=https://github.com/Gustry/GeoHealth
 icon=resources/icon.png
 # experimental flag
 experimental=False
