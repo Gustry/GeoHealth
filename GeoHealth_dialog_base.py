@@ -1,0 +1,152 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'GeoHealth_dialog_base.ui'
+#
+# Created: Wed Aug 20 16:37:54 2014
+#      by: PyQt4 UI code generator 4.10.4
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt4 import QtCore, QtGui
+
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
+
+class Ui_GeoHealthDialogBase(object):
+    def setupUi(self, GeoHealthDialogBase):
+        GeoHealthDialogBase.setObjectName(_fromUtf8("GeoHealthDialogBase"))
+        GeoHealthDialogBase.resize(461, 585)
+        self.verticalLayout = QtGui.QVBoxLayout(GeoHealthDialogBase)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.formLayout = QtGui.QFormLayout()
+        self.formLayout.setObjectName(_fromUtf8("formLayout"))
+        self.label = QtGui.QLabel(GeoHealthDialogBase)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.label)
+        self.comboBox_incidence_adminLayer = QtGui.QComboBox(GeoHealthDialogBase)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboBox_incidence_adminLayer.sizePolicy().hasHeightForWidth())
+        self.comboBox_incidence_adminLayer.setSizePolicy(sizePolicy)
+        self.comboBox_incidence_adminLayer.setObjectName(_fromUtf8("comboBox_incidence_adminLayer"))
+        self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.comboBox_incidence_adminLayer)
+        self.label_3 = QtGui.QLabel(GeoHealthDialogBase)
+        self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_3)
+        self.lineEdit_incidence_columnName = QtGui.QLineEdit(GeoHealthDialogBase)
+        self.lineEdit_incidence_columnName.setObjectName(_fromUtf8("lineEdit_incidence_columnName"))
+        self.formLayout.setWidget(2, QtGui.QFormLayout.FieldRole, self.lineEdit_incidence_columnName)
+        self.checkBox_addNbIntersections = QtGui.QCheckBox(GeoHealthDialogBase)
+        self.checkBox_addNbIntersections.setObjectName(_fromUtf8("checkBox_addNbIntersections"))
+        self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.checkBox_addNbIntersections)
+        self.comboBox_incidence_pointLayer = QtGui.QComboBox(GeoHealthDialogBase)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboBox_incidence_pointLayer.sizePolicy().hasHeightForWidth())
+        self.comboBox_incidence_pointLayer.setSizePolicy(sizePolicy)
+        self.comboBox_incidence_pointLayer.setObjectName(_fromUtf8("comboBox_incidence_pointLayer"))
+        self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.comboBox_incidence_pointLayer)
+        self.label_4 = QtGui.QLabel(GeoHealthDialogBase)
+        self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_4)
+        self.radioButton_incidence_area = QtGui.QRadioButton(GeoHealthDialogBase)
+        self.radioButton_incidence_area.setChecked(False)
+        self.radioButton_incidence_area.setObjectName(_fromUtf8("radioButton_incidence_area"))
+        self.formLayout.setWidget(5, QtGui.QFormLayout.FieldRole, self.radioButton_incidence_area)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.radioButton_incidence_population = QtGui.QRadioButton(GeoHealthDialogBase)
+        self.radioButton_incidence_population.setChecked(True)
+        self.radioButton_incidence_population.setObjectName(_fromUtf8("radioButton_incidence_population"))
+        self.horizontalLayout.addWidget(self.radioButton_incidence_population)
+        self.comboBox_incidence_populationField = QtGui.QComboBox(GeoHealthDialogBase)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboBox_incidence_populationField.sizePolicy().hasHeightForWidth())
+        self.comboBox_incidence_populationField.setSizePolicy(sizePolicy)
+        self.comboBox_incidence_populationField.setObjectName(_fromUtf8("comboBox_incidence_populationField"))
+        self.horizontalLayout.addWidget(self.comboBox_incidence_populationField)
+        self.formLayout.setLayout(4, QtGui.QFormLayout.FieldRole, self.horizontalLayout)
+        self.label_2 = QtGui.QLabel(GeoHealthDialogBase)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_2)
+        self.comboBox_incidence_ratio = QtGui.QComboBox(GeoHealthDialogBase)
+        self.comboBox_incidence_ratio.setEditable(True)
+        self.comboBox_incidence_ratio.setObjectName(_fromUtf8("comboBox_incidence_ratio"))
+        self.comboBox_incidence_ratio.addItem(_fromUtf8(""))
+        self.comboBox_incidence_ratio.addItem(_fromUtf8(""))
+        self.comboBox_incidence_ratio.addItem(_fromUtf8(""))
+        self.comboBox_incidence_ratio.addItem(_fromUtf8(""))
+        self.comboBox_incidence_ratio.addItem(_fromUtf8(""))
+        self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.comboBox_incidence_ratio)
+        self.label_5 = QtGui.QLabel(GeoHealthDialogBase)
+        self.label_5.setObjectName(_fromUtf8("label_5"))
+        self.formLayout.setWidget(7, QtGui.QFormLayout.FieldRole, self.label_5)
+        self.label_6 = QtGui.QLabel(GeoHealthDialogBase)
+        self.label_6.setObjectName(_fromUtf8("label_6"))
+        self.formLayout.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_6)
+        self.verticalLayout.addLayout(self.formLayout)
+        self.button_box_ok = QtGui.QDialogButtonBox(GeoHealthDialogBase)
+        self.button_box_ok.setOrientation(QtCore.Qt.Horizontal)
+        self.button_box_ok.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
+        self.button_box_ok.setObjectName(_fromUtf8("button_box_ok"))
+        self.verticalLayout.addWidget(self.button_box_ok)
+        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        self.tableWidget = QtGui.QTableWidget(GeoHealthDialogBase)
+        self.tableWidget.setMinimumSize(QtCore.QSize(200, 0))
+        self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
+        self.tableWidget.setColumnCount(2)
+        self.tableWidget.setRowCount(0)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, item)
+        self.tableWidget.verticalHeader().setVisible(False)
+        self.horizontalLayout_2.addWidget(self.tableWidget)
+        self.layout_plot = QtGui.QVBoxLayout()
+        self.layout_plot.setObjectName(_fromUtf8("layout_plot"))
+        self.horizontalLayout_2.addLayout(self.layout_plot)
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+
+        self.retranslateUi(GeoHealthDialogBase)
+        self.comboBox_incidence_ratio.setCurrentIndex(4)
+        QtCore.QObject.connect(self.radioButton_incidence_population, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.comboBox_incidence_populationField.setEnabled)
+        QtCore.QMetaObject.connectSlotsByName(GeoHealthDialogBase)
+
+    def retranslateUi(self, GeoHealthDialogBase):
+        GeoHealthDialogBase.setWindowTitle(_translate("GeoHealthDialogBase", "GeoHealth", None))
+        self.label.setText(_translate("GeoHealthDialogBase", "Administrative", None))
+        self.label_3.setText(_translate("GeoHealthDialogBase", "New column", None))
+        self.lineEdit_incidence_columnName.setText(_translate("GeoHealthDialogBase", "incidence", None))
+        self.checkBox_addNbIntersections.setText(_translate("GeoHealthDialogBase", "Add the number of intersections", None))
+        self.label_4.setText(_translate("GeoHealthDialogBase", "Point layer", None))
+        self.radioButton_incidence_area.setText(_translate("GeoHealthDialogBase", "Surface", None))
+        self.radioButton_incidence_population.setText(_translate("GeoHealthDialogBase", "Population", None))
+        self.label_2.setText(_translate("GeoHealthDialogBase", "Ratio", None))
+        self.comboBox_incidence_ratio.setItemText(0, _translate("GeoHealthDialogBase", "10", None))
+        self.comboBox_incidence_ratio.setItemText(1, _translate("GeoHealthDialogBase", "100", None))
+        self.comboBox_incidence_ratio.setItemText(2, _translate("GeoHealthDialogBase", "1 000", None))
+        self.comboBox_incidence_ratio.setItemText(3, _translate("GeoHealthDialogBase", "10 000", None))
+        self.comboBox_incidence_ratio.setItemText(4, _translate("GeoHealthDialogBase", "100 000", None))
+        self.label_5.setText(_translate("GeoHealthDialogBase", "<html><head/><body><p><span style=\" font-style:italic;\">number of intersections / area or population * ratio</span></p></body></html>", None))
+        self.label_6.setText(_translate("GeoHealthDialogBase", "<html><head/><body><p><span style=\" font-style:italic;\">Incidence =</span></p></body></html>", None))
+        item = self.tableWidget.horizontalHeaderItem(0)
+        item.setText(_translate("GeoHealthDialogBase", "Parameter", None))
+        item = self.tableWidget.horizontalHeaderItem(1)
+        item.setText(_translate("GeoHealthDialogBase", "Value", None))
+

@@ -1,0 +1,7 @@
+*.pyc
+index.html
+Makefile
+blurringTrad.py
+plugin_upload.py
+help/
+README.txt

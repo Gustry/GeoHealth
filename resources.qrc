@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/plugins/GeoHealth" >
+        <file>resources/icon.png</file>
+	<file>resources/espace-dev.png</file>
+	<file>resources/umr.jpeg</file>
+	<file>resources/um2.png</file>
+	<file>resources/gnu.png</file>
+	<file>resources/refresh.png</file>
+	<file>resources/blur.png</file>
+	<file>resources/about.png</file>
+	<file>resources/info.png</file>
+	<file>resources/sigma.png</file>
+    </qresource>
+</RCC>

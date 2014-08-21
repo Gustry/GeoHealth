@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<style>
+        	body{
+    			font-family: Arial, Verdana, sans-serif;
+            }
+        </style>
+	</head>
+	<body>
+		<h2>Blurring</h2>
+		<p>
+			Plugin to blur point data, such as health personal data, and get some statistics about this blurring.
+		</p>
+		<h3>Menu</h3>
+		<ul>
+			<li><a href="#blur">Blurring</a></li>
+			<li><a href="#statistics">Statistics</a></li>
+		</ul>
+		
+		<h3 id="blur">Blurring</h3>
+		<p>
+			<img src='algo.png' /><br />
+			1 : Creating a buffer (radius r)<br />
+			2 : Random selection of a point in each buffer<br />
+			3 : Creating a buffer around the new point with the same radius. The initial point is at a maximal distance 2r of the centroid of the buffer.<br />
+			4 : Deleting the random point and the first buffer
+			<br /><br />
+			The envelope layer will force the algorithm to have an intersection between the centroid and this layer. This is like a mask.
+		</p>
+		
+		<h3 id="statistics">Statistics</h3>
+		<p>
+			The plugin asks two layers :
+			<ul>
+				<li>The blurred layer</li>
+				<li>A stats layer</li>
+			</ul>
+			The stats layer could be buildings for instance.<br/>
+			With these two layers, the plugin will count the number of intersections between them and produces some stats. This is usefull if you want to rate your blurring.
+		</p>
+	</body>
+</html>
