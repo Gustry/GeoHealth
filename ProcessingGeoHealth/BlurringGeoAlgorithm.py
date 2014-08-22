@@ -57,7 +57,7 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
         self.addOutput(OutputVector(self.OUTPUT_LAYER,'Output layer with selected features'))
 
     def help(self):
-        return True, QApplication.translate("Blurring", 'For more explanations, go to the vector\'s menu then "Blurring" -> "Help"<br />')
+        return True, Tools.trans('For more explanations, go to the vector\'s menu then "Blurring" -> "Help"<br />')
     
     def getIcon(self):
         return QIcon(":/plugins/GeoHealth/resources/blur.png")

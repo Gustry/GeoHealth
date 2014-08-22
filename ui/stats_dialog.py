@@ -22,7 +22,7 @@
 """
 
 from GeoHealth import *
-from stats import Ui_Form
+from stats import Ui_Stats
 import os
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
@@ -30,7 +30,7 @@ from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as Naviga
 #import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 
-class StatsWidget(QWidget, Ui_Form):
+class StatsWidget(QWidget, Ui_Stats):
     
     signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
     
@@ -87,10 +87,10 @@ class StatsWidget(QWidget, Ui_Form):
                 raise DifferentCrsException(epsg1 = crsLayerBlurred.authid(), epsg2 = crsLayerStats.authid())
             
             if layerBlurred == layerStats:
-                return False
+                raise NoLayerProvidedException
             
             if not layerBlurred or not layerStats:
-                return False
+                raise NoLayerProvidedException
             
             nbFeatureStats = layerStats.featureCount()
             nbFeatureBlurred = layerBlurred.featureCount()
@@ -137,10 +137,10 @@ class StatsWidget(QWidget, Ui_Form):
             itemsStats.append("Min,%d"%stats.min())
             itemsStats.append("Average,%f"%stats.average())
             itemsStats.append("Max,%d"%stats.max())
-            itemsStats.append("Mean,%d"%stats.mean())
+            itemsStats.append("Median,%f"%stats.median())
             itemsStats.append("Range,%d"%stats.range())
             itemsStats.append("Variance,%f"%stats.variance())
-            itemsStats.append("Ecart type,%f"%stats.ecart_type())
+            itemsStats.append("Standard deviation,%f"%stats.standardDeviation())
             
             self.tableWidget.clear()
             self.tableWidget.setColumnCount(2)
@@ -155,7 +155,7 @@ class StatsWidget(QWidget, Ui_Form):
             
             self.drawPlot(self.tab)
             
-        except BlurringException,e:
+        except GeoHealthException,e:
             self.label_progressStats.setText("")
             Tools.displayMessageBar(msg=e.msg, level=e.level , duration=e.duration)
             
@@ -228,7 +228,5 @@ class StatsWidget(QWidget, Ui_Form):
         self.canvas.draw()    
 
 class NavigationToolbar(NavigationToolbar):
-    # only display the buttons we need
-    #print NavigationToolbar.toolitems
     toolitems = [t for t in NavigationToolbar.toolitems if
                  t[0] in ('Home', 'Back', 'Next', 'Pan', 'Zoom', 'Save')]

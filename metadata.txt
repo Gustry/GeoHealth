@@ -22,7 +22,7 @@ email=etienne@trimaille.eu
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=health,epidemiolgy,blur
+tags=health,epidemiolgy,blur,blurring 
 
 homepage=https://github.com/Gustry/GeoHealth
 tracker=https://github.com/Gustry/GeoHealth/issues

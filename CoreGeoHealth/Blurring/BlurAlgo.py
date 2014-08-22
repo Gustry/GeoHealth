@@ -20,9 +20,8 @@ email : ter-floutage@googlegroups.com
 ***************************************************************************/
 """
 
-from Blurring import *
+from GeoHealth import *
 import random, math
-from math import sqrt
 
 """Blurring's algorithm"""
 
@@ -42,7 +41,6 @@ class BlurAlgo:
         self.__polygonEnvelope = polygonEnvelope
         self.__addRadiusToAttributes = addRadiusToAttributes
         self.__addCentroidToAttributes = addCentroidToAttributes
- 
     
     def blur(self, feature):
         geom = feature.geometry()

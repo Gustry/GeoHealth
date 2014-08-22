@@ -20,7 +20,7 @@
  ***************************************************************************/
 """
 
-from Blurring import *
+from GeoHealth import *
 
 """Class to know if an intersection exist between a QgsGeometry and a QgsVectorLayer"""
 

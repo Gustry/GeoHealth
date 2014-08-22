@@ -21,8 +21,7 @@
  ***************************************************************************/
 """
 
-import math
-from numpy import median, average, mean, var
+from numpy import median, average, var, std
 
 class Stats:
 
@@ -44,14 +43,13 @@ class Stats:
         return self.max() - self.min()
 
     def average(self) :
-        return mean(self.listStats)
+        return average(self.listStats)
 
-    def mean(self):
-        return mean(self.listStats)
+    def median(self):
+        return median(self.listStats)
 
     def variance(self) :
         return var(self.listStats)
 
-    def ecart_type(self):
-        variance = self.stat_variance()
-        return math.sqrt(variance)
+    def standardDeviation(self):
+        return std(self.listStats)

@@ -12,7 +12,7 @@ SOURCES = geohealth.py \
 	CoreGeoHealth/Stats.py \
 	CoreGeoHealth/Tools.py \
 	CoreGeoHealth/Blurring/BlurAlgo.py \
-	CoreGeoHealth/Blurring/ExceptionBlurring.py \
-	CoreGeoHealth/Blurring/LayerIndex.py \
+	CoreGeoHealth/ExceptionGeoHealth.py \
+	CoreGeoHealth/Blurring/LayerIndex.py
 
-TRANSLATIONS = i18n/blurring_fr.ts
+TRANSLATIONS = i18n/geohealth_fr.ts

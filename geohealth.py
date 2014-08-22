@@ -25,7 +25,6 @@ from ui.incidence_dialog import IncidenceDialog
 from ui.main_blurring_dialog import MainBlurringDialog
 from GeoHealth.ProcessingGeoHealth.GeoHealthAlgorithmProvider import GeoHealthAlgorithmProvider
 from processing.core.Processing import Processing
-from ui import *
 
 class GeoHealth:
 
@@ -53,7 +52,7 @@ class GeoHealth:
 
     def initGui(self):
         
-        self.geohealth_menu = QMenu(Tools.trans("GeoHealth"))
+        self.geohealth_menu = QMenu(Tools.trans("&GeoHealth"))
         
         self.iface.mainWindow().menuBar().insertMenu(self.iface.firstRightStandardMenu().menuAction(), self.geohealth_menu)
 
@@ -80,7 +79,7 @@ class GeoHealth:
         dialog.exec_()
         
     def openBlurring(self):
-        dialog = MainBlurringDialog(self.iface)
-        dialog.fillComboxboxLayers()
-        dialog.show()
-        dialog.exec_()
+        iface.Blurring_mainWindowDialog = MainBlurringDialog(self.iface)
+        iface.Blurring_mainWindowDialog.fillComboxboxLayers()
+        iface.Blurring_mainWindowDialog.show()
+        iface.Blurring_mainWindowDialog.exec_()

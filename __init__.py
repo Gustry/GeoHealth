@@ -28,8 +28,9 @@ from qgis.gui import *
 from qgis.utils import iface
 from CoreGeoHealth.Tools import *
 from CoreGeoHealth.Stats import *
-from CoreGeoHealth.Blurring.ExceptionBlurring import *
 from processing.core.GeoAlgorithmExecutionException import GeoAlgorithmExecutionException
+from CoreGeoHealth.ExceptionGeoHealth import *
+
 
 import os.path
 import resources_rc

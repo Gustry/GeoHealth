@@ -16,6 +16,7 @@
 		<ul>
 			<li><a href="#blur">Blurring</a></li>
 			<li><a href="#statistics">Statistics</a></li>
+			<li><a href="#incidence">Incidence</a></li>
 		</ul>
 		
 		<h3 id="blur">Blurring</h3>
@@ -31,13 +32,23 @@
 		
 		<h3 id="statistics">Statistics</h3>
 		<p>
-			The plugin asks two layers :
+			The plugin asks two layers. Both are polygons :
 			<ul>
 				<li>The blurred layer</li>
 				<li>A stats layer</li>
 			</ul>
 			The stats layer could be buildings for instance.<br/>
 			With these two layers, the plugin will count the number of intersections between them and produces some stats. This is usefull if you want to rate your blurring.
+		</p>
+		
+		<h3 id="incidence">Incidence</h3>
+		<p>
+			The plugin asks two layers :
+			<ul>
+				<li>Point layer</li>
+				<li>Polygon layer (like administrative boundary)</li>
+			</ul>
+			This algorithm will count the number of points inside each polygons and run a formula to get the incidence. <br /> You can have some statistics about the incidence.<br /> This is usefull to make an incidence map about a disease.<br/>
 		</p>
 	</body>
 </html>

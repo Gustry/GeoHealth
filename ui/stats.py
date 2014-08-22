@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'stats.ui'
 #
-# Created: Thu Aug 21 16:24:58 2014
+# Created: Fri Aug 22 11:53:20 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,21 +23,21 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(517, 728)
-        self.verticalLayout = QtGui.QVBoxLayout(Form)
+class Ui_Stats(object):
+    def setupUi(self, Stats):
+        Stats.setObjectName(_fromUtf8("Stats"))
+        Stats.resize(517, 728)
+        self.verticalLayout = QtGui.QVBoxLayout(Stats)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.formLayout = QtGui.QFormLayout()
         self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.ExpandingFieldsGrow)
         self.formLayout.setObjectName(_fromUtf8("formLayout"))
-        self.label = QtGui.QLabel(Form)
+        self.label = QtGui.QLabel(Stats)
         self.label.setObjectName(_fromUtf8("label"))
         self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.label)
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
-        self.comboBox_blurredLayer = QtGui.QComboBox(Form)
+        self.comboBox_blurredLayer = QtGui.QComboBox(Stats)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -49,12 +49,12 @@ class Ui_Form(object):
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem)
         self.formLayout.setLayout(0, QtGui.QFormLayout.FieldRole, self.horizontalLayout_4)
-        self.label_2 = QtGui.QLabel(Form)
+        self.label_2 = QtGui.QLabel(Stats)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_2)
         self.horizontalLayout_5 = QtGui.QHBoxLayout()
         self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
-        self.comboBox_statsLayer = QtGui.QComboBox(Form)
+        self.comboBox_statsLayer = QtGui.QComboBox(Stats)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -67,32 +67,32 @@ class Ui_Form(object):
         self.horizontalLayout_5.addItem(spacerItem1)
         self.formLayout.setLayout(2, QtGui.QFormLayout.FieldRole, self.horizontalLayout_5)
         self.verticalLayout.addLayout(self.formLayout)
-        self.label_progressStats = QtGui.QLabel(Form)
+        self.label_progressStats = QtGui.QLabel(Stats)
         self.label_progressStats.setObjectName(_fromUtf8("label_progressStats"))
         self.verticalLayout.addWidget(self.label_progressStats)
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
-        self.progressBar_stats = QtGui.QProgressBar(Form)
+        self.progressBar_stats = QtGui.QProgressBar(Stats)
         self.progressBar_stats.setProperty("value", 0)
         self.progressBar_stats.setObjectName(_fromUtf8("progressBar_stats"))
         self.horizontalLayout_2.addWidget(self.progressBar_stats)
-        self.buttonBox_stats = QtGui.QDialogButtonBox(Form)
+        self.buttonBox_stats = QtGui.QDialogButtonBox(Stats)
         self.buttonBox_stats.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.buttonBox_stats.setCenterButtons(False)
         self.buttonBox_stats.setObjectName(_fromUtf8("buttonBox_stats"))
         self.horizontalLayout_2.addWidget(self.buttonBox_stats)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-        self.line = QtGui.QFrame(Form)
+        self.line = QtGui.QFrame(Stats)
         self.line.setFrameShape(QtGui.QFrame.HLine)
         self.line.setFrameShadow(QtGui.QFrame.Sunken)
         self.line.setObjectName(_fromUtf8("line"))
         self.verticalLayout.addWidget(self.line)
         self.horizontalLayout_3 = QtGui.QHBoxLayout()
         self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
-        self.pushButton_saveTable = QtGui.QPushButton(Form)
+        self.pushButton_saveTable = QtGui.QPushButton(Stats)
         self.pushButton_saveTable.setObjectName(_fromUtf8("pushButton_saveTable"))
         self.horizontalLayout_3.addWidget(self.pushButton_saveTable)
-        self.pushButton_saveYValues = QtGui.QPushButton(Form)
+        self.pushButton_saveYValues = QtGui.QPushButton(Stats)
         self.pushButton_saveYValues.setObjectName(_fromUtf8("pushButton_saveYValues"))
         self.horizontalLayout_3.addWidget(self.pushButton_saveYValues)
         spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -100,7 +100,7 @@ class Ui_Form(object):
         self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.tableWidget = QtGui.QTableWidget(Form)
+        self.tableWidget = QtGui.QTableWidget(Stats)
         self.tableWidget.setMinimumSize(QtCore.QSize(200, 0))
         self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
         self.tableWidget.setColumnCount(2)
@@ -116,19 +116,19 @@ class Ui_Form(object):
         self.horizontalLayout.addLayout(self.layout_plot)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(Stats)
+        QtCore.QMetaObject.connectSlotsByName(Stats)
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "Form", None))
-        self.label.setText(_translate("Form", "Blurred layer", None))
-        self.label_2.setText(_translate("Form", "Stats layer", None))
-        self.label_progressStats.setText(_translate("Form", "progress", None))
-        self.pushButton_saveTable.setText(_translate("Form", "Save table", None))
-        self.pushButton_saveYValues.setText(_translate("Form", "Save Y values", None))
+    def retranslateUi(self, Stats):
+        Stats.setWindowTitle(_translate("Stats", "Form", None))
+        self.label.setText(_translate("Stats", "Blurred layer", None))
+        self.label_2.setText(_translate("Stats", "Stats layer", None))
+        self.label_progressStats.setText(_translate("Stats", "progress", None))
+        self.pushButton_saveTable.setText(_translate("Stats", "Save table", None))
+        self.pushButton_saveYValues.setText(_translate("Stats", "Save Y values", None))
         item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("Form", "Parameter", None))
+        item.setText(_translate("Stats", "Parameter", None))
         item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("Form", "Value", None))
+        item.setText(_translate("Stats", "Value", None))
 
 from GeoHealth import resources_rc

@@ -140,13 +140,13 @@ QListWidget::item::selected {
          <item>
           <widget class="QGroupBox" name="groupBox">
            <property name="title">
-            <string>Supervision</string>
+            <string>Design</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <item>
              <widget class="QLabel" name="label_5">
               <property name="text">
-               <string>This project was supervised by UMR Espace-Dev (IRD, UAG, UM2, UR)</string>
+               <string>This plugin was designed by UMR Espace-Dev (IRD, UAG, UM2, UR)</string>
               </property>
              </widget>
             </item>
@@ -164,33 +164,45 @@ QListWidget::item::selected {
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap>:/plugins/Blurring/resources/espace-dev.png</pixmap>
+                 <pixmap resource="../resources.qrc">:/plugins/GeoHealth/resources/espace-dev.png</pixmap>
                 </property>
                 <property name="scaledContents">
                  <bool>false</bool>
+                </property>
+                <property name="openExternalLinks">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_6">
                 <item>
-                 <widget class="QLabel" name="label_9">
-                  <property name="text">
-                   <string>&lt;a href=&quot;mailto:therese.libourel@univ-montp2.fr?subject=Plugin Blurring&quot; style=&quot;text-decoration:none;&quot;&gt;Thérèse Libourel&lt;/a&gt;</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
                  <widget class="QLabel" name="label_8">
                   <property name="text">
-                   <string>&lt;a href=&quot;mailto:vincent.herbreteau@ird.fr?subject=Plugin Blurring&quot; style=&quot;text-decoration:none;&quot;&gt;Vincent Herbreteau&lt;/a&gt;</string>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;mailto:vincent.herbreteau@ird.fr?subject=Plugin Blurring&quot;&gt;&lt;span style=&quot; color:#0057ae;&quot; style=&quot;text-decoration:none;&quot;&gt;Vincent Herbreteau (IRD)&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="openExternalLinks">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="label_7">
                   <property name="text">
-                   <string>&lt;a href=&quot;mailto:christophe.revillion@ird.fr?subject=Plugin Blurring&quot; style=&quot;text-decoration:none;&quot;&gt;Christophe Révillion&lt;/a&gt;</string>
+                   <string>&lt;a href=&quot;mailto:christophe.revillion@ird.fr?subject=Plugin Blurring&quot; style=&quot;text-decoration:none;&quot;&gt;Christophe Révillion (IRD)&lt;/a&gt;</string>
+                  </property>
+                  <property name="openExternalLinks">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_9">
+                  <property name="text">
+                   <string>&lt;a href=&quot;mailto:therese.libourel@univ-montp2.fr?subject=Plugin Blurring&quot; style=&quot;text-decoration:none;&quot;&gt;Thérèse Libourel (UM2)&lt;/a&gt;</string>
+                  </property>
+                  <property name="openExternalLinks">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -212,30 +224,16 @@ QListWidget::item::selected {
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_8">
                 <item>
+                 <widget class="QLabel" name="label_10">
+                  <property name="text">
+                   <string>Current version : Etienne Trimaille</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
                  <widget class="QLabel" name="label">
                   <property name="text">
-                   <string>Mamadou Sane</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_2">
-                  <property name="text">
-                   <string>Modou Ndiaye</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_3">
-                  <property name="text">
-                   <string>Thomas Gauer</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_4">
-                  <property name="text">
-                   <string>Etienne Trimaille</string>
+                   <string>Version 0.2 : Etienne Trimaille, Mamadou Sane, Modou Ndiaye, Thomas Gauer</string>
                   </property>
                  </widget>
                 </item>
@@ -267,7 +265,7 @@ QListWidget::item::selected {
               <item row="0" column="1">
                <widget class="QLabel" name="label_20">
                 <property name="text">
-                 <string>&lt;a href=&quot;https://github.com/Gustry/Blurring&quot; style=&quot;text-decoration:none;&quot;&gt;https://github.com/Gustry/Blurring&lt;/a&gt;</string>
+                 <string>&lt;a href=&quot;https://github.com/Gustry/GeoHealth&quot; style=&quot;text-decoration:none;&quot;&gt;https://github.com/Gustry/GeoHealth&lt;/a&gt;</string>
                 </property>
                 <property name="openExternalLinks">
                  <bool>true</bool>
@@ -300,7 +298,7 @@ QListWidget::item::selected {
               <item>
                <widget class="QLabel" name="label_16">
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://www.gnu.org/licenses/gpl-2.0.html&quot;&gt;&lt;img src=&quot;:/plugins/Blurring/resources/gnu.png&quot;/&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://www.gnu.org/licenses/gpl-2.0.html&quot;&gt;&lt;img src=&quot;:/plugins/GeoHealth/resources/gnu.png&quot;/&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>

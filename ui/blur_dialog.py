@@ -22,13 +22,13 @@
 """
 
 from GeoHealth import *
-from blur import Ui_Form
+from blur import Ui_Blur
 from processing.tools.system import *
 from GeoHealth.CoreGeoHealth.Blurring import LayerIndex
 from GeoHealth.CoreGeoHealth.Blurring import BlurAlgo
 import os
 
-class BlurWidget(QWidget, Ui_Form):
+class BlurWidget(QWidget, Ui_Blur):
     
     signalAskCloseWindow = pyqtSignal(name='signalAskCloseWindow')
     
@@ -172,7 +172,7 @@ class BlurWidget(QWidget, Ui_Form):
             
             self.signalAskCloseWindow.emit()
         
-        except BlurringException,e:
+        except GeoHealthException,e:
             self.label_progress.setText("")
             Tools.displayMessageBar(msg=e.msg, level=e.level , duration=e.duration)
         

@@ -21,7 +21,7 @@
 """
 
 from GeoHealth import *
-from incidence import Ui_Dialog
+from incidence import Ui_Incidence
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
 from matplotlib.figure import Figure
@@ -30,10 +30,9 @@ class NavigationToolbar(NavigationToolbar):
     toolitems = [t for t in NavigationToolbar.toolitems if
                  t[0] in ('Home', 'Back', 'Next', 'Pan', 'Zoom', 'Save')]
 
-class IncidenceDialog(QDialog, Ui_Dialog):
+class IncidenceDialog(QDialog, Ui_Incidence):
     def __init__(self, parent=None):
         """Constructor."""
-        #super(Ui_Dialog, self).__init__()
         QDialog.__init__(self)
         self.setupUi(self)
         
@@ -87,91 +86,109 @@ class IncidenceDialog(QDialog, Ui_Dialog):
         ratio = self.comboBox_incidence_ratio.currentText()
         ratio = ratio.replace(" ","")
         
-        try :
-            ratio = float(ratio)
-        except ValueError:
-            return False
-        
-        useArea = self.radioButton_incidence_area.isChecked()
-        addNbIntersections = self.checkBox_addNbIntersections.isChecked()
-        
-        indexPopulation = None
-        if not useArea:
-            indexPopulation = adminLayer.fieldNameIndex(population)
-        
-        adminLayerProvider = adminLayer.dataProvider()
-        adminLayer.startEditing()
-        adminLayerProvider.addAttributes([QgsField(self.nameField, QVariant.Double)])
-        
-        if addNbIntersections:
-            adminLayerProvider.addAttributes([QgsField("nb_of_intersections", QVariant.Int)])
-        
-        adminLayer.updateFields()
-        fields = adminLayer.pendingFields()
-        nbFields = fields.count()
-        
-        numFieldIncidence = None
-        numFieldIntersections = None        
-        
-        if addNbIntersections:
-            numFieldIncidence = nbFields-2
-            numFieldIntersections = nbFields-1
-        else:
-            numFieldIncidence = nbFields-1
-        
-        data = []
-        
-        for i,feature in enumerate(adminLayer.getFeatures()):
-            attrs = feature.attributes()
-            count = 0
-            for f in pointLayer.getFeatures():
-                if f.geometry().intersects(feature.geometry()):
-                    count += 1
+        try:
             
-            indice = None
-            if useArea:
-                indice = float(count) / feature.geometry().area() * ratio
-            else:
-                try :
-                    population = float(attrs[indexPopulation])
-                except ValueError:
-                    adminLayer.rollBack()
-                    return False
-                indice = float(count) / population * ratio
+            if not adminLayer or not pointLayer:
+                raise NoLayerProvidedException
+
+            crsAdminLayer = adminLayer.crs()
+            crsPointLayer = pointLayer.crs()
+            if crsAdminLayer != crsPointLayer:
+                raise DifferentCrsException(epsg1 = crsPointLayer.authid(), epsg2 = crsAdminLayer.authid())
             
-            data.append(indice)
-            adminLayer.changeAttributeValue(feature.id(), numFieldIncidence, indice)
+            try :
+                ratio = float(ratio)
+            except ValueError:
+                raise NotANumberException(suffix=ratio)
+            
+            useArea = self.radioButton_incidence_area.isChecked()
+            addNbIntersections = self.checkBox_addNbIntersections.isChecked()
+            
+            indexPopulation = None
+            if not useArea:
+                indexPopulation = adminLayer.fieldNameIndex(population)
+            
+            adminLayerProvider = adminLayer.dataProvider()
+            adminLayer.startEditing()
+            adminLayerProvider.addAttributes([QgsField(self.nameField, QVariant.Double)])
+            
             if addNbIntersections:
-                adminLayer.changeAttributeValue(feature.id(), numFieldIntersections, count)
+                adminLayerProvider.addAttributes([QgsField("nb_of_intersections", QVariant.Int)])
+            
+            adminLayer.updateFields()
+            fields = adminLayer.pendingFields()
+            nbFields = fields.count()
+            
+            numFieldIncidence = None
+            numFieldIntersections = None        
+            
+            if addNbIntersections:
+                numFieldIncidence = nbFields-2
+                numFieldIntersections = nbFields-1
+            else:
+                numFieldIncidence = nbFields-1
+            
+            data = []
+            
+            for i,feature in enumerate(adminLayer.getFeatures()):
+                attrs = feature.attributes()
+                count = 0
+                for f in pointLayer.getFeatures():
+                    if f.geometry().intersects(feature.geometry()):
+                        count += 1
+                
+                indice = None
+                if useArea:
+                    indice = float(count) / feature.geometry().area() * ratio
+                else:
+                    try :
+                        population = float(attrs[indexPopulation])
+                    except ValueError:
+                        adminLayer.rollBack()
+                        raise NotANumberException(suffix=attrs[indexPopulation])
+                    indice = float(count) / population * ratio
+                
+                data.append(indice)
+                adminLayer.changeAttributeValue(feature.id(), numFieldIncidence, indice)
+                if addNbIntersections:
+                    adminLayer.changeAttributeValue(feature.id(), numFieldIntersections, count)
+            
+            adminLayer.commitChanges()
+            adminLayer.updateFields()
+            
+            if self.checkBox_incidence_runStats.isChecked():
+            
+                stats = Stats(data)
+                
+                itemsStats = []
+                itemsStats.append("Count(point),%d"%pointLayer.featureCount())
+                itemsStats.append("Count(polygon),%d"%adminLayer.featureCount())
+                itemsStats.append("Min,%d"%stats.min())
+                itemsStats.append("Average,%f"%stats.average())
+                itemsStats.append("Max,%d"%stats.max())
+                itemsStats.append("Median,%f"%stats.median())
+                itemsStats.append("Range,%d"%stats.range())
+                itemsStats.append("Variance,%f"%stats.variance())
+                itemsStats.append("Standard deviation,%f"%stats.standardDeviation())
+                
+                self.tableWidget.clear()
+                self.tableWidget.setColumnCount(2)
+                self.tableWidget.setHorizontalHeaderLabels(['Parameters','Values'])
+                self.tableWidget.setRowCount(len(itemsStats))
+                
+                for i,item in enumerate(itemsStats):
+                    s = item.split(',')
+                    self.tableWidget.setItem(i, 0, QTableWidgetItem(s[0]))
+                    self.tableWidget.setItem(i, 1, QTableWidgetItem(s[1]))
+                self.tableWidget.resizeRowsToContents()
+                
+                self.drawPlot(data)
+            
+            else:
+                self.hide()
         
-        adminLayer.commitChanges()
-        adminLayer.updateFields()
-        
-        stats = Stats(data)
-        
-        itemsStats = []
-        itemsStats.append("Count(point),%d"%pointLayer.featureCount())
-        itemsStats.append("Count(polygon),%d"%adminLayer.featureCount())
-        itemsStats.append("Min,%d"%stats.min())
-        itemsStats.append("Average,%f"%stats.average())
-        itemsStats.append("Max,%d"%stats.max())
-        itemsStats.append("Mean,%d"%stats.mean())
-        itemsStats.append("Range,%d"%stats.range())
-        itemsStats.append("Variance,%f"%stats.variance())
-        itemsStats.append("Ecart type,%f"%stats.ecart_type())
-        
-        self.tableWidget.clear()
-        self.tableWidget.setColumnCount(2)
-        self.tableWidget.setHorizontalHeaderLabels(['Parameters','Values'])
-        self.tableWidget.setRowCount(len(itemsStats))
-        
-        for i,item in enumerate(itemsStats):
-            s = item.split(',')
-            self.tableWidget.setItem(i, 0, QTableWidgetItem(s[0]))
-            self.tableWidget.setItem(i, 1, QTableWidgetItem(s[1]))
-        self.tableWidget.resizeRowsToContents()
-        
-        self.drawPlot(data)
+        except GeoHealthException,e:
+            self.messageBar.pushMessage(e.msg, level=e.level, duration=e.duration)
         
     def drawPlot(self,data):
         ax = self.figure.add_subplot(111)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>Stats</class>
+ <widget class="QWidget" name="Stats">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -194,7 +194,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../../../../../plugins/Blurring/resources.qrc"/>
+  <include location="../../../../../plugins/GeoHealth/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

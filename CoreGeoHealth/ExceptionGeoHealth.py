@@ -21,46 +21,55 @@
  ***************************************************************************/
 """
 
-from Blurring import *
+from GeoHealth import *
 
 """
 QApplication.translate doesn't work in contructor's parameters
 """
 
-class BlurringException(GeoAlgorithmExecutionException):
+class GeoHealthException(GeoAlgorithmExecutionException):
     def __init__(self, msg=None):
         GeoAlgorithmExecutionException.__init__(self,msg)    
         self.level = QgsMessageBar.CRITICAL
         self.duration = 7
 
-class NoLayerProvidedException(BlurringException):
+class NoLayerProvidedException(GeoHealthException):
     def __init__(self, msg=None):
         if not msg:
-            msg = Tools.trans(u"No layer was provided.")
-        BlurringException.__init__(self,msg)
+            msg = QApplication.translate("GeoHealth",u"No layer was provided.")
+        GeoHealthException.__init__(self,msg)
         
-class NoFileNoDisplayException(BlurringException):
+class NoFileNoDisplayException(GeoHealthException):
     def __init__(self, msg=None):
         if not msg:
-            msg = Tools.trans(u'No file provided, "add resultat to canvas" required')
-        BlurringException.__init__(self,msg)
+            msg = QApplication.translate("GeoHealth",u'No file provided, "add resultat to canvas" required')
+        GeoHealthException.__init__(self,msg)
 
-class CreatingShapeFileException(BlurringException):
+class CreatingShapeFileException(GeoHealthException):
     def __init__(self, msg=None, suffix=None):
         if not msg:
-            msg = Tools.trans(u'No file provided, "add resultat to canvas" required')
+            msg = QApplication.translate("GeoHealth",u'Error while creating the shapefile')
         if suffix:
             msg += suffix
-        BlurringException.__init__(self,msg)
+        GeoHealthException.__init__(self,msg)
 
-class PointOutsideEnvelopeException(BlurringException):
+class PointOutsideEnvelopeException(GeoHealthException):
     def __init__(self, msg=None, number=None):
         if not msg:
-            msg = Tools.trans(u'Point number %d is outside the envelope.' %number)
-        BlurringException.__init__(self,msg)
+            msg = QApplication.translate("GeoHealth",u'Point number %d is outside the envelope.' %number)
+        GeoHealthException.__init__(self,msg)
 
-class DifferentCrsException(BlurringException):
+class DifferentCrsException(GeoHealthException):
     def __init__(self, msg=None, epsg1=None, epsg2=None):
         if not msg:
-            msg = Tools.trans(u"It's not the same projection system : %s != %s" %(epsg1,epsg2))
-        BlurringException.__init__(self,msg)
+            msg = QApplication.translate("GeoHealth",u"It's not the same projection system : %s != %s" %(epsg1,epsg2))
+        GeoHealthException.__init__(self,msg)
+
+class NotANumberException(GeoHealthException):
+    def __init__(self, msg=None, suffix=None):
+        if not msg:
+            msg = QApplication.translate("GeoHealth",u"It's not a number")
+        if suffix:
+            msg += " : %s"%suffix
+        GeoHealthException.__init__(self,msg)
+
