@@ -23,14 +23,7 @@
 from GeoHealth import *
 from GeoHealth.CoreGeoHealth.Blurring.BlurAlgo import *
 from GeoHealth.CoreGeoHealth.Blurring.LayerIndex import *
-
-from processing.core.Processing import Processing
-from processing.core.GeoAlgorithm import GeoAlgorithm
-from processing.parameters.ParameterVector import ParameterVector
-from processing.parameters.ParameterNumber import ParameterNumber
-from processing.parameters.ParameterBoolean import ParameterBoolean
-from processing.outputs.OutputVector import OutputVector
-from processing.tools import dataobjects, vector
+from GeoHealth.ProcessingGeoHealth import *
 
 """QGIS Processing"""
 
