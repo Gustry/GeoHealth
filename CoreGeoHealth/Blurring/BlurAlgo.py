@@ -31,7 +31,7 @@ class BlurAlgo:
     def randomPointAroundGeomPoint(point,radius):
         """Creating a random point"""
         teta = math.pi*random.uniform(0, 2)
-        r = random.randint(0,radius)
+        r = random.uniform(0,radius)
         randomX = point.asPoint().x()+ (r * math.cos(teta))
         randomY = point.asPoint().y()+ (r * math.sin(teta))
         return QgsGeometry.fromPoint(QgsPoint(randomX, randomY)) 

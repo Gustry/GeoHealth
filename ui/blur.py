@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'blur.ui'
 #
-# Created: Fri Aug 22 11:52:49 2014
+# Created: Fri Nov  7 00:11:49 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -35,13 +35,6 @@ class Ui_Blur(object):
         self.label_4 = QtGui.QLabel(Blur)
         self.label_4.setObjectName(_fromUtf8("label_4"))
         self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_4)
-        self.spinBox_radius = QtGui.QSpinBox(Blur)
-        self.spinBox_radius.setMinimum(1)
-        self.spinBox_radius.setMaximum(999999999)
-        self.spinBox_radius.setSingleStep(50)
-        self.spinBox_radius.setProperty("value", 500)
-        self.spinBox_radius.setObjectName(_fromUtf8("spinBox_radius"))
-        self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.spinBox_radius)
         self.label_5 = QtGui.QLabel(Blur)
         self.label_5.setObjectName(_fromUtf8("label_5"))
         self.formLayout.setWidget(4, QtGui.QFormLayout.LabelRole, self.label_5)
@@ -73,6 +66,13 @@ class Ui_Blur(object):
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
         self.formLayout.setLayout(1, QtGui.QFormLayout.FieldRole, self.horizontalLayout_2)
+        self.spinBox_radius = QtGui.QDoubleSpinBox(Blur)
+        self.spinBox_radius.setMinimum(0.0)
+        self.spinBox_radius.setMaximum(999999999.0)
+        self.spinBox_radius.setSingleStep(50.0)
+        self.spinBox_radius.setProperty("value", 500.0)
+        self.spinBox_radius.setObjectName(_fromUtf8("spinBox_radius"))
+        self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.spinBox_radius)
         self.verticalLayout.addLayout(self.formLayout)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
@@ -89,7 +89,7 @@ class Ui_Blur(object):
         self.pushButton_browseFolder.setObjectName(_fromUtf8("pushButton_browseFolder"))
         self.horizontalLayout.addWidget(self.pushButton_browseFolder)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.groupBox_advanced = QgsCollapsibleGroupBox(Blur)
+        self.groupBox_advanced = gui.QgsCollapsibleGroupBox(Blur)
         self.groupBox_advanced.setObjectName(_fromUtf8("groupBox_advanced"))
         self.verticalLayout_4 = QtGui.QVBoxLayout(self.groupBox_advanced)
         self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
@@ -161,7 +161,6 @@ class Ui_Blur(object):
     def retranslateUi(self, Blur):
         Blur.setWindowTitle(_translate("Blur", "Form", None))
         self.label_4.setText(_translate("Blur", "Radius (map\'s unit)", None))
-        self.spinBox_radius.setToolTip(_translate("Blur", "Maximum radius", None))
         self.label_5.setText(_translate("Blur", "Use only selected features", None))
         self.label_6.setText(_translate("Blur", "Add result to canvas", None))
         self.label_3.setText(_translate("Blur", "Point layer", None))
@@ -175,5 +174,5 @@ class Ui_Blur(object):
         self.checkBox_envelope.setText(_translate("Blur", "Use envelope", None))
         self.label_progress.setText(_translate("Blur", "progress text", None))
 
-from qgis.gui import QgsCollapsibleGroupBox
-from GeoHealth import resources_rc
+from qgis import gui
+import resources_rc
