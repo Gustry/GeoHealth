@@ -42,7 +42,7 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
         self.group = "Blurring a point layer"
 
         self.addParameter(ParameterVector(self.INPUT_LAYER, 'Point layer',[ParameterVector.VECTOR_TYPE_POINT], False))
-        self.addParameter(ParameterNumber(self.RADIUS_FIELD, 'Radius (maps unit)',1,999999999,500))
+        self.addParameter(ParameterNumber(self.RADIUS_FIELD, 'Radius (maps unit)',0,999999999,500.00))
         self.addParameter(ParameterVector(self.ENVELOPE_LAYER, 'Envelope layer',[ParameterVector.VECTOR_TYPE_POLYGON], True))
         self.addParameter(ParameterBoolean(self.RADIUS_EXPORT, 'Add the radius to the attribute table',False))
         self.addParameter(ParameterBoolean(self.CENTROID_EXPORT, 'Add the centroid to the attribute table',False))
