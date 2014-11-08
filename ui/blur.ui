@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -226,7 +226,7 @@
    <item>
     <widget class="QLabel" name="label_progress">
      <property name="text">
-      <string>progress text</string>
+      <string notr="true">progress text</string>
      </property>
     </widget>
    </item>

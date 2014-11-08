@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'stats.ui'
+# Form implementation generated from reading ui file 'ui/stats.ui'
 #
-# Created: Fri Aug 22 11:53:20 2014
+# Created: Sat Nov  8 11:40:37 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,6 +27,7 @@ class Ui_Stats(object):
     def setupUi(self, Stats):
         Stats.setObjectName(_fromUtf8("Stats"))
         Stats.resize(517, 728)
+        Stats.setWindowTitle(_fromUtf8("Form"))
         self.verticalLayout = QtGui.QVBoxLayout(Stats)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.formLayout = QtGui.QFormLayout()
@@ -68,6 +69,7 @@ class Ui_Stats(object):
         self.formLayout.setLayout(2, QtGui.QFormLayout.FieldRole, self.horizontalLayout_5)
         self.verticalLayout.addLayout(self.formLayout)
         self.label_progressStats = QtGui.QLabel(Stats)
+        self.label_progressStats.setText(_fromUtf8("progress"))
         self.label_progressStats.setObjectName(_fromUtf8("label_progressStats"))
         self.verticalLayout.addWidget(self.label_progressStats)
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
@@ -120,10 +122,8 @@ class Ui_Stats(object):
         QtCore.QMetaObject.connectSlotsByName(Stats)
 
     def retranslateUi(self, Stats):
-        Stats.setWindowTitle(_translate("Stats", "Form", None))
         self.label.setText(_translate("Stats", "Blurred layer", None))
         self.label_2.setText(_translate("Stats", "Stats layer", None))
-        self.label_progressStats.setText(_translate("Stats", "progress", None))
         self.pushButton_saveTable.setText(_translate("Stats", "Save table", None))
         self.pushButton_saveYValues.setText(_translate("Stats", "Save Y values", None))
         item = self.tableWidget.horizontalHeaderItem(0)

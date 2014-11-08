@@ -4,19 +4,9 @@
 <context>
     <name>Blur</name>
     <message>
-        <location filename="ui/blur.py" line="162"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ui/blur.py" line="163"/>
+        <location filename="ui/blur.py" line="164"/>
         <source>Radius (map&apos;s unit)</source>
         <translation>Rayon (unité de la carte)</translation>
-    </message>
-    <message>
-        <location filename="ui/blur.py" line="164"/>
-        <source>Maximum radius</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="ui/blur.py" line="165"/>
@@ -72,11 +62,6 @@
         <location filename="ui/blur.py" line="175"/>
         <source>Use envelope</source>
         <translation>Utiliser une enveloppe</translation>
-    </message>
-    <message>
-        <location filename="ui/blur.py" line="176"/>
-        <source>progress text</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -182,17 +167,17 @@
     <message>
         <location filename="CoreGeoHealth/ExceptionGeoHealth.py" line="39"/>
         <source>No layer was provided.</source>
-        <translation type="unfinished">Absence d&apos;une couche</translation>
+        <translation>Absence d&apos;une couche.</translation>
     </message>
     <message>
         <location filename="CoreGeoHealth/ExceptionGeoHealth.py" line="45"/>
         <source>No file provided, &quot;add resultat to canvas&quot; required</source>
-        <translation type="unfinished">Pas e fichier en sortie, &quot;ajouter le résultat à la carte&quot; obligatoire</translation>
+        <translation>Pas de fichier en sortie, &quot;ajouter le résultat à la carte&quot; obligatoire</translation>
     </message>
     <message>
         <location filename="CoreGeoHealth/ExceptionGeoHealth.py" line="51"/>
         <source>Error while creating the shapefile</source>
-        <translation type="unfinished">Erreur lors de la création du shapefile</translation>
+        <translation>Erreur lors de la création du shapefile</translation>
     </message>
     <message>
         <location filename="CoreGeoHealth/ExceptionGeoHealth.py" line="71"/>
@@ -203,122 +188,122 @@
 <context>
     <name>Incidence</name>
     <message>
-        <location filename="ui/incidence.py" line="139"/>
+        <location filename="ui/incidence.py" line="146"/>
         <source>Incidence - Density</source>
         <translation>Incidence - Densité</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="140"/>
-        <source>Administrative</source>
-        <translation>Administratif</translation>
-    </message>
-    <message>
-        <location filename="ui/incidence.py" line="141"/>
+        <location filename="ui/incidence.py" line="149"/>
         <source>New column</source>
         <translation>Nouvelle colonne</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="142"/>
+        <location filename="ui/incidence.py" line="150"/>
         <source>incidence</source>
-        <translation type="unfinished"></translation>
+        <translation>incidence</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="143"/>
-        <source>Add the number of intersections</source>
-        <translation>Ajouter le nombre d&apos;intersections</translation>
-    </message>
-    <message>
-        <location filename="ui/incidence.py" line="154"/>
-        <source>Point layer</source>
-        <translation>Couche ponctuelle</translation>
-    </message>
-    <message>
-        <location filename="ui/incidence.py" line="144"/>
-        <source>Area</source>
-        <translation>Surface</translation>
-    </message>
-    <message>
-        <location filename="ui/incidence.py" line="145"/>
-        <source>Population</source>
-        <translation>Population</translation>
-    </message>
-    <message>
-        <location filename="ui/incidence.py" line="146"/>
+        <location filename="ui/incidence.py" line="151"/>
         <source>Ratio</source>
         <translation>Ratio</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="147"/>
+        <location filename="ui/incidence.py" line="152"/>
         <source>10</source>
         <translation>10</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="148"/>
+        <location filename="ui/incidence.py" line="153"/>
         <source>100</source>
         <translation>100</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="149"/>
+        <location filename="ui/incidence.py" line="154"/>
         <source>1 000</source>
         <translation>1 000</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="150"/>
+        <location filename="ui/incidence.py" line="155"/>
         <source>10 000</source>
         <translation>10 000</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="151"/>
+        <location filename="ui/incidence.py" line="156"/>
         <source>100 000</source>
         <translation>100 000</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="153"/>
+        <location filename="ui/incidence.py" line="161"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Incidence =&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Incidence =&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="157"/>
+        <location filename="ui/incidence.py" line="166"/>
         <source>Parameter</source>
         <translation>Paramètre</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="159"/>
+        <location filename="ui/incidence.py" line="168"/>
         <source>Value</source>
         <translation>Valeur</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="152"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;number of intersections / (area or population) * ratio&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <location filename="ui/incidence.py" line="147"/>
+        <source>Case layer</source>
+        <translation>Couche des cas</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="155"/>
-        <source>Run some statistics</source>
+        <location filename="ui/incidence.py" line="148"/>
+        <source>Layer for aggregation</source>
+        <translation>Couche des unités d’agrégation</translation>
+    </message>
+    <message>
+        <location filename="ui/incidence.py" line="157"/>
+        <source>Column population</source>
+        <translation>Colonne population</translation>
+    </message>
+    <message>
+        <location filename="ui/incidence.py" line="158"/>
+        <source>Area (density)</source>
+        <translation>Surface (densité)</translation>
+    </message>
+    <message>
+        <location filename="ui/incidence.py" line="159"/>
+        <source>Add the number of cases per unit to the attribute table</source>
+        <translation>Ajouter le nombre de cas par unité à la table</translation>
+    </message>
+    <message>
+        <location filename="ui/incidence.py" line="160"/>
+        <source>Calculate statistics</source>
         <translation>Calculer les statistiques</translation>
+    </message>
+    <message>
+        <location filename="ui/incidence.py" line="162"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;number of cases / population * ratio&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;nombre de cas / population * ratio&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="ui/incidence.py" line="163"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Density =&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Densité =&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="ui/incidence.py" line="164"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;number of cases / area * ratio&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;nombre de cas / surface * ratio&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
     <name>Stats</name>
     <message>
-        <location filename="ui/stats.py" line="123"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ui/stats.py" line="124"/>
+        <location filename="ui/stats.py" line="125"/>
         <source>Blurred layer</source>
         <translation>Couche floutée</translation>
     </message>
     <message>
-        <location filename="ui/stats.py" line="125"/>
+        <location filename="ui/stats.py" line="126"/>
         <source>Stats layer</source>
         <translation>Couche statistique</translation>
-    </message>
-    <message>
-        <location filename="ui/stats.py" line="126"/>
-        <source>progress</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="ui/stats.py" line="127"/>

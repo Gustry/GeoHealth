@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'blur.ui'
 #
-# Created: Fri Nov  7 00:11:49 2014
+# Created: Sat Nov  8 11:36:56 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,6 +27,7 @@ class Ui_Blur(object):
     def setupUi(self, Blur):
         Blur.setObjectName(_fromUtf8("Blur"))
         Blur.resize(499, 517)
+        Blur.setWindowTitle(_fromUtf8("Form"))
         self.verticalLayout = QtGui.QVBoxLayout(Blur)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.formLayout = QtGui.QFormLayout()
@@ -137,6 +138,7 @@ class Ui_Blur(object):
         self.verticalLayout_4.addWidget(self.frame_2)
         self.verticalLayout.addWidget(self.groupBox_advanced)
         self.label_progress = QtGui.QLabel(Blur)
+        self.label_progress.setText(_fromUtf8("progress text"))
         self.label_progress.setObjectName(_fromUtf8("label_progress"))
         self.verticalLayout.addWidget(self.label_progress)
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
@@ -159,7 +161,6 @@ class Ui_Blur(object):
         QtCore.QMetaObject.connectSlotsByName(Blur)
 
     def retranslateUi(self, Blur):
-        Blur.setWindowTitle(_translate("Blur", "Form", None))
         self.label_4.setText(_translate("Blur", "Radius (map\'s unit)", None))
         self.label_5.setText(_translate("Blur", "Use only selected features", None))
         self.label_6.setText(_translate("Blur", "Add result to canvas", None))
@@ -172,7 +173,6 @@ class Ui_Blur(object):
         self.checkBox_exportRadius.setText(_translate("Blur", "the radius", None))
         self.checkBox_exportCentroid.setText(_translate("Blur", "X and Y of centroid", None))
         self.checkBox_envelope.setText(_translate("Blur", "Use envelope", None))
-        self.label_progress.setText(_translate("Blur", "progress text", None))
 
 from qgis import gui
-import resources_rc
+from GeoHealth import resources_rc
