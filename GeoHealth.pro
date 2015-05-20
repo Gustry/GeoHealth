@@ -15,5 +15,5 @@ SOURCES = geohealth.py \
 	CoreGeoHealth/ExceptionGeoHealth.py \
 	CoreGeoHealth/Blurring/LayerIndex.py
 
-TRANSLATIONS = i18n/geohealth_en.ts
+TRANSLATIONS = i18n/geohealth_en.ts \
 	i18n/geohealth_fr.ts

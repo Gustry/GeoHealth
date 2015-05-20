@@ -67,99 +67,64 @@
 <context>
     <name>BlurringDialogBase</name>
     <message>
-        <location filename="ui/main_blurring.py" line="206"/>
+        <location filename="ui/main_blurring.py" line="213"/>
         <source>Blurring</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/main_blurring.py" line="210"/>
+        <location filename="ui/main_blurring.py" line="217"/>
         <source>Blur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/main_blurring.py" line="212"/>
+        <location filename="ui/main_blurring.py" line="219"/>
         <source>Statistics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/main_blurring.py" line="214"/>
+        <location filename="ui/main_blurring.py" line="221"/>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="ui/main_blurring.py" line="216"/>
+        <location filename="ui/main_blurring.py" line="223"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="ui/main_blurring.py" line="218"/>
+        <location filename="ui/main_blurring.py" line="225"/>
         <source>Design</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/main_blurring.py" line="219"/>
+        <location filename="ui/main_blurring.py" line="226"/>
         <source>This plugin was designed by UMR Espace-Dev (IRD, UAG, UM2, UR)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/main_blurring.py" line="220"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;mailto:vincent.herbreteau@ird.fr?subject=Plugin Blurring&quot;&gt;&lt;span style=&quot; color:#0057ae;&quot; style=&quot;text-decoration:none;&quot;&gt;Vincent Herbreteau (IRD)&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ui/main_blurring.py" line="221"/>
-        <source>&lt;a href=&quot;mailto:christophe.revillion@ird.fr?subject=Plugin Blurring&quot; style=&quot;text-decoration:none;&quot;&gt;Christophe RÃ©villion (IRD)&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ui/main_blurring.py" line="222"/>
-        <source>&lt;a href=&quot;mailto:therese.libourel@univ-montp2.fr?subject=Plugin Blurring&quot; style=&quot;text-decoration:none;&quot;&gt;ThÃ©rÃ¨se Libourel (UM2)&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ui/main_blurring.py" line="223"/>
-        <source>Realization</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ui/main_blurring.py" line="224"/>
-        <source>Current version : Etienne Trimaille</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ui/main_blurring.py" line="226"/>
-        <source>Sources</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="ui/main_blurring.py" line="227"/>
-        <source>Github&apos;s repository</source>
-        <translation type="unfinished"></translation>
+        <source>Realization</source>
+        <translation>Réalisation</translation>
     </message>
     <message>
         <location filename="ui/main_blurring.py" line="228"/>
-        <source>&lt;a href=&quot;https://github.com/Gustry/GeoHealth&quot; style=&quot;text-decoration:none;&quot;&gt;https://github.com/Gustry/GeoHealth&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>Current version : Etienne Trimaille</source>
+        <translation>Version actuelle : Etienne Trimaille</translation>
     </message>
     <message>
         <location filename="ui/main_blurring.py" line="229"/>
-        <source>Licence</source>
-        <translation type="unfinished"></translation>
+        <source>Sources</source>
+        <translation>Sources</translation>
     </message>
     <message>
         <location filename="ui/main_blurring.py" line="230"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-2.0.html&quot;&gt;&lt;span style=&quot; text-decoration: none; color:#0057ae;&quot;&gt;Licence GPL Version 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>Github&apos;s repository</source>
+        <translation>Dépôt Github</translation>
     </message>
     <message>
         <location filename="ui/main_blurring.py" line="231"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://www.gnu.org/licenses/gpl-2.0.html&quot;&gt;&lt;img src=&quot;:/plugins/GeoHealth/resources/gnu.png&quot;/&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ui/main_blurring.py" line="225"/>
-        <source>Version 0.2 : Etienne Trimaille, Mamadou Sane, Modou Ndiaye, Thomas Gauer</source>
-        <translation type="unfinished"></translation>
+        <source>Licence</source>
+        <translation>Licence</translation>
     </message>
 </context>
 <context>
@@ -188,19 +153,14 @@
 <context>
     <name>Incidence</name>
     <message>
-        <location filename="ui/incidence.py" line="146"/>
+        <location filename="ui/incidence.py" line="147"/>
         <source>Incidence - Density</source>
         <translation>Incidence - Densité</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="149"/>
+        <location filename="ui/incidence.py" line="150"/>
         <source>New column</source>
         <translation>Nouvelle colonne</translation>
-    </message>
-    <message>
-        <location filename="ui/incidence.py" line="150"/>
-        <source>incidence</source>
-        <translation>incidence</translation>
     </message>
     <message>
         <location filename="ui/incidence.py" line="151"/>
@@ -248,12 +208,12 @@
         <translation>Valeur</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="147"/>
+        <location filename="ui/incidence.py" line="148"/>
         <source>Case layer</source>
         <translation>Couche des cas</translation>
     </message>
     <message>
-        <location filename="ui/incidence.py" line="148"/>
+        <location filename="ui/incidence.py" line="149"/>
         <source>Layer for aggregation</source>
         <translation>Couche des unités d’agrégation</translation>
     </message>
