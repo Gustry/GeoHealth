@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main_blurring.ui'
 #
-# Created: Fri Aug 22 12:42:21 2014
+# Created: Wed May 20 18:48:32 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -79,7 +79,7 @@ class Ui_BlurringDialogBase(object):
         self.horizontalLayout_2.addWidget(self.listWidget)
         self.verticalLayout_5 = QtGui.QVBoxLayout()
         self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
-        self.messageBar = QgsMessageBar(BlurringDialogBase)
+        self.messageBar = gui.QgsMessageBar(BlurringDialogBase)
         self.messageBar.setObjectName(_fromUtf8("messageBar"))
         self.verticalLayout_5.addWidget(self.messageBar)
         self.stackedWidget = QtGui.QStackedWidget(BlurringDialogBase)
@@ -128,14 +128,17 @@ class Ui_BlurringDialogBase(object):
         self.verticalLayout_6 = QtGui.QVBoxLayout()
         self.verticalLayout_6.setObjectName(_fromUtf8("verticalLayout_6"))
         self.label_8 = QtGui.QLabel(self.groupBox)
+        self.label_8.setText(_fromUtf8("<html><head/><body><p><a href=\"mailto:vincent.herbreteau@ird.fr?subject=Plugin Blurring\"><span style=\" color:#0057ae;\" style=\"text-decoration:none;\">Vincent Herbreteau (IRD)</span></a></p></body></html>"))
         self.label_8.setOpenExternalLinks(True)
         self.label_8.setObjectName(_fromUtf8("label_8"))
         self.verticalLayout_6.addWidget(self.label_8)
         self.label_7 = QtGui.QLabel(self.groupBox)
+        self.label_7.setText(_fromUtf8("<a href=\"mailto:christophe.revillion@ird.fr?subject=Plugin Blurring\" style=\"text-decoration:none;\">Christophe Révillion (IRD)</a>"))
         self.label_7.setOpenExternalLinks(True)
         self.label_7.setObjectName(_fromUtf8("label_7"))
         self.verticalLayout_6.addWidget(self.label_7)
         self.label_9 = QtGui.QLabel(self.groupBox)
+        self.label_9.setText(_fromUtf8("<a href=\"mailto:therese.libourel@univ-montp2.fr?subject=Plugin Blurring\" style=\"text-decoration:none;\">Thérèse Libourel (UM2)</a>"))
         self.label_9.setOpenExternalLinks(True)
         self.label_9.setObjectName(_fromUtf8("label_9"))
         self.verticalLayout_6.addWidget(self.label_9)
@@ -154,6 +157,7 @@ class Ui_BlurringDialogBase(object):
         self.label_10.setObjectName(_fromUtf8("label_10"))
         self.verticalLayout_8.addWidget(self.label_10)
         self.label = QtGui.QLabel(self.groupBox_2)
+        self.label.setText(_fromUtf8("Version 0.2 : Etienne Trimaille, Mamadou Sane, Modou Ndiaye, Thomas Gauer"))
         self.label.setObjectName(_fromUtf8("label"))
         self.verticalLayout_8.addWidget(self.label)
         self.horizontalLayout_3.addLayout(self.verticalLayout_8)
@@ -170,6 +174,7 @@ class Ui_BlurringDialogBase(object):
         self.label_19.setObjectName(_fromUtf8("label_19"))
         self.gridLayout_4.addWidget(self.label_19, 0, 0, 1, 1)
         self.label_20 = QtGui.QLabel(self.groupBox_4)
+        self.label_20.setText(_fromUtf8("<a href=\"https://github.com/Gustry/GeoHealth\" style=\"text-decoration:none;\">https://github.com/Gustry/GeoHealth</a>"))
         self.label_20.setOpenExternalLinks(True)
         self.label_20.setObjectName(_fromUtf8("label_20"))
         self.gridLayout_4.addWidget(self.label_20, 0, 1, 1, 1)
@@ -182,10 +187,12 @@ class Ui_BlurringDialogBase(object):
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
         self.label_15 = QtGui.QLabel(self.groupBox_3)
+        self.label_15.setText(_fromUtf8("<html><head/><body><p><a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"><span style=\" text-decoration: none; color:#0057ae;\">Licence GPL Version 2</span></a></p></body></html>"))
         self.label_15.setAlignment(QtCore.Qt.AlignCenter)
         self.label_15.setObjectName(_fromUtf8("label_15"))
         self.horizontalLayout_4.addWidget(self.label_15)
         self.label_16 = QtGui.QLabel(self.groupBox_3)
+        self.label_16.setText(_fromUtf8("<html><head/><body><p><a href=\"https://www.gnu.org/licenses/gpl-2.0.html\"><img src=\":/plugins/GeoHealth/resources/gnu.png\"/></a></p></body></html>"))
         self.label_16.setAlignment(QtCore.Qt.AlignCenter)
         self.label_16.setOpenExternalLinks(True)
         self.label_16.setObjectName(_fromUtf8("label_16"))
@@ -217,21 +224,14 @@ class Ui_BlurringDialogBase(object):
         self.listWidget.setSortingEnabled(__sortingEnabled)
         self.groupBox.setTitle(_translate("BlurringDialogBase", "Design", None))
         self.label_5.setText(_translate("BlurringDialogBase", "This plugin was designed by UMR Espace-Dev (IRD, UAG, UM2, UR)", None))
-        self.label_8.setText(_translate("BlurringDialogBase", "<html><head/><body><p><a href=\"mailto:vincent.herbreteau@ird.fr?subject=Plugin Blurring\"><span style=\" color:#0057ae;\" style=\"text-decoration:none;\">Vincent Herbreteau (IRD)</span></a></p></body></html>", None))
-        self.label_7.setText(_translate("BlurringDialogBase", "<a href=\"mailto:christophe.revillion@ird.fr?subject=Plugin Blurring\" style=\"text-decoration:none;\">Christophe Révillion (IRD)</a>", None))
-        self.label_9.setText(_translate("BlurringDialogBase", "<a href=\"mailto:therese.libourel@univ-montp2.fr?subject=Plugin Blurring\" style=\"text-decoration:none;\">Thérèse Libourel (UM2)</a>", None))
         self.groupBox_2.setTitle(_translate("BlurringDialogBase", "Realization", None))
         self.label_10.setText(_translate("BlurringDialogBase", "Current version : Etienne Trimaille", None))
-        self.label.setText(_translate("BlurringDialogBase", "Version 0.2 : Etienne Trimaille, Mamadou Sane, Modou Ndiaye, Thomas Gauer", None))
         self.groupBox_4.setTitle(_translate("BlurringDialogBase", "Sources", None))
         self.label_19.setText(_translate("BlurringDialogBase", "Github\'s repository", None))
-        self.label_20.setText(_translate("BlurringDialogBase", "<a href=\"https://github.com/Gustry/GeoHealth\" style=\"text-decoration:none;\">https://github.com/Gustry/GeoHealth</a>", None))
         self.groupBox_3.setTitle(_translate("BlurringDialogBase", "Licence", None))
-        self.label_15.setText(_translate("BlurringDialogBase", "<html><head/><body><p><a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"><span style=\" text-decoration: none; color:#0057ae;\">Licence GPL Version 2</span></a></p></body></html>", None))
-        self.label_16.setText(_translate("BlurringDialogBase", "<html><head/><body><p><a href=\"https://www.gnu.org/licenses/gpl-2.0.html\"><img src=\":/plugins/GeoHealth/resources/gnu.png\"/></a></p></body></html>", None))
 
+from qgis import gui
 from PyQt4 import QtWebKit
 from stats_dialog import StatsWidget
-from qgis.gui import QgsMessageBar
 from blur_dialog import BlurWidget
 from GeoHealth import resources_rc
