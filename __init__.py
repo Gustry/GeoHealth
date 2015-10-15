@@ -33,7 +33,7 @@ from CoreGeoHealth.ExceptionGeoHealth import *
 
 
 import os.path
-import resources_rc
+from GeoHealth.resources import resources_rc
 
 def classFactory(iface):
         

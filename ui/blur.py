@@ -175,4 +175,4 @@ class Ui_Blur(object):
         self.checkBox_envelope.setText(_translate("Blur", "Use envelope", None))
 
 from qgis import gui
-from GeoHealth import resources_rc
+from GeoHealth.resources import resources_rc

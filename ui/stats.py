@@ -131,4 +131,4 @@ class Ui_Stats(object):
         item = self.tableWidget.horizontalHeaderItem(1)
         item.setText(_translate("Stats", "Value", None))
 
-from GeoHealth import resources_rc
+from GeoHealth.resources import resources_rc

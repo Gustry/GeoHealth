@@ -234,4 +234,4 @@ from qgis import gui
 from PyQt4 import QtWebKit
 from GeoHealth.gui.stats_dialog import StatsWidget
 from GeoHealth.gui.blur_dialog import BlurWidget
-from GeoHealth import resources_rc
+from GeoHealth.resources import resources_rc
