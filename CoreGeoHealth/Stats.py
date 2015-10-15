@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- Blurring
+
+                                 GeoHealth
                                  A QGIS plugin
- Blur a point layer
-                             -------------------
-        begin                : 2014-03-05
-        copyright            : (C) 2014 by UMR Espace-Dev
-        email                : etienne at trimaille dot eu
-        contributor          : Etienne Trimaille
+
+                              -------------------
+        begin                : 2014-08-20
+        copyright            : (C) 2014 by Etienne Trimaille
+        email                : etienne@trimaille.eu
  ***************************************************************************/
 
 /***************************************************************************

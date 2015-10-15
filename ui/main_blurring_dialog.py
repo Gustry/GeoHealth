@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- Blurring
+
+                                 GeoHealth
                                  A QGIS plugin
- Blur a point layer
-                             -------------------
-        begin                : 2014-08-05
-        copyright            : (C) 2014 by IRD
+
+                              -------------------
+        begin                : 2014-08-20
+        copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
-        git sha              : $Format:%H$
  ***************************************************************************/
 
 /***************************************************************************
@@ -19,7 +19,6 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
- This script initializes the plugin, making it known to QGIS.
 """
 
 from GeoHealth import *

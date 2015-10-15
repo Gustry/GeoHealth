@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- QuickOSM
+
+                                 GeoHealth
                                  A QGIS plugin
- OSM's Overpass API frontend
-                             -------------------
-        begin                : 2014-06-11
-        copyright            : (C) 2014 by 3Liz
-        email                : info at 3liz dot com
-        contributor          : Etienne Trimaille
+
+                              -------------------
+        begin                : 2014-08-20
+        copyright            : (C) 2014 by Etienne Trimaille
+        email                : etienne@trimaille.eu
  ***************************************************************************/
 
 /***************************************************************************

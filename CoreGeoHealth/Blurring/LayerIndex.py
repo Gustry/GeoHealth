@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- Blurring
+
+                                 GeoHealth
                                  A QGIS plugin
- Blurring data
+
                               -------------------
-        begin                : 2014-03-11
-        copyright            : (C) 2014 by TER Géomatique UM2
-        email                : ter-floutage@googlegroups.com
+        begin                : 2014-08-20
+        copyright            : (C) 2014 by Etienne Trimaille
+        email                : etienne@trimaille.eu
  ***************************************************************************/
 
 /***************************************************************************

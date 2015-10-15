@@ -1,22 +1,24 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
-Blurring
-A QGIS plugin
-Blurring data
--------------------
-begin : 2014-03-11
-copyright : (C) 2014 by TER Géomatique UM2
-email : ter-floutage@googlegroups.com
-***************************************************************************/
+
+                                 GeoHealth
+                                 A QGIS plugin
+
+                              -------------------
+        begin                : 2014-08-20
+        copyright            : (C) 2014 by Etienne Trimaille
+        email                : etienne@trimaille.eu
+ ***************************************************************************/
+
 /***************************************************************************
-* *
-* This program is free software; you can redistribute it and/or modify *
-* it under the terms of the GNU General Public License as published by *
-* the Free Software Foundation; either version 2 of the License, or *
-* (at your option) any later version. *
-* *
-***************************************************************************/
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
 """
 from GeoHealth import *
 from GeoHealth.ProcessingGeoHealth.BlurringGeoAlgorithm import BlurringGeoAlgorithm

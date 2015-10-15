@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- GeoHealth
+
+                                 GeoHealth
                                  A QGIS plugin
- GeoHealth
+
                               -------------------
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
@@ -25,6 +26,7 @@ from ui.incidence_dialog import IncidenceDialog
 from ui.main_blurring_dialog import MainBlurringDialog
 from GeoHealth.ProcessingGeoHealth.GeoHealthAlgorithmProvider import GeoHealthAlgorithmProvider
 from processing.core.Processing import Processing
+
 
 class GeoHealth:
 
