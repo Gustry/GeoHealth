@@ -26,7 +26,7 @@ from processing.core.Processing import Processing
 from GeoHealth import *
 from GeoHealth.gui.incidence_dialog import IncidenceDialog
 from GeoHealth.gui.main_blurring_dialog import MainBlurringDialog
-from GeoHealth.processing_geohealth.GeoHealthAlgorithmProvider import GeoHealthAlgorithmProvider
+from GeoHealth.processing_geohealth.provider import Provider
 
 
 class GeoHealth:
@@ -50,7 +50,7 @@ class GeoHealth:
                 QCoreApplication.installTranslator(self.translator)
                 
         #Add to processing
-        self.provider = GeoHealthAlgorithmProvider()
+        self.provider = Provider()
         Processing.addProvider(self.provider, True)
 
     def initGui(self):

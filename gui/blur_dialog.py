@@ -24,8 +24,8 @@
 from GeoHealth import *
 from GeoHealth.ui.blur import Ui_Blur
 from processing.tools.system import *
-from GeoHealth.core.Blurring import LayerIndex
-from GeoHealth.core.Blurring import BlurAlgo
+from GeoHealth.core.blurring import layer_index
+from GeoHealth.core.blurring import blur
 import os
 
 class BlurWidget(QWidget, Ui_Blur):

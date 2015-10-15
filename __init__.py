@@ -29,7 +29,7 @@ from qgis.utils import iface
 from core.Tools import *
 from core.Stats import *
 from processing.core.GeoAlgorithmExecutionException import GeoAlgorithmExecutionException
-from core.ExceptionGeoHealth import *
+from core.exceptions import *
 
 
 import os.path

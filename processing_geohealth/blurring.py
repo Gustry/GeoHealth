@@ -22,8 +22,8 @@
 """
 
 from GeoHealth import *
-from GeoHealth.core.Blurring.BlurAlgo import *
-from GeoHealth.core.Blurring.LayerIndex import *
+from GeoHealth.core.blurring.blur import *
+from GeoHealth.core.blurring.layer_index import *
 from GeoHealth.processing_geohealth import *
 
 """QGIS Processing"""

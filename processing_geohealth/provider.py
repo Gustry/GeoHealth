@@ -21,11 +21,11 @@
  ***************************************************************************/
 """
 from GeoHealth import *
-from GeoHealth.processing_geohealth.BlurringGeoAlgorithm import BlurringGeoAlgorithm
+from GeoHealth.processing_geohealth.blurring import BlurringGeoAlgorithm
 from processing.core.AlgorithmProvider import AlgorithmProvider
 
 """QGIS Processing"""
-class GeoHealthAlgorithmProvider(AlgorithmProvider):
+class Provider(AlgorithmProvider):
     def __init__(self):
         AlgorithmProvider.__init__(self)
     
