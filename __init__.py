@@ -26,10 +26,10 @@ from PyQt4.QtCore import *
 from qgis.core import *
 from qgis.gui import *
 from qgis.utils import iface
-from CoreGeoHealth.Tools import *
-from CoreGeoHealth.Stats import *
+from core.Tools import *
+from core.Stats import *
 from processing.core.GeoAlgorithmExecutionException import GeoAlgorithmExecutionException
-from CoreGeoHealth.ExceptionGeoHealth import *
+from core.ExceptionGeoHealth import *
 
 
 import os.path

@@ -21,7 +21,7 @@
  ***************************************************************************/
 """
 from GeoHealth import *
-from GeoHealth.ProcessingGeoHealth.BlurringGeoAlgorithm import BlurringGeoAlgorithm
+from GeoHealth.processing_geohealth.BlurringGeoAlgorithm import BlurringGeoAlgorithm
 from processing.core.AlgorithmProvider import AlgorithmProvider
 
 """QGIS Processing"""

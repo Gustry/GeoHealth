@@ -22,9 +22,9 @@
 """
 
 from GeoHealth import *
-from GeoHealth.CoreGeoHealth.Blurring.BlurAlgo import *
-from GeoHealth.CoreGeoHealth.Blurring.LayerIndex import *
-from GeoHealth.ProcessingGeoHealth import *
+from GeoHealth.core.Blurring.BlurAlgo import *
+from GeoHealth.core.Blurring.LayerIndex import *
+from GeoHealth.processing_geohealth import *
 
 """QGIS Processing"""
 
