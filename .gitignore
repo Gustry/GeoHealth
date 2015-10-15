@@ -1,4 +1,5 @@
 *.pyc
+.idea
 index.html
 Makefile
 blurringTrad.py
