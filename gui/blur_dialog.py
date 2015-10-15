@@ -22,7 +22,7 @@
 """
 
 from GeoHealth import *
-from blur import Ui_Blur
+from GeoHealth.ui.blur import Ui_Blur
 from processing.tools.system import *
 from GeoHealth.CoreGeoHealth.Blurring import LayerIndex
 from GeoHealth.CoreGeoHealth.Blurring import BlurAlgo

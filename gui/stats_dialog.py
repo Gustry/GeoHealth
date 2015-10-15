@@ -22,7 +22,7 @@
 """
 
 from GeoHealth import *
-from stats import Ui_Stats
+from GeoHealth.ui.stats import Ui_Stats
 import os
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar

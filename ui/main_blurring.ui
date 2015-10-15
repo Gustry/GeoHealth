@@ -329,21 +329,21 @@ QListWidget::item::selected {
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>qwebview.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>BlurWidget</class>
    <extends>QWidget</extends>
-   <header>blur_dialog.h</header>
+   <header>GeoHealth/gui/blur_dialog.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>StatsWidget</class>
    <extends>QWidget</extends>
-   <header>stats_dialog.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>QWebView</class>
-   <extends>QWidget</extends>
-   <header>qwebview.h</header>
+   <header>GeoHealth/gui/stats_dialog.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

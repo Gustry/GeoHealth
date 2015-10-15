@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main_blurring.ui'
 #
-# Created: Wed May 20 18:48:32 2015
+# Created: Thu Oct 15 18:31:50 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -232,6 +232,6 @@ class Ui_BlurringDialogBase(object):
 
 from qgis import gui
 from PyQt4 import QtWebKit
-from stats_dialog import StatsWidget
-from blur_dialog import BlurWidget
+from GeoHealth.gui.stats_dialog import StatsWidget
+from GeoHealth.gui.blur_dialog import BlurWidget
 from GeoHealth import resources_rc

@@ -21,11 +21,12 @@
  ***************************************************************************/
 """
 
-from GeoHealth import *
-from ui.incidence_dialog import IncidenceDialog
-from ui.main_blurring_dialog import MainBlurringDialog
-from GeoHealth.ProcessingGeoHealth.GeoHealthAlgorithmProvider import GeoHealthAlgorithmProvider
 from processing.core.Processing import Processing
+
+from GeoHealth import *
+from GeoHealth.gui.incidence_dialog import IncidenceDialog
+from GeoHealth.gui.main_blurring_dialog import MainBlurringDialog
+from GeoHealth.ProcessingGeoHealth.GeoHealthAlgorithmProvider import GeoHealthAlgorithmProvider
 
 
 class GeoHealth:

@@ -22,7 +22,7 @@
 """
 
 from GeoHealth import *
-from incidence import Ui_Incidence
+from GeoHealth.ui.incidence import Ui_Incidence
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
 from matplotlib.figure import Figure

@@ -22,7 +22,7 @@
 """
 
 from GeoHealth import *
-from main_blurring import Ui_BlurringDialogBase
+from GeoHealth.ui.main_blurring import Ui_BlurringDialogBase
 from os.path import join,dirname,abspath,isfile
 
 class MainBlurringDialog(QDialog, Ui_BlurringDialogBase):
