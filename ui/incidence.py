@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/incidence.ui'
+# Form implementation generated from reading ui file 'incidence.ui'
 #
-# Created: Sat Nov  8 11:42:54 2014
+# Created: Fri Oct 16 14:58:25 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Incidence(object):
     def setupUi(self, Incidence):
         Incidence.setObjectName(_fromUtf8("Incidence"))
-        Incidence.resize(634, 554)
+        Incidence.resize(833, 799)
         self.verticalLayout = QtGui.QVBoxLayout(Incidence)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.messageBar = gui.QgsMessageBar(Incidence)
@@ -115,6 +115,46 @@ class Ui_Incidence(object):
         self.label_8.setObjectName(_fromUtf8("label_8"))
         self.formLayout.setWidget(10, QtGui.QFormLayout.FieldRole, self.label_8)
         self.verticalLayout.addLayout(self.formLayout)
+        self.symbology = gui.QgsCollapsibleGroupBox(Incidence)
+        self.symbology.setCheckable(True)
+        self.symbology.setCollapsed(False)
+        self.symbology.setObjectName(_fromUtf8("symbology"))
+        self.verticalLayout_3 = QtGui.QVBoxLayout(self.symbology)
+        self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
+        self.formLayout_2 = QtGui.QFormLayout()
+        self.formLayout_2.setFieldGrowthPolicy(QtGui.QFormLayout.ExpandingFieldsGrow)
+        self.formLayout_2.setObjectName(_fromUtf8("formLayout_2"))
+        self.label_9 = QtGui.QLabel(self.symbology)
+        self.label_9.setObjectName(_fromUtf8("label_9"))
+        self.formLayout_2.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_9)
+        self.color_low_value = gui.QgsColorButtonV2(self.symbology)
+        self.color_low_value.setColor(QtGui.QColor(241, 241, 208))
+        self.color_low_value.setObjectName(_fromUtf8("color_low_value"))
+        self.formLayout_2.setWidget(0, QtGui.QFormLayout.FieldRole, self.color_low_value)
+        self.label_10 = QtGui.QLabel(self.symbology)
+        self.label_10.setObjectName(_fromUtf8("label_10"))
+        self.formLayout_2.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_10)
+        self.color_high_value = gui.QgsColorButtonV2(self.symbology)
+        self.color_high_value.setColor(QtGui.QColor(202, 33, 36))
+        self.color_high_value.setObjectName(_fromUtf8("color_high_value"))
+        self.formLayout_2.setWidget(1, QtGui.QFormLayout.FieldRole, self.color_high_value)
+        self.label_11 = QtGui.QLabel(self.symbology)
+        self.label_11.setObjectName(_fromUtf8("label_11"))
+        self.formLayout_2.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_11)
+        self.spinBox_classes = QtGui.QSpinBox(self.symbology)
+        self.spinBox_classes.setMinimum(1)
+        self.spinBox_classes.setProperty("value", 5)
+        self.spinBox_classes.setObjectName(_fromUtf8("spinBox_classes"))
+        self.formLayout_2.setWidget(2, QtGui.QFormLayout.FieldRole, self.spinBox_classes)
+        self.label_12 = QtGui.QLabel(self.symbology)
+        self.label_12.setObjectName(_fromUtf8("label_12"))
+        self.formLayout_2.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_12)
+        self.cbx_mode = QtGui.QComboBox(self.symbology)
+        self.cbx_mode.setObjectName(_fromUtf8("cbx_mode"))
+        self.cbx_mode.addItem(_fromUtf8(""))
+        self.formLayout_2.setWidget(3, QtGui.QFormLayout.FieldRole, self.cbx_mode)
+        self.verticalLayout_3.addLayout(self.formLayout_2)
+        self.verticalLayout.addWidget(self.symbology)
         self.button_box_ok = QtGui.QDialogButtonBox(Incidence)
         self.button_box_ok.setOrientation(QtCore.Qt.Horizontal)
         self.button_box_ok.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
@@ -162,6 +202,12 @@ class Ui_Incidence(object):
         self.label_5.setText(_translate("Incidence", "<html><head/><body><p><span style=\" font-style:italic;\">number of cases / population * ratio</span></p></body></html>", None))
         self.label_7.setText(_translate("Incidence", "<html><head/><body><p><span style=\" font-style:italic;\">Density =</span></p></body></html>", None))
         self.label_8.setText(_translate("Incidence", "<html><head/><body><p><span style=\" font-style:italic;\">number of cases / area * ratio</span></p></body></html>", None))
+        self.symbology.setTitle(_translate("Incidence", "Symbology", None))
+        self.label_9.setText(_translate("Incidence", "Low incidence", None))
+        self.label_10.setText(_translate("Incidence", "High incidence", None))
+        self.label_11.setText(_translate("Incidence", "Classes", None))
+        self.label_12.setText(_translate("Incidence", "Mode", None))
+        self.cbx_mode.setItemText(0, _translate("Incidence", "Jenks", None))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("Incidence", "Parameter", None))
         item = self.tableWidget.horizontalHeaderItem(1)

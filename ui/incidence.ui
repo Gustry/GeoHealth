@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>634</width>
-    <height>554</height>
+    <width>833</width>
+    <height>799</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -194,6 +194,97 @@
     </layout>
    </item>
    <item>
+    <widget class="QgsCollapsibleGroupBox" name="symbology">
+     <property name="title">
+      <string>Symbology</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="collapsed">
+      <bool>false</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <layout class="QFormLayout" name="formLayout_2">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::ExpandingFieldsGrow</enum>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_9">
+          <property name="text">
+           <string>Low incidence</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QgsColorButtonV2" name="color_low_value">
+          <property name="color">
+           <color>
+            <red>241</red>
+            <green>241</green>
+            <blue>208</blue>
+           </color>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_10">
+          <property name="text">
+           <string>High incidence</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QgsColorButtonV2" name="color_high_value">
+          <property name="color">
+           <color>
+            <red>202</red>
+            <green>33</green>
+            <blue>36</blue>
+           </color>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_11">
+          <property name="text">
+           <string>Classes</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QSpinBox" name="spinBox_classes">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="value">
+           <number>5</number>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_12">
+          <property name="text">
+           <string>Mode</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QComboBox" name="cbx_mode">
+          <item>
+           <property name="text">
+            <string>Jenks</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <widget class="QDialogButtonBox" name="button_box_ok">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -236,6 +327,17 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>QgsCollapsibleGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>qgscollapsiblegroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QgsColorButtonV2</class>
+   <extends>QToolButton</extends>
+   <header>qgscolorbuttonv2.h</header>
+  </customwidget>
   <customwidget>
    <class>QgsMessageBar</class>
    <extends>QWidget</extends>

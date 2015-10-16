@@ -231,6 +231,9 @@ class IncidenceDialog(QDialog, Ui_Incidence):
             else:
                 self.hide()
 
+            if self.symbology.isChecked():
+                self.add_symbology()
+
         except GeoHealthException, e:
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
 
@@ -247,3 +250,9 @@ class IncidenceDialog(QDialog, Ui_Incidence):
         ax.set_ylabel(self.name_field)
         ax.grid()
         self.canvas.draw()
+
+    def add_symbology(self):
+        low_color = self.color_low_value.color()
+        high_color = self.color_high_value.color()
+        index = self.cbx_mode.currentIndex()
+        mode = self.cbx_mode.itemData(index)
