@@ -56,26 +56,28 @@ class GeoHealth:
 
     def initGui(self):
 
+        # Setup the menu.
         self.geohealth_menu = QMenu(trans("&GeoHealth"))
         self.geohealth_menu.setIcon(
             QIcon(':/plugins/GeoHealth/resources/icon.png'))
         self.plugin_menu = self.iface.pluginMenu()
         self.plugin_menu.addMenu(self.geohealth_menu)
 
-        #Blur
+        # Blur
         icon = QIcon(":/plugins/GeoHealth/resources/blur.png")
         self.blur_action = QAction(icon, trans("Blurring"), self.iface.mainWindow())
         self.geohealth_menu.addAction(self.blur_action)
         self.blur_action.triggered.connect(self.open_blurring_window)
 
-        #Incidence
+        # Incidence
         icon = QIcon(":/plugins/GeoHealth/resources/incidence.png")
         self.incidence_action = QAction(icon, trans("Incidence - Density"), self.iface.mainWindow())
         self.geohealth_menu.addAction(self.incidence_action)
         self.incidence_action.triggered.connect(self.open_incidence_window)
 
     def unload(self):
-        self.iface.mainWindow().menuBar().removeAction(self.geohealth_menu.menuAction())
+        self.iface.removePluginMenu(trans("Blurring"), self.blur_action)
+        self.iface.removePluginMenu(trans("Incidence - Density"), self.incidence_action)
         Processing.removeProvider(self.provider)
 
     def open_incidence_window(self):
