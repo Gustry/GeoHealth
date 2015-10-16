@@ -43,7 +43,7 @@ from GeoHealth.core.stats import Stats
 from GeoHealth.ui.incidence import Ui_Incidence
 
 
-class NavigationToolbar(NavigationToolbar):
+class CustomNavigationToolbar(NavigationToolbar):
     toolitems = [t for t in NavigationToolbar.toolitems if
                  t[0] in ('Home', 'Back', 'Next', 'Pan', 'Zoom', 'Save')]
 
@@ -51,10 +51,12 @@ class NavigationToolbar(NavigationToolbar):
 class IncidenceDialog(QDialog, Ui_Incidence):
     def __init__(self, parent=None):
         """Constructor."""
-        QDialog.__init__(self)
+        QDialog.__init__(self, parent)
         self.setupUi(self)
+        self.name_field = None
 
-        #Connect
+        # Connect slot.
+        # noinspection PyUnresolvedReferences
         self.comboBox_incidence_adminLayer.currentIndexChanged.connect(
             self.update_fields)
         self.button_box_ok.button(QDialogButtonBox.Ok).clicked.connect(
@@ -62,14 +64,16 @@ class IncidenceDialog(QDialog, Ui_Incidence):
         self.button_box_ok.button(QDialogButtonBox.Cancel).clicked.connect(
             self.hide)
 
+        # Setup the graph.
         self.figure = Figure()
         self.canvas = FigureCanvas(self.figure)
         self.canvas.setMinimumSize(QSize(300, 0))
-        self.toolbar = NavigationToolbar(self.canvas, self)
+        self.toolbar = CustomNavigationToolbar(self.canvas, self)
         self.layout_plot.addWidget(self.toolbar)
         self.layout_plot.addWidget(self.canvas)
 
     def update_fields(self):
+        """Update the combobox about the population field."""
         self.comboBox_incidence_populationField.clear()
 
         index = self.comboBox_incidence_adminLayer.currentIndex()
@@ -83,6 +87,7 @@ class IncidenceDialog(QDialog, Ui_Incidence):
             self.comboBox_incidence_populationField.addItem(item.name(), item)
 
     def fill_combobox_layer(self):
+        """Fill combobox about layers."""
         self.comboBox_incidence_adminLayer.clear()
         self.comboBox_incidence_pointLayer.clear()
         self.comboBox_incidence_populationField.clear()
@@ -99,6 +104,8 @@ class IncidenceDialog(QDialog, Ui_Incidence):
                         layer.name(), layer)
 
     def run_stats(self):
+        """Main function which do the process."""
+
         # Get the fields.
         index = self.comboBox_incidence_adminLayer.currentIndex()
         admin_layer = self.comboBox_incidence_adminLayer.itemData(index)
@@ -109,72 +116,71 @@ class IncidenceDialog(QDialog, Ui_Incidence):
         ratio = self.comboBox_incidence_ratio.currentText()
         ratio = ratio.replace(' ', '')
 
-        import pydevd
-        pydevd.settrace('localhost', port=6666, stdoutToServer=True, stderrToServer=True, suspend=False)
         try:
 
             if not admin_layer or not point_layer:
                 raise NoLayerProvidedException
 
-            crsAdminLayer = admin_layer.crs()
-            crsPointLayer = point_layer.crs()
-            if crsAdminLayer != crsPointLayer:
+            crs_admin_layer = admin_layer.crs()
+            crs_point_layer = point_layer.crs()
+            if crs_admin_layer != crs_point_layer:
                 raise DifferentCrsException(
-                    epsg1=crsPointLayer.authid(), epsg2=crsAdminLayer.authid())
+                    epsg1=crs_point_layer.authid(),
+                    epsg2=crs_admin_layer.authid())
 
             try:
                 ratio = float(ratio)
             except ValueError:
                 raise NotANumberException(suffix=ratio)
 
-            useArea = self.radioButton_incidence_area.isChecked()
-            addNbIntersections = self.checkBox_addNbIntersections.isChecked()
+            use_area = self.radioButton_incidence_area.isChecked()
+            add_nb_intersections = self.checkBox_addNbIntersections.isChecked()
 
-            indexPopulation = None
-            if not useArea:
-                indexPopulation = admin_layer.fieldNameIndex(population)
+            index_population = None
+            if not use_area:
+                index_population = admin_layer.fieldNameIndex(population)
 
-            adminLayerProvider = admin_layer.dataProvider()
+            admin_layer_provider = admin_layer.dataProvider()
             admin_layer.startEditing()
             attributes = [QgsField(self.name_field, QVariant.Double)]
-            adminLayerProvider.addAttributes(attributes)
+            admin_layer_provider.addAttributes(attributes)
 
-            if addNbIntersections:
+            if add_nb_intersections:
                 attributes = [QgsField('nb_of_intersections', QVariant.Int)]
-                adminLayerProvider.addAttributes(attributes)
+                admin_layer_provider.addAttributes(attributes)
 
             admin_layer.updateFields()
             fields = admin_layer.pendingFields()
-            nbFields = fields.count()
+            nb_fields = fields.count()
 
-            numFieldIncidence = None
-            numFieldIntersections = None
+            id_field_intersections = None
 
-            if addNbIntersections:
-                numFieldIncidence = nbFields - 2
-                numFieldIntersections = nbFields - 1
+            if add_nb_intersections:
+                id_field_incidence = nb_fields - 2
+                id_field_intersections = nb_fields - 1
             else:
-                numFieldIncidence = nbFields - 1
+                id_field_incidence = nb_fields - 1
 
             data = []
 
             for i, feature in enumerate(admin_layer.getFeatures()):
-                attrs = feature.attributes()
+                attributes = feature.attributes()
                 count = 0
                 for f in point_layer.getFeatures():
                     if f.geometry().intersects(feature.geometry()):
                         count += 1
 
                 try:
-                    if useArea:
-                        value = float(count) / feature.geometry().area() * ratio
+                    if use_area:
+                        area = feature.geometry().area()
+                        value = float(count) / area * ratio
                     else:
                         try:
-                            population = float(attrs[indexPopulation])
+                            population = float(attributes[index_population])
                         except ValueError:
                             admin_layer.rollBack()
                             raise NotANumberException(
-                                suffix=attrs[indexPopulation])
+                                suffix=attributes[index_population])
                         value = float(count) / population * ratio
 
                 except ZeroDivisionError:
@@ -182,11 +188,11 @@ class IncidenceDialog(QDialog, Ui_Incidence):
 
                 data.append(value)
                 admin_layer.changeAttributeValue(
-                    feature.id(), numFieldIncidence, value)
+                    feature.id(), id_field_incidence, value)
 
-                if addNbIntersections:
+                if add_nb_intersections:
                     admin_layer.changeAttributeValue(
-                        feature.id(), numFieldIntersections, count)
+                        feature.id(), id_field_intersections, count)
 
             admin_layer.commitChanges()
             admin_layer.updateFields()
@@ -195,27 +201,18 @@ class IncidenceDialog(QDialog, Ui_Incidence):
 
                 stats = Stats(data)
 
-                items_stats = []
-                items_stats.append(
-                    'Incidence null,%d' % stats.null_values())
-                items_stats.append(
-                    'Count(point),%d' % point_layer.featureCount())
-                items_stats.append(
-                    'Count(polygon),%d' % admin_layer.featureCount())
-                items_stats.append(
-                    'Min,%d' % stats.min())
-                items_stats.append(
-                    'Average,%f' % stats.average())
-                items_stats.append(
-                    'Max,%d' % stats.max())
-                items_stats.append(
-                    'Median,%f' % stats.median())
-                items_stats.append(
-                    'Range,%d' % stats.range())
-                items_stats.append(
-                    'Variance,%f' % stats.variance())
-                items_stats.append(
-                    'Standard deviation,%f' % stats.standard_deviation())
+                items_stats = [
+                    'Incidence null,%d' % stats.null_values(),
+                    'Count(point),%d' % point_layer.featureCount(),
+                    'Count(polygon),%d' % admin_layer.featureCount(),
+                    'Min,%d' % stats.min(),
+                    'Average,%f' % stats.average(),
+                    'Max,%d' % stats.max(),
+                    'Median,%f' % stats.median(),
+                    'Range,%d' % stats.range(),
+                    'Variance,%f' % stats.variance(),
+                    'Standard deviation,%f' % stats.standard_deviation()
+                ]
 
                 self.tableWidget.clear()
                 self.tableWidget.setColumnCount(2)
@@ -238,6 +235,11 @@ class IncidenceDialog(QDialog, Ui_Incidence):
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
 
     def draw_plot(self, data):
+        """Function to draw the plot and display it in the canvas.
+
+        :param data: The data to display
+        :type data: list
+        """
         ax = self.figure.add_subplot(111)
         ax.hold(False)
         ax.plot(data, '*-')

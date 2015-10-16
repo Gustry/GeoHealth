@@ -79,13 +79,13 @@ class GeoHealth:
         Processing.removeProvider(self.provider)
 
     def open_incidence_window(self):
-        dialog = IncidenceDialog(self.iface)
+        dialog = IncidenceDialog()
         dialog.fill_combobox_layer()
         dialog.show()
         dialog.exec_()
 
     def open_blurring_window(self):
-        iface.Blurring_mainWindowDialog = MainBlurringDialog(self.iface)
+        iface.Blurring_mainWindowDialog = MainBlurringDialog()
         iface.Blurring_mainWindowDialog.fill_combo_box_layers()
         iface.Blurring_mainWindowDialog.show()
         iface.Blurring_mainWindowDialog.exec_()
