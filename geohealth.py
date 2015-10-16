@@ -57,8 +57,10 @@ class GeoHealth:
     def initGui(self):
 
         self.geohealth_menu = QMenu(trans("&GeoHealth"))
-
-        self.iface.mainWindow().menuBar().insertMenu(self.iface.firstRightStandardMenu().menuAction(), self.geohealth_menu)
+        self.geohealth_menu.setIcon(
+            QIcon(':/plugins/GeoHealth/resources/icon.png'))
+        self.plugin_menu = self.iface.pluginMenu()
+        self.plugin_menu.addMenu(self.geohealth_menu)
 
         #Blur
         icon = QIcon(":/plugins/GeoHealth/resources/blur.png")
