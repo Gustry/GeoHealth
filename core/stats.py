@@ -29,10 +29,15 @@ class Stats:
     def __init__(self, figures):
         figures.sort()
         self.figures = figures
+        self.null = len([x for x in self.figures if x is None])
+        self.figures = self.figures[self.null:]
         self.nb_items = len(figures)
     
     def count(self):
         return self.nb_items
+
+    def null_values(self):
+        return self.null
 
     def min(self):
         return self.figures[0]

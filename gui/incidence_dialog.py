@@ -165,21 +165,24 @@ class IncidenceDialog(QDialog, Ui_Incidence):
                     if f.geometry().intersects(feature.geometry()):
                         count += 1
 
-                indice = None
-                if useArea:
-                    indice = float(count) / feature.geometry().area() * ratio
-                else:
-                    try:
-                        population = float(attrs[indexPopulation])
-                    except ValueError:
-                        admin_layer.rollBack()
-                        raise NotANumberException(
-                            suffix=attrs[indexPopulation])
-                    indice = float(count) / population * ratio
+                try:
+                    if useArea:
+                        value = float(count) / feature.geometry().area() * ratio
+                    else:
+                        try:
+                            population = float(attrs[indexPopulation])
+                        except ValueError:
+                            admin_layer.rollBack()
+                            raise NotANumberException(
+                                suffix=attrs[indexPopulation])
+                        value = float(count) / population * ratio
 
-                data.append(indice)
+                except ZeroDivisionError:
+                    value = None
+
+                data.append(value)
                 admin_layer.changeAttributeValue(
-                    feature.id(), numFieldIncidence, indice)
+                    feature.id(), numFieldIncidence, value)
 
                 if addNbIntersections:
                     admin_layer.changeAttributeValue(
@@ -193,6 +196,8 @@ class IncidenceDialog(QDialog, Ui_Incidence):
                 stats = Stats(data)
 
                 items_stats = []
+                items_stats.append(
+                    'Incidence null,%d' % stats.null_values())
                 items_stats.append(
                     'Count(point),%d' % point_layer.featureCount())
                 items_stats.append(
