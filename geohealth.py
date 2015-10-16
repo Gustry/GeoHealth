@@ -24,6 +24,7 @@
 from processing.core.Processing import Processing
 
 from GeoHealth import *
+from GeoHealth.core.tools import trans
 from GeoHealth.gui.incidence_dialog import IncidenceDialog
 from GeoHealth.gui.main_blurring_dialog import MainBlurringDialog
 from GeoHealth.processing_geohealth.provider import Provider
@@ -48,41 +49,41 @@ class GeoHealth:
 
             if qVersion() > '4.3.3':
                 QCoreApplication.installTranslator(self.translator)
-                
+
         #Add to processing
         self.provider = Provider()
         Processing.addProvider(self.provider, True)
 
     def initGui(self):
-        
-        self.geohealth_menu = QMenu(Tools.trans("&GeoHealth"))
-        
+
+        self.geohealth_menu = QMenu(trans("&GeoHealth"))
+
         self.iface.mainWindow().menuBar().insertMenu(self.iface.firstRightStandardMenu().menuAction(), self.geohealth_menu)
 
         #Blur
         icon = QIcon(":/plugins/GeoHealth/resources/blur.png")
-        self.blur_action = QAction(icon,Tools.trans("Blurring"),self.iface.mainWindow())
+        self.blur_action = QAction(icon, trans("Blurring"), self.iface.mainWindow())
         self.geohealth_menu.addAction(self.blur_action)
-        self.blur_action.triggered.connect(self.openBlurring)
-        
+        self.blur_action.triggered.connect(self.open_blurring_window)
+
         #Incidence
         icon = QIcon(":/plugins/GeoHealth/resources/incidence.png")
-        self.incidence_action = QAction(icon,Tools.trans("Incidence - Density"),self.iface.mainWindow())
+        self.incidence_action = QAction(icon, trans("Incidence - Density"), self.iface.mainWindow())
         self.geohealth_menu.addAction(self.incidence_action)
-        self.incidence_action.triggered.connect(self.openIncidence)
+        self.incidence_action.triggered.connect(self.open_incidence_window)
 
     def unload(self):
         self.iface.mainWindow().menuBar().removeAction(self.geohealth_menu.menuAction())
         Processing.removeProvider(self.provider)
-        
-    def openIncidence(self):
+
+    def open_incidence_window(self):
         dialog = IncidenceDialog(self.iface)
         dialog.fillComboboxLayer()
         dialog.show()
         dialog.exec_()
-        
-    def openBlurring(self):
+
+    def open_blurring_window(self):
         iface.Blurring_mainWindowDialog = MainBlurringDialog(self.iface)
-        iface.Blurring_mainWindowDialog.fillComboxboxLayers()
+        iface.Blurring_mainWindowDialog.fill_combo_box_layers()
         iface.Blurring_mainWindowDialog.show()
         iface.Blurring_mainWindowDialog.exec_()

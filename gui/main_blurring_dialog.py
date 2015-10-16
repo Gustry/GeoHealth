@@ -23,42 +23,38 @@
 
 from GeoHealth import *
 from GeoHealth.ui.main_blurring import Ui_BlurringDialogBase
-from os.path import join,dirname,abspath,isfile
+from os.path import join, dirname, abspath, isfile
+
 
 class MainBlurringDialog(QDialog, Ui_BlurringDialogBase):
-       
+
     def __init__(self, parent=None):
-        '''
-        Constructor
-        '''
+        """Constructor."""
         QDialog.__init__(self)
         self.setupUi(self)
-        
+
         #Connect
         self.blur.signalAskCloseWindow.connect(self.hide)
         self.statistics.signalAskCloseWindow.connect(self.hide)
-        
-        self.setHelpWebView()
-        
-    def setHelpWebView(self):
-        '''
-        Set the help
-        '''
+
+        self.set_help_web_view()
+
+    def set_help_web_view(self):
+        """Set the help."""
         locale = QSettings().value("locale/userLocale")[0:2]
-        locale = "." + locale
-        helpFileBase = "main"
-        helps = [helpFileBase + locale +".html", helpFileBase + ".html"]
-        
-        docPath = join(dirname(dirname(abspath(__file__))),'doc')
+        locale += "."
+        help_file_base = "main"
+        helps = [help_file_base + locale + '.html', help_file_base + '.html']
+
+        doc_path = join(dirname(dirname(abspath(__file__))), 'doc')
         for helpFileName in helps:
-            fileHelpPath = join(docPath,helpFileName)
-            if isfile(fileHelpPath):
-                self.helpFile = fileHelpPath
-                self.webview.load(QUrl(self.helpFile))
+            help_file_path = join(doc_path, helpFileName)
+            if isfile(help_file_path):
+                self.webview.load(QUrl(help_file_path))
                 break
         else:
             self.webview.setHtml("<h3>Help not available</h3>")
-            
-    def fillComboxboxLayers(self):
+
+    def fill_combo_box_layers(self):
         self.statistics.fillComboxboxLayers()
         self.blur.fillComboxboxLayers()

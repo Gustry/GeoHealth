@@ -21,28 +21,36 @@
  ***************************************************************************/
 """
 
-from GeoHealth import *
+from numpy import median, average, var, std
 
-class Tools:
 
-    @staticmethod
-    def getLastInputPath():
-        settings = QSettings()
-        return settings.value("LastInputPath")
+class Stats:
+
+    def __init__(self, figures):
+        figures.sort()
+        self.figures = figures
+        self.nb_items = len(figures)
     
-    @staticmethod
-    def setLastInputPath(lastDir):
-        path = lastDir
-        settings = QSettings()
-        settings.setValue( "LastInputPath", str(path))
-       
-    @staticmethod
-    def trans(msg):
-        return QApplication.translate("GeoHealth",msg)
+    def count(self):
+        return self.nb_items
+
+    def min(self):
+        return self.figures[0]
     
-    @staticmethod
-    def displayMessageBar(title = None, msg = None,level=QgsMessageBar.INFO,duration=5):
-        if iface.Blurring_mainWindowDialog.isVisible():
-            iface.Blurring_mainWindowDialog.messageBar.pushMessage(title, msg, level,duration)
-        else:
-            iface.messageBar().pushMessage(title, msg, level,duration)
+    def max(self):
+        return self.figures[-1]
+    
+    def range(self):
+        return self.max() - self.min()
+
+    def average(self):
+        return average(self.figures)
+
+    def median(self):
+        return median(self.figures)
+
+    def variance(self):
+        return var(self.figures)
+
+    def standard_deviation(self):
+        return std(self.figures)

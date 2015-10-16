@@ -20,12 +20,16 @@
  *                                                                         *
  ***************************************************************************/
 """
-from GeoHealth import *
-from GeoHealth.processing_geohealth.blurring import BlurringGeoAlgorithm
+
+from PyQt4.QtGui import QIcon
 from processing.core.AlgorithmProvider import AlgorithmProvider
 
-"""QGIS Processing"""
+from GeoHealth.processing_geohealth.blurring import BlurringGeoAlgorithm
+
+
 class Provider(AlgorithmProvider):
+    """QGIS Processing"""
+
     def __init__(self):
         AlgorithmProvider.__init__(self)
     

@@ -26,8 +26,8 @@ from PyQt4.QtCore import *
 from qgis.core import *
 from qgis.gui import *
 from qgis.utils import iface
-from core.Tools import *
-from core.Stats import *
+from core.tools import *
+from core.stats import *
 from processing.core.GeoAlgorithmExecutionException import GeoAlgorithmExecutionException
 from core.exceptions import *
 

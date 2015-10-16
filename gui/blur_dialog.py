@@ -28,6 +28,7 @@ from GeoHealth.core.blurring.layer_index import LayerIndex
 from GeoHealth.core.blurring.blur import Blur
 import os
 
+
 class BlurWidget(QWidget, Ui_Blur):
     
     signalAskCloseWindow = pyqtSignal(name='signalAskCloseWindow')
@@ -45,7 +46,7 @@ class BlurWidget(QWidget, Ui_Blur):
         self.buttonBox_blur.button(QDialogButtonBox.Cancel).clicked.connect(self.signalAskCloseWindow)
 
     def selectFile(self):
-        lastDir = Tools.getLastInputPath()
+        lastDir = Tools.get_last_input_path()
         outputFile = QFileDialog.getSaveFileName(parent=self,
                                                  caption=Tools.trans('Select file'),
                                                  directory=lastDir,
@@ -53,7 +54,7 @@ class BlurWidget(QWidget, Ui_Blur):
         if outputFile:
             self.lineEdit_outputFile.setText(outputFile)
             path = os.path.dirname(outputFile)
-            Tools.setLastInputPath(path)
+            Tools.set_last_input_path(path)
         else:
             self.lineEdit_outputFile.setText('')
 
@@ -98,7 +99,7 @@ class BlurWidget(QWidget, Ui_Blur):
                 raise NoFileNoDisplayException
             
             if layerToBlur.crs().mapUnits() != 0:
-                Tools.displayMessageBar(msg=Tools.trans('The projection of the map or of the layer is not in meters. These parameters should be in meters.'), level=QgsMessageBar.WARNING , duration=5)
+                Tools.display_message_bar(msg=Tools.trans('The projection of the map or of the layer is not in meters. These parameters should be in meters.'), level=QgsMessageBar.WARNING , duration=5)
             
             
             if not fileName:
@@ -174,7 +175,7 @@ class BlurWidget(QWidget, Ui_Blur):
         
         except GeoHealthException,e:
             self.label_progress.setText("")
-            Tools.displayMessageBar(msg=e.msg, level=e.level , duration=e.duration)
+            Tools.display_message_bar(msg=e.msg, level=e.level , duration=e.duration)
         
         finally:
             QApplication.restoreOverrideCursor()

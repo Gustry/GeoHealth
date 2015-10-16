@@ -24,11 +24,12 @@
 from GeoHealth import *
 from GeoHealth.core.blurring.blur import Blur
 from GeoHealth.core.blurring.layer_index import LayerIndex
+from GeoHealth.core.tools import trans
 from GeoHealth.processing_geohealth import *
 
-"""QGIS Processing"""
 
 class BlurringGeoAlgorithm(GeoAlgorithm):
+    """QGIS Processing"""
 
     OUTPUT_LAYER = 'OUTPUT_LAYER'
     INPUT_LAYER = 'INPUT_LAYER'
@@ -42,58 +43,89 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
         self.name = "Blurring a point layer"
         self.group = "Blurring a point layer"
 
-        self.addParameter(ParameterVector(self.INPUT_LAYER, 'Point layer',[ParameterVector.VECTOR_TYPE_POINT], False))
-        self.addParameter(ParameterNumber(self.RADIUS_FIELD, 'Radius (maps unit)',0,999999999,500.00))
-        self.addParameter(ParameterVector(self.ENVELOPE_LAYER, 'Envelope layer',[ParameterVector.VECTOR_TYPE_POLYGON], True))
-        self.addParameter(ParameterBoolean(self.RADIUS_EXPORT, 'Add the radius to the attribute table',False))
-        self.addParameter(ParameterBoolean(self.CENTROID_EXPORT, 'Add the centroid to the attribute table',False))
+        self.addParameter(ParameterVector(
+            self.INPUT_LAYER,
+            'Point layer',
+            [ParameterVector.VECTOR_TYPE_POINT],
+            False))
 
-        self.addOutput(OutputVector(self.OUTPUT_LAYER,'Output layer with selected features'))
+        self.addParameter(ParameterNumber(
+            self.RADIUS_FIELD,
+            'Radius (maps unit)',
+            0,
+            999999999,
+            500.00))
+
+        self.addParameter(ParameterVector(
+            self.ENVELOPE_LAYER,
+            'Envelope layer',
+            [ParameterVector.VECTOR_TYPE_POLYGON],
+            True))
+
+        self.addParameter(ParameterBoolean(
+            self.RADIUS_EXPORT,
+            'Add the radius to the attribute table',
+            False))
+
+        self.addParameter(ParameterBoolean(
+            self.CENTROID_EXPORT,
+            'Add the centroid to the attribute table',
+            False))
+
+        self.addOutput(OutputVector(
+            self.OUTPUT_LAYER,
+            'Output layer with selected features'))
 
     def help(self):
-        return True, Tools.trans('For more explanations, go to the vector\'s menu then "Blurring" -> "Help"<br />')
+        return True, trans(
+            'For more explanations, go to the vector\'s menu then "Blurring"'
+            ' -> "Help"<br />')
     
     def getIcon(self):
-        return QIcon(":/plugins/GeoHealth/resources/blur.png")
+        return QIcon(':/plugins/GeoHealth/resources/blur.png')
 
     def processAlgorithm(self, progress):
 
         #Get parameters
-        inputFilename = self.getParameterValue(self.INPUT_LAYER)
+        input_filename = self.getParameterValue(self.INPUT_LAYER)
         radius = self.getParameterValue(self.RADIUS_FIELD)
-        exportRadius = self.getParameterValue(self.RADIUS_EXPORT)
-        exportCentroid = self.getParameterValue(self.CENTROID_EXPORT)
-        envelopeLayerField = self.getParameterValue(self.ENVELOPE_LAYER)
+        export_radius = self.getParameterValue(self.RADIUS_EXPORT)
+        export_centroid = self.getParameterValue(self.CENTROID_EXPORT)
+        envelope_layer_field = self.getParameterValue(self.ENVELOPE_LAYER)
         output = self.getOutputValue(self.OUTPUT_LAYER)
 
-        vectorLayer = dataobjects.getObjectFromUri(inputFilename)
+        vector_layer = dataobjects.getObjectFromUri(input_filename)
         
         #If we use a mask, envelope
-        vectorlayerEnvelopeIndex = None
-        if envelopeLayerField != None:
-            vectorLayerEnvelope = dataobjects.getObjectFromUri(envelopeLayerField)
-            vectorlayerEnvelopeIndex = LayerIndex(vectorLayerEnvelope)
+        vector_layer_envelope_index = None
+        if envelope_layer_field is not None:
+            vector_layer_envelope = dataobjects.getObjectFromUri(
+                envelope_layer_field)
+            vector_layer_envelope_index = LayerIndex(vector_layer_envelope)
 
         settings = QSettings()
-        systemEncoding = settings.value('/UI/encoding', 'System')
-        provider = vectorLayer.dataProvider()
+        system_encoding = settings.value('/UI/encoding', 'System')
+        provider = vector_layer.dataProvider()
         fields = provider.fields()
         
-        if exportRadius:
+        if export_radius:
             fields.append(QgsField(u"Radius", QVariant.Int))
         
-        if exportCentroid:
+        if export_centroid:
             fields.append(QgsField(u"X centroid", QVariant.Int))
             fields.append(QgsField(u"Y centroid", QVariant.Int))
         
-        writer = QgsVectorFileWriter(output, systemEncoding,
+        writer = QgsVectorFileWriter(output, system_encoding,
                                      fields,
                                      QGis.WKBPolygon, provider.crs())
         
-        #Creating a algorithm with all these paramaters
-        algo = Blur(radius, vectorlayerEnvelopeIndex, exportRadius, exportCentroid)
+        # Creating a algorithm with all these parameters.
+        algorithm = Blur(
+            radius,
+            vector_layer_envelope_index,
+            export_radius,
+            export_centroid)
 
-        features = vector.features(vectorLayer)
-        for feature in features:
-            feature = algo.blur(feature)
+        for feature in vector.features(vector_layer):
+            feature = algorithm.blur(feature)
             writer.addFeature(feature)

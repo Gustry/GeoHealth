@@ -21,35 +21,32 @@
  ***************************************************************************/
 """
 
-from numpy import median, average, var, std
+from PyQt4.QtCore import QSettings
+from PyQt4.QtGui import QApplication
+from qgis.utils import iface
+from qgis.gui import QgsMessageBar
 
-class Stats:
 
-    def __init__(self,listStats):
-        listStats.sort()
-        self.listStats = listStats 
-        self.nbItems = len(listStats)
-    
-    def count(self):
-        return self.nbItems
+def get_last_input_path():
+    settings = QSettings()
+    return settings.value('LastInputPath')
 
-    def min(self):
-        return self.listStats[0]
-    
-    def max(self):
-        return self.listStats[-1]
-    
-    def range(self):
-        return self.max() - self.min()
 
-    def average(self) :
-        return average(self.listStats)
+def set_last_input_path(directory):
+    settings = QSettings()
+    settings.setValue('LastInputPath', str(directory))
 
-    def median(self):
-        return median(self.listStats)
 
-    def variance(self) :
-        return var(self.listStats)
+def trans(msg):
+    # noinspection PyCallByClass,PyArgumentList
+    return QApplication.translate('GeoHealth', msg)
 
-    def standardDeviation(self):
-        return std(self.listStats)
+
+def display_message_bar(
+        title=None, msg=None, level=QgsMessageBar.INFO, duration=5):
+
+    if iface.Blurring_mainWindowDialog.isVisible():
+        iface.Blurring_mainWindowDialog.messageBar.pushMessage(
+            title, msg, level, duration)
+    else:
+        iface.messageBar().pushMessage(title, msg, level, duration)

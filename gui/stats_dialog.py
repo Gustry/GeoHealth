@@ -140,7 +140,7 @@ class StatsWidget(QWidget, Ui_Stats):
             itemsStats.append("Median,%f"%stats.median())
             itemsStats.append("Range,%d"%stats.range())
             itemsStats.append("Variance,%f"%stats.variance())
-            itemsStats.append("Standard deviation,%f"%stats.standardDeviation())
+            itemsStats.append("Standard deviation,%f"%stats.standard_deviation())
             
             self.tableWidget.clear()
             self.tableWidget.setColumnCount(2)
@@ -157,7 +157,7 @@ class StatsWidget(QWidget, Ui_Stats):
             
         except GeoHealthException,e:
             self.label_progressStats.setText("")
-            Tools.displayMessageBar(msg=e.msg, level=e.level , duration=e.duration)
+            Tools.display_message_bar(msg=e.msg, level=e.level , duration=e.duration)
             
     def saveTable(self):
         
@@ -171,7 +171,7 @@ class StatsWidget(QWidget, Ui_Stats):
             itemValue = self.tableWidget.item(i,1)
             csvString += str(itemParam.text()) + "," + itemValue.text() + "\n"
             
-        lastDir = Tools.getLastInputPath()
+        lastDir = Tools.get_last_input_path()
   
         outputFile = QFileDialog.getSaveFileName(parent=self,
                                                  caption=Tools.trans('Select file'),
@@ -179,7 +179,7 @@ class StatsWidget(QWidget, Ui_Stats):
                                                  filter="CSV (*.csv)")
         if outputFile:
             path = os.path.dirname(outputFile)
-            Tools.setLastInputPath(path)
+            Tools.set_last_input_path(path)
 
             fh = open(outputFile,"w")
             fh.write(csvString)
@@ -196,14 +196,14 @@ class StatsWidget(QWidget, Ui_Stats):
         for value in self.tab:
             csvString += str(value) + "\n"
             
-        lastDir = Tools.getLastInputPath()
+        lastDir = Tools.get_last_input_path()
         outputFile = QFileDialog.getSaveFileName(parent=self,
                                                  caption=Tools.trans('Select file'),
                                                  directory=lastDir,
                                                  filter="CSV (*.csv)")
         if outputFile:
             path = os.path.dirname(outputFile)
-            Tools.setLastInputPath(path)
+            Tools.set_last_input_path(path)
 
             fh = open(outputFile,"w")
             fh.write(csvString)

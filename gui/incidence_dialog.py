@@ -27,9 +27,11 @@ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
 from matplotlib.figure import Figure
 
+
 class NavigationToolbar(NavigationToolbar):
     toolitems = [t for t in NavigationToolbar.toolitems if
                  t[0] in ('Home', 'Back', 'Next', 'Pan', 'Zoom', 'Save')]
+
 
 class IncidenceDialog(QDialog, Ui_Incidence):
     def __init__(self, parent=None):
@@ -170,7 +172,7 @@ class IncidenceDialog(QDialog, Ui_Incidence):
                 itemsStats.append("Median,%f"%stats.median())
                 itemsStats.append("Range,%d"%stats.range())
                 itemsStats.append("Variance,%f"%stats.variance())
-                itemsStats.append("Standard deviation,%f"%stats.standardDeviation())
+                itemsStats.append("Standard deviation,%f"%stats.standard_deviation())
                 
                 self.tableWidget.clear()
                 self.tableWidget.setColumnCount(2)
