@@ -21,11 +21,26 @@
  ***************************************************************************/
 """
 
-from GeoHealth import *
-from GeoHealth.ui.incidence import Ui_Incidence
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
+from PyQt4.QtGui import QDialog, QDialogButtonBox, QTableWidgetItem
+from PyQt4.QtCore import QSize, QVariant
+
+from qgis.utils import iface
+from qgis.core import QgsField
+
+from matplotlib.backends.backend_qt4agg import \
+    FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt4agg import \
+    NavigationToolbar2QTAgg as NavigationToolbar
 from matplotlib.figure import Figure
+
+from GeoHealth.core.tools import display_message_bar
+from GeoHealth.core.exceptions import \
+    GeoHealthException,\
+    NoLayerProvidedException,\
+    DifferentCrsException,\
+    NotANumberException
+from GeoHealth.core.stats import Stats
+from GeoHealth.ui.incidence import Ui_Incidence
 
 
 class NavigationToolbar(NavigationToolbar):
@@ -38,166 +53,190 @@ class IncidenceDialog(QDialog, Ui_Incidence):
         """Constructor."""
         QDialog.__init__(self)
         self.setupUi(self)
-        
+
         #Connect
-        self.comboBox_incidence_adminLayer.currentIndexChanged.connect(self.updateFields)
-        self.button_box_ok.button(QDialogButtonBox.Ok).clicked.connect(self.runStats)
-        self.button_box_ok.button(QDialogButtonBox.Cancel).clicked.connect(self.hide)
-        
+        self.comboBox_incidence_adminLayer.currentIndexChanged.connect(
+            self.update_fields)
+        self.button_box_ok.button(QDialogButtonBox.Ok).clicked.connect(
+            self.run_stats)
+        self.button_box_ok.button(QDialogButtonBox.Cancel).clicked.connect(
+            self.hide)
+
         self.figure = Figure()
         self.canvas = FigureCanvas(self.figure)
         self.canvas.setMinimumSize(QSize(300, 0))
         self.toolbar = NavigationToolbar(self.canvas, self)
         self.layout_plot.addWidget(self.toolbar)
         self.layout_plot.addWidget(self.canvas)
-        
-    def updateFields(self):
-        self.comboBox_incidence_populationField.clear()
-        
-        index = self.comboBox_incidence_adminLayer.currentIndex()
-        adminLayer = self.comboBox_incidence_adminLayer.itemData(index)
-        if not adminLayer:
-            return False
-        
-        fields = adminLayer.dataProvider().fields()
-        
-        for item in fields:
-            self.comboBox_incidence_populationField.addItem(item.name(),item)
 
-    def fillComboboxLayer(self):
+    def update_fields(self):
+        self.comboBox_incidence_populationField.clear()
+
+        index = self.comboBox_incidence_adminLayer.currentIndex()
+        admin_layer = self.comboBox_incidence_adminLayer.itemData(index)
+        if not admin_layer:
+            return False
+
+        fields = admin_layer.dataProvider().fields()
+
+        for item in fields:
+            self.comboBox_incidence_populationField.addItem(item.name(), item)
+
+    def fill_combobox_layer(self):
         self.comboBox_incidence_adminLayer.clear()
         self.comboBox_incidence_pointLayer.clear()
         self.comboBox_incidence_populationField.clear()
 
         for layer in iface.legendInterface().layers():
-            if layer.type() == 0 :
-                
-                if layer.geometryType() == 0 :
-                    self.comboBox_incidence_pointLayer.addItem(layer.name(),layer)
-                
-                if layer.geometryType() == 2 :
-                    self.comboBox_incidence_adminLayer.addItem(layer.name(),layer)
-                    
-    def runStats(self):
-        #Get the fields
+            if layer.type() == 0:
+
+                if layer.geometryType() == 0:
+                    self.comboBox_incidence_pointLayer.addItem(
+                        layer.name(), layer)
+
+                if layer.geometryType() == 2:
+                    self.comboBox_incidence_adminLayer.addItem(
+                        layer.name(), layer)
+
+    def run_stats(self):
+        # Get the fields.
         index = self.comboBox_incidence_adminLayer.currentIndex()
-        adminLayer = self.comboBox_incidence_adminLayer.itemData(index)
+        admin_layer = self.comboBox_incidence_adminLayer.itemData(index)
         index = self.comboBox_incidence_pointLayer.currentIndex()
-        pointLayer = self.comboBox_incidence_pointLayer.itemData(index)
+        point_layer = self.comboBox_incidence_pointLayer.itemData(index)
         population = self.comboBox_incidence_populationField.currentText()
-        self.nameField = self.lineEdit_incidence_columnName.text()
+        self.name_field = self.lineEdit_incidence_columnName.text()
         ratio = self.comboBox_incidence_ratio.currentText()
-        ratio = ratio.replace(" ","")
-        
+        ratio = ratio.replace(' ', '')
+
+        import pydevd
+        pydevd.settrace('localhost', port=6666, stdoutToServer=True, stderrToServer=True, suspend=False)
         try:
-            
-            if not adminLayer or not pointLayer:
+
+            if not admin_layer or not point_layer:
                 raise NoLayerProvidedException
 
-            crsAdminLayer = adminLayer.crs()
-            crsPointLayer = pointLayer.crs()
+            crsAdminLayer = admin_layer.crs()
+            crsPointLayer = point_layer.crs()
             if crsAdminLayer != crsPointLayer:
-                raise DifferentCrsException(epsg1 = crsPointLayer.authid(), epsg2 = crsAdminLayer.authid())
-            
-            try :
+                raise DifferentCrsException(
+                    epsg1=crsPointLayer.authid(), epsg2=crsAdminLayer.authid())
+
+            try:
                 ratio = float(ratio)
             except ValueError:
                 raise NotANumberException(suffix=ratio)
-            
+
             useArea = self.radioButton_incidence_area.isChecked()
             addNbIntersections = self.checkBox_addNbIntersections.isChecked()
-            
+
             indexPopulation = None
             if not useArea:
-                indexPopulation = adminLayer.fieldNameIndex(population)
-            
-            adminLayerProvider = adminLayer.dataProvider()
-            adminLayer.startEditing()
-            adminLayerProvider.addAttributes([QgsField(self.nameField, QVariant.Double)])
-            
+                indexPopulation = admin_layer.fieldNameIndex(population)
+
+            adminLayerProvider = admin_layer.dataProvider()
+            admin_layer.startEditing()
+            attributes = [QgsField(self.name_field, QVariant.Double)]
+            adminLayerProvider.addAttributes(attributes)
+
             if addNbIntersections:
-                adminLayerProvider.addAttributes([QgsField("nb_of_intersections", QVariant.Int)])
-            
-            adminLayer.updateFields()
-            fields = adminLayer.pendingFields()
+                attributes = [QgsField('nb_of_intersections', QVariant.Int)]
+                adminLayerProvider.addAttributes(attributes)
+
+            admin_layer.updateFields()
+            fields = admin_layer.pendingFields()
             nbFields = fields.count()
-            
+
             numFieldIncidence = None
-            numFieldIntersections = None        
-            
+            numFieldIntersections = None
+
             if addNbIntersections:
-                numFieldIncidence = nbFields-2
-                numFieldIntersections = nbFields-1
+                numFieldIncidence = nbFields - 2
+                numFieldIntersections = nbFields - 1
             else:
-                numFieldIncidence = nbFields-1
-            
+                numFieldIncidence = nbFields - 1
+
             data = []
-            
-            for i,feature in enumerate(adminLayer.getFeatures()):
+
+            for i, feature in enumerate(admin_layer.getFeatures()):
                 attrs = feature.attributes()
                 count = 0
-                for f in pointLayer.getFeatures():
+                for f in point_layer.getFeatures():
                     if f.geometry().intersects(feature.geometry()):
                         count += 1
-                
+
                 indice = None
                 if useArea:
                     indice = float(count) / feature.geometry().area() * ratio
                 else:
-                    try :
+                    try:
                         population = float(attrs[indexPopulation])
                     except ValueError:
-                        adminLayer.rollBack()
-                        raise NotANumberException(suffix=attrs[indexPopulation])
+                        admin_layer.rollBack()
+                        raise NotANumberException(
+                            suffix=attrs[indexPopulation])
                     indice = float(count) / population * ratio
-                
+
                 data.append(indice)
-                adminLayer.changeAttributeValue(feature.id(), numFieldIncidence, indice)
+                admin_layer.changeAttributeValue(
+                    feature.id(), numFieldIncidence, indice)
+
                 if addNbIntersections:
-                    adminLayer.changeAttributeValue(feature.id(), numFieldIntersections, count)
-            
-            adminLayer.commitChanges()
-            adminLayer.updateFields()
-            
+                    admin_layer.changeAttributeValue(
+                        feature.id(), numFieldIntersections, count)
+
+            admin_layer.commitChanges()
+            admin_layer.updateFields()
+
             if self.checkBox_incidence_runStats.isChecked():
-            
+
                 stats = Stats(data)
-                
-                itemsStats = []
-                itemsStats.append("Count(point),%d"%pointLayer.featureCount())
-                itemsStats.append("Count(polygon),%d"%adminLayer.featureCount())
-                itemsStats.append("Min,%d"%stats.min())
-                itemsStats.append("Average,%f"%stats.average())
-                itemsStats.append("Max,%d"%stats.max())
-                itemsStats.append("Median,%f"%stats.median())
-                itemsStats.append("Range,%d"%stats.range())
-                itemsStats.append("Variance,%f"%stats.variance())
-                itemsStats.append("Standard deviation,%f"%stats.standard_deviation())
-                
+
+                items_stats = []
+                items_stats.append(
+                    'Count(point),%d' % point_layer.featureCount())
+                items_stats.append(
+                    'Count(polygon),%d' % admin_layer.featureCount())
+                items_stats.append(
+                    'Min,%d' % stats.min())
+                items_stats.append(
+                    'Average,%f' % stats.average())
+                items_stats.append(
+                    'Max,%d' % stats.max())
+                items_stats.append(
+                    'Median,%f' % stats.median())
+                items_stats.append(
+                    'Range,%d' % stats.range())
+                items_stats.append(
+                    'Variance,%f' % stats.variance())
+                items_stats.append(
+                    'Standard deviation,%f' % stats.standard_deviation())
+
                 self.tableWidget.clear()
                 self.tableWidget.setColumnCount(2)
-                self.tableWidget.setHorizontalHeaderLabels(['Parameters','Values'])
-                self.tableWidget.setRowCount(len(itemsStats))
-                
-                for i,item in enumerate(itemsStats):
+                labels = ['Parameters', 'Values']
+                self.tableWidget.setHorizontalHeaderLabels(labels)
+                self.tableWidget.setRowCount(len(items_stats))
+
+                for i, item in enumerate(items_stats):
                     s = item.split(',')
                     self.tableWidget.setItem(i, 0, QTableWidgetItem(s[0]))
                     self.tableWidget.setItem(i, 1, QTableWidgetItem(s[1]))
                 self.tableWidget.resizeRowsToContents()
-                
-                self.drawPlot(data)
-            
+
+                self.draw_plot(data)
+
             else:
                 self.hide()
-        
-        except GeoHealthException,e:
-            self.messageBar.pushMessage(e.msg, level=e.level, duration=e.duration)
-        
-    def drawPlot(self,data):
+
+        except GeoHealthException, e:
+            display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
+
+    def draw_plot(self, data):
         ax = self.figure.add_subplot(111)
         ax.hold(False)
-        ax.plot(data, '*-')        
+        ax.plot(data, '*-')
         ax.set_xlabel('Polygon')
-        ax.set_ylabel(self.nameField)
+        ax.set_ylabel(self.name_field)
         ax.grid()
         self.canvas.draw()

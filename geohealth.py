@@ -80,7 +80,7 @@ class GeoHealth:
 
     def open_incidence_window(self):
         dialog = IncidenceDialog(self.iface)
-        dialog.fillComboboxLayer()
+        dialog.fill_combobox_layer()
         dialog.show()
         dialog.exec_()
 
