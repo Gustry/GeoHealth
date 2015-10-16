@@ -56,5 +56,5 @@ class MainBlurringDialog(QDialog, Ui_BlurringDialogBase):
             self.webview.setHtml("<h3>Help not available</h3>")
 
     def fill_combo_box_layers(self):
-        self.statistics.fillComboxboxLayers()
-        self.blur.fillComboxboxLayers()
+        self.statistics.fill_comboxbox_layers()
+        self.blur.fill_comboxbox_layers()

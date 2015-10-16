@@ -21,18 +21,26 @@
  ***************************************************************************/
 """
 
-from qgis.core import QGis, QgsFeatureRequest
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_qt4agg import \
+    FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt4agg import \
+    NavigationToolbar2QTAgg as NavigationToolbar
+from PyQt4.QtGui import \
+    QWidget, QDialogButtonBox, QApplication, QTableWidgetItem, QFileDialog
+from PyQt4.QtCore import pyqtSignal, QSize
+from os.path import dirname
 
-from GeoHealth import *
+from qgis.core import QGis, QgsFeatureRequest, QgsSpatialIndex
+from qgis.utils import iface
+
 from GeoHealth.ui.stats import Ui_Stats
+from GeoHealth.core.stats import Stats
 from GeoHealth.core.tools import \
     trans, display_message_bar, get_last_input_path, set_last_input_path
-import os
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
+from GeoHealth.core.exceptions import \
+    GeoHealthException, NoLayerProvidedException, DifferentCrsException
 
-#import matplotlib.pyplot as plt
-from matplotlib.figure import Figure
 
 class StatsWidget(QWidget, Ui_Stats):
     
@@ -42,36 +50,38 @@ class StatsWidget(QWidget, Ui_Stats):
         super(StatsWidget, self).__init__()
         self.setupUi(self)
 
-        self.label_progressStats.setText("")
+        self.label_progressStats.setText('')
 
         #Connect
-        self.pushButton_saveTable.clicked.connect(self.saveTable)
-        self.pushButton_saveYValues.clicked.connect(self.saveYValues)
-        self.buttonBox_stats.button(QDialogButtonBox.Ok).clicked.connect(self.runStats)
-        self.buttonBox_stats.button(QDialogButtonBox.Cancel).clicked.connect(self.signalAskCloseWindow.emit)
+        self.pushButton_saveTable.clicked.connect(self.save_table)
+        self.pushButton_saveYValues.clicked.connect(self.save_y_values)
+        self.buttonBox_stats.button(QDialogButtonBox.Ok).clicked.connect(
+            self.run_stats)
+        self.buttonBox_stats.button(QDialogButtonBox.Cancel).clicked.connect(
+            self.signalAskCloseWindow.emit)
         
         # a figure instance to plot on
         self.figure = Figure()
         self.canvas = FigureCanvas(self.figure)
         self.canvas.setMinimumSize(QSize(300, 0))
-        self.toolbar = NavigationToolbar(self.canvas, self)
+        self.toolbar = CustomNavigationToolbar(self.canvas, self)
         self.layout_plot.addWidget(self.toolbar)
         self.layout_plot.addWidget(self.canvas)
 
-    def fillComboxboxLayers(self):
+    def fill_comboxbox_layers(self):
         self.comboBox_blurredLayer.clear()
         self.comboBox_statsLayer.clear()
 
         for layer in iface.legendInterface().layers():
-            if layer.type() == 0 :
-                self.comboBox_statsLayer.addItem(layer.name(),layer)
+            if layer.type() == 0:
+                self.comboBox_statsLayer.addItem(layer.name(), layer)
                 
-                if layer.geometryType() == 2 :
-                    self.comboBox_blurredLayer.addItem(layer.name(),layer)
+                if layer.geometryType() == 2:
+                    self.comboBox_blurredLayer.addItem(layer.name(), layer)
     
-    def runStats(self):
+    def run_stats(self):
         self.progressBar_stats.setValue(0)
-        self.label_progressStats.setText("")
+        self.label_progressStats.setText('')
         QApplication.processEvents()
         
         index = self.comboBox_blurredLayer.currentIndex()
@@ -88,7 +98,9 @@ class StatsWidget(QWidget, Ui_Stats):
             crsLayerBlurred = layerBlurred.crs()
             crsLayerStats = layerStats.crs()
             if crsLayerBlurred != crsLayerStats:
-                raise DifferentCrsException(epsg1 = crsLayerBlurred.authid(), epsg2 = crsLayerStats.authid())
+                raise DifferentCrsException(
+                    epsg1=crsLayerBlurred.authid(),
+                    epsg2=crsLayerStats.authid())
             
             if layerBlurred == layerStats:
                 raise NoLayerProvidedException
@@ -152,20 +164,21 @@ class StatsWidget(QWidget, Ui_Stats):
             
             stats = Stats(self.tab)
             
-            itemsStats = []
-            itemsStats.append("Count(blurred),%d"%nbFeatureBlurred)
-            itemsStats.append("Count(stats),%d"%nbFeatureStats)
-            itemsStats.append("Min,%d"%stats.min())
-            itemsStats.append("Average,%f"%stats.average())
-            itemsStats.append("Max,%d"%stats.max())
-            itemsStats.append("Median,%f"%stats.median())
-            itemsStats.append("Range,%d"%stats.range())
-            itemsStats.append("Variance,%f"%stats.variance())
-            itemsStats.append("Standard deviation,%f"%stats.standard_deviation())
-            
+            itemsStats = [
+                'Count(blurred),%d' % nbFeatureBlurred,
+                'Count(stats),%d' % nbFeatureStats,
+                'Min,%d' % stats.min(),
+                'Average,%f' % stats.average(),
+                'Max,%d' % stats.max(), 'Median,%f' % stats.median(),
+                'Range,%d' % stats.range(),
+                'Variance,%f' % stats.variance(),
+                'Standard deviation,%f' % stats.standard_deviation()
+            ]
+
             self.tableWidget.clear()
             self.tableWidget.setColumnCount(2)
-            self.tableWidget.setHorizontalHeaderLabels(['Parameters','Values'])
+            labels = ['Parameters', 'Values']
+            self.tableWidget.setHorizontalHeaderLabels(labels)
             self.tableWidget.setRowCount(len(itemsStats))
             
             for i,item in enumerate(itemsStats):
@@ -174,80 +187,86 @@ class StatsWidget(QWidget, Ui_Stats):
                 self.tableWidget.setItem(i, 1, QTableWidgetItem(s[1]))
             self.tableWidget.resizeRowsToContents()
             
-            self.drawPlot(self.tab)
+            self.draw_plot(self.tab)
             
-        except GeoHealthException,e:
-            self.label_progressStats.setText("")
+        except GeoHealthException, e:
+            self.label_progressStats.setText('')
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
             
-    def saveTable(self):
+    def save_table(self):
         
         if not self.tableWidget.rowCount():
             return False
         
-        csvString = "parameter,values\n"
+        csv_string = 'parameter,values\n'
         
         for i in range(self.tableWidget.rowCount()):
-            itemParam = self.tableWidget.item(i,0) 
-            itemValue = self.tableWidget.item(i,1)
-            csvString += str(itemParam.text()) + "," + itemValue.text() + "\n"
+            item_param = self.tableWidget.item(i, 0)
+            item_value = self.tableWidget.item(i, 1)
+            csv_string += \
+                str(item_param.text()) + ',' + item_value.text() + '\n'
             
-        lastDir = get_last_input_path()
+        last_directory = get_last_input_path()
   
-        outputFile = QFileDialog.getSaveFileName(parent=self,
-                                                 caption=trans('Select file'),
-                                                 directory=lastDir,
-                                                 filter="CSV (*.csv)")
-        if outputFile:
-            path = os.path.dirname(outputFile)
+        output_file = QFileDialog.getSaveFileName(
+            parent=self,
+            caption=trans('Select file'),
+            directory=last_directory,
+            filter="CSV (*.csv)")
+
+        if output_file:
+            path = dirname(output_file)
             set_last_input_path(path)
 
-            fh = open(outputFile,"w")
-            fh.write(csvString)
+            fh = open(output_file, "w")
+            fh.write(csv_string)
             fh.close()
             return True
    
-    def saveYValues(self):
+    def save_y_values(self):
         
         if not self.tableWidget.rowCount():
             return False
         
-        csvString = "parameter,values\n"
+        csv_string = 'parameter,values\n'
         
         for value in self.tab:
-            csvString += str(value) + "\n"
+            csv_string += str(value) + '\n'
             
-        lastDir = get_last_input_path()
-        outputFile = QFileDialog.getSaveFileName(parent=self,
-                                                 caption=trans('Select file'),
-                                                 directory=lastDir,
-                                                 filter="CSV (*.csv)")
-        if outputFile:
-            path = os.path.dirname(outputFile)
+        last_directory = get_last_input_path()
+        output_file = QFileDialog.getSaveFileName(
+            parent=self,
+            caption=trans('Select file'),
+            directory=last_directory,
+            filter='CSV (*.csv)')
+
+        if output_file:
+            path = dirname(output_file)
             set_last_input_path(path)
 
-            fh = open(outputFile,"w")
-            fh.write(csvString)
+            fh = open(output_file, 'w')
+            fh.write(csv_string)
             fh.close()
-            return True    
+            return True
 
-    def drawPlot(self,data):
-        #Creating the plot        
+    def draw_plot(self, data):
+        #Creating the plot
         # create an axis
         ax = self.figure.add_subplot(111)
         # discards the old graph
         ax.hold(False)
         # plot data
         ax.plot(data, '*-')
-        
+
         #ax.set_title('Number of intersections per entity')
         ax.set_xlabel('Blurred entity')
         ax.set_ylabel('Number of intersections')
         ax.grid()
-        
-        # refresh canvas
-        self.canvas.draw()    
 
-class NavigationToolbar(NavigationToolbar):
+        # refresh canvas
+        self.canvas.draw()
+
+
+class CustomNavigationToolbar(NavigationToolbar):
     toolitems = [t for t in NavigationToolbar.toolitems if
                  t[0] in ('Home', 'Back', 'Next', 'Pan', 'Zoom', 'Save')]
