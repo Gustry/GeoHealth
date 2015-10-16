@@ -24,8 +24,8 @@
 from GeoHealth import *
 from GeoHealth.ui.blur import Ui_Blur
 from processing.tools.system import *
-from GeoHealth.core.blurring import layer_index
-from GeoHealth.core.blurring import blur
+from GeoHealth.core.blurring.layer_index import LayerIndex
+from GeoHealth.core.blurring.blur import Blur
 import os
 
 class BlurWidget(QWidget, Ui_Blur):
@@ -110,7 +110,7 @@ class BlurWidget(QWidget, Ui_Blur):
                     raise DifferentCrsException(epsg1 = layerToBlur.crs().authid(), epsg2 = layerEnvelope.crs().authid())
                 
                 self.label_progress.setText("Creating index ...")
-                layerEnvelope = LayerIndex.LayerIndex(layerEnvelope)
+                layerEnvelope = LayerIndex(layerEnvelope)
                 self.progressBar_blur.setValue(0)
             
             
@@ -145,7 +145,7 @@ class BlurWidget(QWidget, Ui_Blur):
                 raise CreatingShapeFileException(suffix=fileWriter.hasError())
             
             #Creating the algorithm with radius
-            algo = BlurAlgo.BlurAlgo(radius, layerEnvelope, exportRadius, exportCentroid)
+            algo = Blur(radius, layerEnvelope, exportRadius, exportCentroid)
             
             for j,feature in enumerate(features):
                 feature = algo.blur(feature)

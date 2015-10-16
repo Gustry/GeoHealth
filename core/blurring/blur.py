@@ -21,49 +21,61 @@
  ***************************************************************************/
 """
 
-from GeoHealth import *
-import random, math
+from random import uniform
+from math import pi, cos, sin
 
-"""Blurring's algorithm"""
+from qgis.core import QgsFeature, QgsGeometry, QgsPoint
 
-class BlurAlgo:
-    
+from GeoHealth.core.exceptions import PointOutsideEnvelopeException
+
+
+# noinspection PyArgumentList
+class Blur:
+    """Blurring algorithm."""
+
     @staticmethod
-    def randomPointAroundGeomPoint(point,radius):
-        """Creating a random point"""
-        teta = math.pi*random.uniform(0, 2)
-        r = random.uniform(0,radius)
-        randomX = point.asPoint().x()+ (r * math.cos(teta))
-        randomY = point.asPoint().y()+ (r * math.sin(teta))
-        return QgsGeometry.fromPoint(QgsPoint(randomX, randomY)) 
-    
-    def __init__(self,radius, polygonEnvelope,addRadiusToAttributes, addCentroidToAttributes):
+    def random_point_around_geom_point(point, radius):
+        """Creating a random point."""
+        teta = pi * uniform(0, 2)
+        r = uniform(0, radius)
+        random_x = point.asPoint().x() + (r * cos(teta))
+        random_y = point.asPoint().y() + (r * sin(teta))
+        # noinspection PyCallByClass,PyTypeChecker
+        return QgsGeometry.fromPoint(QgsPoint(random_x, random_y))
+
+    def __init__(
+            self,
+            radius,
+            polygon_envelope,
+            add_radius_to_attributes,
+            add_centroid_to_attributes):
         self.__radius = radius
-        self.__polygonEnvelope = polygonEnvelope
-        self.__addRadiusToAttributes = addRadiusToAttributes
-        self.__addCentroidToAttributes = addCentroidToAttributes
-    
+        self.__polygon_envelope = polygon_envelope
+        self.__add_radius_to_attributes = add_radius_to_attributes
+        self.__add_centroid_to_attributes = add_centroid_to_attributes
+
     def blur(self, feature):
         geom = feature.geometry()
-        attrs = feature.attributes()
-        pointAleaGeom = None
-        
-        #If we use a mask
-        if self.__polygonEnvelope != None:
-            
-            #We have to be sure that every intial point intersect the layer
-            if not self.__polygonEnvelope.contains(geom):
+        attributes = feature.attributes()
+        random_point = None
+
+        # If we use a mask
+        if self.__polygon_envelope is not None:
+
+            # We have to be sure that every initial point intersect the layer
+            if not self.__polygon_envelope.contains(geom):
                 raise PointOutsideEnvelopeException(number=feature.id())
-            
+
             radius = self.__radius
             i = 0
             while True:
-                pointAleaGeom = BlurAlgo.randomPointAroundGeomPoint(geom, radius)
-                if self.__polygonEnvelope.contains(pointAleaGeom):
+                random_point = Blur.random_point_around_geom_point(
+                    geom, radius)
+                if self.__polygon_envelope.contains(random_point):
                     break
                 else:
-                    i +=1
-                    #after i increment, we reduce the first buffer
+                    i += 1
+                    # After i increment, we reduce the first buffer
                     if i == 100:
                         radius = int(radius * 0.5)
                     elif i == 150:
@@ -72,20 +84,21 @@ class BlurAlgo:
                         radius = int(radius * 0.5)
                     elif i >= 250:
                         radius = 0
-                        break
-        else:
-            pointAleaGeom = BlurAlgo.randomPointAroundGeomPoint(geom, self.__radius)
-        
-        """Creating the second buffer"""
-        bufferGeom = pointAleaGeom.buffer(self.__radius,20)
-        bufferFeature = QgsFeature()
-        bufferFeature.setGeometry(bufferGeom)
-        
-        if self.__addRadiusToAttributes:
-            attrs.append(self.__radius)
-        if self.__addCentroidToAttributes:
-            attrs.append(int(bufferGeom.centroid().asPoint().x()))
-            attrs.append(int(bufferGeom.centroid().asPoint().y()))
 
-        bufferFeature.setAttributes(attrs)
-        return bufferFeature 
+        else:
+            random_point = Blur.random_point_around_geom_point(
+                geom, self.__radius)
+
+        """Creating the second buffer"""
+        buffer_geom = random_point.buffer(self.__radius, 20)
+        buffer_feature = QgsFeature()
+        buffer_feature.setGeometry(buffer_geom)
+
+        if self.__add_radius_to_attributes:
+            attributes.append(self.__radius)
+        if self.__add_centroid_to_attributes:
+            attributes.append(int(buffer_geom.centroid().asPoint().x()))
+            attributes.append(int(buffer_geom.centroid().asPoint().y()))
+
+        buffer_feature.setAttributes(attributes)
+        return buffer_feature

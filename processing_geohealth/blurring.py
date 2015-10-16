@@ -22,8 +22,8 @@
 """
 
 from GeoHealth import *
-from GeoHealth.core.blurring.blur import *
-from GeoHealth.core.blurring.layer_index import *
+from GeoHealth.core.blurring.blur import Blur
+from GeoHealth.core.blurring.layer_index import LayerIndex
 from GeoHealth.processing_geohealth import *
 
 """QGIS Processing"""
@@ -91,7 +91,7 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
                                      QGis.WKBPolygon, provider.crs())
         
         #Creating a algorithm with all these paramaters
-        algo = BlurAlgo(radius, vectorlayerEnvelopeIndex, exportRadius, exportCentroid)
+        algo = Blur(radius, vectorlayerEnvelopeIndex, exportRadius, exportCentroid)
 
         features = vector.features(vectorLayer)
         for feature in features:

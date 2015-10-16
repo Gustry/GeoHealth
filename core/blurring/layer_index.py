@@ -21,38 +21,37 @@
  ***************************************************************************/
 """
 
-from GeoHealth import *
+from qgis.core import QgsSpatialIndex, QgsFeatureRequest, QgsGeometry
 
-"""Class to know if an intersection exist between a QgsGeometry and a QgsVectorLayer"""
 
 class LayerIndex:
-    
+    """Check an intersection between a QgsGeometry and a QgsVectorLayer."""
+
     def __init__(self, layer):
         self.__layer = layer        
         self.__index = QgsSpatialIndex()
         for ft in layer.getFeatures():
             self.__index.insertFeature(ft)
-        
+
     def contains(self, point):
-        """Return true if the point intersects the layer"""
+        """Return true if the point intersects the layer."""
         intersects = self.__index.intersects(point.boundingBox())
         for i in intersects:
             request = QgsFeatureRequest().setFilterFid(i)
             feat = self.__layer.getFeatures(request).next()
-            tmpGeom = QgsGeometry(feat.geometry())
-            if point.intersects(tmpGeom):
+            if point.intersects(QgsGeometry(feat.geometry())):
                 return True
         return False
-    
-    def countIntersection(self,bufferGeom,nb):
-        """Return true if the buffer intersects enough entities"""
+
+    def count_intersection(self, buffer_geom, nb):
+        """Return true if the buffer intersects enough entities."""
         count = 0
-        intersects = self.__index.intersects(bufferGeom.boundingBox())
+        intersects = self.__index.intersects(buffer_geom.boundingBox())
         for i in intersects:
             request = QgsFeatureRequest().setFilterFid(i)
             feat = self.__layer.getFeatures(request).next()
-            tmpGeom = QgsGeometry(feat.geometry())
-            if bufferGeom.intersects(tmpGeom):
+
+            if buffer_geom.intersects(QgsGeometry(feat.geometry())):
                 count += 1
                 if count >= nb:
                     return True
