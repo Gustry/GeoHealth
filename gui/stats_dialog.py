@@ -21,8 +21,12 @@
  ***************************************************************************/
 """
 
+from qgis.core import QGis, QgsFeatureRequest
+
 from GeoHealth import *
 from GeoHealth.ui.stats import Ui_Stats
+from GeoHealth.core.tools import \
+    trans, display_message_bar, get_last_input_path, set_last_input_path
 import os
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
@@ -94,38 +98,55 @@ class StatsWidget(QWidget, Ui_Stats):
             
             nbFeatureStats = layerStats.featureCount()
             nbFeatureBlurred = layerBlurred.featureCount()
-        
-            self.label_progressStats.setText("Preparing index on the stats layer 1/3")
             featuresStats = {}
-            for i,feature in enumerate(layerStats.getFeatures()):
-                featuresStats[feature.id()] = feature
-                percent = int((i+1)*100/nbFeatureStats)
-                self.progressBar_stats.setValue(percent)
+
+            label_preparing = trans('Preparing index on the stats layer')
+            label_creating = trans('Creating index on the stats layer')
+            label_calculating = trans('Calculating')
+
+            if QGis.QGIS_VERSION_INT < 20700:
+                self.label_progressStats.setText('%s 1/3' % label_preparing)
+
+                for i, feature in enumerate(layerStats.getFeatures()):
+                    featuresStats[feature.id()] = feature
+                    percent = int((i + 1) * 100 / nbFeatureStats)
+                    self.progressBar_stats.setValue(percent)
+                    QApplication.processEvents()
+
+                self.label_progressStats.setText('%s 2/3' % label_creating)
                 QApplication.processEvents()
-                
-            self.label_progressStats.setText("Creating index on the stats layer 2/3")
-            QApplication.processEvents()
-            index = QgsSpatialIndex()
-            for i,f in enumerate(layerStats.getFeatures()):
-                index.insertFeature(f)
-                
-                percent = int((i+1)*100/nbFeatureStats)
-                self.progressBar_stats.setValue(percent)
+                index = QgsSpatialIndex()
+                for i, f in enumerate(layerStats.getFeatures()):
+                    index.insertFeature(f)
+
+                    percent = int((i + 1) * 100 / nbFeatureStats)
+                    self.progressBar_stats.setValue(percent)
+                    QApplication.processEvents()
+
+                self.label_progressStats.setText('%s 3/3' % label_calculating)
+
+            else:
+                # If QGIS >= 2.7, we can speed up the spatial index.
+                # From 1 min 15 to 7 seconds on my PC.
+                self.label_progressStats.setText('%s 1/2' % label_creating)
                 QApplication.processEvents()
-            
+                index = QgsSpatialIndex(layerStats.getFeatures())
+                self.label_progressStats.setText('%s 2/2' % label_calculating)
+
             self.tab = []
-            self.label_progressStats.setText("Calculating 3/3")
             QApplication.processEvents()
-            for i,feature in enumerate(layerBlurred.getFeatures()):
+            for i, feature in enumerate(layerBlurred.getFeatures()):
                 count = 0
                 ids = index.intersects(feature.geometry().boundingBox())
                 for id in ids:
-                    f = featuresStats[id]
+                    request = QgsFeatureRequest().setFilterFid(id)
+                    f = layerStats.getFeatures(request).next()
+
                     if f.geometry().intersects(feature.geometry()):
                         count += 1
                 self.tab.append(count)
                 
-                percent = int((i+1)*100/nbFeatureBlurred)
+                percent = int((i + 1) * 100 / nbFeatureBlurred)
                 self.progressBar_stats.setValue(percent)
                 QApplication.processEvents()
             
@@ -157,7 +178,7 @@ class StatsWidget(QWidget, Ui_Stats):
             
         except GeoHealthException,e:
             self.label_progressStats.setText("")
-            Tools.display_message_bar(msg=e.msg, level=e.level , duration=e.duration)
+            display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
             
     def saveTable(self):
         
@@ -171,15 +192,15 @@ class StatsWidget(QWidget, Ui_Stats):
             itemValue = self.tableWidget.item(i,1)
             csvString += str(itemParam.text()) + "," + itemValue.text() + "\n"
             
-        lastDir = Tools.get_last_input_path()
+        lastDir = get_last_input_path()
   
         outputFile = QFileDialog.getSaveFileName(parent=self,
-                                                 caption=Tools.trans('Select file'),
+                                                 caption=trans('Select file'),
                                                  directory=lastDir,
                                                  filter="CSV (*.csv)")
         if outputFile:
             path = os.path.dirname(outputFile)
-            Tools.set_last_input_path(path)
+            set_last_input_path(path)
 
             fh = open(outputFile,"w")
             fh.write(csvString)
@@ -196,14 +217,14 @@ class StatsWidget(QWidget, Ui_Stats):
         for value in self.tab:
             csvString += str(value) + "\n"
             
-        lastDir = Tools.get_last_input_path()
+        lastDir = get_last_input_path()
         outputFile = QFileDialog.getSaveFileName(parent=self,
-                                                 caption=Tools.trans('Select file'),
+                                                 caption=trans('Select file'),
                                                  directory=lastDir,
                                                  filter="CSV (*.csv)")
         if outputFile:
             path = os.path.dirname(outputFile)
-            Tools.set_last_input_path(path)
+            set_last_input_path(path)
 
             fh = open(outputFile,"w")
             fh.write(csvString)

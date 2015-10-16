@@ -22,16 +22,20 @@
 """
 
 from qgis.core import QgsSpatialIndex, QgsFeatureRequest, QgsGeometry
-
+from qgis.core import QGis
 
 class LayerIndex:
     """Check an intersection between a QgsGeometry and a QgsVectorLayer."""
 
     def __init__(self, layer):
-        self.__layer = layer        
-        self.__index = QgsSpatialIndex()
-        for ft in layer.getFeatures():
-            self.__index.insertFeature(ft)
+        self.__layer = layer
+
+        if QGis.QGIS_VERSION_INT >= 20700:
+            self.__index = QgsSpatialIndex(layer.getFeatures())
+        else:
+            self.__index = QgsSpatialIndex()
+            for ft in layer.getFeatures():
+                self.__index.insertFeature(ft)
 
     def contains(self, point):
         """Return true if the point intersects the layer."""
