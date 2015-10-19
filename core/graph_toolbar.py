@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- GeoHealth
+
+                                 GeoHealth
                                  A QGIS plugin
- GeoHealth
-                             -------------------
+
+                              -------------------
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
@@ -18,12 +19,11 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
- This script initializes the plugin, making it known to QGIS.
 """
 
-from geohealth import GeoHealth
+from matplotlib.backends.backend_qt4agg import \
+    NavigationToolbar2QTAgg as NavigationToolbar
 
-
-def classFactory(iface):
-
-    return GeoHealth(iface)
+class CustomNavigationToolbar(NavigationToolbar):
+    toolitems = [t for t in NavigationToolbar.toolitems if
+                 t[0] in ('Home', 'Back', 'Next', 'Pan', 'Zoom', 'Save')]

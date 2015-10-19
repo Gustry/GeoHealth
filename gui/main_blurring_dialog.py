@@ -21,9 +21,11 @@
  ***************************************************************************/
 """
 
-from GeoHealth import *
-from GeoHealth.ui.main_blurring import Ui_BlurringDialogBase
 from os.path import join, dirname, abspath, isfile
+from PyQt4.QtGui import QDialog
+from PyQt4.QtCore import QSettings, QUrl
+
+from GeoHealth.ui.main_blurring import Ui_BlurringDialogBase
 
 
 class MainBlurringDialog(QDialog, Ui_BlurringDialogBase):

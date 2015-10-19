@@ -21,162 +21,196 @@
  ***************************************************************************/
 """
 
-from GeoHealth import *
-from GeoHealth.ui.blur import Ui_Blur
-from processing.tools.system import *
+from os.path import dirname, basename
+from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog, QApplication
+from PyQt4.QtCore import pyqtSignal, QSettings, QVariant
+from qgis.utils import iface, QGis
+from qgis.gui import QgsMessageBar
+from qgis.core import \
+    QgsField,\
+    QgsVectorFileWriter, \
+    QgsMapLayer, \
+    QgsMapLayerRegistry, \
+    QgsVectorLayer
+from processing.tools.system import getTempFilenameInTempFolder
+
 from GeoHealth.core.blurring.layer_index import LayerIndex
 from GeoHealth.core.blurring.blur import Blur
-import os
+from GeoHealth.core.tools import \
+    get_last_input_path, set_last_input_path, trans, display_message_bar
+from GeoHealth.core.exceptions import \
+    GeoHealthException, \
+    NoLayerProvidedException,\
+    NoFileNoDisplayException, \
+    DifferentCrsException,\
+    CreatingShapeFileException
+from GeoHealth.ui.blur import Ui_Blur
 
 
 class BlurWidget(QWidget, Ui_Blur):
-    
+
     signalAskCloseWindow = pyqtSignal(name='signalAskCloseWindow')
-    
+
     def __init__(self, parent=None):
         super(BlurWidget, self).__init__()
         self.setupUi(self)
-        
+
         self.label_progress.setText('')
         self.checkBox_envelope.setChecked(False)
         self.comboBox_envelope.setEnabled(False)
-        
-        self.pushButton_browseFolder.clicked.connect(self.selectFile)
-        self.buttonBox_blur.button(QDialogButtonBox.Ok).clicked.connect(self.runBlur)
-        self.buttonBox_blur.button(QDialogButtonBox.Cancel).clicked.connect(self.signalAskCloseWindow)
 
-    def selectFile(self):
-        lastDir = Tools.get_last_input_path()
-        outputFile = QFileDialog.getSaveFileName(parent=self,
-                                                 caption=Tools.trans('Select file'),
-                                                 directory=lastDir,
-                                                 filter="Shapefiles (*.shp)")
-        if outputFile:
-            self.lineEdit_outputFile.setText(outputFile)
-            path = os.path.dirname(outputFile)
-            Tools.set_last_input_path(path)
+        self.pushButton_browseFolder.clicked.connect(self.select_file)
+        self.buttonBox_blur.button(QDialogButtonBox.Ok).clicked.connect(
+            self.run_blur)
+        self.buttonBox_blur.button(QDialogButtonBox.Cancel).clicked.connect(
+            self.signalAskCloseWindow)
+
+        self.settings = QSettings()
+
+    def select_file(self):
+        last_folder = get_last_input_path()
+        output_file = QFileDialog.getSaveFileName(
+            parent=self,
+            caption=trans('Select file'),
+            directory=last_folder,
+            filter='Shapefiles (*.shp)')
+
+        if output_file:
+            self.lineEdit_outputFile.setText(output_file)
+            path = dirname(output_file)
+            set_last_input_path(path)
         else:
             self.lineEdit_outputFile.setText('')
 
-    def fillComboxboxLayers(self):
+    def fill_comboxbox_layers(self):
         self.comboBox_layerToBlur.clear()
         self.comboBox_envelope.clear()
 
         for layer in iface.legendInterface().layers():
-            if layer.type() == 0 :
-                if layer.geometryType() == 0 :
-                    self.comboBox_layerToBlur.addItem(layer.name(),layer)
-                
-                if layer.geometryType() == 2 :
-                    self.comboBox_envelope.addItem(layer.name(),layer)
+            if layer.type() == QgsMapLayer.VectorLayer:
+                if layer.geometryType() == QGis.Point:
+                    self.comboBox_layerToBlur.addItem(layer.name(), layer)
+
+                if layer.geometryType() == QGis.Polygon:
+                    self.comboBox_envelope.addItem(layer.name(), layer)
         
-    def runBlur(self):
-        
+    def run_blur(self):
+
         self.progressBar_blur.setValue(0)
-        self.label_progress.setText("")
-        
+        self.label_progress.setText('')
+
         """Get all the fields"""
         index = self.comboBox_layerToBlur.currentIndex()
-        layerToBlur = self.comboBox_layerToBlur.itemData(index)
+        layer_to_blur = self.comboBox_layerToBlur.itemData(index)
         radius = self.spinBox_radius.value()
         display = self.checkBox_addToMap.isChecked()
-        selectedFeaturesOnly = self.checkBox_selectedOnlyFeatures.isChecked()
-        fileName = self.lineEdit_outputFile.text()
-        exportRadius = self.checkBox_exportRadius.isChecked()
-        exportCentroid = self.checkBox_exportCentroid.isChecked()
-        
-        layerEnvelope = None
+        selected_features_only = self.checkBox_selectedOnlyFeatures.isChecked()
+        file_name = self.lineEdit_outputFile.text()
+        export_radius = self.checkBox_exportRadius.isChecked()
+        export_centroid = self.checkBox_exportCentroid.isChecked()
+
         if self.checkBox_envelope.isChecked():
             index = self.comboBox_envelope.currentIndex()
-            layerEnvelope = self.comboBox_envelope.itemData(index)
-        
+            layer_envelope = self.comboBox_envelope.itemData(index)
+        else:
+            layer_envelope = None
+
         #Test values
         try:
-            if not layerToBlur:
+            if not layer_to_blur:
                 raise NoLayerProvidedException
-            
-            if not fileName and not display:
+
+            if not file_name and not display:
                 raise NoFileNoDisplayException
-            
-            if layerToBlur.crs().mapUnits() != 0:
-                Tools.display_message_bar(msg=Tools.trans('The projection of the map or of the layer is not in meters. These parameters should be in meters.'), level=QgsMessageBar.WARNING , duration=5)
-            
-            
-            if not fileName:
-                fileName = getTempFilenameInTempFolder("blurring.shp")
-        
-            if layerEnvelope:
-                
-                if layerToBlur.crs() != layerEnvelope.crs():
-                    raise DifferentCrsException(epsg1 = layerToBlur.crs().authid(), epsg2 = layerEnvelope.crs().authid())
-                
-                self.label_progress.setText("Creating index ...")
-                layerEnvelope = LayerIndex(layerEnvelope)
+
+            if layer_to_blur.crs().mapUnits() != 0:
+                msg = trans('The projection of the map or of the layer is not '
+                            'in meters. These parameters should be in meters.')
+                display_message_bar(
+                    msg, level=QgsMessageBar.WARNING, duration=5)
+
+            if not file_name:
+                file_name = getTempFilenameInTempFolder('blurring.shp')
+
+            if layer_envelope:
+
+                if layer_to_blur.crs() != layer_envelope.crs():
+                    raise DifferentCrsException(
+                        epsg1=layer_to_blur.crs().authid(),
+                        epsg2=layer_envelope.crs().authid())
+
+                self.label_progress.setText('Creating index ...')
+                layer_envelope = LayerIndex(layer_envelope)
                 self.progressBar_blur.setValue(0)
-            
-            
-            self.label_progress.setText("Blurring ...")
-            settings = None
-            oldDefaultProjection = None
-            if display :
-                settings = QSettings()
-                oldDefaultProjection = settings.value("/Projections/defaultBehaviour")
-                settings.setValue( "/Projections/defaultBehaviour", "useProject")
-            
-            features = None
-            nbFeatures = None
-            if selectedFeaturesOnly:
-                features = layerToBlur.selectedFeatures()
-                nbFeatures = layerToBlur.selectedFeatureCount()
+
+            self.label_progress.setText('Blurring ...')
+            if display:
+                old_default_projection = self.settings.value(
+                    '/Projections/defaultBehaviour')
+                self.settings.setValue(
+                    '/Projections/defaultBehaviour', 'useProject')
+
+            if selected_features_only:
+                features = layer_to_blur.selectedFeatures()
+                nb_features = layer_to_blur.selectedFeatureCount()
             else:
-                features = layerToBlur.getFeatures()
-                nbFeatures = layerToBlur.featureCount()
-            
+                features = layer_to_blur.getFeatures()
+                nb_features = layer_to_blur.featureCount()
+
             #Fields
-            fields = layerToBlur.pendingFields()
-            if exportRadius:
+            fields = layer_to_blur.pendingFields()
+            if export_radius:
                 fields.append(QgsField(u"Radius", QVariant.Int))
-            if exportCentroid:
+            if export_centroid:
                 fields.append(QgsField(u"X centroid", QVariant.Int))
                 fields.append(QgsField(u"Y centroid", QVariant.Int))
-            
+
             #Creating the output shapefile
-            fileWriter = QgsVectorFileWriter(fileName, "utf-8", fields, QGis.WKBPolygon, layerToBlur.crs(), "ESRI Shapefile")
-            if fileWriter.hasError() != QgsVectorFileWriter.NoError:
-                raise CreatingShapeFileException(suffix=fileWriter.hasError())
-            
+            file_writer = QgsVectorFileWriter(
+                file_name,
+                'utf-8',
+                fields,
+                QGis.WKBPolygon,
+                layer_to_blur.crs(),
+                'ESRI Shapefile')
+
+            if file_writer.hasError() != QgsVectorFileWriter.NoError:
+                raise CreatingShapeFileException(suffix=file_writer.hasError())
+
             #Creating the algorithm with radius
-            algo = Blur(radius, layerEnvelope, exportRadius, exportCentroid)
-            
-            for j,feature in enumerate(features):
+            algo = Blur(radius, layer_envelope, export_radius, export_centroid)
+
+            for j, feature in enumerate(features):
                 feature = algo.blur(feature)
-                fileWriter.addFeature(feature)
-            
-                """Update progress bar"""
-                percent =int((j+1)*100/nbFeatures)
+                file_writer.addFeature(feature)
+
+                # Update progress bar
+                percent = int((j + 1) * 100 / nb_features)
                 self.progressBar_blur.setValue(percent)
-            
+
             #Write all features in the file
-            del fileWriter
-            
+            del file_writer
+
             if display:
-                import ntpath
-                layerName = ntpath.basename(fileName)
-                newlayer = QgsVectorLayer(fileName, layerName,"ogr")
-                newlayer.commitChanges()
-                newlayer.clearCacheImage()
-                QgsMapLayerRegistry.instance().addMapLayers([newlayer])
-                
-                settings.setValue( "/Projections/defaultBehaviour", oldDefaultProjection) 
-            
-            iface.messageBar().pushMessage(Tools.trans("Successful export in " + fileName), level=QgsMessageBar.INFO , duration=5)
-            
+                layer_name = basename(file_name)
+                new_layer = QgsVectorLayer(file_name, layer_name, 'ogr')
+                new_layer.commitChanges()
+                new_layer.clearCacheImage()
+                QgsMapLayerRegistry.instance().addMapLayers([new_layer])
+
+                self.settings.setValue(
+                    '/Projections/defaultBehaviour', old_default_projection)
+
+            msg = trans('Successful export in %s' % file_name)
+            iface.messageBar().pushMessage(
+                msg, level=QgsMessageBar.INFO, duration=5)
+
             self.signalAskCloseWindow.emit()
-        
-        except GeoHealthException,e:
-            self.label_progress.setText("")
-            Tools.display_message_bar(msg=e.msg, level=e.level , duration=e.duration)
-        
+
+        except GeoHealthException, e:
+            self.label_progress.setText('')
+            display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
+
         finally:
             QApplication.restoreOverrideCursor()
             QApplication.processEvents()

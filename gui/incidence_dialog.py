@@ -30,10 +30,9 @@ from qgis.core import \
 
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt4agg import \
-    NavigationToolbar2QTAgg as NavigationToolbar
 from matplotlib.figure import Figure
 
+from GeoHealth.core.graph_toolbar import CustomNavigationToolbar
 from GeoHealth.core.tools import display_message_bar
 from GeoHealth.core.exceptions import \
     GeoHealthException,\
@@ -42,11 +41,6 @@ from GeoHealth.core.exceptions import \
     NotANumberException
 from GeoHealth.core.stats import Stats
 from GeoHealth.ui.incidence import Ui_Incidence
-
-
-class CustomNavigationToolbar(NavigationToolbar):
-    toolitems = [t for t in NavigationToolbar.toolitems if
-                 t[0] in ('Home', 'Back', 'Next', 'Pan', 'Zoom', 'Save')]
 
 
 class IncidenceDialog(QDialog, Ui_Incidence):

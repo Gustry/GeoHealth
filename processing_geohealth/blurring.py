@@ -21,7 +21,11 @@
  ***************************************************************************/
 """
 
-from GeoHealth import *
+from PyQt4.QtGui import QIcon
+from PyQt4.QtCore import QVariant
+from qgis.utils import QGis
+from qgis.core import QgsVectorFileWriter, QgsField
+
 from GeoHealth.core.blurring.blur import Blur
 from GeoHealth.core.blurring.layer_index import LayerIndex
 from GeoHealth.core.tools import trans
@@ -115,9 +119,12 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
             fields.append(QgsField(u"X centroid", QVariant.Int))
             fields.append(QgsField(u"Y centroid", QVariant.Int))
         
-        writer = QgsVectorFileWriter(output, system_encoding,
-                                     fields,
-                                     QGis.WKBPolygon, provider.crs())
+        writer = QgsVectorFileWriter(
+            output,
+            system_encoding,
+            fields,
+            QGis.WKBPolygon,
+            provider.crs())
         
         # Creating a algorithm with all these parameters.
         algorithm = Blur(

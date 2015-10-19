@@ -24,8 +24,6 @@
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt4agg import \
-    NavigationToolbar2QTAgg as NavigationToolbar
 from PyQt4.QtGui import \
     QWidget, QDialogButtonBox, QApplication, QTableWidgetItem, QFileDialog
 from PyQt4.QtCore import pyqtSignal, QSize
@@ -35,6 +33,7 @@ from qgis.core import QGis, QgsFeatureRequest, QgsSpatialIndex
 from qgis.utils import iface
 
 from GeoHealth.ui.stats import Ui_Stats
+from GeoHealth.core.graph_toolbar import CustomNavigationToolbar
 from GeoHealth.core.stats import Stats
 from GeoHealth.core.tools import \
     trans, display_message_bar, get_last_input_path, set_last_input_path
@@ -43,9 +42,9 @@ from GeoHealth.core.exceptions import \
 
 
 class StatsWidget(QWidget, Ui_Stats):
-    
+
     signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
-    
+
     def __init__(self, parent=None):
         super(StatsWidget, self).__init__()
         self.setupUi(self)
@@ -59,7 +58,7 @@ class StatsWidget(QWidget, Ui_Stats):
             self.run_stats)
         self.buttonBox_stats.button(QDialogButtonBox.Cancel).clicked.connect(
             self.signalAskCloseWindow.emit)
-        
+
         # a figure instance to plot on
         self.figure = Figure()
         self.canvas = FigureCanvas(self.figure)
@@ -68,6 +67,8 @@ class StatsWidget(QWidget, Ui_Stats):
         self.layout_plot.addWidget(self.toolbar)
         self.layout_plot.addWidget(self.canvas)
 
+        self.tab = []
+
     def fill_comboxbox_layers(self):
         self.comboBox_blurredLayer.clear()
         self.comboBox_statsLayer.clear()
@@ -75,42 +76,43 @@ class StatsWidget(QWidget, Ui_Stats):
         for layer in iface.legendInterface().layers():
             if layer.type() == 0:
                 self.comboBox_statsLayer.addItem(layer.name(), layer)
-                
+
                 if layer.geometryType() == 2:
                     self.comboBox_blurredLayer.addItem(layer.name(), layer)
-    
+
     def run_stats(self):
         self.progressBar_stats.setValue(0)
         self.label_progressStats.setText('')
         QApplication.processEvents()
-        
+
         index = self.comboBox_blurredLayer.currentIndex()
-        layerBlurred = self.comboBox_blurredLayer.itemData(index)
-        
+        blurred_layer = self.comboBox_blurredLayer.itemData(index)
+
         index = self.comboBox_statsLayer.currentIndex()
-        layerStats = self.comboBox_statsLayer.itemData(index)
-        
+        stats_layer = self.comboBox_statsLayer.itemData(index)
+
         try:
-            
-            if not layerBlurred or not layerStats:
+
+            if not blurred_layer or not stats_layer:
                 raise NoLayerProvidedException
-            
-            crsLayerBlurred = layerBlurred.crs()
-            crsLayerStats = layerStats.crs()
-            if crsLayerBlurred != crsLayerStats:
+
+            crs_blurred_layer = blurred_layer.crs()
+            crs_stats_layer = stats_layer.crs()
+
+            if crs_blurred_layer != crs_stats_layer:
                 raise DifferentCrsException(
-                    epsg1=crsLayerBlurred.authid(),
-                    epsg2=crsLayerStats.authid())
-            
-            if layerBlurred == layerStats:
+                    epsg1=crs_blurred_layer.authid(),
+                    epsg2=crs_stats_layer.authid())
+
+            if blurred_layer == stats_layer:
                 raise NoLayerProvidedException
-            
-            if not layerBlurred or not layerStats:
+
+            if not blurred_layer or not stats_layer:
                 raise NoLayerProvidedException
-            
-            nbFeatureStats = layerStats.featureCount()
-            nbFeatureBlurred = layerBlurred.featureCount()
-            featuresStats = {}
+
+            nb_feature_stats = stats_layer.featureCount()
+            nb_feature_blurred = blurred_layer.featureCount()
+            features_stats = {}
 
             label_preparing = trans('Preparing index on the stats layer')
             label_creating = trans('Creating index on the stats layer')
@@ -119,19 +121,19 @@ class StatsWidget(QWidget, Ui_Stats):
             if QGis.QGIS_VERSION_INT < 20700:
                 self.label_progressStats.setText('%s 1/3' % label_preparing)
 
-                for i, feature in enumerate(layerStats.getFeatures()):
-                    featuresStats[feature.id()] = feature
-                    percent = int((i + 1) * 100 / nbFeatureStats)
+                for i, feature in enumerate(stats_layer.getFeatures()):
+                    features_stats[feature.id()] = feature
+                    percent = int((i + 1) * 100 / nb_feature_stats)
                     self.progressBar_stats.setValue(percent)
                     QApplication.processEvents()
 
                 self.label_progressStats.setText('%s 2/3' % label_creating)
                 QApplication.processEvents()
                 index = QgsSpatialIndex()
-                for i, f in enumerate(layerStats.getFeatures()):
+                for i, f in enumerate(stats_layer.getFeatures()):
                     index.insertFeature(f)
 
-                    percent = int((i + 1) * 100 / nbFeatureStats)
+                    percent = int((i + 1) * 100 / nb_feature_stats)
                     self.progressBar_stats.setValue(percent)
                     QApplication.processEvents()
 
@@ -142,31 +144,30 @@ class StatsWidget(QWidget, Ui_Stats):
                 # From 1 min 15 to 7 seconds on my PC.
                 self.label_progressStats.setText('%s 1/2' % label_creating)
                 QApplication.processEvents()
-                index = QgsSpatialIndex(layerStats.getFeatures())
+                index = QgsSpatialIndex(stats_layer.getFeatures())
                 self.label_progressStats.setText('%s 2/2' % label_calculating)
 
-            self.tab = []
             QApplication.processEvents()
-            for i, feature in enumerate(layerBlurred.getFeatures()):
+            for i, feature in enumerate(blurred_layer.getFeatures()):
                 count = 0
                 ids = index.intersects(feature.geometry().boundingBox())
-                for id in ids:
-                    request = QgsFeatureRequest().setFilterFid(id)
-                    f = layerStats.getFeatures(request).next()
+                for unique_id in ids:
+                    request = QgsFeatureRequest().setFilterFid(unique_id)
+                    f = stats_layer.getFeatures(request).next()
 
                     if f.geometry().intersects(feature.geometry()):
                         count += 1
                 self.tab.append(count)
-                
-                percent = int((i + 1) * 100 / nbFeatureBlurred)
+
+                percent = int((i + 1) * 100 / nb_feature_blurred)
                 self.progressBar_stats.setValue(percent)
                 QApplication.processEvents()
-            
+
             stats = Stats(self.tab)
-            
-            itemsStats = [
-                'Count(blurred),%d' % nbFeatureBlurred,
-                'Count(stats),%d' % nbFeatureStats,
+
+            items_stats = [
+                'Count(blurred),%d' % nb_feature_blurred,
+                'Count(stats),%d' % nb_feature_stats,
                 'Min,%d' % stats.min(),
                 'Average,%f' % stats.average(),
                 'Max,%d' % stats.max(), 'Median,%f' % stats.median(),
@@ -179,60 +180,60 @@ class StatsWidget(QWidget, Ui_Stats):
             self.tableWidget.setColumnCount(2)
             labels = ['Parameters', 'Values']
             self.tableWidget.setHorizontalHeaderLabels(labels)
-            self.tableWidget.setRowCount(len(itemsStats))
-            
-            for i,item in enumerate(itemsStats):
+            self.tableWidget.setRowCount(len(items_stats))
+
+            for i, item in enumerate(items_stats):
                 s = item.split(',')
                 self.tableWidget.setItem(i, 0, QTableWidgetItem(s[0]))
                 self.tableWidget.setItem(i, 1, QTableWidgetItem(s[1]))
             self.tableWidget.resizeRowsToContents()
-            
+
             self.draw_plot(self.tab)
-            
+
         except GeoHealthException, e:
             self.label_progressStats.setText('')
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
-            
+
     def save_table(self):
-        
+
         if not self.tableWidget.rowCount():
             return False
-        
+
         csv_string = 'parameter,values\n'
-        
+
         for i in range(self.tableWidget.rowCount()):
             item_param = self.tableWidget.item(i, 0)
             item_value = self.tableWidget.item(i, 1)
             csv_string += \
                 str(item_param.text()) + ',' + item_value.text() + '\n'
-            
+
         last_directory = get_last_input_path()
-  
+
         output_file = QFileDialog.getSaveFileName(
             parent=self,
             caption=trans('Select file'),
             directory=last_directory,
-            filter="CSV (*.csv)")
+            filter='CSV (*.csv)')
 
         if output_file:
             path = dirname(output_file)
             set_last_input_path(path)
 
-            fh = open(output_file, "w")
+            fh = open(output_file, 'w')
             fh.write(csv_string)
             fh.close()
             return True
-   
+
     def save_y_values(self):
-        
+
         if not self.tableWidget.rowCount():
             return False
-        
+
         csv_string = 'parameter,values\n'
-        
+
         for value in self.tab:
             csv_string += str(value) + '\n'
-            
+
         last_directory = get_last_input_path()
         output_file = QFileDialog.getSaveFileName(
             parent=self,
@@ -265,8 +266,3 @@ class StatsWidget(QWidget, Ui_Stats):
 
         # refresh canvas
         self.canvas.draw()
-
-
-class CustomNavigationToolbar(NavigationToolbar):
-    toolitems = [t for t in NavigationToolbar.toolitems if
-                 t[0] in ('Home', 'Back', 'Next', 'Pan', 'Zoom', 'Save')]

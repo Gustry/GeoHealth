@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main_blurring.ui'
 #
-# Created: Thu Oct 15 18:31:50 2015
+# Created: Mon Oct 19 14:24:18 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
