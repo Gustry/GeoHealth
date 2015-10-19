@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'incidence.ui'
 #
-# Created: Mon Oct 19 12:02:42 2015
+# Created: Mon Oct 19 12:17:29 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -169,6 +169,8 @@ class Ui_Incidence(object):
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.tableWidget = QtGui.QTableWidget(Incidence)
         self.tableWidget.setMinimumSize(QtCore.QSize(200, 0))
+        self.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
+        self.tableWidget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
         self.tableWidget.setColumnCount(2)
         self.tableWidget.setRowCount(0)
@@ -201,6 +203,7 @@ class Ui_Incidence(object):
         self.comboBox_incidence_ratio.setItemText(4, _translate("Incidence", "100 000", None))
         self.radioButton_incidence_population.setText(_translate("Incidence", "Column population", None))
         self.radioButton_incidence_area.setText(_translate("Incidence", "Area (density)", None))
+        self.checkBox_addNbIntersections.setToolTip(_translate("Incidence", "Add the number of cases per unit to the attribute table", None))
         self.checkBox_addNbIntersections.setText(_translate("Incidence", "Add the number of cases per unit to the attribute table", None))
         self.checkBox_incidence_runStats.setText(_translate("Incidence", "Calculate statistics", None))
         self.label_6.setText(_translate("Incidence", "<html><head/><body><p><span style=\" font-style:italic;\">Incidence =</span></p></body></html>", None))
