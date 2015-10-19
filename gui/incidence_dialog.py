@@ -24,8 +24,9 @@
 from PyQt4.QtGui import QDialog, QDialogButtonBox, QTableWidgetItem
 from PyQt4.QtCore import QSize, QVariant
 
-from qgis.utils import iface
-from qgis.core import QgsField
+from qgis.utils import iface, QGis
+from qgis.core import \
+    QgsField, QgsVectorGradientColorRampV2, QgsGraduatedSymbolRendererV2, QgsSymbolV2
 
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
@@ -63,6 +64,13 @@ class IncidenceDialog(QDialog, Ui_Incidence):
             self.run_stats)
         self.button_box_ok.button(QDialogButtonBox.Cancel).clicked.connect(
             self.hide)
+
+        # Add items in symbology
+        self.cbx_mode.addItem('Equal interval', QgsGraduatedSymbolRendererV2.EqualInterval)
+        self.cbx_mode.addItem('Quantile (equal count)', QgsGraduatedSymbolRendererV2.Quantile)
+        self.cbx_mode.addItem('Natural breaks', QgsGraduatedSymbolRendererV2.Jenks)
+        self.cbx_mode.addItem('Standard deviation', QgsGraduatedSymbolRendererV2.StdDev)
+        self.cbx_mode.addItem('Pretty breaks', QgsGraduatedSymbolRendererV2.Pretty)
 
         # Setup the graph.
         self.figure = Figure()
@@ -108,7 +116,7 @@ class IncidenceDialog(QDialog, Ui_Incidence):
 
         # Get the fields.
         index = self.comboBox_incidence_adminLayer.currentIndex()
-        admin_layer = self.comboBox_incidence_adminLayer.itemData(index)
+        self.admin_layer = self.comboBox_incidence_adminLayer.itemData(index)
         index = self.comboBox_incidence_pointLayer.currentIndex()
         point_layer = self.comboBox_incidence_pointLayer.itemData(index)
         population = self.comboBox_incidence_populationField.currentText()
@@ -118,10 +126,10 @@ class IncidenceDialog(QDialog, Ui_Incidence):
 
         try:
 
-            if not admin_layer or not point_layer:
+            if not self.admin_layer or not point_layer:
                 raise NoLayerProvidedException
 
-            crs_admin_layer = admin_layer.crs()
+            crs_admin_layer = self.admin_layer.crs()
             crs_point_layer = point_layer.crs()
             if crs_admin_layer != crs_point_layer:
                 raise DifferentCrsException(
@@ -138,10 +146,10 @@ class IncidenceDialog(QDialog, Ui_Incidence):
 
             index_population = None
             if not use_area:
-                index_population = admin_layer.fieldNameIndex(population)
+                index_population = self.admin_layer.fieldNameIndex(population)
 
-            admin_layer_provider = admin_layer.dataProvider()
-            admin_layer.startEditing()
+            admin_layer_provider = self.admin_layer.dataProvider()
+            self.admin_layer.startEditing()
             attributes = [QgsField(self.name_field, QVariant.Double)]
             admin_layer_provider.addAttributes(attributes)
 
@@ -149,8 +157,8 @@ class IncidenceDialog(QDialog, Ui_Incidence):
                 attributes = [QgsField('nb_of_intersections', QVariant.Int)]
                 admin_layer_provider.addAttributes(attributes)
 
-            admin_layer.updateFields()
-            fields = admin_layer.pendingFields()
+            self.admin_layer.updateFields()
+            fields = self.admin_layer.pendingFields()
             nb_fields = fields.count()
 
             id_field_intersections = None
@@ -163,7 +171,7 @@ class IncidenceDialog(QDialog, Ui_Incidence):
 
             data = []
 
-            for i, feature in enumerate(admin_layer.getFeatures()):
+            for i, feature in enumerate(self.admin_layer.getFeatures()):
                 attributes = feature.attributes()
                 count = 0
                 for f in point_layer.getFeatures():
@@ -178,7 +186,7 @@ class IncidenceDialog(QDialog, Ui_Incidence):
                         try:
                             population = float(attributes[index_population])
                         except ValueError:
-                            admin_layer.rollBack()
+                            self.admin_layer.rollBack()
                             raise NotANumberException(
                                 suffix=attributes[index_population])
                         value = float(count) / population * ratio
@@ -187,15 +195,15 @@ class IncidenceDialog(QDialog, Ui_Incidence):
                     value = None
 
                 data.append(value)
-                admin_layer.changeAttributeValue(
+                self.admin_layer.changeAttributeValue(
                     feature.id(), id_field_incidence, value)
 
                 if add_nb_intersections:
-                    admin_layer.changeAttributeValue(
+                    self.admin_layer.changeAttributeValue(
                         feature.id(), id_field_intersections, count)
 
-            admin_layer.commitChanges()
-            admin_layer.updateFields()
+            self.admin_layer.commitChanges()
+            self.admin_layer.updateFields()
 
             if self.checkBox_incidence_runStats.isChecked():
 
@@ -204,7 +212,7 @@ class IncidenceDialog(QDialog, Ui_Incidence):
                 items_stats = [
                     'Incidence null,%d' % stats.null_values(),
                     'Count(point),%d' % point_layer.featureCount(),
-                    'Count(polygon),%d' % admin_layer.featureCount(),
+                    'Count(polygon),%d' % self.admin_layer.featureCount(),
                     'Min,%d' % stats.min(),
                     'Average,%f' % stats.average(),
                     'Max,%d' % stats.max(),
@@ -256,3 +264,18 @@ class IncidenceDialog(QDialog, Ui_Incidence):
         high_color = self.color_high_value.color()
         index = self.cbx_mode.currentIndex()
         mode = self.cbx_mode.itemData(index)
+        classes = self.spinBox_classes.value()
+
+        # Compute renderer
+        # noinspection PyArgumentList
+        symbol = QgsSymbolV2.defaultSymbol(QGis.Polygon)
+
+        color_ramp = QgsVectorGradientColorRampV2(low_color, high_color)
+        renderer = QgsGraduatedSymbolRendererV2.createRenderer(
+            self.admin_layer,
+            self.name_field,
+            classes,
+            mode,
+            symbol,
+            color_ramp)
+        self.admin_layer.setRendererV2(renderer)
