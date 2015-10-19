@@ -2,7 +2,6 @@
 	<qresource prefix="/plugins/GeoHealth/resources" >
 		<file>icon.png</file>
 		<file>espace-dev.png</file>
-		<file>umr.jpeg</file>
 		<file>um2.png</file>
 		<file>gnu.png</file>
 		<file>refresh.png</file>

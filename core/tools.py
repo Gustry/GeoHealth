@@ -21,10 +21,23 @@
  ***************************************************************************/
 """
 
+from os import pardir
+from os.path import dirname, join, abspath
+from PyQt4.uic import loadUiType
 from PyQt4.QtCore import QSettings
 from PyQt4.QtGui import QApplication
 from qgis.utils import iface
 from qgis.gui import QgsMessageBar
+
+
+def ui_class(ui):
+    ui_file = abspath(
+        join(
+            dirname(__file__),
+            pardir,
+            'ui',
+            '%s.ui' % ui))
+    return loadUiType(uifile=ui_file, from_imports='from GeoHealth import resources_rc')[0]
 
 
 def get_last_input_path():

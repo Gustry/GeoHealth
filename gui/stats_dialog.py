@@ -32,16 +32,19 @@ from os.path import dirname
 from qgis.core import QGis, QgsFeatureRequest, QgsSpatialIndex
 from qgis.utils import iface
 
-from GeoHealth.ui.stats import Ui_Stats
 from GeoHealth.core.graph_toolbar import CustomNavigationToolbar
 from GeoHealth.core.stats import Stats
 from GeoHealth.core.tools import \
-    trans, display_message_bar, get_last_input_path, set_last_input_path
+    trans, \
+    display_message_bar, \
+    get_last_input_path, \
+    set_last_input_path, \
+    ui_class
 from GeoHealth.core.exceptions import \
     GeoHealthException, NoLayerProvidedException, DifferentCrsException
 
 
-class StatsWidget(QWidget, Ui_Stats):
+class StatsWidget(QWidget, ui_class('stats')):
 
     signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
 

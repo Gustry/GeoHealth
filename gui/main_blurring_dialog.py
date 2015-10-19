@@ -25,10 +25,10 @@ from os.path import join, dirname, abspath, isfile
 from PyQt4.QtGui import QDialog
 from PyQt4.QtCore import QSettings, QUrl
 
-from GeoHealth.ui.main_blurring import Ui_BlurringDialogBase
+from GeoHealth.core.tools import ui_class
 
 
-class MainBlurringDialog(QDialog, Ui_BlurringDialogBase):
+class MainBlurringDialog(QDialog, ui_class('main_blurring')):
 
     def __init__(self, parent=None):
         """Constructor."""

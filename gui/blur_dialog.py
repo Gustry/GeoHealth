@@ -37,17 +37,20 @@ from processing.tools.system import getTempFilenameInTempFolder
 from GeoHealth.core.blurring.layer_index import LayerIndex
 from GeoHealth.core.blurring.blur import Blur
 from GeoHealth.core.tools import \
-    get_last_input_path, set_last_input_path, trans, display_message_bar
+    get_last_input_path,\
+    set_last_input_path,\
+    trans,\
+    display_message_bar,\
+    ui_class
 from GeoHealth.core.exceptions import \
     GeoHealthException, \
     NoLayerProvidedException,\
     NoFileNoDisplayException, \
     DifferentCrsException,\
     CreatingShapeFileException
-from GeoHealth.ui.blur import Ui_Blur
 
 
-class BlurWidget(QWidget, Ui_Blur):
+class BlurWidget(QWidget, ui_class('blur')):
 
     signalAskCloseWindow = pyqtSignal(name='signalAskCloseWindow')
 

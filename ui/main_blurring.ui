@@ -81,7 +81,7 @@ QListWidget::item::selected {
        <string>Blur</string>
       </property>
       <property name="icon">
-       <iconset resource="../resources/resources.qrc">
+       <iconset resource="../resources.qrc">
         <normaloff>:/plugins/GeoHealth/resources/blur.png</normaloff>:/plugins/GeoHealth/resources/blur.png</iconset>
       </property>
      </item>
@@ -90,7 +90,7 @@ QListWidget::item::selected {
        <string>Statistics</string>
       </property>
       <property name="icon">
-       <iconset resource="../resources/resources.qrc">
+       <iconset resource="../resources.qrc">
         <normaloff>:/plugins/GeoHealth/resources/sigma.png</normaloff>:/plugins/GeoHealth/resources/sigma.png</iconset>
       </property>
      </item>
@@ -99,7 +99,7 @@ QListWidget::item::selected {
        <string>Help</string>
       </property>
       <property name="icon">
-       <iconset resource="../resources/resources.qrc">
+       <iconset resource="../resources.qrc">
         <normaloff>:/plugins/GeoHealth/resources/about.png</normaloff>:/plugins/GeoHealth/resources/about.png</iconset>
       </property>
      </item>
@@ -108,7 +108,7 @@ QListWidget::item::selected {
        <string>About</string>
       </property>
       <property name="icon">
-       <iconset resource="../resources/resources.qrc">
+       <iconset resource="../resources.qrc">
         <normaloff>:/plugins/GeoHealth/resources/info.png</normaloff>:/plugins/GeoHealth/resources/info.png</iconset>
       </property>
      </item>
@@ -164,7 +164,7 @@ QListWidget::item::selected {
                  <string notr="true"/>
                 </property>
                 <property name="pixmap">
-                 <pixmap resource="../resources/resources.qrc">:/plugins/GeoHealth/resources/espace-dev.png</pixmap>
+                 <pixmap resource="../resources.qrc">:/plugins/GeoHealth/resources/espace-dev.png</pixmap>
                 </property>
                 <property name="scaledContents">
                  <bool>false</bool>
@@ -349,8 +349,9 @@ QListWidget::item::selected {
  </customwidgets>
  <resources>
   <include location="../../QuickOSM/resources.qrc"/>
-  <include location="../resources/resources.qrc"/>
   <include location="../resources.qrc"/>
+  <include location="../resources.qrc"/>
+  <include location="../resources/resources.qrc"/>
  </resources>
  <connections>
   <connection>
