@@ -45,8 +45,11 @@ def trans(msg):
 def display_message_bar(
         title=None, msg=None, level=QgsMessageBar.INFO, duration=5):
 
-    if iface.Blurring_mainWindowDialog.isVisible():
-        iface.Blurring_mainWindowDialog.messageBar.pushMessage(
-            title, msg, level, duration)
-    else:
+    try:
+        if iface.Blurring_mainWindowDialog.isVisible():
+            iface.Blurring_mainWindowDialog.messageBar.pushMessage(
+                title, msg, level, duration)
+        else:
+            iface.messageBar().pushMessage(title, msg, level, duration)
+    except AttributeError:
         iface.messageBar().pushMessage(title, msg, level, duration)
