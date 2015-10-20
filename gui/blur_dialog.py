@@ -52,6 +52,7 @@ class BlurWidget(QWidget, Ui_Blur):
     signalAskCloseWindow = pyqtSignal(name='signalAskCloseWindow')
 
     def __init__(self, parent=None):
+        self.parent = parent
         super(BlurWidget, self).__init__()
         self.setupUi(self)
 
@@ -59,6 +60,7 @@ class BlurWidget(QWidget, Ui_Blur):
         self.checkBox_envelope.setChecked(False)
         self.comboBox_envelope.setEnabled(False)
 
+        # noinspection PyUnresolvedReferences
         self.pushButton_browseFolder.clicked.connect(self.select_file)
         self.buttonBox_blur.button(QDialogButtonBox.Ok).clicked.connect(
             self.run_blur)
@@ -69,6 +71,7 @@ class BlurWidget(QWidget, Ui_Blur):
 
     def select_file(self):
         last_folder = get_last_input_path()
+        # noinspection PyArgumentList
         output_file = QFileDialog.getSaveFileName(
             parent=self,
             caption=trans('Select file'),
@@ -144,11 +147,6 @@ class BlurWidget(QWidget, Ui_Blur):
                 self.progressBar_blur.setValue(0)
 
             self.label_progress.setText('Blurring ...')
-            if display:
-                old_default_projection = self.settings.value(
-                    '/Projections/defaultBehaviour')
-                self.settings.setValue(
-                    '/Projections/defaultBehaviour', 'useProject')
 
             if selected_features_only:
                 features = layer_to_blur.selectedFeatures()
@@ -192,10 +190,16 @@ class BlurWidget(QWidget, Ui_Blur):
             del file_writer
 
             if display:
+                old_default_projection = self.settings.value(
+                    '/Projections/defaultBehaviour')
+                self.settings.setValue(
+                    '/Projections/defaultBehaviour', 'useProject')
+
                 layer_name = basename(file_name)
                 new_layer = QgsVectorLayer(file_name, layer_name, 'ogr')
                 new_layer.commitChanges()
                 new_layer.clearCacheImage()
+                # noinspection PyArgumentList
                 QgsMapLayerRegistry.instance().addMapLayers([new_layer])
 
                 self.settings.setValue(
@@ -212,5 +216,7 @@ class BlurWidget(QWidget, Ui_Blur):
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
 
         finally:
+            # noinspection PyArgumentList
             QApplication.restoreOverrideCursor()
+            # noinspection PyArgumentList
             QApplication.processEvents()

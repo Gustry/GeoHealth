@@ -49,6 +49,7 @@ class IncidenceDialog(QDialog, Ui_Incidence):
         QDialog.__init__(self, parent)
         self.setupUi(self)
         self.name_field = None
+        self.admin_layer = None
 
         # Connect slot.
         # noinspection PyUnresolvedReferences
@@ -60,11 +61,16 @@ class IncidenceDialog(QDialog, Ui_Incidence):
             self.hide)
 
         # Add items in symbology
-        self.cbx_mode.addItem('Equal interval', QgsGraduatedSymbolRendererV2.EqualInterval)
-        self.cbx_mode.addItem('Quantile (equal count)', QgsGraduatedSymbolRendererV2.Quantile)
-        self.cbx_mode.addItem('Natural breaks', QgsGraduatedSymbolRendererV2.Jenks)
-        self.cbx_mode.addItem('Standard deviation', QgsGraduatedSymbolRendererV2.StdDev)
-        self.cbx_mode.addItem('Pretty breaks', QgsGraduatedSymbolRendererV2.Pretty)
+        self.cbx_mode.addItem(
+            'Equal interval', QgsGraduatedSymbolRendererV2.EqualInterval)
+        self.cbx_mode.addItem(
+            'Quantile (equal count)', QgsGraduatedSymbolRendererV2.Quantile)
+        self.cbx_mode.addItem(
+            'Natural breaks', QgsGraduatedSymbolRendererV2.Jenks)
+        self.cbx_mode.addItem(
+            'Standard deviation', QgsGraduatedSymbolRendererV2.StdDev)
+        self.cbx_mode.addItem(
+            'Pretty breaks', QgsGraduatedSymbolRendererV2.Pretty)
 
         # Setup the graph.
         self.figure = Figure()
@@ -265,6 +271,7 @@ class IncidenceDialog(QDialog, Ui_Incidence):
         symbol = QgsSymbolV2.defaultSymbol(QGis.Polygon)
 
         color_ramp = QgsVectorGradientColorRampV2(low_color, high_color)
+        # noinspection PyArgumentList
         renderer = QgsGraduatedSymbolRendererV2.createRenderer(
             self.admin_layer,
             self.name_field,

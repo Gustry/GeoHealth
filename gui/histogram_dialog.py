@@ -28,7 +28,6 @@ from qgis.utils import iface
 from qgis.core import QgsMapLayer, QgsGraduatedSymbolRendererV2
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
-import matplotlib as plt
 from matplotlib.figure import Figure
 
 

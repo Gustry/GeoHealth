@@ -46,13 +46,16 @@ class StatsWidget(QWidget, Ui_Stats):
     signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
 
     def __init__(self, parent=None):
+        self.parent = parent
         super(StatsWidget, self).__init__()
         self.setupUi(self)
 
         self.label_progressStats.setText('')
 
         #Connect
+        # noinspection PyUnresolvedReferences
         self.pushButton_saveTable.clicked.connect(self.save_table)
+        # noinspection PyUnresolvedReferences
         self.pushButton_saveYValues.clicked.connect(self.save_y_values)
         self.buttonBox_stats.button(QDialogButtonBox.Ok).clicked.connect(
             self.run_stats)
@@ -83,6 +86,7 @@ class StatsWidget(QWidget, Ui_Stats):
     def run_stats(self):
         self.progressBar_stats.setValue(0)
         self.label_progressStats.setText('')
+        # noinspection PyArgumentList
         QApplication.processEvents()
 
         index = self.comboBox_blurredLayer.currentIndex()
@@ -125,9 +129,11 @@ class StatsWidget(QWidget, Ui_Stats):
                     features_stats[feature.id()] = feature
                     percent = int((i + 1) * 100 / nb_feature_stats)
                     self.progressBar_stats.setValue(percent)
+                    # noinspection PyArgumentList
                     QApplication.processEvents()
 
                 self.label_progressStats.setText('%s 2/3' % label_creating)
+                # noinspection PyArgumentList
                 QApplication.processEvents()
                 index = QgsSpatialIndex()
                 for i, f in enumerate(stats_layer.getFeatures()):
@@ -135,6 +141,7 @@ class StatsWidget(QWidget, Ui_Stats):
 
                     percent = int((i + 1) * 100 / nb_feature_stats)
                     self.progressBar_stats.setValue(percent)
+                    # noinspection PyArgumentList
                     QApplication.processEvents()
 
                 self.label_progressStats.setText('%s 3/3' % label_calculating)
@@ -143,10 +150,12 @@ class StatsWidget(QWidget, Ui_Stats):
                 # If QGIS >= 2.7, we can speed up the spatial index.
                 # From 1 min 15 to 7 seconds on my PC.
                 self.label_progressStats.setText('%s 1/2' % label_creating)
+                # noinspection PyArgumentList
                 QApplication.processEvents()
                 index = QgsSpatialIndex(stats_layer.getFeatures())
                 self.label_progressStats.setText('%s 2/2' % label_calculating)
 
+            # noinspection PyArgumentList
             QApplication.processEvents()
             for i, feature in enumerate(blurred_layer.getFeatures()):
                 count = 0
@@ -161,6 +170,7 @@ class StatsWidget(QWidget, Ui_Stats):
 
                 percent = int((i + 1) * 100 / nb_feature_blurred)
                 self.progressBar_stats.setValue(percent)
+                # noinspection PyArgumentList
                 QApplication.processEvents()
 
             stats = Stats(self.tab)
@@ -209,6 +219,7 @@ class StatsWidget(QWidget, Ui_Stats):
 
         last_directory = get_last_input_path()
 
+        # noinspection PyArgumentList
         output_file = QFileDialog.getSaveFileName(
             parent=self,
             caption=trans('Select file'),
@@ -235,6 +246,7 @@ class StatsWidget(QWidget, Ui_Stats):
             csv_string += str(value) + '\n'
 
         last_directory = get_last_input_path()
+        # noinspection PyArgumentList
         output_file = QFileDialog.getSaveFileName(
             parent=self,
             caption=trans('Select file'),
