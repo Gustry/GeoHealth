@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32px"
+   height="32px"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="histogram.png"
+   inkscape:export-filename="/home/etienne/plugins/GeoHealth/resources/histogram.png"
+   inkscape:export-xdpi="180"
+   inkscape:export-ydpi="180">
+  <defs
+     id="defs2987" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffff92"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="22.395604"
+     inkscape:cx="11.111671"
+     inkscape:cy="16.12369"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1037"
+     inkscape:window-x="-3"
+     inkscape:window-y="17"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata2990">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer">
+    <rect
+       style="fill:#008000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect3079"
+       width="7.501472"
+       height="11.921982"
+       x="0.62696266"
+       y="19.419407" />
+    <rect
+       style="fill:#000080;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect3079-7"
+       width="7.858685"
+       height="18.485769"
+       x="8.0372915"
+       y="12.732826" />
+    <rect
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect3079-8"
+       width="7.8140335"
+       height="25.36212"
+       x="15.762022"
+       y="5.9011283" />
+    <rect
+       style="fill:#ffff00;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect3079-78"
+       width="7.8140335"
+       height="20.763002"
+       x="23.576056"
+       y="10.455593" />
+  </g>
+</svg>
