@@ -30,6 +30,7 @@ from processing.core.Processing import Processing
 from GeoHealth.core.tools import trans
 from GeoHealth.gui.incidence_dialog import IncidenceDialog
 from GeoHealth.gui.main_blurring_dialog import MainBlurringDialog
+from GeoHealth.gui.histogram_dialog import HistogramDialog
 from GeoHealth.processing_geohealth.provider import Provider
 
 
@@ -58,6 +59,7 @@ class GeoHealth:
         self.geohealth_menu = None
         self.blur_action = None
         self.incidence_action = None
+        self.histogram_action = None
 
         #Add to processing
         self.provider = Provider()
@@ -88,6 +90,14 @@ class GeoHealth:
         # noinspection PyUnresolvedReferences
         self.incidence_action.triggered.connect(self.open_incidence_window)
 
+        # Histogram
+        icon = QIcon(":/plugins/GeoHealth/resources/histogram.png")
+        self.histogram_action = QAction(
+            icon, trans('Histogram'), self.iface.mainWindow())
+        self.geohealth_menu.addAction(self.histogram_action)
+        # noinspection PyUnresolvedReferences
+        self.histogram_action.triggered.connect(self.open_histogram_window)
+
     def unload(self):
         self.iface.removePluginMenu(trans("Blurring"), self.blur_action)
         self.iface.removePluginMenu(
@@ -108,3 +118,9 @@ class GeoHealth:
         iface.Blurring_mainWindowDialog.fill_combo_box_layers()
         iface.Blurring_mainWindowDialog.show()
         iface.Blurring_mainWindowDialog.exec_()
+
+    @staticmethod
+    def open_histogram_window():
+        dialog = HistogramDialog()
+        dialog.show()
+        dialog.exec_()
