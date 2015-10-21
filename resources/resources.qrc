@@ -11,5 +11,6 @@
 		<file>sigma.png</file>
 		<file>incidence.png</file>
 		<file>histogram.png</file>
+		<file>xy.png</file>
 	</qresource>
 </RCC>

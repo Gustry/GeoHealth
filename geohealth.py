@@ -25,6 +25,7 @@ from os.path import dirname, join, exists
 from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
 from PyQt4.QtGui import QMenu, QIcon, QAction
 from qgis.utils import iface
+from qgis.core import QgsProviderRegistry
 from processing.core.Processing import Processing
 
 from GeoHealth.core.tools import trans
@@ -57,6 +58,7 @@ class GeoHealth:
 
         self.plugin_menu = None
         self.geohealth_menu = None
+        self.xy_action = None
         self.blur_action = None
         self.incidence_action = None
         self.histogram_action = None
@@ -73,6 +75,14 @@ class GeoHealth:
             QIcon(':/plugins/GeoHealth/resources/icon.png'))
         self.plugin_menu = self.iface.pluginMenu()
         self.plugin_menu.addMenu(self.geohealth_menu)
+
+        # XY tools.
+        icon = QIcon(":/plugins/GeoHealth/resources/xy.png")
+        self.xy_action = QAction(
+            icon, trans("XY to map"), self.iface.mainWindow())
+        self.geohealth_menu.addAction(self.xy_action)
+        # noinspection PyUnresolvedReferences
+        self.xy_action.triggered.connect(self.open_xy_window)
 
         # Blur
         icon = QIcon(":/plugins/GeoHealth/resources/blur.png")
@@ -103,6 +113,15 @@ class GeoHealth:
         self.iface.removePluginMenu(
             trans("Incidence - Density"), self.incidence_action)
         Processing.removeProvider(self.provider)
+
+    @staticmethod
+    def open_xy_window():
+        # noinspection PyArgumentList
+        dialog = QgsProviderRegistry.instance().selectWidget('delimitedtext')
+        dialog.setWindowTitle(trans('XY to map'))
+        dialog.addVectorLayer[str, str, str].connect(iface.addVectorLayer)
+        dialog.show()
+        dialog.exec_()
 
     @staticmethod
     def open_incidence_window():
