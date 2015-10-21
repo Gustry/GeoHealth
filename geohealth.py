@@ -30,6 +30,7 @@ from processing.core.Processing import Processing
 
 from GeoHealth.core.tools import trans
 from GeoHealth.gui.incidence_dialog import IncidenceDialog
+from GeoHealth.gui.density_dialog import DensityDialog
 from GeoHealth.gui.main_blurring_dialog import MainBlurringDialog
 from GeoHealth.gui.histogram_dialog import HistogramDialog
 from GeoHealth.processing_geohealth.provider import Provider
@@ -61,6 +62,7 @@ class GeoHealth:
         self.xy_action = None
         self.blur_action = None
         self.incidence_action = None
+        self.density_action = None
         self.histogram_action = None
 
         #Add to processing
@@ -95,10 +97,18 @@ class GeoHealth:
         # Incidence
         icon = QIcon(":/plugins/GeoHealth/resources/incidence.png")
         self.incidence_action = QAction(
-            icon, trans("Incidence - Density"), self.iface.mainWindow())
+            icon, trans("Incidence"), self.iface.mainWindow())
         self.geohealth_menu.addAction(self.incidence_action)
         # noinspection PyUnresolvedReferences
         self.incidence_action.triggered.connect(self.open_incidence_window)
+
+        # Density
+        icon = QIcon(":/plugins/GeoHealth/resources/incidence.png")
+        self.density_action = QAction(
+            icon, trans("Density"), self.iface.mainWindow())
+        self.geohealth_menu.addAction(self.density_action)
+        # noinspection PyUnresolvedReferences
+        self.density_action.triggered.connect(self.open_density_window)
 
         # Histogram
         icon = QIcon(":/plugins/GeoHealth/resources/histogram.png")
@@ -126,6 +136,13 @@ class GeoHealth:
     @staticmethod
     def open_incidence_window():
         dialog = IncidenceDialog()
+        dialog.fill_combobox_layer()
+        dialog.show()
+        dialog.exec_()
+
+    @staticmethod
+    def open_density_window():
+        dialog = DensityDialog()
         dialog.fill_combobox_layer()
         dialog.show()
         dialog.exec_()

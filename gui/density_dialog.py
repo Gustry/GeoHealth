@@ -21,37 +21,19 @@
  ***************************************************************************/
 """
 
-from GeoHealth.ui.incidence import Ui_Incidence
+from GeoHealth.ui.density import Ui_Density
 from GeoHealth.gui.incidence_density_dialog import IncidenceDensityDialog
 
 
-class IncidenceDialog(IncidenceDensityDialog, Ui_Incidence):
+class DensityDialog(IncidenceDensityDialog, Ui_Density):
     def __init__(self, parent=None):
         """Constructor."""
         IncidenceDensityDialog.__init__(self, parent)
-        Ui_Incidence.setupUi(self, self)
+        # noinspection PyArgumentList
+        Ui_Density.setupUi(self, self)
 
         self.setup_ui()
 
-        # Connect slot.
-        # noinspection PyUnresolvedReferences
-        self.comboBox_incidence_adminLayer.currentIndexChanged.connect(
-            self.update_fields)
-
-    def update_fields(self):
-        """Update the combobox about the population field."""
-        self.comboBox_incidence_populationField.clear()
-
-        index = self.comboBox_incidence_adminLayer.currentIndex()
-        admin_layer = self.comboBox_incidence_adminLayer.itemData(index)
-        if not admin_layer:
-            return False
-
-        fields = admin_layer.dataProvider().fields()
-
-        for item in fields:
-            self.comboBox_incidence_populationField.addItem(item.name(), item)
-
     def run_stats(self):
         """Main function which do the process."""
-        IncidenceDensityDialog.run_stats(self, use_area=False)
+        IncidenceDensityDialog.run_stats(self, use_area=True)
