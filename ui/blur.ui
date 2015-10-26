@@ -148,6 +148,12 @@
      <property name="title">
       <string>Advanced</string>
      </property>
+     <property name="collapsed">
+      <bool>true</bool>
+     </property>
+     <property name="saveCollapsedState">
+      <bool>false</bool>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
        <widget class="QFrame" name="frame">
@@ -275,7 +281,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../../../plugins/GeoHealth/resources.qrc"/>
+  <include location="../../../../../plugins/GeoHealth/resources/resources.qrc"/>
  </resources>
  <connections>
   <connection>

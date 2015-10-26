@@ -29,6 +29,7 @@ from qgis.core import QgsProviderRegistry
 from processing.core.Processing import Processing
 
 from GeoHealth.core.tools import trans
+from GeoHealth.gui.main_window import MainDialog
 from GeoHealth.gui.incidence_dialog import IncidenceDialog
 from GeoHealth.gui.density_dialog import DensityDialog
 from GeoHealth.gui.main_blurring_dialog import MainBlurringDialog
@@ -59,6 +60,7 @@ class GeoHealth:
 
         self.plugin_menu = None
         self.geohealth_menu = None
+        self.main_action = None
         self.xy_action = None
         self.blur_action = None
         self.incidence_action = None
@@ -78,11 +80,19 @@ class GeoHealth:
         self.plugin_menu = self.iface.pluginMenu()
         self.plugin_menu.addMenu(self.geohealth_menu)
 
+        # Main window
+        icon = QIcon(':/plugins/GeoHealth/resources/icon.png')
+        self.main_action = QAction(
+            icon, trans('GeoHealth'), self.iface.mainWindow())
+        self.geohealth_menu.addAction(self.main_action)
+        # noinspection PyUnresolvedReferences
+        self.main_action.triggered.connect(self.open_main_window)
+
         # XY tools.
         icon = QIcon(":/plugins/GeoHealth/resources/xy.png")
         self.xy_action = QAction(
             icon, trans("XY to map"), self.iface.mainWindow())
-        self.geohealth_menu.addAction(self.xy_action)
+        # self.geohealth_menu.addAction(self.xy_action)
         # noinspection PyUnresolvedReferences
         self.xy_action.triggered.connect(self.open_xy_window)
 
@@ -90,7 +100,7 @@ class GeoHealth:
         icon = QIcon(":/plugins/GeoHealth/resources/blur.png")
         self.blur_action = QAction(
             icon, trans("Blurring"), self.iface.mainWindow())
-        self.geohealth_menu.addAction(self.blur_action)
+        # self.geohealth_menu.addAction(self.blur_action)
         # noinspection PyUnresolvedReferences
         self.blur_action.triggered.connect(self.open_blurring_window)
 
@@ -98,7 +108,7 @@ class GeoHealth:
         icon = QIcon(":/plugins/GeoHealth/resources/incidence.png")
         self.incidence_action = QAction(
             icon, trans("Incidence"), self.iface.mainWindow())
-        self.geohealth_menu.addAction(self.incidence_action)
+        # self.geohealth_menu.addAction(self.incidence_action)
         # noinspection PyUnresolvedReferences
         self.incidence_action.triggered.connect(self.open_incidence_window)
 
@@ -106,7 +116,7 @@ class GeoHealth:
         icon = QIcon(":/plugins/GeoHealth/resources/incidence.png")
         self.density_action = QAction(
             icon, trans("Density"), self.iface.mainWindow())
-        self.geohealth_menu.addAction(self.density_action)
+        # self.geohealth_menu.addAction(self.density_action)
         # noinspection PyUnresolvedReferences
         self.density_action.triggered.connect(self.open_density_window)
 
@@ -114,7 +124,7 @@ class GeoHealth:
         icon = QIcon(":/plugins/GeoHealth/resources/histogram.png")
         self.histogram_action = QAction(
             icon, trans('Histogram'), self.iface.mainWindow())
-        self.geohealth_menu.addAction(self.histogram_action)
+        # self.geohealth_menu.addAction(self.histogram_action)
         # noinspection PyUnresolvedReferences
         self.histogram_action.triggered.connect(self.open_histogram_window)
 
@@ -123,6 +133,12 @@ class GeoHealth:
         self.iface.removePluginMenu(
             trans("Incidence - Density"), self.incidence_action)
         Processing.removeProvider(self.provider)
+
+    @staticmethod
+    def open_main_window():
+        dialog = MainDialog()
+        dialog.show()
+        dialog.exec_()
 
     @staticmethod
     def open_xy_window():

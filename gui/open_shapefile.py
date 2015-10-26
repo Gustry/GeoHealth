@@ -20,24 +20,37 @@
  *                                                                         *
  ***************************************************************************/
 """
+from os.path import splitext, basename
+from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
+from qgis.core import QgsMapLayerRegistry, QgsVectorLayer
 
-from PyQt4.QtGui import QDialog
+from GeoHealth.ui.open_shapefile import Ui_Form
+from GeoHealth.core.tools import trans
 
-from GeoHealth.ui.main_blurring import Ui_Form
 
-
-class MainBlurringDialog(QDialog, Ui_Form):
+class OpenShapefileWidget(QWidget, Ui_Form):
 
     def __init__(self, parent=None):
-        """Constructor."""
         self.parent = parent
-        QDialog.__init__(self)
+        super(OpenShapefileWidget, self).__init__()
         self.setupUi(self)
 
-        #Connect
-        self.blur.signalAskCloseWindow.connect(self.hide)
-        self.statistics.signalAskCloseWindow.connect(self.hide)
+        self.buttonBox.button(QDialogButtonBox.Open).clicked.connect(
+            self.open_shapefile)
+        # noinspection PyUnresolvedReferences
+        self.bt_browse.clicked.connect(self.open_file_browser)
 
-    def fill_combo_box_layers(self):
-        self.statistics.fill_comboxbox_layers()
-        self.blur.fill_comboxbox_layers()
+    def open_file_browser(self):
+        # noinspection PyArgumentList
+        shapefile = QFileDialog.getOpenFileName(
+            parent=self.parent,
+            caption=trans('Select shapefile'),
+            filter='Shapefile (*.shp)')
+        self.le_shapefile.setText(shapefile)
+
+    def open_shapefile(self):
+        path = self.le_shapefile.text()
+        name = basename(splitext(path)[0])
+        layer = QgsVectorLayer(path, name, 'ogr')
+        # noinspection PyArgumentList
+        QgsMapLayerRegistry.instance().addMapLayer(layer)

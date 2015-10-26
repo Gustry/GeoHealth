@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'blur.ui'
 #
-# Created: Sat Nov  8 11:36:56 2014
+# Created: Mon Oct 26 19:16:45 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -91,6 +91,8 @@ class Ui_Blur(object):
         self.horizontalLayout.addWidget(self.pushButton_browseFolder)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.groupBox_advanced = gui.QgsCollapsibleGroupBox(Blur)
+        self.groupBox_advanced.setCollapsed(True)
+        self.groupBox_advanced.setSaveCollapsedState(False)
         self.groupBox_advanced.setObjectName(_fromUtf8("groupBox_advanced"))
         self.verticalLayout_4 = QtGui.QVBoxLayout(self.groupBox_advanced)
         self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))

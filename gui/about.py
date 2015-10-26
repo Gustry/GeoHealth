@@ -21,23 +21,13 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QDialog
+from PyQt4.QtGui import QWidget
+from GeoHealth.ui.about import Ui_About
 
-from GeoHealth.ui.main_blurring import Ui_Form
 
-
-class MainBlurringDialog(QDialog, Ui_Form):
+class AboutWidget(QWidget, Ui_About):
 
     def __init__(self, parent=None):
-        """Constructor."""
         self.parent = parent
-        QDialog.__init__(self)
+        super(AboutWidget, self).__init__()
         self.setupUi(self)
-
-        #Connect
-        self.blur.signalAskCloseWindow.connect(self.hide)
-        self.statistics.signalAskCloseWindow.connect(self.hide)
-
-    def fill_combo_box_layers(self):
-        self.statistics.fill_comboxbox_layers()
-        self.blur.fill_comboxbox_layers()
