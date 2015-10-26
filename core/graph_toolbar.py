@@ -20,9 +20,13 @@
  *                                                                         *
  ***************************************************************************/
 """
+try:
+    from matplotlib.backends.backend_qt4agg import \
+        NavigationToolbar2QTAgg as NavigationToolbar
+except ImportError:
+    from matplotlib.backends.backend_qt4agg import \
+        NavigationToolbar2Qt as NavigationToolbar
 
-from matplotlib.backends.backend_qt4agg import \
-    NavigationToolbar2QTAgg as NavigationToolbar
 
 class CustomNavigationToolbar(NavigationToolbar):
     toolitems = [t for t in NavigationToolbar.toolitems if
