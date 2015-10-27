@@ -77,6 +77,13 @@ class DifferentCrsException(GeoHealthException):
         GeoHealthException.__init__(self, msg)
 
 
+class FieldExistingException(GeoHealthException):
+    def __init__(self, msg=None, field=None):
+        if not msg:
+            msg = trans(u'The field %s already exists in the layer.' % field)
+        GeoHealthException.__init__(self, msg)
+
+
 class NotANumberException(GeoHealthException):
     def __init__(self, msg=None, suffix=None):
         if not msg:

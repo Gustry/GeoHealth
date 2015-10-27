@@ -52,6 +52,7 @@ from GeoHealth.core.exceptions import \
     GeoHealthException,\
     NoLayerProvidedException,\
     DifferentCrsException,\
+    FieldExistingException,\
     NotANumberException
 from GeoHealth.core.stats import Stats
 
@@ -174,6 +175,10 @@ class IncidenceDensityDialog(QDialog):
 
             admin_layer_provider = self.admin_layer.dataProvider()
             fields = admin_layer_provider.fields()
+
+            if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
+                raise FieldExistingException(field=self.name_field)
+
             fields.append(QgsField(self.name_field, QVariant.Double))
 
             if add_nb_intersections:
