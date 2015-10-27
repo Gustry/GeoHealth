@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'density.ui'
 #
-# Created: Tue Oct 27 10:12:23 2015
+# Created: Tue Oct 27 10:31:54 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -85,10 +85,22 @@ class Ui_Density(object):
         self.formLayout.setWidget(5, QtGui.QFormLayout.FieldRole, self.checkBox_incidence_runStats)
         self.label_7 = QtGui.QLabel(Density)
         self.label_7.setObjectName(_fromUtf8("label_7"))
-        self.formLayout.setWidget(6, QtGui.QFormLayout.LabelRole, self.label_7)
+        self.formLayout.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_7)
         self.label_8 = QtGui.QLabel(Density)
         self.label_8.setObjectName(_fromUtf8("label_8"))
-        self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.label_8)
+        self.formLayout.setWidget(7, QtGui.QFormLayout.FieldRole, self.label_8)
+        self.label_5 = QtGui.QLabel(Density)
+        self.label_5.setObjectName(_fromUtf8("label_5"))
+        self.formLayout.setWidget(6, QtGui.QFormLayout.LabelRole, self.label_5)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.le_output_filepath = QtGui.QLineEdit(Density)
+        self.le_output_filepath.setObjectName(_fromUtf8("le_output_filepath"))
+        self.horizontalLayout.addWidget(self.le_output_filepath)
+        self.button_browse = QtGui.QPushButton(Density)
+        self.button_browse.setObjectName(_fromUtf8("button_browse"))
+        self.horizontalLayout.addWidget(self.button_browse)
+        self.formLayout.setLayout(6, QtGui.QFormLayout.FieldRole, self.horizontalLayout)
         self.verticalLayout.addLayout(self.formLayout)
         self.symbology = gui.QgsCollapsibleGroupBox(Density)
         self.symbology.setCheckable(True)
@@ -180,6 +192,9 @@ class Ui_Density(object):
         self.checkBox_incidence_runStats.setText(_translate("Density", "Calculate statistics", None))
         self.label_7.setText(_translate("Density", "<html><head/><body><p><span style=\" font-style:italic;\">Density =</span></p></body></html>", None))
         self.label_8.setText(_translate("Density", "<html><head/><body><p><span style=\" font-style:italic;\">number of cases / area * ratio</span></p></body></html>", None))
+        self.label_5.setText(_translate("Density", "Output", None))
+        self.le_output_filepath.setPlaceholderText(_translate("Density", "Save to temporary file", None))
+        self.button_browse.setText(_translate("Density", "Browse", None))
         self.symbology.setTitle(_translate("Density", "Add a symbology", None))
         self.label_9.setText(_translate("Density", "Low incidence", None))
         self.label_10.setText(_translate("Density", "High incidence", None))

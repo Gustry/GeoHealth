@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'incidence.ui'
 #
-# Created: Tue Oct 27 10:12:20 2015
+# Created: Tue Oct 27 10:31:56 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -57,9 +57,6 @@ class Ui_Incidence(object):
         self.cbx_aggregation_layer.setSizePolicy(sizePolicy)
         self.cbx_aggregation_layer.setObjectName(_fromUtf8("cbx_aggregation_layer"))
         self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.cbx_aggregation_layer)
-        self.horizontalLayout = QtGui.QHBoxLayout()
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.formLayout.setLayout(8, QtGui.QFormLayout.FieldRole, self.horizontalLayout)
         self.label_7 = QtGui.QLabel(Incidence)
         self.label_7.setObjectName(_fromUtf8("label_7"))
         self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_7)
@@ -97,12 +94,27 @@ class Ui_Incidence(object):
         self.checkBox_incidence_runStats.setChecked(True)
         self.checkBox_incidence_runStats.setObjectName(_fromUtf8("checkBox_incidence_runStats"))
         self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.checkBox_incidence_runStats)
+        self.label_8 = QtGui.QLabel(Incidence)
+        self.label_8.setObjectName(_fromUtf8("label_8"))
+        self.formLayout.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_8)
         self.label_6 = QtGui.QLabel(Incidence)
         self.label_6.setObjectName(_fromUtf8("label_6"))
-        self.formLayout.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_6)
+        self.formLayout.setWidget(8, QtGui.QFormLayout.LabelRole, self.label_6)
         self.label_5 = QtGui.QLabel(Incidence)
         self.label_5.setObjectName(_fromUtf8("label_5"))
-        self.formLayout.setWidget(7, QtGui.QFormLayout.FieldRole, self.label_5)
+        self.formLayout.setWidget(8, QtGui.QFormLayout.FieldRole, self.label_5)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.formLayout.setLayout(9, QtGui.QFormLayout.FieldRole, self.horizontalLayout)
+        self.horizontalLayout_6 = QtGui.QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(_fromUtf8("horizontalLayout_6"))
+        self.le_output_filepath = QtGui.QLineEdit(Incidence)
+        self.le_output_filepath.setObjectName(_fromUtf8("le_output_filepath"))
+        self.horizontalLayout_6.addWidget(self.le_output_filepath)
+        self.button_browse = QtGui.QPushButton(Incidence)
+        self.button_browse.setObjectName(_fromUtf8("button_browse"))
+        self.horizontalLayout_6.addWidget(self.button_browse)
+        self.formLayout.setLayout(7, QtGui.QFormLayout.FieldRole, self.horizontalLayout_6)
         self.verticalLayout.addLayout(self.formLayout)
         self.symbology = gui.QgsCollapsibleGroupBox(Incidence)
         self.symbology.setCheckable(True)
@@ -193,8 +205,11 @@ class Ui_Incidence(object):
         self.checkBox_addNbIntersections.setToolTip(_translate("Incidence", "Add the number of cases per unit to the attribute table", None))
         self.checkBox_addNbIntersections.setText(_translate("Incidence", "Add the number of cases per unit to the attribute table", None))
         self.checkBox_incidence_runStats.setText(_translate("Incidence", "Calculate statistics", None))
+        self.label_8.setText(_translate("Incidence", "Output", None))
         self.label_6.setText(_translate("Incidence", "<html><head/><body><p><span style=\" font-style:italic;\">Incidence =</span></p></body></html>", None))
         self.label_5.setText(_translate("Incidence", "<html><head/><body><p><span style=\" font-style:italic;\">number of cases / population * ratio</span></p></body></html>", None))
+        self.le_output_filepath.setPlaceholderText(_translate("Incidence", "Save to temporary file", None))
+        self.button_browse.setText(_translate("Incidence", "Browse", None))
         self.symbology.setTitle(_translate("Incidence", "Add a symbology", None))
         self.label_9.setText(_translate("Incidence", "Low incidence", None))
         self.label_10.setText(_translate("Incidence", "High incidence", None))

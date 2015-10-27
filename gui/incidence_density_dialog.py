@@ -21,26 +21,33 @@
  ***************************************************************************/
 """
 
+from tempfile import NamedTemporaryFile
 from PyQt4.QtGui import \
     QDialog,\
     QDialogButtonBox,\
     QTableWidgetItem,\
     QApplication
 from PyQt4.QtCore import QSize, QVariant, Qt
+from PyQt4.QtGui import QFileDialog
 
 from qgis.utils import iface, QGis
 from qgis.core import \
     QgsField,\
     QgsVectorGradientColorRampV2,\
     QgsGraduatedSymbolRendererV2,\
-    QgsSymbolV2
+    QgsSymbolV2,\
+    QgsVectorFileWriter,\
+    QgsFeature,\
+    QgsVectorLayer,\
+    QgsMapLayerRegistry,\
+    QgsGeometry
 
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
 from GeoHealth.core.graph_toolbar import CustomNavigationToolbar
-from GeoHealth.core.tools import display_message_bar
+from GeoHealth.core.tools import display_message_bar, trans
 from GeoHealth.core.exceptions import \
     GeoHealthException,\
     NoLayerProvidedException,\
@@ -52,16 +59,20 @@ from GeoHealth.core.stats import Stats
 class IncidenceDensityDialog(QDialog):
     def __init__(self, parent=None):
         """Constructor."""
+        self.parent = parent
         QDialog.__init__(self, parent)
         self.name_field = None
         self.admin_layer = None
         self.figure = None
         self.canvas = None
         self.toolbar = None
+        self.output_file_path = None
+        self.output_layer = None
 
     def setup_ui(self):
         # Connect slot.
         # noinspection PyUnresolvedReferences
+        self.button_browse.clicked.connect(self.open_file_browser)
         self.button_box_ok.button(QDialogButtonBox.Ok).clicked.connect(
             self.run_stats)
         self.button_box_ok.button(QDialogButtonBox.Cancel).clicked.connect(
@@ -86,6 +97,11 @@ class IncidenceDensityDialog(QDialog):
         self.toolbar = CustomNavigationToolbar(self.canvas, self)
         self.layout_plot.addWidget(self.toolbar)
         self.layout_plot.addWidget(self.canvas)
+
+    def open_file_browser(self):
+        output_file = QFileDialog.getSaveFileNameAndFilter(
+            self.parent, trans('Save shapefile'), filter='SHP (*.shp)')
+        self.le_output_filepath.setText(output_file[0])
 
     def fill_combobox_layer(self):
         """Fill combobox about layers."""
@@ -114,6 +130,7 @@ class IncidenceDensityDialog(QDialog):
         self.name_field = self.le_new_column.text()
         ratio = self.cbx_ratio.currentText()
         ratio = ratio.replace(' ', '')
+        self.output_file_path = self.le_output_filepath.text()
 
         try:
 
@@ -146,28 +163,31 @@ class IncidenceDensityDialog(QDialog):
                     .currentText()
                 index_population = self.admin_layer.fieldNameIndex(population)
 
+            # Output
+            if not self.output_file_path:
+                temp_file = NamedTemporaryFile(
+                    delete=False,
+                    suffix='-geohealth.shp')
+                self.output_file_path = temp_file.name
+                temp_file.flush()
+                temp_file.close()
+
             admin_layer_provider = self.admin_layer.dataProvider()
-            self.admin_layer.startEditing()
-            attributes = [QgsField(self.name_field, QVariant.Double)]
-            admin_layer_provider.addAttributes(attributes)
+            fields = admin_layer_provider.fields()
+            fields.append(QgsField(self.name_field, QVariant.Double))
 
             if add_nb_intersections:
-                attributes = [QgsField('nb_of_intersections', QVariant.Int)]
-                admin_layer_provider.addAttributes(attributes)
-
-            self.admin_layer.updateFields()
-            fields = self.admin_layer.pendingFields()
-            nb_fields = fields.count()
-
-            id_field_intersections = None
-
-            if add_nb_intersections:
-                id_field_incidence = nb_fields - 2
-                id_field_intersections = nb_fields - 1
-            else:
-                id_field_incidence = nb_fields - 1
+                fields.append(QgsField('nb_of_intersections', QVariant.Int))
 
             data = []
+
+            file_writer = QgsVectorFileWriter(
+                self.output_file_path,
+                'utf-8',
+                fields,
+                QGis.WKBPolygon,
+                self.admin_layer.crs(),
+                'ESRI Shapefile')
 
             for i, feature in enumerate(self.admin_layer.getFeatures()):
                 attributes = feature.attributes()
@@ -184,7 +204,6 @@ class IncidenceDensityDialog(QDialog):
                         try:
                             population = float(attributes[index_population])
                         except ValueError:
-                            self.admin_layer.rollBack()
                             raise NotANumberException(
                                 suffix=attributes[index_population])
                         value = float(count) / population * ratio
@@ -193,15 +212,25 @@ class IncidenceDensityDialog(QDialog):
                     value = None
 
                 data.append(value)
-                self.admin_layer.changeAttributeValue(
-                    feature.id(), id_field_incidence, value)
+                attributes.append(value)
 
                 if add_nb_intersections:
-                    self.admin_layer.changeAttributeValue(
-                        feature.id(), id_field_intersections, count)
+                    attributes.append(count)
 
-            self.admin_layer.commitChanges()
-            self.admin_layer.updateFields()
+                new_feature = QgsFeature()
+                new_geom = QgsGeometry(feature.geometry())
+                new_feature.setAttributes(attributes)
+                new_feature.setGeometry(new_geom)
+
+                file_writer.addFeature(new_feature)
+
+            del file_writer
+
+            self.output_layer = QgsVectorLayer(
+                self.output_file_path,
+                self.name_field,
+                'ogr')
+            QgsMapLayerRegistry.instance().addMapLayer(self.output_layer)
 
             if self.checkBox_incidence_runStats.isChecked():
 
@@ -278,10 +307,10 @@ class IncidenceDensityDialog(QDialog):
         color_ramp = QgsVectorGradientColorRampV2(low_color, high_color)
         # noinspection PyArgumentList
         renderer = QgsGraduatedSymbolRendererV2.createRenderer(
-            self.admin_layer,
+            self.output_layer,
             self.name_field,
             classes,
             mode,
             symbol,
             color_ramp)
-        self.admin_layer.setRendererV2(renderer)
+        self.output_layer.setRendererV2(renderer)

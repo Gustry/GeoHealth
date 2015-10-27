@@ -33,6 +33,7 @@ class IncidenceDialog(IncidenceDensityDialog, Ui_Incidence):
 
         self.setup_ui()
         self.fill_combobox_layer()
+        self.update_fields()
 
         # Connect slot.
         # noinspection PyUnresolvedReferences
