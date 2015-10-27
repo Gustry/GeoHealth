@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>Etienne Trimaille</author>
  <class>About</class>
  <widget class="QWidget" name="About">
   <property name="geometry">
@@ -7,7 +8,7 @@
     <x>0</x>
     <y>0</y>
     <width>629</width>
-    <height>528</height>
+    <height>602</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,7 +57,7 @@
           <item>
            <widget class="QLabel" name="label_8">
             <property name="text">
-             <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;mailto:vincent.herbreteau@ird.fr?subject=Plugin Blurring&quot;&gt;&lt;span style=&quot; color:#0057ae;&quot; style=&quot;text-decoration:none;&quot;&gt;Vincent Herbreteau (IRD)&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;mailto:vincent.herbreteau@ird.fr?subject=Plugin GeoHealth&quot;&gt;&lt;span style=&quot; color:#0057ae;&quot; style=&quot;text-decoration:none;&quot;&gt;Vincent Herbreteau (IRD)&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="openExternalLinks">
              <bool>true</bool>
@@ -66,7 +67,7 @@
           <item>
            <widget class="QLabel" name="label_7">
             <property name="text">
-             <string notr="true">&lt;a href=&quot;mailto:christophe.revillion@ird.fr?subject=Plugin Blurring&quot; style=&quot;text-decoration:none;&quot;&gt;Christophe Révillion (IRD)&lt;/a&gt;</string>
+             <string notr="true">&lt;a href=&quot;mailto:christophe.revillion@ird.fr?subject=Plugin GeoHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Christophe Révillion (IRD)&lt;/a&gt;</string>
             </property>
             <property name="openExternalLinks">
              <bool>true</bool>
@@ -76,7 +77,7 @@
           <item>
            <widget class="QLabel" name="label_9">
             <property name="text">
-             <string notr="true">&lt;a href=&quot;mailto:therese.libourel@univ-montp2.fr?subject=Plugin Blurring&quot; style=&quot;text-decoration:none;&quot;&gt;Thérèse Libourel (UM2)&lt;/a&gt;</string>
+             <string notr="true">&lt;a href=&quot;mailto:therese.libourel@univ-montp2.fr?subject=Plugin GeoHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Thérèse Libourel (UM2)&lt;/a&gt;</string>
             </property>
             <property name="openExternalLinks">
              <bool>true</bool>
@@ -103,11 +104,69 @@
           <item>
            <widget class="QLabel" name="label_11">
             <property name="text">
-             <string>Etienne Trimaille</string>
+             <string notr="true">&lt;a href=&quot;mailto:etienne@trimaille.eu?subject=Plugin GeoHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Etienne Trimaille&lt;/a&gt;</string>
             </property>
            </widget>
           </item>
          </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_5">
+     <property name="title">
+      <string>Translation</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The web-based translating platform &lt;a href=&quot;https://www.transifex.com/projects/p/gui/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Transifex&lt;/span&gt;&lt;/a&gt; is used. It's easier for translators.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <property name="openExternalLinks">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>French</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string notr="true">Etienne Trimaille</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="label_10">
+          <property name="text">
+           <string>Thai</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string notr="true">Vincent Herbreteau</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
