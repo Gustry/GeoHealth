@@ -21,8 +21,12 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QDialog, QDialogButtonBox, QTableWidgetItem
-from PyQt4.QtCore import QSize, QVariant
+from PyQt4.QtGui import \
+    QDialog,\
+    QDialogButtonBox,\
+    QTableWidgetItem,\
+    QApplication
+from PyQt4.QtCore import QSize, QVariant, Qt
 
 from qgis.utils import iface, QGis
 from qgis.core import \
@@ -85,33 +89,39 @@ class IncidenceDensityDialog(QDialog):
 
     def fill_combobox_layer(self):
         """Fill combobox about layers."""
-        self.comboBox_incidence_adminLayer.clear()
-        self.comboBox_incidence_pointLayer.clear()
+        self.cbx_case_layer.clear()
+        self.cbx_aggregation_layer.clear()
 
         for layer in iface.legendInterface().layers():
             if layer.type() == 0:
 
                 if layer.geometryType() == 0:
-                    self.comboBox_incidence_pointLayer.addItem(
+                    self.cbx_case_layer.addItem(
                         layer.name(), layer)
 
                 if layer.geometryType() == 2:
-                    self.comboBox_incidence_adminLayer.addItem(
+                    self.cbx_aggregation_layer.addItem(
                         layer.name(), layer)
 
     def run_stats(self, use_area):
         """Main function which do the process."""
 
         # Get the fields.
-        index = self.comboBox_incidence_adminLayer.currentIndex()
-        self.admin_layer = self.comboBox_incidence_adminLayer.itemData(index)
-        index = self.comboBox_incidence_pointLayer.currentIndex()
-        point_layer = self.comboBox_incidence_pointLayer.itemData(index)
-        self.name_field = self.lineEdit_incidence_columnName.text()
-        ratio = self.comboBox_incidence_ratio.currentText()
+        index = self.cbx_aggregation_layer.currentIndex()
+        self.admin_layer = self.cbx_aggregation_layer.itemData(index)
+        index = self.cbx_case_layer.currentIndex()
+        point_layer = self.cbx_case_layer.itemData(index)
+        self.name_field = self.le_new_column.text()
+        ratio = self.cbx_ratio.currentText()
         ratio = ratio.replace(' ', '')
 
         try:
+
+            self.button_box_ok.setDisabled(True)
+            # noinspection PyArgumentList
+            QApplication.setOverrideCursor(Qt.WaitCursor)
+            # noinspection PyArgumentList
+            QApplication.processEvents()
 
             if not self.admin_layer or not point_layer:
                 raise NoLayerProvidedException
@@ -132,7 +142,7 @@ class IncidenceDensityDialog(QDialog):
 
             index_population = None
             if not use_area:
-                population = self.comboBox_incidence_populationField\
+                population = self.cbx_population_field\
                     .currentText()
                 index_population = self.admin_layer.fieldNameIndex(population)
 
@@ -232,6 +242,13 @@ class IncidenceDensityDialog(QDialog):
 
         except GeoHealthException, e:
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
+
+        finally:
+            self.button_box_ok.setDisabled(False)
+            # noinspection PyArgumentList
+            QApplication.restoreOverrideCursor()
+            # noinspection PyArgumentList
+            QApplication.processEvents()
 
     def draw_plot(self, data):
         """Function to draw the plot and display it in the canvas.

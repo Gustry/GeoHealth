@@ -33,6 +33,7 @@ class DensityDialog(IncidenceDensityDialog, Ui_Density):
         Ui_Density.setupUi(self, self)
 
         self.setup_ui()
+        self.fill_combobox_layer()
 
     def run_stats(self):
         """Main function which do the process."""

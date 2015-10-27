@@ -32,25 +32,26 @@ class IncidenceDialog(IncidenceDensityDialog, Ui_Incidence):
         Ui_Incidence.setupUi(self, self)
 
         self.setup_ui()
+        self.fill_combobox_layer()
 
         # Connect slot.
         # noinspection PyUnresolvedReferences
-        self.comboBox_incidence_adminLayer.currentIndexChanged.connect(
+        self.cbx_aggregation_layer.currentIndexChanged.connect(
             self.update_fields)
 
     def update_fields(self):
         """Update the combobox about the population field."""
-        self.comboBox_incidence_populationField.clear()
+        self.cbx_population_field.clear()
 
-        index = self.comboBox_incidence_adminLayer.currentIndex()
-        admin_layer = self.comboBox_incidence_adminLayer.itemData(index)
+        index = self.cbx_aggregation_layer.currentIndex()
+        admin_layer = self.cbx_aggregation_layer.itemData(index)
         if not admin_layer:
             return False
 
         fields = admin_layer.dataProvider().fields()
 
         for item in fields:
-            self.comboBox_incidence_populationField.addItem(item.name(), item)
+            self.cbx_population_field.addItem(item.name(), item)
 
     def run_stats(self):
         """Main function which do the process."""

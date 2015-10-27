@@ -30,7 +30,7 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="comboBox_incidence_pointLayer">
+      <widget class="QComboBox" name="cbx_case_layer">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -47,7 +47,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QComboBox" name="comboBox_incidence_adminLayer">
+      <widget class="QComboBox" name="cbx_aggregation_layer">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -64,7 +64,7 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QLineEdit" name="lineEdit_incidence_columnName">
+      <widget class="QLineEdit" name="le_new_column">
        <property name="text">
         <string notr="true">density</string>
        </property>
@@ -78,7 +78,7 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QComboBox" name="comboBox_incidence_ratio">
+      <widget class="QComboBox" name="cbx_ratio">
        <property name="editable">
         <bool>true</bool>
        </property>
