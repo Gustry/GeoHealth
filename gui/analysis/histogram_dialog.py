@@ -21,18 +21,17 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QDialog, QDialogButtonBox
-from PyQt4.QtCore import QSize
-
 from qgis.utils import iface
 from qgis.core import QgsMapLayer, QgsGraduatedSymbolRendererV2
+
+from PyQt4.QtGui import QDialog, QDialogButtonBox
+from PyQt4.QtCore import QSize
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-
 from GeoHealth.core.graph_toolbar import CustomNavigationToolbar
-from GeoHealth.ui.histogram import Ui_Histogram
+from GeoHealth.ui.analysis.histogram import Ui_Histogram
 
 
 class HistogramDialog(QDialog, Ui_Histogram):

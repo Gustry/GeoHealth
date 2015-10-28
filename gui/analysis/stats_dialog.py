@@ -21,18 +21,18 @@
  ***************************************************************************/
 """
 
+from os.path import dirname
+from qgis.core import QGis, QgsFeatureRequest, QgsSpatialIndex
+from qgis.utils import iface
+
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
 from PyQt4.QtGui import \
     QWidget, QDialogButtonBox, QApplication, QTableWidgetItem, QFileDialog
 from PyQt4.QtCore import pyqtSignal, QSize
-from os.path import dirname
 
-from qgis.core import QGis, QgsFeatureRequest, QgsSpatialIndex
-from qgis.utils import iface
-
-from GeoHealth.ui.stats import Ui_Stats
+from GeoHealth.ui.analysis.stats import Ui_Stats
 from GeoHealth.core.graph_toolbar import CustomNavigationToolbar
 from GeoHealth.core.stats import Stats
 from GeoHealth.core.tools import \

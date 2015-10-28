@@ -22,8 +22,6 @@
 """
 
 from os.path import dirname, basename
-from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog, QApplication
-from PyQt4.QtCore import pyqtSignal, QSettings, QVariant
 from qgis.utils import iface, QGis
 from qgis.gui import QgsMessageBar
 from qgis.core import \
@@ -32,6 +30,9 @@ from qgis.core import \
     QgsMapLayer, \
     QgsMapLayerRegistry, \
     QgsVectorLayer
+
+from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog, QApplication
+from PyQt4.QtCore import pyqtSignal, QSettings, QVariant
 from processing.tools.system import getTempFilenameInTempFolder
 
 from GeoHealth.core.blurring.layer_index import LayerIndex
@@ -44,7 +45,7 @@ from GeoHealth.core.exceptions import \
     NoFileNoDisplayException, \
     DifferentCrsException,\
     CreatingShapeFileException
-from GeoHealth.ui.blur import Ui_Blur
+from GeoHealth.ui.analysis.blur import Ui_Blur
 
 
 class BlurWidget(QWidget, Ui_Blur):

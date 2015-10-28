@@ -21,8 +21,8 @@
  ***************************************************************************/
 """
 
-from GeoHealth.ui.density import Ui_Density
-from GeoHealth.gui.incidence_density_dialog import IncidenceDensityDialog
+from GeoHealth.ui.analysis.density import Ui_Density
+from GeoHealth.gui.analysis.incidence_density_dialog import IncidenceDensityDialog
 
 
 class DensityDialog(IncidenceDensityDialog, Ui_Density):

@@ -24,12 +24,12 @@
 from PyQt4.QtGui import QDialog
 
 from GeoHealth.ui.main import Ui_Dialog
-from GeoHealth.gui.open_csv import OpenCsv
-from GeoHealth.gui.main_blurring_dialog import MainBlurringDialog
-from GeoHealth.gui.open_shapefile import OpenShapefileWidget
-from GeoHealth.gui.incidence_dialog import IncidenceDialog
-from GeoHealth.gui.density_dialog import DensityDialog
-from GeoHealth.gui.histogram_dialog import HistogramDialog
+from GeoHealth.gui.import_gui.open_csv import OpenCsv
+from GeoHealth.gui.analysis.main_blurring_dialog import MainBlurringDialog
+from GeoHealth.gui.import_gui.open_shapefile import OpenShapefileWidget
+from GeoHealth.gui.analysis.incidence_dialog import IncidenceDialog
+from GeoHealth.gui.analysis.density_dialog import DensityDialog
+from GeoHealth.gui.analysis.histogram_dialog import HistogramDialog
 from GeoHealth.gui.about import AboutWidget
 from GeoHealth.gui.wip import WipWidget
 

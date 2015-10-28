@@ -63,6 +63,5 @@ class Ui_Form(object):
         self.tab.setTabText(self.tab.indexOf(self.tab_blur), _translate("Form", "Blur", None))
         self.tab.setTabText(self.tab.indexOf(self.tab_stats), _translate("Form", "Stats", None))
 
-from GeoHealth.gui.stats_dialog import StatsWidget
-from GeoHealth.gui.blur_dialog import BlurWidget
-from GeoHealth.resources import resources_rc
+from GeoHealth.gui.analysis.stats_dialog import StatsWidget
+from GeoHealth.gui.analysis.blur_dialog import BlurWidget

@@ -20,37 +20,40 @@
  *                                                                         *
  ***************************************************************************/
 """
-from os.path import splitext, basename
-from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
-from qgis.core import QgsMapLayerRegistry, QgsVectorLayer
 
-from GeoHealth.ui.open_shapefile import Ui_Form
-from GeoHealth.core.tools import trans
+from GeoHealth.ui.analysis.incidence import Ui_Incidence
+from GeoHealth.gui.analysis.incidence_density_dialog import IncidenceDensityDialog
 
 
-class OpenShapefileWidget(QWidget, Ui_Form):
-
+class IncidenceDialog(IncidenceDensityDialog, Ui_Incidence):
     def __init__(self, parent=None):
-        self.parent = parent
-        super(OpenShapefileWidget, self).__init__()
-        self.setupUi(self)
+        """Constructor."""
+        IncidenceDensityDialog.__init__(self, parent)
+        Ui_Incidence.setupUi(self, self)
 
-        self.buttonBox.button(QDialogButtonBox.Open).clicked.connect(
-            self.open_shapefile)
+        self.setup_ui()
+        self.fill_combobox_layer()
+        self.update_fields()
+
+        # Connect slot.
         # noinspection PyUnresolvedReferences
-        self.bt_browse.clicked.connect(self.open_file_browser)
+        self.cbx_aggregation_layer.currentIndexChanged.connect(
+            self.update_fields)
 
-    def open_file_browser(self):
-        # noinspection PyArgumentList
-        shapefile = QFileDialog.getOpenFileName(
-            parent=self.parent,
-            caption=trans('Select shapefile'),
-            filter='Shapefile (*.shp)')
-        self.le_shapefile.setText(shapefile)
+    def update_fields(self):
+        """Update the combobox about the population field."""
+        self.cbx_population_field.clear()
 
-    def open_shapefile(self):
-        path = self.le_shapefile.text()
-        name = basename(splitext(path)[0])
-        layer = QgsVectorLayer(path, name, 'ogr')
-        # noinspection PyArgumentList
-        QgsMapLayerRegistry.instance().addMapLayer(layer)
+        index = self.cbx_aggregation_layer.currentIndex()
+        admin_layer = self.cbx_aggregation_layer.itemData(index)
+        if not admin_layer:
+            return False
+
+        fields = admin_layer.dataProvider().fields()
+
+        for item in fields:
+            self.cbx_population_field.addItem(item.name(), item)
+
+    def run_stats(self):
+        """Main function which do the process."""
+        IncidenceDensityDialog.run_stats(self, use_area=False)

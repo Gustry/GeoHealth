@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Mon Oct 26 17:51:41 2015
+# Created: Tue Oct 27 15:50:02 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.resize(887, 734)
+        Dialog.resize(1072, 720)
         self.horizontalLayout_2 = QtGui.QHBoxLayout(Dialog)
         self.horizontalLayout_2.setContentsMargins(0, 0, -1, 0)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
@@ -150,6 +150,16 @@ class Ui_Dialog(object):
         self.stack.setObjectName(_fromUtf8("stack"))
         self.verticalLayout_11.addWidget(self.stack)
         self.horizontalLayout_5.addLayout(self.verticalLayout_11)
+        self.help = QtGui.QPlainTextEdit(Dialog)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.help.sizePolicy().hasHeightForWidth())
+        self.help.setSizePolicy(sizePolicy)
+        self.help.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.help.setReadOnly(True)
+        self.help.setObjectName(_fromUtf8("help"))
+        self.horizontalLayout_5.addWidget(self.help)
         self.horizontalLayout_2.addLayout(self.horizontalLayout_5)
 
         self.retranslateUi(Dialog)

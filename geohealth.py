@@ -22,18 +22,19 @@
 """
 
 from os.path import dirname, join, exists
-from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt4.QtGui import QMenu, QIcon, QAction
 from qgis.utils import iface
 from qgis.core import QgsProviderRegistry
+
+from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
+from PyQt4.QtGui import QMenu, QIcon, QAction
 from processing.core.Processing import Processing
 
 from GeoHealth.core.tools import trans
 from GeoHealth.gui.main_window import MainDialog
-from GeoHealth.gui.incidence_dialog import IncidenceDialog
-from GeoHealth.gui.density_dialog import DensityDialog
-from GeoHealth.gui.main_blurring_dialog import MainBlurringDialog
-from GeoHealth.gui.histogram_dialog import HistogramDialog
+from GeoHealth.gui.analysis.incidence_dialog import IncidenceDialog
+from GeoHealth.gui.analysis.density_dialog import DensityDialog
+from GeoHealth.gui.analysis.main_blurring_dialog import MainBlurringDialog
+from GeoHealth.gui.analysis.histogram_dialog import HistogramDialog
 from GeoHealth.processing_geohealth.provider import Provider
 
 
