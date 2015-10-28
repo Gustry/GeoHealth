@@ -22,19 +22,12 @@
 """
 
 from os.path import dirname, join, exists
-from qgis.utils import iface
-from qgis.core import QgsProviderRegistry
 
 from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt4.QtGui import QMenu, QIcon, QAction
+from PyQt4.QtGui import QIcon, QAction
 from processing.core.Processing import Processing
 
-from GeoHealth.core.tools import trans
 from GeoHealth.gui.main_window import MainDialog
-from GeoHealth.gui.analysis.incidence_dialog import IncidenceDialog
-from GeoHealth.gui.analysis.density_dialog import DensityDialog
-from GeoHealth.gui.analysis.main_blurring_dialog import MainBlurringDialog
-from GeoHealth.gui.analysis.histogram_dialog import HistogramDialog
 from GeoHealth.processing_geohealth.provider import Provider
 
 
@@ -56,7 +49,7 @@ class GeoHealth:
             self.translator.load(locale_path)
 
             if qVersion() > '4.3.3':
-                # noinspection PyCallByClass
+                # noinspection PyCallByClass,PyTypeChecker,PyArgumentList
                 QCoreApplication.installTranslator(self.translator)
 
         self.plugin_menu = None
@@ -74,106 +67,21 @@ class GeoHealth:
 
     def initGui(self):
 
-        # Setup the menu.
-        self.geohealth_menu = QMenu(trans("&GeoHealth"))
-        self.geohealth_menu.setIcon(
-            QIcon(':/plugins/GeoHealth/resources/icon.png'))
         self.plugin_menu = self.iface.pluginMenu()
-        self.plugin_menu.addMenu(self.geohealth_menu)
 
         # Main window
         icon = QIcon(':/plugins/GeoHealth/resources/icon.png')
-        self.main_action = QAction(
-            icon, trans('GeoHealth'), self.iface.mainWindow())
-        self.geohealth_menu.addAction(self.main_action)
+        self.main_action = QAction(icon, 'GeoHealth', self.iface.mainWindow())
+        self.plugin_menu.addAction(self.main_action)
         # noinspection PyUnresolvedReferences
         self.main_action.triggered.connect(self.open_main_window)
 
-        # XY tools.
-        icon = QIcon(":/plugins/GeoHealth/resources/xy.png")
-        self.xy_action = QAction(
-            icon, trans("XY to map"), self.iface.mainWindow())
-        # self.geohealth_menu.addAction(self.xy_action)
-        # noinspection PyUnresolvedReferences
-        self.xy_action.triggered.connect(self.open_xy_window)
-
-        # Blur
-        icon = QIcon(":/plugins/GeoHealth/resources/blur.png")
-        self.blur_action = QAction(
-            icon, trans("Blurring"), self.iface.mainWindow())
-        # self.geohealth_menu.addAction(self.blur_action)
-        # noinspection PyUnresolvedReferences
-        self.blur_action.triggered.connect(self.open_blurring_window)
-
-        # Incidence
-        icon = QIcon(":/plugins/GeoHealth/resources/incidence.png")
-        self.incidence_action = QAction(
-            icon, trans("Incidence"), self.iface.mainWindow())
-        # self.geohealth_menu.addAction(self.incidence_action)
-        # noinspection PyUnresolvedReferences
-        self.incidence_action.triggered.connect(self.open_incidence_window)
-
-        # Density
-        icon = QIcon(":/plugins/GeoHealth/resources/incidence.png")
-        self.density_action = QAction(
-            icon, trans("Density"), self.iface.mainWindow())
-        # self.geohealth_menu.addAction(self.density_action)
-        # noinspection PyUnresolvedReferences
-        self.density_action.triggered.connect(self.open_density_window)
-
-        # Histogram
-        icon = QIcon(":/plugins/GeoHealth/resources/histogram.png")
-        self.histogram_action = QAction(
-            icon, trans('Histogram'), self.iface.mainWindow())
-        # self.geohealth_menu.addAction(self.histogram_action)
-        # noinspection PyUnresolvedReferences
-        self.histogram_action.triggered.connect(self.open_histogram_window)
-
     def unload(self):
-        self.iface.removePluginMenu(trans("Blurring"), self.blur_action)
-        self.iface.removePluginMenu(
-            trans("Incidence - Density"), self.incidence_action)
+        self.plugin_menu.removeAction(self.main_action)
         Processing.removeProvider(self.provider)
 
     @staticmethod
     def open_main_window():
         dialog = MainDialog()
-        dialog.show()
-        dialog.exec_()
-
-    @staticmethod
-    def open_xy_window():
-        # noinspection PyArgumentList
-        dialog = QgsProviderRegistry.instance().selectWidget('delimitedtext')
-        dialog.setWindowTitle(trans('XY to map'))
-        dialog.addVectorLayer[str, str, str].connect(iface.addVectorLayer)
-        dialog.show()
-        dialog.exec_()
-
-    @staticmethod
-    def open_incidence_window():
-        dialog = IncidenceDialog()
-        dialog.fill_combobox_layer()
-        dialog.show()
-        dialog.exec_()
-
-    @staticmethod
-    def open_density_window():
-        dialog = DensityDialog()
-        dialog.fill_combobox_layer()
-        dialog.show()
-        dialog.exec_()
-
-    @staticmethod
-    def open_blurring_window():
-        # Todo, fix iface in display_message_bar
-        iface.Blurring_mainWindowDialog = MainBlurringDialog()
-        iface.Blurring_mainWindowDialog.fill_combo_box_layers()
-        iface.Blurring_mainWindowDialog.show()
-        iface.Blurring_mainWindowDialog.exec_()
-
-    @staticmethod
-    def open_histogram_window():
-        dialog = HistogramDialog()
         dialog.show()
         dialog.exec_()
