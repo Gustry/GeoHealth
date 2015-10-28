@@ -71,6 +71,7 @@ class CsvExport(QWidget, Ui_Form):
         path = self.le_output.text()
         index = self.cbx_layer.currentIndex()
         layer = self.cbx_layer.itemData(index)
+        export_geom = self.export_geometry.isChecked()
 
         if self.tab_delimiter.isChecked():
             delimiter = self.delimiters['tab']
@@ -82,15 +83,25 @@ class CsvExport(QWidget, Ui_Form):
             delimiter = self.delimiters['comma']
 
         csv_file = codecs.open(path, 'w', 'utf-8')
-        # csv_file = open(path, 'wb')
 
         provider = layer.dataProvider()
         fields = provider.fieldNameMap()
+
+        if export_geom:
+            if self.as_xy.isChecked():
+                fields.append('X')
+                fields.append('Y')
+            else:
+                fields.append('Y')
+                fields.append('X')
+
         header = u'%s\n' % delimiter.join(fields)
         csv_file.write(header)
 
         for feature in layer.getFeatures():
-            line = u'%s\n' % delimiter.join(feature.attributes())
+            attributes = feature.attributes()
+            # Todo Add geometry not finished
+            line = u'%s\n' % delimiter.join(attributes)
             csv_file.write(line)
 
         csv_file.close()
