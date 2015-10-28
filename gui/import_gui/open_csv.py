@@ -23,6 +23,7 @@
 
 from PyQt4.QtGui import QWidget, QMdiArea, QVBoxLayout
 from qgis.core import QgsProviderRegistry
+from qgis.utils import iface
 
 
 from GeoHealth.core.tools import trans
@@ -36,9 +37,12 @@ class OpenCsv(QWidget):
 
         mdi_area = QMdiArea()
 
+        # noinspection PyArgumentList
         dialog = QgsProviderRegistry.instance().selectWidget('delimitedtext')
         dialog.setWindowTitle(trans('XY to map'))
 
         layout = QVBoxLayout(self)
         layout.addWidget(mdi_area)
         mdi_area.addSubWindow(dialog)
+
+        dialog.addVectorLayer[str, str, str].connect(iface.addVectorLayer)
