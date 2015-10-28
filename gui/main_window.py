@@ -30,6 +30,7 @@ from GeoHealth.gui.import_gui.open_shapefile import OpenShapefileWidget
 from GeoHealth.gui.analysis.incidence_dialog import IncidenceDialog
 from GeoHealth.gui.analysis.density_dialog import DensityDialog
 from GeoHealth.gui.analysis.histogram_dialog import HistogramDialog
+from GeoHealth.gui.export.csv import CsvExport
 from GeoHealth.gui.about import AboutWidget
 from GeoHealth.gui.wip import WipWidget
 
@@ -54,6 +55,7 @@ class MainDialog(QDialog, Ui_Dialog):
             22: IncidenceDialog(),
             23: DensityDialog(),
             24: HistogramDialog(),
+            31: CsvExport(),
             41: AboutWidget(),
             100: WipWidget()
         }
