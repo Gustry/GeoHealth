@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'density.ui'
 #
-# Created: Tue Oct 27 10:31:54 2015
+# Created: Wed Oct 28 16:19:02 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -61,7 +61,7 @@ class Ui_Density(object):
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_3)
         self.le_new_column = QtGui.QLineEdit(Density)
-        self.le_new_column.setText(_fromUtf8("density"))
+        self.le_new_column.setMaxLength(10)
         self.le_new_column.setObjectName(_fromUtf8("le_new_column"))
         self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.le_new_column)
         self.label_2 = QtGui.QLabel(Density)
@@ -181,6 +181,7 @@ class Ui_Density(object):
         self.label_4.setText(_translate("Density", "Case layer", None))
         self.label.setText(_translate("Density", "Layer for aggregation", None))
         self.label_3.setText(_translate("Density", "New column", None))
+        self.le_new_column.setPlaceholderText(_translate("Density", "density", None))
         self.label_2.setText(_translate("Density", "Ratio", None))
         self.cbx_ratio.setItemText(0, _translate("Density", "10", None))
         self.cbx_ratio.setItemText(1, _translate("Density", "100", None))

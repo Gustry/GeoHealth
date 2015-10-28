@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'incidence.ui'
 #
-# Created: Tue Oct 27 10:31:56 2015
+# Created: Wed Oct 28 16:19:11 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -84,7 +84,7 @@ class Ui_Incidence(object):
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.formLayout.setWidget(4, QtGui.QFormLayout.LabelRole, self.label_3)
         self.le_new_column = QtGui.QLineEdit(Incidence)
-        self.le_new_column.setText(_fromUtf8("incidence"))
+        self.le_new_column.setMaxLength(10)
         self.le_new_column.setObjectName(_fromUtf8("le_new_column"))
         self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.le_new_column)
         self.checkBox_addNbIntersections = QtGui.QCheckBox(Incidence)
@@ -202,6 +202,7 @@ class Ui_Incidence(object):
         self.cbx_ratio.setItemText(3, _translate("Incidence", "10 000", None))
         self.cbx_ratio.setItemText(4, _translate("Incidence", "100 000", None))
         self.label_3.setText(_translate("Incidence", "New column", None))
+        self.le_new_column.setPlaceholderText(_translate("Incidence", "incidence", None))
         self.checkBox_addNbIntersections.setToolTip(_translate("Incidence", "Add the number of cases per unit to the attribute table", None))
         self.checkBox_addNbIntersections.setText(_translate("Incidence", "Add the number of cases per unit to the attribute table", None))
         self.checkBox_incidence_runStats.setText(_translate("Incidence", "Calculate statistics", None))
