@@ -129,6 +129,10 @@ class IncidenceDensityDialog(QDialog):
         index = self.cbx_case_layer.currentIndex()
         point_layer = self.cbx_case_layer.itemData(index)
         self.name_field = self.le_new_column.text()
+
+        if not self.name_field:
+            self.name_field = self.le_new_column.placeholderText()
+
         ratio = self.cbx_ratio.currentText()
         ratio = ratio.replace(' ', '')
         self.output_file_path = self.le_output_filepath.text()
