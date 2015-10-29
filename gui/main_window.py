@@ -23,6 +23,7 @@
 
 from PyQt4.QtGui import QDialog
 
+from GeoHealth.doc.help import help_blur, help_incidence
 from GeoHealth.ui.main import Ui_Dialog
 from GeoHealth.gui.import_gui.open_csv import OpenCsv
 from GeoHealth.gui.import_gui.raster import OpenRasterWidget
@@ -50,20 +51,20 @@ class MainDialog(QDialog, Ui_Dialog):
         self.menu.clicked.connect(self.display_content)
 
         self.content = {
-            11: OpenCsv(),
-            12: OpenShapefileWidget(),
-            13: OpenRasterWidget(),
-            21: MainBlurringDialog(),
-            22: IncidenceDialog(),
-            23: DensityDialog(),
-            24: HistogramDialog(),
-            31: CsvExport(),
-            41: AboutWidget(),
-            100: WipWidget()
+            11: [OpenCsv()],
+            12: [OpenShapefileWidget()],
+            13: [OpenRasterWidget()],
+            21: [MainBlurringDialog(), help_blur()],
+            22: [IncidenceDialog(), help_incidence()],
+            23: [DensityDialog()],
+            24: [HistogramDialog()],
+            31: [CsvExport()],
+            41: [AboutWidget()],
+            100: [WipWidget()]
         }
 
         for content in self.content:
-            self.stack.addWidget(self.content[content])
+            self.stack.addWidget(self.content[content][0])
 
     def expand(self, i):
         self.menu.setExpanded(i, not self.menu.isExpanded(i))
@@ -82,6 +83,14 @@ class MainDialog(QDialog, Ui_Dialog):
             index = self.content.keys().index(100)
 
         self.stack.setCurrentIndex(index)
+        try:
+            self.help.setHtml(self.content[tree_index][1])
+            self.help.show()
+            print self.help.page().mainFrame().toHtml()
+        except KeyError:
+            self.help.hide()
+        except IndexError:
+            self.help.hide()
 
         # Try to refresh layers if needed
         widget = self.stack.currentWidget()

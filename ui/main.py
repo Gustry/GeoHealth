@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Tue Oct 27 15:50:02 2015
+# Created: Thu Oct 29 12:16:57 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,9 +26,10 @@ except AttributeError:
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.resize(1072, 720)
+        Dialog.resize(857, 700)
+        Dialog.setWindowTitle(_fromUtf8("GeoHealth"))
         self.horizontalLayout_2 = QtGui.QHBoxLayout(Dialog)
-        self.horizontalLayout_2.setContentsMargins(0, 0, -1, 0)
+        self.horizontalLayout_2.setMargin(0)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.horizontalLayout_5 = QtGui.QHBoxLayout()
         self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
@@ -150,24 +151,22 @@ class Ui_Dialog(object):
         self.stack.setObjectName(_fromUtf8("stack"))
         self.verticalLayout_11.addWidget(self.stack)
         self.horizontalLayout_5.addLayout(self.verticalLayout_11)
-        self.help = QtGui.QPlainTextEdit(Dialog)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addLayout(self.horizontalLayout_5)
+        self.help = QtWebKit.QWebView(Dialog)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.help.sizePolicy().hasHeightForWidth())
         self.help.setSizePolicy(sizePolicy)
-        self.help.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.help.setReadOnly(True)
+        self.help.setMinimumSize(QtCore.QSize(200, 0))
         self.help.setObjectName(_fromUtf8("help"))
-        self.horizontalLayout_5.addWidget(self.help)
-        self.horizontalLayout_2.addLayout(self.horizontalLayout_5)
+        self.horizontalLayout_2.addWidget(self.help)
 
         self.retranslateUi(Dialog)
         self.stack.setCurrentIndex(-1)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(_translate("Dialog", "Blurring", None))
         self.menu.headerItem().setText(0, _translate("Dialog", "Menu", None))
         __sortingEnabled = self.menu.isSortingEnabled()
         self.menu.setSortingEnabled(False)
@@ -191,4 +190,5 @@ class Ui_Dialog(object):
         self.menu.setSortingEnabled(__sortingEnabled)
 
 from qgis import gui
-from GeoHealth.resources import resources_rc
+from PyQt4 import QtWebKit
+import resources_rc
