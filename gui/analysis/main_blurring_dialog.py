@@ -38,6 +38,6 @@ class MainBlurringDialog(QDialog, Ui_Form):
         self.blur.signalAskCloseWindow.connect(self.hide)
         self.statistics.signalAskCloseWindow.connect(self.hide)
 
-    def fill_combo_box_layers(self):
+    def fill_combobox_layer(self):
         self.statistics.fill_comboxbox_layers()
         self.blur.fill_comboxbox_layers()

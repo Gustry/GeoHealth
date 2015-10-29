@@ -82,3 +82,10 @@ class MainDialog(QDialog, Ui_Dialog):
             index = self.content.keys().index(100)
 
         self.stack.setCurrentIndex(index)
+
+        # Try to refresh layers if needed
+        widget = self.stack.currentWidget()
+        try:
+            widget.fill_combobox_layer()
+        except AttributeError:
+            pass
