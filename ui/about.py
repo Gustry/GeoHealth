@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'about.ui'
 #
-# Created: Fri Oct 30 13:00:31 2015
+# Created: Fri Oct 30 13:41:13 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -30,10 +30,12 @@ class Ui_About(object):
         self.verticalLayout = QtGui.QVBoxLayout(About)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.scrollArea = QtGui.QScrollArea(About)
+        self.scrollArea.setFrameShape(QtGui.QFrame.NoFrame)
+        self.scrollArea.setFrameShadow(QtGui.QFrame.Plain)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
         self.scrollAreaWidgetContents = QtGui.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 999, 775))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1005, 781))
         self.scrollAreaWidgetContents.setObjectName(_fromUtf8("scrollAreaWidgetContents"))
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
@@ -84,20 +86,9 @@ class Ui_About(object):
         self.horizontalLayout.addWidget(self.label_6)
         self.verticalLayout_6 = QtGui.QVBoxLayout()
         self.verticalLayout_6.setObjectName(_fromUtf8("verticalLayout_6"))
-        self.label_8 = QtGui.QLabel(self.groupBox)
-        self.label_8.setText(_fromUtf8("<html><head/><body><p><a href=\"mailto:vincent.herbreteau@ird.fr?subject=Plugin GeoHealth\"><span style=\" color:#0057ae;\" style=\"text-decoration:none;\">Vincent Herbreteau (IRD)</span></a></p></body></html>"))
-        self.label_8.setWordWrap(True)
-        self.label_8.setOpenExternalLinks(True)
-        self.label_8.setObjectName(_fromUtf8("label_8"))
-        self.verticalLayout_6.addWidget(self.label_8)
-        self.label_7 = QtGui.QLabel(self.groupBox)
-        self.label_7.setText(_fromUtf8("<a href=\"mailto:christophe.revillion@ird.fr?subject=Plugin GeoHealth\" style=\"text-decoration:none;\">Christophe Révillion (IRD)</a>"))
-        self.label_7.setWordWrap(True)
-        self.label_7.setOpenExternalLinks(True)
-        self.label_7.setObjectName(_fromUtf8("label_7"))
-        self.verticalLayout_6.addWidget(self.label_7)
         self.label_9 = QtGui.QLabel(self.groupBox)
-        self.label_9.setText(_fromUtf8("<a href=\"mailto:therese.libourel@univ-montp2.fr?subject=Plugin GeoHealth\" style=\"text-decoration:none;\">Thérèse Libourel (UM2)</a>"))
+        self.label_9.setText(_fromUtf8(""))
+        self.label_9.setPixmap(QtGui.QPixmap(_fromUtf8(":/plugins/GeoHealth/resources/IRD-408.png")))
         self.label_9.setWordWrap(True)
         self.label_9.setOpenExternalLinks(True)
         self.label_9.setObjectName(_fromUtf8("label_9"))
@@ -195,7 +186,7 @@ class Ui_About(object):
         self.groupBox_6.setTitle(_translate("About", "GeoHealth", None))
         self.label_13.setText(_translate("About", "GeoHealth aims to provide a simplified interface for users in epidemiology : blurring a point layer, incidence map, run statistics ...", None))
         self.groupBox.setTitle(_translate("About", "Design", None))
-        self.label_5.setText(_translate("About", "This plugin was designed by UMR Espace-Dev (IRD, UAG, UM2, UR)", None))
+        self.label_5.setText(_translate("About", "<html><head/><body><p> This plugin was designed by <a href=\"http://www.espace-dev.fr\"><span style=\" text-decoration: underline; color:#0057ae;\">UMR ESPACE-DEV</span></a> (IRD, Univ. Guyane, Univ. Montpellier, Univ. Réunion) : <a href=\"mailto:vincent.herbreteau@ird.fr?subject=Plugin GeoHealth\"><span style=\" color:#0057ae;\" style=\"text-decoration:none;\">Vincent Herbreteau (IRD)</span></a> and <a href=\"mailto:christophe.revillion@univ-reunion.fr?subject=Plugin GeoHealth\" style=\"text-decoration:none;\">Christophe Révillion (IRD)</a>, with contributions from the ESoR research group (Environment, Societies and Health Risk).</p></body></html>", None))
         self.groupBox_2.setTitle(_translate("About", "Realization", None))
         self.groupBox_5.setTitle(_translate("About", "Translation", None))
         self.label.setText(_translate("About", "<html><head/><body><p>The web-based translating platform <a href=\"https://www.transifex.com/geohealth/\"><span style=\" text-decoration: underline; color:#0057ae;\">Transifex</span></a> is used. It\'s easier for translators.</p></body></html>", None))
