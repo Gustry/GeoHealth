@@ -72,6 +72,8 @@ class MainDialog(QDialog, Ui_Dialog):
             except AttributeError:
                 pass
 
+        index = self.content.keys().index(100)
+        self.stack.setCurrentIndex(index)
         self.help.hide()
 
     def expand(self, i):
