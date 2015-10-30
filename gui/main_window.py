@@ -73,9 +73,18 @@ class MainDialog(QDialog, Ui_Dialog):
             except AttributeError:
                 pass
 
+            try:
+                self.content[content][0].signalStatus.connect(
+                    self.show_status)
+            except AttributeError:
+                pass
+
         index = self.content.keys().index(100)
         self.stack.setCurrentIndex(index)
         self.help.hide()
+
+    def show_status(self, level, message):
+        self.messageBar.pushMessage('', message, level, 5)
 
     def expand(self, i):
         self.menu.setExpanded(i, not self.menu.isExpanded(i))

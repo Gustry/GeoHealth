@@ -35,6 +35,7 @@ from GeoHealth.core.tools import trans
 class CsvExport(QWidget, Ui_Form):
 
     signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
+    signalStatus = pyqtSignal(int, str, name='signalStatus')
 
     def __init__(self, parent=None):
         self.parent = parent
@@ -100,3 +101,5 @@ class CsvExport(QWidget, Ui_Form):
             csv_file.write(line)
 
         csv_file.close()
+
+        self.signalStatus.emit(3, trans('Successful export to %s' % path))

@@ -60,6 +60,7 @@ from GeoHealth.core.stats import Stats
 class IncidenceDensityDialog(QDialog):
 
     signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
+    signalStatus = pyqtSignal(int, str, name='signalStatus')
 
     def __init__(self, parent=None):
         """Constructor."""
@@ -224,6 +225,8 @@ class IncidenceDensityDialog(QDialog):
 
                 except ZeroDivisionError:
                     value = None
+                except TypeError:
+                    value = None
 
                 data.append(value)
                 attributes.append(value)
@@ -282,6 +285,8 @@ class IncidenceDensityDialog(QDialog):
 
             if self.symbology.isChecked():
                 self.add_symbology()
+
+            self.signalStatus.emit(3, trans('Successful process'))
 
         except GeoHealthException, e:
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)

@@ -33,6 +33,7 @@ from GeoHealth.core.tools import trans
 class OpenXlsDbfFileWidget(QWidget, Ui_Form):
 
     signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
+    signalStatus = pyqtSignal(int, str, name='signalStatus')
 
     def __init__(self, parent=None):
         self.parent = parent
@@ -64,3 +65,4 @@ class OpenXlsDbfFileWidget(QWidget, Ui_Form):
         layer = QgsVectorLayer(path, name, 'ogr')
         # noinspection PyArgumentList
         QgsMapLayerRegistry.instance().addMapLayer(layer)
+        self.signalStatus.emit(3, trans('Successful import from %s' % path))

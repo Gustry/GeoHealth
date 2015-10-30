@@ -33,6 +33,7 @@ from GeoHealth.core.tools import trans
 class OpenCsv(QWidget):
 
     signalAskCloseWindow = pyqtSignal(name='signalAskCloseWindow')
+    signalStatus = pyqtSignal(int, str, name='signalStatus')
 
     def __init__(self, parent=None):
         self.parent = parent
@@ -48,8 +49,9 @@ class OpenCsv(QWidget):
         layout.addWidget(mdi_area)
         mdi_area.addSubWindow(dialog)
 
-        dialog.addVectorLayer[str, str, str].connect(iface.addVectorLayer)
-        # print vars(dialog)
-        #dialog.geomTypeXY.setDisabled(True)
-
+        dialog.addVectorLayer[str, str, str].connect(self.success)
         dialog.rejected.connect(self.signalAskCloseWindow.emit)
+
+    def success(self, path, base_name, provider_key):
+        iface.addVectorLayer(path, base_name, provider_key)
+        self.signalStatus.emit(3, trans('Successful import'))
