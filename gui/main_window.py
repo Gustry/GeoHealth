@@ -59,8 +59,7 @@ class MainDialog(QDialog, Ui_Dialog):
             23: [DensityDialog()],
             24: [HistogramDialog()],
             31: [CsvExport()],
-            41: [AboutWidget()],
-            100: [WipWidget()]
+            100: [AboutWidget()]
         }
 
         for content in self.content:
@@ -71,6 +70,8 @@ class MainDialog(QDialog, Ui_Dialog):
                     self.hide)
             except AttributeError:
                 pass
+
+        self.help.hide()
 
     def expand(self, i):
         self.menu.setExpanded(i, not self.menu.isExpanded(i))

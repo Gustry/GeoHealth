@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Thu Oct 29 12:16:57 2015
+# Created: Fri Oct 30 12:31:51 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.resize(857, 700)
+        Dialog.resize(994, 767)
         Dialog.setWindowTitle(_fromUtf8("GeoHealth"))
         self.horizontalLayout_2 = QtGui.QHBoxLayout(Dialog)
         self.horizontalLayout_2.setMargin(0)
@@ -127,18 +127,6 @@ class Ui_Dialog(object):
         item_1.setIcon(0, icon10)
         item_1 = QtGui.QTreeWidgetItem(item_0)
         item_1.setIcon(0, icon2)
-        item_0 = QtGui.QTreeWidgetItem(self.menu)
-        icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap(_fromUtf8(":/plugins/GeoHealth/resources/icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        item_0.setIcon(0, icon11)
-        item_1 = QtGui.QTreeWidgetItem(item_0)
-        icon12 = QtGui.QIcon()
-        icon12.addPixmap(QtGui.QPixmap(_fromUtf8(":/plugins/GeoHealth/resources/info.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        item_1.setIcon(0, icon12)
-        item_1 = QtGui.QTreeWidgetItem(item_0)
-        icon13 = QtGui.QIcon()
-        icon13.addPixmap(QtGui.QPixmap(_fromUtf8(":/plugins/GeoHealth/resources/about.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        item_1.setIcon(0, icon13)
         self.menu.header().setVisible(False)
         self.menu.header().setStretchLastSection(True)
         self.horizontalLayout_5.addWidget(self.menu)
@@ -184,9 +172,6 @@ class Ui_Dialog(object):
         self.menu.topLevelItem(2).child(0).setText(0, _translate("Dialog", "Attribute table", None))
         self.menu.topLevelItem(2).child(1).setText(0, _translate("Dialog", "KML", None))
         self.menu.topLevelItem(2).child(2).setText(0, _translate("Dialog", "SHP", None))
-        self.menu.topLevelItem(3).setText(0, _translate("Dialog", "GeoHealth", None))
-        self.menu.topLevelItem(3).child(0).setText(0, _translate("Dialog", "A propos", None))
-        self.menu.topLevelItem(3).child(1).setText(0, _translate("Dialog", "Aide", None))
         self.menu.setSortingEnabled(__sortingEnabled)
 
 from qgis import gui

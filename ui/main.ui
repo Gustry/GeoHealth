@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>857</width>
-    <height>700</height>
+    <width>994</width>
+    <height>767</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -167,6 +167,11 @@ QTreeWidget::item:!has-children
          <property name="text">
           <string>Histogram</string>
          </property>
+         <property name="font">
+          <font>
+           <strikeout>true</strikeout>
+          </font>
+         </property>
          <property name="icon">
           <iconset resource="../resources/resources.qrc">
            <normaloff>:/plugins/GeoHealth/resources/histogram.png</normaloff>:/plugins/GeoHealth/resources/histogram.png</iconset>
@@ -175,6 +180,11 @@ QTreeWidget::item:!has-children
         <item>
          <property name="text">
           <string>Statistics</string>
+         </property>
+         <property name="font">
+          <font>
+           <strikeout>true</strikeout>
+          </font>
          </property>
          <property name="icon">
           <iconset resource="../resources/resources.qrc">
@@ -203,6 +213,11 @@ QTreeWidget::item:!has-children
          <property name="text">
           <string>KML</string>
          </property>
+         <property name="font">
+          <font>
+           <strikeout>true</strikeout>
+          </font>
+         </property>
          <property name="icon">
           <iconset resource="../resources/resources.qrc">
            <normaloff>:/plugins/GeoHealth/resources/kml.png</normaloff>:/plugins/GeoHealth/resources/kml.png</iconset>
@@ -212,36 +227,14 @@ QTreeWidget::item:!has-children
          <property name="text">
           <string>SHP</string>
          </property>
+         <property name="font">
+          <font>
+           <strikeout>true</strikeout>
+          </font>
+         </property>
          <property name="icon">
           <iconset resource="../resources/resources.qrc">
            <normaloff>:/plugins/GeoHealth/resources/shp.png</normaloff>:/plugins/GeoHealth/resources/shp.png</iconset>
-         </property>
-        </item>
-       </item>
-       <item>
-        <property name="text">
-         <string>GeoHealth</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../resources/resources.qrc">
-          <normaloff>:/plugins/GeoHealth/resources/icon.png</normaloff>:/plugins/GeoHealth/resources/icon.png</iconset>
-        </property>
-        <item>
-         <property name="text">
-          <string>A propos</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/info.png</normaloff>:/plugins/GeoHealth/resources/info.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Aide</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/about.png</normaloff>:/plugins/GeoHealth/resources/about.png</iconset>
          </property>
         </item>
        </item>
