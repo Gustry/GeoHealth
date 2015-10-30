@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/stats.ui'
+# Form implementation generated from reading ui file 'stats.ui'
 #
-# Created: Sat Nov  8 11:40:37 2014
+# Created: Fri Oct 30 18:48:16 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Stats(object):
     def setupUi(self, Stats):
         Stats.setObjectName(_fromUtf8("Stats"))
-        Stats.resize(517, 728)
+        Stats.resize(820, 728)
         Stats.setWindowTitle(_fromUtf8("Form"))
         self.verticalLayout = QtGui.QVBoxLayout(Stats)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
@@ -47,8 +47,6 @@ class Ui_Stats(object):
         self.comboBox_blurredLayer.setSizeAdjustPolicy(QtGui.QComboBox.AdjustToContentsOnFirstShow)
         self.comboBox_blurredLayer.setObjectName(_fromUtf8("comboBox_blurredLayer"))
         self.horizontalLayout_4.addWidget(self.comboBox_blurredLayer)
-        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem)
         self.formLayout.setLayout(0, QtGui.QFormLayout.FieldRole, self.horizontalLayout_4)
         self.label_2 = QtGui.QLabel(Stats)
         self.label_2.setObjectName(_fromUtf8("label_2"))
@@ -64,8 +62,6 @@ class Ui_Stats(object):
         self.comboBox_statsLayer.setSizeAdjustPolicy(QtGui.QComboBox.AdjustToContentsOnFirstShow)
         self.comboBox_statsLayer.setObjectName(_fromUtf8("comboBox_statsLayer"))
         self.horizontalLayout_5.addWidget(self.comboBox_statsLayer)
-        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem1)
         self.formLayout.setLayout(2, QtGui.QFormLayout.FieldRole, self.horizontalLayout_5)
         self.verticalLayout.addLayout(self.formLayout)
         self.label_progressStats = QtGui.QLabel(Stats)
@@ -97,13 +93,14 @@ class Ui_Stats(object):
         self.pushButton_saveYValues = QtGui.QPushButton(Stats)
         self.pushButton_saveYValues.setObjectName(_fromUtf8("pushButton_saveYValues"))
         self.horizontalLayout_3.addWidget(self.pushButton_saveYValues)
-        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem2)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.tableWidget = QtGui.QTableWidget(Stats)
         self.tableWidget.setMinimumSize(QtCore.QSize(200, 0))
+        self.tableWidget.setMaximumSize(QtCore.QSize(300, 16777215))
         self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
         self.tableWidget.setColumnCount(2)
         self.tableWidget.setRowCount(0)

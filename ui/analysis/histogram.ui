@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>Histogram</class>
- <widget class="QDialog" name="Histogram">
+ <widget class="QWidget" name="Histogram">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>606</width>
-    <height>553</height>
+    <width>450</width>
+    <height>482</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,14 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="cbx_layer"/>
+      <widget class="QComboBox" name="cbx_layer">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

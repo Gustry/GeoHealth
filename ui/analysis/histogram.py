@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'histogram.ui'
 #
-# Created: Tue Oct 20 11:16:09 2015
+# Created: Fri Oct 30 18:48:01 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Histogram(object):
     def setupUi(self, Histogram):
         Histogram.setObjectName(_fromUtf8("Histogram"))
-        Histogram.resize(606, 553)
+        Histogram.resize(450, 482)
         self.verticalLayout = QtGui.QVBoxLayout(Histogram)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.formLayout = QtGui.QFormLayout()
@@ -36,6 +36,11 @@ class Ui_Histogram(object):
         self.label.setObjectName(_fromUtf8("label"))
         self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.label)
         self.cbx_layer = QtGui.QComboBox(Histogram)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.cbx_layer.sizePolicy().hasHeightForWidth())
+        self.cbx_layer.setSizePolicy(sizePolicy)
         self.cbx_layer.setObjectName(_fromUtf8("cbx_layer"))
         self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.cbx_layer)
         self.verticalLayout.addLayout(self.formLayout)

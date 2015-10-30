@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'incidence.ui'
 #
-# Created: Fri Oct 30 15:30:33 2015
+# Created: Fri Oct 30 18:48:10 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,12 +26,9 @@ except AttributeError:
 class Ui_Incidence(object):
     def setupUi(self, Incidence):
         Incidence.setObjectName(_fromUtf8("Incidence"))
-        Incidence.resize(651, 748)
+        Incidence.resize(651, 695)
         self.verticalLayout = QtGui.QVBoxLayout(Incidence)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.messageBar = gui.QgsMessageBar(Incidence)
-        self.messageBar.setObjectName(_fromUtf8("messageBar"))
-        self.verticalLayout.addWidget(self.messageBar)
         self.formLayout = QtGui.QFormLayout()
         self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.ExpandingFieldsGrow)
         self.formLayout.setObjectName(_fromUtf8("formLayout"))
@@ -164,6 +161,7 @@ class Ui_Incidence(object):
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.tableWidget = QtGui.QTableWidget(Incidence)
         self.tableWidget.setMinimumSize(QtCore.QSize(200, 0))
+        self.tableWidget.setMaximumSize(QtCore.QSize(300, 16777215))
         self.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
         self.tableWidget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
