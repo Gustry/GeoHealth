@@ -191,4 +191,4 @@ class Ui_Dialog(object):
 
 from qgis import gui
 from PyQt4 import QtWebKit
-import resources_rc
+from GeoHealth.resources import resources_rc
