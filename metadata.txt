@@ -27,7 +27,7 @@ tags=health,epidemiolgy,blur,blurring
 homepage=https://github.com/Gustry/GeoHealth
 tracker=https://github.com/Gustry/GeoHealth/issues
 repository=https://github.com/Gustry/GeoHealth
-icon=resources/icon.png
+icon=resources/icon-32.png
 # experimental flag
 experimental=False
 

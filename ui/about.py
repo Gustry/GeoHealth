@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'about.ui'
 #
-# Created: Fri Oct 30 12:46:33 2015
+# Created: Fri Oct 30 13:00:31 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -198,7 +198,7 @@ class Ui_About(object):
         self.label_5.setText(_translate("About", "This plugin was designed by UMR Espace-Dev (IRD, UAG, UM2, UR)", None))
         self.groupBox_2.setTitle(_translate("About", "Realization", None))
         self.groupBox_5.setTitle(_translate("About", "Translation", None))
-        self.label.setText(_translate("About", "<html><head/><body><p>The web-based translating platform <a href=\"https://www.transifex.com/projects/p/gui/\"><span style=\" text-decoration: underline; color:#0057ae;\">Transifex</span></a> is used. It\'s easier for translators.</p></body></html>", None))
+        self.label.setText(_translate("About", "<html><head/><body><p>The web-based translating platform <a href=\"https://www.transifex.com/geohealth/\"><span style=\" text-decoration: underline; color:#0057ae;\">Transifex</span></a> is used. It\'s easier for translators.</p></body></html>", None))
         self.label_3.setText(_translate("About", "French", None))
         self.label_10.setText(_translate("About", "Thai", None))
         self.groupBox_4.setTitle(_translate("About", "Sources", None))
@@ -206,4 +206,4 @@ class Ui_About(object):
         self.label_14.setText(_translate("About", "Licence", None))
         self.label_17.setText(_translate("About", "<html><head/><body><p><a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"><span style=\" text-decoration: none; color:#0057ae;\">Licence GPL Version 2</span></a></p></body></html>", None))
 
-import resources_rc
+from GeoHealth.resources import resources_rc

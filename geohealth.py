@@ -70,7 +70,7 @@ class GeoHealth:
         self.plugin_menu = self.iface.pluginMenu()
 
         # Main window
-        icon = QIcon(':/plugins/GeoHealth/resources/icon.png')
+        icon = QIcon(':/plugins/GeoHealth/resources/icon-32.png')
         self.main_action = QAction(icon, 'GeoHealth', self.iface.mainWindow())
         self.plugin_menu.addAction(self.main_action)
         # noinspection PyUnresolvedReferences

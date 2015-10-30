@@ -1,11 +1,8 @@
 <RCC>
 	<qresource prefix="/plugins/GeoHealth/resources" >
-		<file>icon.png</file>
+		<file>icon-32.png</file>
 		<file>icon-100.png</file>
 		<file>espace-dev.png</file>
-		<file>um2.png</file>
-		<file>gnu.png</file>
-		<file>refresh.png</file>
 		<file>blur.png</file>
 		<file>about.png</file>
 		<file>info.png</file>
