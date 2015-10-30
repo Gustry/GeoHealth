@@ -24,12 +24,15 @@ from os.path import splitext, basename
 from qgis.core import QgsMapLayerRegistry, QgsVectorLayer
 
 from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
+from PyQt4.QtCore import pyqtSignal
 
 from GeoHealth.ui.import_ui.open_shapefile import Ui_Form
 from GeoHealth.core.tools import trans
 
 
 class OpenShapefileWidget(QWidget, Ui_Form):
+
+    signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
 
     def __init__(self, parent=None):
         self.parent = parent
@@ -38,6 +41,8 @@ class OpenShapefileWidget(QWidget, Ui_Form):
 
         self.buttonBox.button(QDialogButtonBox.Open).clicked.connect(
             self.open_shapefile)
+        self.buttonBox.button(QDialogButtonBox.Cancel).clicked.connect(
+            self.signalAskCloseWindow.emit)
         # noinspection PyUnresolvedReferences
         self.bt_browse.clicked.connect(self.open_file_browser)
 
@@ -51,6 +56,10 @@ class OpenShapefileWidget(QWidget, Ui_Form):
 
     def open_shapefile(self):
         path = self.le_shapefile.text()
+
+        if not path:
+            return
+
         name = basename(splitext(path)[0])
         layer = QgsVectorLayer(path, name, 'ogr')
         # noinspection PyArgumentList

@@ -22,6 +22,7 @@
 """
 
 from PyQt4.QtGui import QWidget, QMdiArea, QVBoxLayout
+from PyQt4.QtCore import pyqtSignal
 from qgis.core import QgsProviderRegistry
 from qgis.utils import iface
 
@@ -30,6 +31,8 @@ from GeoHealth.core.tools import trans
 
 
 class OpenCsv(QWidget):
+
+    signalAskCloseWindow = pyqtSignal(name='signalAskCloseWindow')
 
     def __init__(self, parent=None):
         self.parent = parent
@@ -46,3 +49,5 @@ class OpenCsv(QWidget):
         mdi_area.addSubWindow(dialog)
 
         dialog.addVectorLayer[str, str, str].connect(iface.addVectorLayer)
+
+        dialog.rejected.connect(self.signalAskCloseWindow.emit)

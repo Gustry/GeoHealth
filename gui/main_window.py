@@ -66,6 +66,12 @@ class MainDialog(QDialog, Ui_Dialog):
         for content in self.content:
             self.stack.addWidget(self.content[content][0])
 
+            try:
+                self.content[content][0].signalAskCloseWindow.connect(
+                    self.hide)
+            except AttributeError:
+                pass
+
     def expand(self, i):
         self.menu.setExpanded(i, not self.menu.isExpanded(i))
 
@@ -86,7 +92,6 @@ class MainDialog(QDialog, Ui_Dialog):
         try:
             self.help.setHtml(self.content[tree_index][1])
             self.help.show()
-            print self.help.page().mainFrame().toHtml()
         except KeyError:
             self.help.hide()
         except IndexError:

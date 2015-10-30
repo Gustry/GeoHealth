@@ -23,6 +23,7 @@
 
 import codecs
 from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
+from PyQt4.QtCore import pyqtSignal
 
 from qgis.utils import iface
 from qgis.core import QgsMapLayer
@@ -33,6 +34,8 @@ from GeoHealth.core.tools import trans
 
 class CsvExport(QWidget, Ui_Form):
 
+    signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
+
     def __init__(self, parent=None):
         self.parent = parent
         super(CsvExport, self).__init__()
@@ -41,6 +44,8 @@ class CsvExport(QWidget, Ui_Form):
 
         self.buttonBox.button(QDialogButtonBox.Save).clicked.connect(
             self.save_csv)
+        self.buttonBox.button(QDialogButtonBox.Cancel).clicked.connect(
+            self.signalAskCloseWindow.emit)
         # noinspection PyUnresolvedReferences
         self.bt_browse.clicked.connect(self.open_file_browser)
 

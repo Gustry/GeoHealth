@@ -25,7 +25,7 @@ from qgis.utils import iface
 from qgis.core import QgsMapLayer, QgsGraduatedSymbolRendererV2
 
 from PyQt4.QtGui import QDialog, QDialogButtonBox
-from PyQt4.QtCore import QSize
+from PyQt4.QtCore import QSize, pyqtSignal
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
@@ -35,6 +35,9 @@ from GeoHealth.ui.analysis.histogram import Ui_Histogram
 
 
 class HistogramDialog(QDialog, Ui_Histogram):
+
+    signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
+
     def __init__(self, parent=None):
         """Constructor."""
         QDialog.__init__(self, parent)
@@ -46,6 +49,8 @@ class HistogramDialog(QDialog, Ui_Histogram):
             self.draw_plot)
         self.button_box.button(QDialogButtonBox.Cancel).clicked.connect(
             self.hide)
+        self.button_box.button(QDialogButtonBox.Cancel).clicked.connect(
+            self.signalAskCloseWindow.emit)
 
         # Setup the graph.
         self.figure = Figure()

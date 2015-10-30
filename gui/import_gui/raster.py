@@ -20,7 +20,7 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt4.QtCore import QFileInfo
+from PyQt4.QtCore import QFileInfo, pyqtSignal
 from qgis.core import QgsMapLayerRegistry, QgsRasterLayer, QgsProviderRegistry
 
 from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
@@ -31,6 +31,8 @@ from GeoHealth.core.tools import trans
 
 class OpenRasterWidget(QWidget, Ui_Form):
 
+    signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
+
     def __init__(self, parent=None):
         self.parent = parent
         super(OpenRasterWidget, self).__init__()
@@ -38,6 +40,8 @@ class OpenRasterWidget(QWidget, Ui_Form):
 
         self.buttonBox.button(QDialogButtonBox.Open).clicked.connect(
             self.open_raster)
+        self.buttonBox.button(QDialogButtonBox.Cancel).clicked.connect(
+            self.signalAskCloseWindow.emit)
         # noinspection PyUnresolvedReferences
         self.bt_browse.clicked.connect(self.open_file_browser)
 

@@ -27,7 +27,7 @@ from PyQt4.QtGui import \
     QDialogButtonBox,\
     QTableWidgetItem,\
     QApplication
-from PyQt4.QtCore import QSize, QVariant, Qt
+from PyQt4.QtCore import QSize, QVariant, Qt, pyqtSignal
 from PyQt4.QtGui import QFileDialog
 
 from qgis.utils import iface, QGis
@@ -58,6 +58,9 @@ from GeoHealth.core.stats import Stats
 
 
 class IncidenceDensityDialog(QDialog):
+
+    signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
+
     def __init__(self, parent=None):
         """Constructor."""
         self.parent = parent
@@ -78,6 +81,8 @@ class IncidenceDensityDialog(QDialog):
             self.run_stats)
         self.button_box_ok.button(QDialogButtonBox.Cancel).clicked.connect(
             self.hide)
+        self.button_box_ok.button(QDialogButtonBox.Cancel).clicked.connect(
+            self.signalAskCloseWindow.emit)
 
         # Add items in symbology
         self.cbx_mode.addItem(
