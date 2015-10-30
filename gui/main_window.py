@@ -56,7 +56,7 @@ class MainDialog(QDialog, Ui_Dialog):
             13: [OpenXlsDbfFileWidget(), help_open_table()],
             14: [OpenCsv(), help_open_csv()],
             15: [OpenCsv(), help_open_xy()],
-            21: [MainBlurringDialog(), help_blur()],
+            21: [MainBlurringDialog(), help_blur(), help_stats_blurring()],
             22: [IncidenceDialog(), help_incidence()],
             23: [DensityDialog(), help_density()],
             24: [HistogramDialog()],
@@ -79,9 +79,30 @@ class MainDialog(QDialog, Ui_Dialog):
             except AttributeError:
                 pass
 
+            # HACK ! fixme
+            if len(self.content[content]) > 2:
+                self.content[content][0].tab.currentChanged.connect(
+                    self.display_help_tab)
+
         index = self.content.keys().index(100)
         self.stack.setCurrentIndex(index)
         self.help.hide()
+
+    def display_help_tab(self, i):
+        current_index = self.menu.currentIndex()
+        parent = current_index.parent()
+        if parent.row() == -1:
+            tree_index = current_index.row() * 10 + 10
+        else:
+            tree_index = current_index.row() + 1 + parent.row() * 10 + 10
+
+        try:
+            self.help.setHtml(self.content[tree_index][i + 1])
+            self.help.show()
+        except KeyError:
+            self.help.hide()
+        except IndexError:
+            self.help.hide()
 
     def show_status(self, level, message):
         self.messageBar.pushMessage('', message, level, 5)
@@ -103,6 +124,11 @@ class MainDialog(QDialog, Ui_Dialog):
             index = self.content.keys().index(100)
 
         self.stack.setCurrentIndex(index)
+
+        # Hack fixme
+        #if len(self.content[tree_index]) > 2:
+        #    self.content[tree_index][0].tab.setCurrentIndex(0)
+
         try:
             self.help.setHtml(self.content[tree_index][1])
             self.help.show()

@@ -22,11 +22,14 @@
 """
 
 from PyQt4.QtGui import QDialog
+from PyQt4.QtCore import pyqtSignal
 
 from GeoHealth.ui.main_blurring import Ui_Form
 
 
 class MainBlurringDialog(QDialog, Ui_Form):
+
+    signalAskCloseWindow = pyqtSignal(name='signalAskCloseWindow')
 
     def __init__(self, parent=None):
         """Constructor."""
@@ -34,9 +37,11 @@ class MainBlurringDialog(QDialog, Ui_Form):
         QDialog.__init__(self)
         self.setupUi(self)
 
-        #Connect
-        self.blur.signalAskCloseWindow.connect(self.hide)
-        self.statistics.signalAskCloseWindow.connect(self.hide)
+        # Connect
+        self.blur.signalAskCloseWindow.connect(
+            self.signalAskCloseWindow.emit)
+        self.statistics.signalAskCloseWindow.connect(
+            self.signalAskCloseWindow.emit)
 
     def fill_combobox_layer(self):
         self.statistics.fill_comboxbox_layers()

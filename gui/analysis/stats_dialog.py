@@ -43,7 +43,7 @@ from GeoHealth.core.exceptions import \
 
 class StatsWidget(QWidget, Ui_Stats):
 
-    signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
+    signalAskCloseWindow = pyqtSignal(name='signalAskCloseWindow')
 
     def __init__(self, parent=None):
         self.parent = parent
