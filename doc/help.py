@@ -112,16 +112,134 @@ def picture(filename):
     return "<img src='file:%s' />" % (join(PATH, filename))
 
 
+def help_open_shapefile():
+    title = trans('Import shapefile')
+    intro = trans('Import a shapefile into QGIS.')
+    inputs = [
+        trans('Shapefile')
+    ]
+    outputs = [
+        trans('New layer')
+    ]
+    more = [
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
+
+def help_open_raster():
+    title = trans('Import raster')
+    intro = trans('Import a raster into QGIS.')
+    inputs = [
+        trans('Raster file')
+    ]
+    outputs = [
+        trans('New layer')
+    ]
+    more = [
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
+
+def help_open_table():
+    title = trans('Import table')
+    intro = trans('XLS or DBF format.')
+    inputs = [
+        trans('Table file')
+    ]
+    outputs = [
+        trans('New table')
+    ]
+    more = [
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
+
+def help_open_csv():
+    title = trans('Import CSV table')
+    intro = trans('CSV format without geometry.')
+    inputs = [
+        trans('CSV file')
+    ]
+    outputs = [
+        trans('New table')
+    ]
+    more = [
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
+
+def help_open_xy():
+    title = trans('Import CSV table')
+    intro = trans('CSV format with geometry.')
+    inputs = [
+        trans('CSV file')
+    ]
+    outputs = [
+        trans('New layer')
+    ]
+    more = [
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
+
+def help_density():
+    title = trans('Density')
+    intro = trans('Compute density')
+    inputs = [
+        trans('Point layer : disease'),
+        trans('Polygon layer : administrative boundary')]
+    outputs = [
+        trans('New polygon layer with the density')
+    ]
+    more = [
+        trans('This algorithm will count the number of points inside each polygons and run a formula to get the density.'),
+        trans('number of cases / area * ratio')
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
+
 def help_blur():
     title = trans('Blurring')
-    intro = trans('Vous pouvez flouter lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip')
-    inputs = [trans('Point layer'), trans('Radius')]
-    outputs = [trans('Blurred layer (polygon)')]
+    intro = trans('Plugin to blur point data, such as health personal data, and get some statistics about this blurring.')
+    inputs = [
+        trans('Point layer'),
+        trans('Radius'),
+        trans('Enveloppe : The layer will force the algorithm to have an intersection between the centroid and this layer. This is like a mask.')
+    ]
+    outputs = [
+        trans('Blurred layer (polygon)')
+    ]
     more = [
+        trans('1 : Creating a buffer (radius r)'),
         picture('blurring_1.png'),
+        trans('2 : Random selection of a point in each buffer'),
         picture('blurring_2.png'),
+        trans('3 : Creating a buffer around the new point with the same radius. The initial point is at a maximal distance 2r of the centroid of the buffer.'),
         picture('blurring_3.png'),
+        trans('4 : Deleting the random point and the first buffer'),
         picture('blurring_4.png'),
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
+
+def help_stats_blurring():
+    title = trans('Stats')
+    intro = trans('With two layers, the plugin will count the number of intersections between them and produces some stats.')
+    inputs = [
+        trans('Blurred layer'),
+        trans('Stats layer : buildings for instanceon layer : administrative boundary')]
+    outputs = [
+        trans('New polygon layer with the density')
+    ]
+    more = [
+        trans('This is usefull if you want to rate your blurring.'),
     ]
     html = html_table(title, intro, inputs, outputs, more)
     return html
@@ -130,8 +248,31 @@ def help_blur():
 def help_incidence():
     title = trans('Incidence')
     intro = trans('You can create an incidence map about a disease.')
-    inputs = [trans('Point layer : disease'), trans('Polygon layer : administrative boundary')]
-    outputs = [trans('New polygon layer with the incidence')]
-    more = [trans('This algorithm will count the number of points inside each polygons and run a formula to get the incidence.')]
+    inputs = [
+        trans('Point layer : disease'),
+        trans('Polygon layer : administrative boundary with a population field')
+    ]
+    outputs = [
+        trans('New polygon layer with the incidence')
+    ]
+    more = [
+        trans('This algorithm will count the number of points inside each polygons and run a formula to get the incidence.'),
+        trans('number of cases / population * ratio')
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
+
+def help_attribute_table():
+    title = trans('Export attribute table')
+    intro = trans('Export as CSV format without geometry.')
+    inputs = [
+        trans('Vector layer')
+    ]
+    outputs = [
+        trans('CSV file')
+    ]
+    more = [
+    ]
     html = html_table(title, intro, inputs, outputs, more)
     return html

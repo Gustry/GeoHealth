@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'incidence.ui'
 #
-# Created: Wed Oct 28 16:19:11 2015
+# Created: Fri Oct 30 15:30:33 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -97,15 +97,6 @@ class Ui_Incidence(object):
         self.label_8 = QtGui.QLabel(Incidence)
         self.label_8.setObjectName(_fromUtf8("label_8"))
         self.formLayout.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_8)
-        self.label_6 = QtGui.QLabel(Incidence)
-        self.label_6.setObjectName(_fromUtf8("label_6"))
-        self.formLayout.setWidget(8, QtGui.QFormLayout.LabelRole, self.label_6)
-        self.label_5 = QtGui.QLabel(Incidence)
-        self.label_5.setObjectName(_fromUtf8("label_5"))
-        self.formLayout.setWidget(8, QtGui.QFormLayout.FieldRole, self.label_5)
-        self.horizontalLayout = QtGui.QHBoxLayout()
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.formLayout.setLayout(9, QtGui.QFormLayout.FieldRole, self.horizontalLayout)
         self.horizontalLayout_6 = QtGui.QHBoxLayout()
         self.horizontalLayout_6.setObjectName(_fromUtf8("horizontalLayout_6"))
         self.le_output_filepath = QtGui.QLineEdit(Incidence)
@@ -115,6 +106,9 @@ class Ui_Incidence(object):
         self.button_browse.setObjectName(_fromUtf8("button_browse"))
         self.horizontalLayout_6.addWidget(self.button_browse)
         self.formLayout.setLayout(7, QtGui.QFormLayout.FieldRole, self.horizontalLayout_6)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.formLayout.setLayout(8, QtGui.QFormLayout.FieldRole, self.horizontalLayout)
         self.verticalLayout.addLayout(self.formLayout)
         self.symbology = gui.QgsCollapsibleGroupBox(Incidence)
         self.symbology.setCheckable(True)
@@ -207,8 +201,6 @@ class Ui_Incidence(object):
         self.checkBox_addNbIntersections.setText(_translate("Incidence", "Add the number of cases per unit to the attribute table", None))
         self.checkBox_incidence_runStats.setText(_translate("Incidence", "Calculate statistics", None))
         self.label_8.setText(_translate("Incidence", "Output", None))
-        self.label_6.setText(_translate("Incidence", "<html><head/><body><p><span style=\" font-style:italic;\">Incidence =</span></p></body></html>", None))
-        self.label_5.setText(_translate("Incidence", "<html><head/><body><p><span style=\" font-style:italic;\">number of cases / population * ratio</span></p></body></html>", None))
         self.le_output_filepath.setPlaceholderText(_translate("Incidence", "Save to temporary file", None))
         self.button_browse.setText(_translate("Incidence", "Browse", None))
         self.symbology.setTitle(_translate("Incidence", "Add a symbology", None))

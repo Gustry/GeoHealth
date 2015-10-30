@@ -23,7 +23,7 @@
 
 from PyQt4.QtGui import QDialog
 
-from GeoHealth.doc.help import help_blur, help_incidence
+from GeoHealth.doc.help import *
 from GeoHealth.ui.main import Ui_Dialog
 from GeoHealth.gui.import_gui.open_csv import OpenCsv
 from GeoHealth.gui.import_gui.raster import OpenRasterWidget
@@ -50,14 +50,16 @@ class MainDialog(QDialog, Ui_Dialog):
         self.menu.clicked.connect(self.display_content)
 
         self.content = {
-            11: [OpenCsv()],
-            12: [OpenShapefileWidget()],
-            13: [OpenRasterWidget()],
+            11: [OpenShapefileWidget(), help_open_shapefile()],
+            12: [OpenRasterWidget(), help_open_raster()],
+            13: [AboutWidget(), help_open_table()],
+            14: [OpenCsv(), help_open_csv()],
+            15: [OpenCsv(), help_open_xy()],
             21: [MainBlurringDialog(), help_blur()],
             22: [IncidenceDialog(), help_incidence()],
-            23: [DensityDialog()],
+            23: [DensityDialog(), help_density()],
             24: [HistogramDialog()],
-            31: [CsvExport()],
+            31: [CsvExport(), help_attribute_table()],
             100: [AboutWidget()]
         }
 

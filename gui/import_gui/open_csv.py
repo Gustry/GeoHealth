@@ -42,12 +42,14 @@ class OpenCsv(QWidget):
 
         # noinspection PyArgumentList
         dialog = QgsProviderRegistry.instance().selectWidget('delimitedtext')
-        dialog.setWindowTitle(trans('XY to map'))
+        dialog.setWindowTitle(trans('Open a CSV'))
 
         layout = QVBoxLayout(self)
         layout.addWidget(mdi_area)
         mdi_area.addSubWindow(dialog)
 
         dialog.addVectorLayer[str, str, str].connect(iface.addVectorLayer)
+        # print vars(dialog)
+        #dialog.geomTypeXY.setDisabled(True)
 
         dialog.rejected.connect(self.signalAskCloseWindow.emit)

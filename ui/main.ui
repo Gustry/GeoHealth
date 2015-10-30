@@ -102,16 +102,7 @@ QTreeWidget::item:!has-children
         </property>
         <item>
          <property name="text">
-          <string>CSV</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/csv.png</normaloff>:/plugins/GeoHealth/resources/csv.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>SHP</string>
+          <string>Shapefile</string>
          </property>
          <property name="icon">
           <iconset resource="../resources/resources.qrc">
@@ -125,6 +116,33 @@ QTreeWidget::item:!has-children
          <property name="icon">
           <iconset resource="../resources/resources.qrc">
            <normaloff>:/plugins/GeoHealth/resources/raster.png</normaloff>:/plugins/GeoHealth/resources/raster.png</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Table XLS, DBF</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/resources.qrc">
+           <normaloff>:/plugins/GeoHealth/resources/csv.png</normaloff>:/plugins/GeoHealth/resources/csv.png</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Table CSV</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/resources.qrc">
+           <normaloff>:/plugins/GeoHealth/resources/csv.png</normaloff>:/plugins/GeoHealth/resources/csv.png</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>XY to map</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/resources.qrc">
+           <normaloff>:/plugins/GeoHealth/resources/xy.png</normaloff>:/plugins/GeoHealth/resources/xy.png</iconset>
          </property>
         </item>
        </item>
