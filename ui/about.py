@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'about.ui'
 #
-# Created: Fri Oct 30 13:41:13 2015
+# Created: Fri Oct 30 13:58:12 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -72,6 +72,16 @@ class Ui_About(object):
         self.verticalLayout_7.addWidget(self.label_5)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.label_9 = QtGui.QLabel(self.groupBox)
+        self.label_9.setText(_fromUtf8(""))
+        self.label_9.setPixmap(QtGui.QPixmap(_fromUtf8(":/plugins/GeoHealth/resources/IRD-200.png")))
+        self.label_9.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_9.setWordWrap(True)
+        self.label_9.setOpenExternalLinks(True)
+        self.label_9.setObjectName(_fromUtf8("label_9"))
+        self.horizontalLayout.addWidget(self.label_9)
+        self.verticalLayout_6 = QtGui.QVBoxLayout()
+        self.verticalLayout_6.setObjectName(_fromUtf8("verticalLayout_6"))
         self.label_6 = QtGui.QLabel(self.groupBox)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
@@ -81,18 +91,10 @@ class Ui_About(object):
         self.label_6.setText(_fromUtf8(""))
         self.label_6.setPixmap(QtGui.QPixmap(_fromUtf8(":/plugins/GeoHealth/resources/espace-dev.png")))
         self.label_6.setScaledContents(False)
+        self.label_6.setAlignment(QtCore.Qt.AlignCenter)
         self.label_6.setOpenExternalLinks(True)
         self.label_6.setObjectName(_fromUtf8("label_6"))
-        self.horizontalLayout.addWidget(self.label_6)
-        self.verticalLayout_6 = QtGui.QVBoxLayout()
-        self.verticalLayout_6.setObjectName(_fromUtf8("verticalLayout_6"))
-        self.label_9 = QtGui.QLabel(self.groupBox)
-        self.label_9.setText(_fromUtf8(""))
-        self.label_9.setPixmap(QtGui.QPixmap(_fromUtf8(":/plugins/GeoHealth/resources/IRD-408.png")))
-        self.label_9.setWordWrap(True)
-        self.label_9.setOpenExternalLinks(True)
-        self.label_9.setObjectName(_fromUtf8("label_9"))
-        self.verticalLayout_6.addWidget(self.label_9)
+        self.verticalLayout_6.addWidget(self.label_6)
         self.horizontalLayout.addLayout(self.verticalLayout_6)
         self.verticalLayout_7.addLayout(self.horizontalLayout)
         self.verticalLayout_3.addWidget(self.groupBox)
@@ -184,7 +186,7 @@ class Ui_About(object):
     def retranslateUi(self, About):
         About.setWindowTitle(_translate("About", "Form", None))
         self.groupBox_6.setTitle(_translate("About", "GeoHealth", None))
-        self.label_13.setText(_translate("About", "GeoHealth aims to provide a simplified interface for users in epidemiology : blurring a point layer, incidence map, run statistics ...", None))
+        self.label_13.setText(_translate("About", "Geohealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.", None))
         self.groupBox.setTitle(_translate("About", "Design", None))
         self.label_5.setText(_translate("About", "<html><head/><body><p> This plugin was designed by <a href=\"http://www.espace-dev.fr\"><span style=\" text-decoration: underline; color:#0057ae;\">UMR ESPACE-DEV</span></a> (IRD, Univ. Guyane, Univ. Montpellier, Univ. Réunion) : <a href=\"mailto:vincent.herbreteau@ird.fr?subject=Plugin GeoHealth\"><span style=\" color:#0057ae;\" style=\"text-decoration:none;\">Vincent Herbreteau (IRD)</span></a> and <a href=\"mailto:christophe.revillion@univ-reunion.fr?subject=Plugin GeoHealth\" style=\"text-decoration:none;\">Christophe Révillion (IRD)</a>, with contributions from the ESoR research group (Environment, Societies and Health Risk).</p></body></html>", None))
         self.groupBox_2.setTitle(_translate("About", "Realization", None))

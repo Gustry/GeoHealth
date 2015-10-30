@@ -66,7 +66,7 @@
             <item>
              <widget class="QLabel" name="label_13">
               <property name="text">
-               <string>GeoHealth aims to provide a simplified interface for users in epidemiology : blurring a point layer, incidence map, run statistics ...</string>
+               <string>Geohealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.</string>
               </property>
               <property name="wordWrap">
                <bool>true</bool>
@@ -97,21 +97,18 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
-             <widget class="QLabel" name="label_6">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
+             <widget class="QLabel" name="label_9">
               <property name="text">
                <string notr="true"/>
               </property>
               <property name="pixmap">
-               <pixmap resource="../resources/resources.qrc">:/plugins/GeoHealth/resources/espace-dev.png</pixmap>
+               <pixmap resource="../resources/resources.qrc">:/plugins/GeoHealth/resources/IRD-200.png</pixmap>
               </property>
-              <property name="scaledContents">
-               <bool>false</bool>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
               </property>
               <property name="openExternalLinks">
                <bool>true</bool>
@@ -121,15 +118,24 @@
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_6">
               <item>
-               <widget class="QLabel" name="label_9">
+               <widget class="QLabel" name="label_6">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="text">
                  <string notr="true"/>
                 </property>
                 <property name="pixmap">
-                 <pixmap resource="../resources/resources.qrc">:/plugins/GeoHealth/resources/IRD-408.png</pixmap>
+                 <pixmap resource="../resources/resources.qrc">:/plugins/GeoHealth/resources/espace-dev.png</pixmap>
                 </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
+                <property name="scaledContents">
+                 <bool>false</bool>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="openExternalLinks">
                  <bool>true</bool>
