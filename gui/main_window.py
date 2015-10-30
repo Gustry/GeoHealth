@@ -25,10 +25,11 @@ from PyQt4.QtGui import QDialog
 
 from GeoHealth.doc.help import *
 from GeoHealth.ui.main import Ui_Dialog
+from GeoHealth.gui.import_gui.open_shapefile import OpenShapefileWidget
 from GeoHealth.gui.import_gui.open_csv import OpenCsv
 from GeoHealth.gui.import_gui.raster import OpenRasterWidget
+from GeoHealth.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
 from GeoHealth.gui.analysis.main_blurring_dialog import MainBlurringDialog
-from GeoHealth.gui.import_gui.open_shapefile import OpenShapefileWidget
 from GeoHealth.gui.analysis.incidence_dialog import IncidenceDialog
 from GeoHealth.gui.analysis.density_dialog import DensityDialog
 from GeoHealth.gui.analysis.histogram_dialog import HistogramDialog
@@ -52,7 +53,7 @@ class MainDialog(QDialog, Ui_Dialog):
         self.content = {
             11: [OpenShapefileWidget(), help_open_shapefile()],
             12: [OpenRasterWidget(), help_open_raster()],
-            13: [AboutWidget(), help_open_table()],
+            13: [OpenXlsDbfFileWidget(), help_open_table()],
             14: [OpenCsv(), help_open_csv()],
             15: [OpenCsv(), help_open_xy()],
             21: [MainBlurringDialog(), help_blur()],
