@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'about.ui'
 #
-# Created: Fri Oct 30 12:31:00 2015
+# Created: Fri Oct 30 12:46:33 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,14 +26,14 @@ except AttributeError:
 class Ui_About(object):
     def setupUi(self, About):
         About.setObjectName(_fromUtf8("About"))
-        About.resize(925, 683)
+        About.resize(1013, 789)
         self.verticalLayout = QtGui.QVBoxLayout(About)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.scrollArea = QtGui.QScrollArea(About)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
         self.scrollAreaWidgetContents = QtGui.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 896, 756))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 999, 775))
         self.scrollAreaWidgetContents.setObjectName(_fromUtf8("scrollAreaWidgetContents"))
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
@@ -173,27 +173,17 @@ class Ui_About(object):
         self.label_22.setObjectName(_fromUtf8("label_22"))
         self.gridLayout_5.addWidget(self.label_22, 0, 1, 1, 1)
         self.verticalLayout_11.addLayout(self.gridLayout_5)
+        self.horizontalLayout_7 = QtGui.QHBoxLayout()
+        self.horizontalLayout_7.setObjectName(_fromUtf8("horizontalLayout_7"))
+        self.label_14 = QtGui.QLabel(self.groupBox_4)
+        self.label_14.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_14.setObjectName(_fromUtf8("label_14"))
+        self.horizontalLayout_7.addWidget(self.label_14)
+        self.label_17 = QtGui.QLabel(self.groupBox_4)
+        self.label_17.setObjectName(_fromUtf8("label_17"))
+        self.horizontalLayout_7.addWidget(self.label_17)
+        self.verticalLayout_11.addLayout(self.horizontalLayout_7)
         self.verticalLayout_3.addWidget(self.groupBox_4)
-        self.groupBox_3 = QtGui.QGroupBox(self.scrollAreaWidgetContents)
-        self.groupBox_3.setObjectName(_fromUtf8("groupBox_3"))
-        self.verticalLayout_12 = QtGui.QVBoxLayout(self.groupBox_3)
-        self.verticalLayout_12.setObjectName(_fromUtf8("verticalLayout_12"))
-        self.horizontalLayout_5 = QtGui.QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
-        self.label_15 = QtGui.QLabel(self.groupBox_3)
-        self.label_15.setText(_fromUtf8("<html><head/><body><p><a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"><span style=\" text-decoration: none; color:#0057ae;\">Licence GPL Version 2</span></a></p></body></html>"))
-        self.label_15.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_15.setWordWrap(True)
-        self.label_15.setObjectName(_fromUtf8("label_15"))
-        self.horizontalLayout_5.addWidget(self.label_15)
-        self.label_16 = QtGui.QLabel(self.groupBox_3)
-        self.label_16.setText(_fromUtf8("<html><head/><body><p><a href=\"https://www.gnu.org/licenses/gpl-2.0.html\"><img src=\":/plugins/GeoHealth/resources/gnu.png\"/></a></p></body></html>"))
-        self.label_16.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_16.setOpenExternalLinks(True)
-        self.label_16.setObjectName(_fromUtf8("label_16"))
-        self.horizontalLayout_5.addWidget(self.label_16)
-        self.verticalLayout_12.addLayout(self.horizontalLayout_5)
-        self.verticalLayout_3.addWidget(self.groupBox_3)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout.addWidget(self.scrollArea)
 
@@ -213,6 +203,7 @@ class Ui_About(object):
         self.label_10.setText(_translate("About", "Thai", None))
         self.groupBox_4.setTitle(_translate("About", "Sources", None))
         self.label_21.setText(_translate("About", "Github\'s repository", None))
-        self.groupBox_3.setTitle(_translate("About", "Licence", None))
+        self.label_14.setText(_translate("About", "Licence", None))
+        self.label_17.setText(_translate("About", "<html><head/><body><p><a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"><span style=\" text-decoration: none; color:#0057ae;\">Licence GPL Version 2</span></a></p></body></html>", None))
 
-from GeoHealth.resources import resources_rc
+import resources_rc

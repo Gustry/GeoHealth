@@ -34,7 +34,6 @@ from GeoHealth.gui.analysis.density_dialog import DensityDialog
 from GeoHealth.gui.analysis.histogram_dialog import HistogramDialog
 from GeoHealth.gui.export.csv import CsvExport
 from GeoHealth.gui.about import AboutWidget
-from GeoHealth.gui.wip import WipWidget
 
 
 class MainDialog(QDialog, Ui_Dialog):
