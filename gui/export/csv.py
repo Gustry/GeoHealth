@@ -29,7 +29,7 @@ from qgis.utils import iface
 from qgis.core import QgsMapLayer
 
 from GeoHealth.ui.export.export_csv import Ui_Form
-from GeoHealth.core.tools import trans
+from GeoHealth.core.tools import tr
 
 
 class CsvExport(QWidget, Ui_Form):
@@ -69,7 +69,7 @@ class CsvExport(QWidget, Ui_Form):
         # noinspection PyArgumentList
         output_file = QFileDialog.getSaveFileNameAndFilter(
             parent=self.parent,
-            caption=trans('Export as CSV'),
+            caption=tr('Export as CSV'),
             filter='CSV (*.csv)')
         self.le_output.setText(output_file[0])
 
@@ -102,4 +102,4 @@ class CsvExport(QWidget, Ui_Form):
 
         csv_file.close()
 
-        self.signalStatus.emit(3, trans('Successful export to %s' % path))
+        self.signalStatus.emit(3, tr('Successful export to %s' % path))

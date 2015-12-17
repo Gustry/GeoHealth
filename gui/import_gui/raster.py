@@ -26,7 +26,7 @@ from qgis.core import QgsMapLayerRegistry, QgsRasterLayer, QgsProviderRegistry
 from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
 
 from GeoHealth.ui.import_ui.open_raster import Ui_Form
-from GeoHealth.core.tools import trans
+from GeoHealth.core.tools import tr
 
 
 class OpenRasterWidget(QWidget, Ui_Form):
@@ -54,7 +54,7 @@ class OpenRasterWidget(QWidget, Ui_Form):
         # noinspection PyArgumentList
         raster = QFileDialog.getOpenFileName(
             parent=self.parent,
-            caption=trans('Select raster'),
+            caption=tr('Select raster'),
             filter=raster_filter)
         self.le_shapefile.setText(raster)
 
@@ -66,4 +66,4 @@ class OpenRasterWidget(QWidget, Ui_Form):
 
         # noinspection PyArgumentList
         QgsMapLayerRegistry.instance().addMapLayer(layer)
-        self.signalStatus.emit(3, trans('Successful import from %s' % path))
+        self.signalStatus.emit(3, tr('Successful import from %s' % path))

@@ -27,7 +27,7 @@ from qgis.core import QgsProviderRegistry
 from qgis.utils import iface
 
 
-from GeoHealth.core.tools import trans
+from GeoHealth.core.tools import tr
 
 
 class OpenCsv(QWidget):
@@ -43,7 +43,7 @@ class OpenCsv(QWidget):
 
         # noinspection PyArgumentList
         dialog = QgsProviderRegistry.instance().selectWidget('delimitedtext')
-        dialog.setWindowTitle(trans('Open a CSV'))
+        dialog.setWindowTitle(tr('Open a CSV'))
 
         layout = QVBoxLayout(self)
         layout.addWidget(mdi_area)
@@ -54,4 +54,4 @@ class OpenCsv(QWidget):
 
     def success(self, path, base_name, provider_key):
         iface.addVectorLayer(path, base_name, provider_key)
-        self.signalStatus.emit(3, trans('Successful import'))
+        self.signalStatus.emit(3, tr('Successful import'))

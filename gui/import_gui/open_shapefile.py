@@ -27,7 +27,7 @@ from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
 from PyQt4.QtCore import pyqtSignal
 
 from GeoHealth.ui.import_ui.open_shapefile import Ui_Form
-from GeoHealth.core.tools import trans
+from GeoHealth.core.tools import tr
 
 
 class OpenShapefileWidget(QWidget, Ui_Form):
@@ -51,7 +51,7 @@ class OpenShapefileWidget(QWidget, Ui_Form):
         # noinspection PyArgumentList
         shapefile = QFileDialog.getOpenFileName(
             parent=self.parent,
-            caption=trans('Select shapefile'),
+            caption=tr('Select shapefile'),
             filter='Shapefile (*.shp)')
         self.le_shapefile.setText(shapefile)
 
@@ -65,4 +65,4 @@ class OpenShapefileWidget(QWidget, Ui_Form):
         layer = QgsVectorLayer(path, name, 'ogr')
         # noinspection PyArgumentList
         QgsMapLayerRegistry.instance().addMapLayer(layer)
-        self.signalStatus.emit(3, trans('Successful import from %s' % path))
+        self.signalStatus.emit(3, tr('Successful import from %s' % path))

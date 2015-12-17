@@ -27,7 +27,7 @@ from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
 from PyQt4.QtCore import pyqtSignal
 
 from GeoHealth.ui.import_ui.open_xls_dbf import Ui_Form
-from GeoHealth.core.tools import trans
+from GeoHealth.core.tools import tr
 
 
 class OpenXlsDbfFileWidget(QWidget, Ui_Form):
@@ -51,7 +51,7 @@ class OpenXlsDbfFileWidget(QWidget, Ui_Form):
         # noinspection PyArgumentList
         shapefile = QFileDialog.getOpenFileName(
             parent=self.parent,
-            caption=trans('Select table'),
+            caption=tr('Select table'),
             filter='Table (*.xls *.xlsx *.dbf)')
         self.le_shapefile.setText(shapefile)
 
@@ -65,4 +65,4 @@ class OpenXlsDbfFileWidget(QWidget, Ui_Form):
         layer = QgsVectorLayer(path, name, 'ogr')
         # noinspection PyArgumentList
         QgsMapLayerRegistry.instance().addMapLayer(layer)
-        self.signalStatus.emit(3, trans('Successful import from %s' % path))
+        self.signalStatus.emit(3, tr('Successful import from %s' % path))

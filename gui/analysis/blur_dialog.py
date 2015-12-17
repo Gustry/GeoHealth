@@ -38,7 +38,7 @@ from processing.tools.system import getTempFilenameInTempFolder
 from GeoHealth.core.blurring.layer_index import LayerIndex
 from GeoHealth.core.blurring.blur import Blur
 from GeoHealth.core.tools import \
-    get_last_input_path, set_last_input_path, trans, display_message_bar
+    get_last_input_path, set_last_input_path, tr, display_message_bar
 from GeoHealth.core.exceptions import \
     GeoHealthException, \
     NoLayerProvidedException,\
@@ -75,7 +75,7 @@ class BlurWidget(QWidget, Ui_Blur):
         # noinspection PyArgumentList
         output_file = QFileDialog.getSaveFileName(
             parent=self,
-            caption=trans('Select file'),
+            caption=tr('Select file'),
             directory=last_folder,
             filter='Shapefiles (*.shp)')
 
@@ -128,7 +128,7 @@ class BlurWidget(QWidget, Ui_Blur):
                 raise NoFileNoDisplayException
 
             if layer_to_blur.crs().mapUnits() != 0:
-                msg = trans('The projection of the map or of the layer is not '
+                msg = tr('The projection of the map or of the layer is not '
                             'in meters. These parameters should be in meters.')
                 display_message_bar(
                     msg, level=QgsMessageBar.WARNING, duration=5)
@@ -206,7 +206,7 @@ class BlurWidget(QWidget, Ui_Blur):
                 self.settings.setValue(
                     '/Projections/defaultBehaviour', old_default_projection)
 
-            msg = trans('Successful export in %s' % file_name)
+            msg = tr('Successful export in %s' % file_name)
             iface.messageBar().pushMessage(
                 msg, level=QgsMessageBar.INFO, duration=5)
 

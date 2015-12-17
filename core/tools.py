@@ -37,7 +37,7 @@ def set_last_input_path(directory):
     settings.setValue('LastInputPath', str(directory))
 
 
-def trans(msg):
+def tr(msg):
     # noinspection PyCallByClass,PyArgumentList
     return QApplication.translate('GeoHealth', msg)
 

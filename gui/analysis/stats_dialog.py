@@ -36,7 +36,7 @@ from GeoHealth.ui.analysis.stats import Ui_Stats
 from GeoHealth.core.graph_toolbar import CustomNavigationToolbar
 from GeoHealth.core.stats import Stats
 from GeoHealth.core.tools import \
-    trans, display_message_bar, get_last_input_path, set_last_input_path
+    tr, display_message_bar, get_last_input_path, set_last_input_path
 from GeoHealth.core.exceptions import \
     GeoHealthException, NoLayerProvidedException, DifferentCrsException
 
@@ -118,9 +118,9 @@ class StatsWidget(QWidget, Ui_Stats):
             nb_feature_blurred = blurred_layer.featureCount()
             features_stats = {}
 
-            label_preparing = trans('Preparing index on the stats layer')
-            label_creating = trans('Creating index on the stats layer')
-            label_calculating = trans('Calculating')
+            label_preparing = tr('Preparing index on the stats layer')
+            label_creating = tr('Creating index on the stats layer')
+            label_calculating = tr('Calculating')
 
             if QGis.QGIS_VERSION_INT < 20700:
                 self.label_progressStats.setText('%s 1/3' % label_preparing)
@@ -222,7 +222,7 @@ class StatsWidget(QWidget, Ui_Stats):
         # noinspection PyArgumentList
         output_file = QFileDialog.getSaveFileName(
             parent=self,
-            caption=trans('Select file'),
+            caption=tr('Select file'),
             directory=last_directory,
             filter='CSV (*.csv)')
 
@@ -249,7 +249,7 @@ class StatsWidget(QWidget, Ui_Stats):
         # noinspection PyArgumentList
         output_file = QFileDialog.getSaveFileName(
             parent=self,
-            caption=trans('Select file'),
+            caption=tr('Select file'),
             directory=last_directory,
             filter='CSV (*.csv)')
 

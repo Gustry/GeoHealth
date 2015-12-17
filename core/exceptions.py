@@ -25,7 +25,7 @@ from qgis.gui import QgsMessageBar
 from processing.core.GeoAlgorithmExecutionException import \
     GeoAlgorithmExecutionException
 
-from GeoHealth.core.tools import trans
+from GeoHealth.core.tools import tr
 
 """
 QApplication.translate doesn't work in contructor's parameters
@@ -42,21 +42,21 @@ class GeoHealthException(GeoAlgorithmExecutionException):
 class NoLayerProvidedException(GeoHealthException):
     def __init__(self, msg=None):
         if not msg:
-            msg = trans(u'No layer was provided.')
+            msg = tr(u'No layer was provided.')
         GeoHealthException.__init__(self, msg)
 
 
 class NoFileNoDisplayException(GeoHealthException):
     def __init__(self, msg=None):
         if not msg:
-            msg = trans(u'No file provided, "add result to canvas" required')
+            msg = tr(u'No file provided, "add result to canvas" required')
         GeoHealthException.__init__(self, msg)
 
 
 class CreatingShapeFileException(GeoHealthException):
     def __init__(self, msg=None, suffix=None):
         if not msg:
-            msg = trans(u'Error while creating the shapefile')
+            msg = tr(u'Error while creating the shapefile')
         if suffix:
             msg += suffix
         GeoHealthException.__init__(self, msg)
@@ -65,29 +65,29 @@ class CreatingShapeFileException(GeoHealthException):
 class PointOutsideEnvelopeException(GeoHealthException):
     def __init__(self, msg=None, number=None):
         if not msg:
-            msg = trans(u'Point number %d is outside the envelope.' % number)
+            msg = tr(u'Point number %d is outside the envelope.' % number)
         GeoHealthException.__init__(self, msg)
 
 
 class DifferentCrsException(GeoHealthException):
     def __init__(self, msg=None, epsg1=None, epsg2=None):
         if not msg:
-            msg = trans(u'It\'s not the same projection system : %s != %s' %
-                        (epsg1, epsg2))
+            msg = tr(u'It\'s not the same projection system : %s != %s' %
+                     (epsg1, epsg2))
         GeoHealthException.__init__(self, msg)
 
 
 class FieldExistingException(GeoHealthException):
     def __init__(self, msg=None, field=None):
         if not msg:
-            msg = trans(u'The field %s already exists in the layer.' % field)
+            msg = tr(u'The field %s already exists in the layer.' % field)
         GeoHealthException.__init__(self, msg)
 
 
 class NotANumberException(GeoHealthException):
     def __init__(self, msg=None, suffix=None):
         if not msg:
-            msg = trans(u'It\'s not a number')
+            msg = tr(u'It\'s not a number')
         if suffix:
             msg += " : %s" % suffix
         GeoHealthException.__init__(self, msg)

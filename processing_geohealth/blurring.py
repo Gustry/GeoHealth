@@ -28,7 +28,7 @@ from qgis.core import QgsVectorFileWriter, QgsField
 
 from GeoHealth.core.blurring.blur import Blur
 from GeoHealth.core.blurring.layer_index import LayerIndex
-from GeoHealth.core.tools import trans
+from GeoHealth.core.tools import tr
 from GeoHealth.processing_geohealth import *
 
 
@@ -81,7 +81,7 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
             'Output layer with selected features'))
 
     def help(self):
-        return True, trans(
+        return True, tr(
             'For more explanations, go to the vector\'s menu then "Blurring"'
             ' -> "Help"<br />')
     

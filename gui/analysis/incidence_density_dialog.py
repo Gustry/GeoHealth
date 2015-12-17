@@ -47,7 +47,7 @@ from matplotlib.backends.backend_qt4agg import \
 from matplotlib.figure import Figure
 
 from GeoHealth.core.graph_toolbar import CustomNavigationToolbar
-from GeoHealth.core.tools import display_message_bar, trans
+from GeoHealth.core.tools import display_message_bar, tr
 from GeoHealth.core.exceptions import \
     GeoHealthException,\
     NoLayerProvidedException,\
@@ -107,7 +107,7 @@ class IncidenceDensityDialog(QDialog):
 
     def open_file_browser(self):
         output_file = QFileDialog.getSaveFileNameAndFilter(
-            self.parent, trans('Save shapefile'), filter='SHP (*.shp)')
+            self.parent, tr('Save shapefile'), filter='SHP (*.shp)')
         self.le_output_filepath.setText(output_file[0])
 
     def fill_combobox_layer(self):
@@ -286,7 +286,7 @@ class IncidenceDensityDialog(QDialog):
             if self.symbology.isChecked():
                 self.add_symbology()
 
-            self.signalStatus.emit(3, trans('Successful process'))
+            self.signalStatus.emit(3, tr('Successful process'))
 
         except GeoHealthException, e:
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
