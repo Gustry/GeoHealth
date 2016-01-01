@@ -117,7 +117,7 @@ class MainDialog(QDialog, Ui_Dialog):
                         ]
                     }, {
                         'label': 'Incidence',
-                        'icon': ':/plugins/GeoHealth/resources/import.png',
+                        'icon': ':/plugins/GeoHealth/resources/incidence.png',
                         'content': [
                             {
                                 'label': 'Polygone uniquement',
