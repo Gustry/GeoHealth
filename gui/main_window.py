@@ -212,7 +212,8 @@ class MainDialog(QDialog, Ui_Dialog):
                         tab_help.append(help_widget)
                         tab.addTab(widget, icon, label)
                     self.help_list.append(tab_help)
-        self.stack.setCurrentIndex(0)
+
+        self.stack.setCurrentIndex(1)
 
     def display_help_tab(self, tab_index):
         index = self.stack.currentIndex() - 2
@@ -248,7 +249,7 @@ class MainDialog(QDialog, Ui_Dialog):
         index = self._fetch_widget_index(parent, current_item)
 
         if index is None:
-            self.stack.setCurrentIndex(0)
+            self.stack.setCurrentIndex(1)
         else:
             # Index start from FIXME
             self.stack.setCurrentIndex(index + 2)
