@@ -74,6 +74,10 @@ class IncidenceDensityDialog(QDialog):
         self.output_file_path = None
         self.output_layer = None
 
+        # Settings
+        self.use_area = None
+        self.use_point_layer = None
+
     def setup_ui(self):
         # Connect slot.
         # noinspection PyUnresolvedReferences
@@ -105,20 +109,49 @@ class IncidenceDensityDialog(QDialog):
         self.layout_plot.addWidget(self.toolbar)
         self.layout_plot.addWidget(self.canvas)
 
+        # Connect slot.
+        if not self.use_area or not self.use_point_layer:
+            # noinspection PyUnresolvedReferences
+            self.cbx_aggregation_layer.currentIndexChanged.connect(
+                self.update_fields)
+
     def open_file_browser(self):
         output_file = QFileDialog.getSaveFileNameAndFilter(
             self.parent, tr('Save shapefile'), filter='SHP (*.shp)')
         self.le_output_filepath.setText(output_file[0])
 
+    def update_fields(self):
+        """Update the combobox about the population field and case field."""
+        if not self.use_area:
+            self.cbx_population_field.clear()
+        if not self.use_point_layer:
+            self.cbx_case_field.clear()
+
+        index = self.cbx_aggregation_layer.currentIndex()
+        admin_layer = self.cbx_aggregation_layer.itemData(index)
+        if not admin_layer:
+            return False
+
+        fields = admin_layer.dataProvider().fields()
+
+        for item in fields:
+            if not self.use_area:
+                self.cbx_population_field.addItem(item.name(), item)
+            if not self.use_point_layer:
+                self.cbx_case_field.addItem(item.name(), item)
+
     def fill_combobox_layer(self):
         """Fill combobox about layers."""
-        self.cbx_case_layer.clear()
+
+        if self.use_point_layer:
+            self.cbx_case_layer.clear()
+
         self.cbx_aggregation_layer.clear()
 
         for layer in iface.legendInterface().layers():
             if layer.type() == 0:
 
-                if layer.geometryType() == 0:
+                if layer.geometryType() == 0 and self.use_point_layer:
                     self.cbx_case_layer.addItem(
                         layer.name(), layer)
 
@@ -126,53 +159,66 @@ class IncidenceDensityDialog(QDialog):
                     self.cbx_aggregation_layer.addItem(
                         layer.name(), layer)
 
-    def run_stats(self, use_area):
+    def run_stats(self):
         """Main function which do the process."""
 
-        # Get the fields.
+        # Get the common fields.
         index = self.cbx_aggregation_layer.currentIndex()
         self.admin_layer = self.cbx_aggregation_layer.itemData(index)
-        index = self.cbx_case_layer.currentIndex()
-        point_layer = self.cbx_case_layer.itemData(index)
-        self.name_field = self.le_new_column.text()
+
+        if self.use_point_layer:
+            # If we use a point layer.
+            index = self.cbx_case_layer.currentIndex()
+            point_layer = self.cbx_case_layer.itemData(index)
+        else:
+            # If we use a column with number of case.
+            case_column = self.cbx_case_field.currentText()
+            index_case = self.admin_layer.fieldNameIndex(case_column)
+
+        if not self.use_area:
+            # If we don't use density.
+            population = self.cbx_population_field.currentText()
+            index_population = self.admin_layer.fieldNameIndex(population)
 
         if not self.name_field:
             self.name_field = self.le_new_column.placeholderText()
 
+        # Add new column.
+        add_nb_intersections = self.checkBox_addNbIntersections.isChecked()
+
+        # Ratio
         ratio = self.cbx_ratio.currentText()
         ratio = ratio.replace(' ', '')
+
+        # Output.
         self.output_file_path = self.le_output_filepath.text()
 
         try:
-
             self.button_box_ok.setDisabled(True)
             # noinspection PyArgumentList
             QApplication.setOverrideCursor(Qt.WaitCursor)
             # noinspection PyArgumentList
             QApplication.processEvents()
 
-            if not self.admin_layer or not point_layer:
+            if not self.admin_layer:
+                raise NoLayerProvidedException
+
+            if not self.admin_layer and self.use_point_layer:
                 raise NoLayerProvidedException
 
             crs_admin_layer = self.admin_layer.crs()
-            crs_point_layer = point_layer.crs()
-            if crs_admin_layer != crs_point_layer:
-                raise DifferentCrsException(
-                    epsg1=crs_point_layer.authid(),
-                    epsg2=crs_admin_layer.authid())
+
+            if self.use_point_layer:
+                crs_point_layer = point_layer.crs()
+                if crs_admin_layer != crs_point_layer:
+                    raise DifferentCrsException(
+                        epsg1=crs_point_layer.authid(),
+                        epsg2=crs_admin_layer.authid())
 
             try:
                 ratio = float(ratio)
             except ValueError:
                 raise NotANumberException(suffix=ratio)
-
-            add_nb_intersections = self.checkBox_addNbIntersections.isChecked()
-
-            index_population = None
-            if not use_area:
-                population = self.cbx_population_field\
-                    .currentText()
-                index_population = self.admin_layer.fieldNameIndex(population)
 
             # Output
             if not self.output_file_path:
@@ -204,15 +250,25 @@ class IncidenceDensityDialog(QDialog):
                 self.admin_layer.crs(),
                 'ESRI Shapefile')
 
+            if self.use_point_layer:
+                total_case = point_layer.featureCount()
+            else:
+                total_case = 0
+
             for i, feature in enumerate(self.admin_layer.getFeatures()):
                 attributes = feature.attributes()
-                count = 0
-                for f in point_layer.getFeatures():
-                    if f.geometry().intersects(feature.geometry()):
-                        count += 1
+
+                if self.use_point_layer:
+                    count = 0
+                    for f in point_layer.getFeatures():
+                        if f.geometry().intersects(feature.geometry()):
+                            count += 1
+                else:
+                    count = int(attributes[index_case])
+                    total_case += count
 
                 try:
-                    if use_area:
+                    if self.use_area:
                         area = feature.geometry().area()
                         value = float(count) / area * ratio
                     else:
@@ -255,7 +311,7 @@ class IncidenceDensityDialog(QDialog):
 
                 items_stats = [
                     'Incidence null,%d' % stats.null_values(),
-                    'Count(point),%d' % point_layer.featureCount(),
+                    'Count(point),%d' % total_case,
                     'Count(polygon),%d' % self.admin_layer.featureCount(),
                     'Min,%d' % stats.min(),
                     'Average,%f' % stats.average(),

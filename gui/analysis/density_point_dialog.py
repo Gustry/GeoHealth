@@ -21,19 +21,19 @@
  ***************************************************************************/
 """
 
-from GeoHealth.ui.analysis.density import Ui_Density
+from GeoHealth.ui.analysis.density_with_point import Ui_DensityPoint
 from GeoHealth.gui.analysis.parent_incidence_density_dialog import IncidenceDensityDialog
 
 
-class DensityDialog(IncidenceDensityDialog, Ui_Density):
+class DensityPointDialog(IncidenceDensityDialog, Ui_DensityPoint):
     def __init__(self, parent=None):
         """Constructor."""
         IncidenceDensityDialog.__init__(self, parent)
         # noinspection PyArgumentList
-        Ui_Density.setupUi(self, self)
+        Ui_DensityPoint.setupUi(self, self)
 
         self.use_area = True
-        self.use_point_layer = False
+        self.use_point_layer = True
 
         self.setup_ui()
         self.fill_combobox_layer()

@@ -31,7 +31,9 @@ from GeoHealth.gui.import_gui.open_csv import OpenCsv
 from GeoHealth.gui.import_gui.raster import OpenRasterWidget
 from GeoHealth.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
 from GeoHealth.gui.analysis.incidence_dialog import IncidenceDialog
+from GeoHealth.gui.analysis.incidence_point_dialog import IncidencePointDialog
 from GeoHealth.gui.analysis.density_dialog import DensityDialog
+from GeoHealth.gui.analysis.density_point_dialog import DensityPointDialog
 from GeoHealth.gui.export.csv import CsvExport
 from GeoHealth.gui.about import AboutWidget
 
@@ -130,7 +132,7 @@ class MainDialog(QDialog, Ui_Dialog):
                                 'label': 'Polygone et point',
                                 'icon': ':/plugins/GeoHealth/resources/incidence.png',
                                 'content': {
-                                    'widget': IncidenceDialog(),
+                                    'widget': IncidencePointDialog(),
                                     'help': help_density()
                                 }
                             }
@@ -150,7 +152,7 @@ class MainDialog(QDialog, Ui_Dialog):
                                 'label': 'Polygone et point',
                                 'icon': ':/plugins/GeoHealth/resources/incidence.png',
                                 'content': {
-                                    'widget': DensityDialog(),
+                                    'widget': DensityPointDialog(),
                                     'help': help_incidence()
                                 }
                             }
