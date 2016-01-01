@@ -53,7 +53,7 @@ class Provider(AlgorithmProvider):
         return 'GeoHealth'
     
     def getIcon(self):
-        return QIcon(":/plugins/GeoHealth/resources/icon.png")
+        return QIcon(':/plugins/GeoHealth/resources/icon-32.png')
     
     def _loadAlgorithms(self):
         self.algs = self.alglist
