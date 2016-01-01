@@ -70,14 +70,14 @@ class MainDialog(QDialog, Ui_Dialog):
                         }
                     }, {
                         'label': 'Table XLS/DBF',
-                        'icon': ':/plugins/GeoHealth/resources/import.png',
+                        'icon': ':/plugins/GeoHealth/resources/xls.png',
                         'content': {
                             'widget': OpenXlsDbfFileWidget(),
                             'help': help_open_table()
                         }
                     }, {
                         'label': 'Table CSV',
-                        'icon': ':/plugins/GeoHealth/resources/import.png',
+                        'icon': ':/plugins/GeoHealth/resources/csv.png',
                         'content': {
                             'widget': OpenCsv(),
                             'help': help_open_csv()

@@ -16,6 +16,7 @@
 		<file>gears.png</file>
 		<file>csv.png</file>
 		<file>shp.png</file>
+		<file>xls.png</file>
 		<file>raster.png</file>
 		<file>kml.png</file>
 	</qresource>
