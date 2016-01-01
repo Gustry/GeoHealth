@@ -89,19 +89,21 @@ def html_table(title, intro, inputs, outputs, more):
     html_string += u'' \
                    u'</ul></td>'\
                    u'</tr>' \
-                   u'<tr>' \
-                   u'<td>' \
-                   u'<strong>More</strong>' \
-                   u'<ul>'
 
-    for item in more:
-        html_string += u'<li class="more">%s</li>' % item
+    if len(more) > 0:
+        html_string += u'<tr>' \
+                       u'<td>' \
+                       u'<strong>More</strong>' \
+                       u'<ul>'
 
-    html_string += u'' \
-                   u'</ul>' \
-                   u'</td>' \
-                   u'</tr>' \
-                   u'</table>' \
+        for item in more:
+            html_string += u'<li class="more">%s</li>' % item
+
+        html_string += u'</ul>' \
+                       u'</td>' \
+                       u'</tr>' \
+
+    html_string += u'</table>' \
                    u'</body>' \
                    u'</html>'
 
