@@ -21,7 +21,8 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QDialog
+from PyQt4.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
+from PyQt4.QtCore import QSize
 
 from GeoHealth.doc.help import *
 from GeoHealth.ui.main import Ui_Dialog
@@ -29,10 +30,8 @@ from GeoHealth.gui.import_gui.open_shapefile import OpenShapefileWidget
 from GeoHealth.gui.import_gui.open_csv import OpenCsv
 from GeoHealth.gui.import_gui.raster import OpenRasterWidget
 from GeoHealth.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
-from GeoHealth.gui.analysis.main_blurring_dialog import MainBlurringDialog
 from GeoHealth.gui.analysis.incidence_dialog import IncidenceDialog
 from GeoHealth.gui.analysis.density_dialog import DensityDialog
-from GeoHealth.gui.analysis.histogram_dialog import HistogramDialog
 from GeoHealth.gui.export.csv import CsvExport
 from GeoHealth.gui.about import AboutWidget
 
@@ -50,96 +49,236 @@ class MainDialog(QDialog, Ui_Dialog):
         # noinspection PyUnresolvedReferences
         self.menu.clicked.connect(self.display_content)
 
-        self.content = {
-            11: [OpenShapefileWidget(), help_open_shapefile()],
-            12: [OpenRasterWidget(), help_open_raster()],
-            13: [OpenXlsDbfFileWidget(), help_open_table()],
-            14: [OpenCsv(), help_open_csv()],
-            15: [OpenCsv(), help_open_xy()],
-            21: [MainBlurringDialog(), help_blur(), help_stats_blurring()],
-            22: [IncidenceDialog(), help_incidence()],
-            23: [DensityDialog(), help_density()],
-            24: [HistogramDialog()],
-            31: [CsvExport(), help_attribute_table()],
-            100: [AboutWidget()]
-        }
+        self.tree_menu = [
+            {
+                'label': 'Import',
+                'icon': ':/plugins/GeoHealth/resources/import.png',
+                'content': [
+                    {
+                        'label': 'Shapefile',
+                        'icon': ':/plugins/GeoHealth/resources/shp.png',
+                        'content': {
+                            'widget': OpenShapefileWidget(),
+                            'help': help_open_shapefile()
+                        }
+                    }, {
+                        'label': 'Raster',
+                        'icon': ':/plugins/GeoHealth/resources/raster.png',
+                        'content': {
+                            'widget': OpenRasterWidget(),
+                            'help': help_open_raster()
+                        }
+                    }, {
+                        'label': 'Table XLS/DBF',
+                        'icon': ':/plugins/GeoHealth/resources/import.png',
+                        'content': {
+                            'widget': OpenXlsDbfFileWidget(),
+                            'help': help_open_table()
+                        }
+                    }, {
+                        'label': 'Table CSV',
+                        'icon': ':/plugins/GeoHealth/resources/import.png',
+                        'content': {
+                            'widget': OpenCsv(),
+                            'help': help_open_csv()
+                        }
+                    }, {
+                        'label': 'XY to map',
+                        'icon': ':/plugins/GeoHealth/resources/xy.png',
+                        'content': {
+                            'widget': OpenCsv(),
+                            'help': help_open_csv()
+                        }
+                    }
+                ]
+            }, {
+                'label': 'Analyse',
+                'icon': ':/plugins/GeoHealth/resources/gears.png',
+                'content': [
+                    {
+                        'label': 'Blur',
+                        'icon': ':/plugins/GeoHealth/resources/blur.png',
+                        'content': [
+                            {
+                                'label': 'Blur',
+                                'icon': ':/plugins/GeoHealth/resources/blur.png',
+                                'content': {
+                                    'widget': IncidenceDialog(),
+                                    'help': help_blur()
+                                }
+                            }, {
+                                'label': 'Stats',
+                                'icon': ':/plugins/GeoHealth/resources/sigma.png',
+                                'content': {
+                                    'widget': IncidenceDialog(),
+                                    'help': help_stats_blurring()
+                                }
+                            }
+                        ]
+                    }, {
+                        'label': 'Incidence',
+                        'icon': ':/plugins/GeoHealth/resources/import.png',
+                        'content': [
+                            {
+                                'label': 'Polygone uniquement',
+                                'icon': ':/plugins/GeoHealth/resources/incidence.png',
+                                'content': {
+                                    'widget': IncidenceDialog(),
+                                    'help': help_incidence()
+                                }
+                            }, {
+                                'label': 'Polygone et point',
+                                'icon': ':/plugins/GeoHealth/resources/incidence.png',
+                                'content': {
+                                    'widget': IncidenceDialog(),
+                                    'help': help_density()
+                                }
+                            }
+                        ]
+                    }, {
+                        'label': 'Density',
+                        'icon': ':/plugins/GeoHealth/resources/incidence.png',
+                        'content': [
+                            {
+                                'label': 'Polygone uniquement',
+                                'icon': ':/plugins/GeoHealth/resources/incidence.png',
+                                'content': {
+                                    'widget': DensityDialog(),
+                                    'help': help_density()
+                                }
+                            }, {
+                                'label': 'Polygone et point',
+                                'icon': ':/plugins/GeoHealth/resources/incidence.png',
+                                'content': {
+                                    'widget': DensityDialog(),
+                                    'help': help_incidence()
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                'label': 'Export',
+                'icon': ':/plugins/GeoHealth/resources/export.png',
+                'content': [
+                    {
+                        'label': 'Attribute table',
+                        'icon': ':/plugins/GeoHealth/resources/csv.png',
+                        'content': {
+                            'widget': CsvExport(),
+                            'help': help_attribute_table()
+                        }
+                    }
+                ]
+            }
+        ]
 
-        for content in self.content:
-            self.stack.addWidget(self.content[content][0])
+        self.stack.addWidget(AboutWidget())
 
-            try:
-                self.content[content][0].signalAskCloseWindow.connect(
-                    self.hide)
-            except AttributeError:
-                pass
+        self.help_list = []
 
-            try:
-                self.content[content][0].signalStatus.connect(
-                    self.show_status)
-            except AttributeError:
-                pass
+        # A category is import, process and export.
+        for category_def in self.tree_menu:
+            category_menu = QTreeWidgetItem(self.menu)
+            category_menu.setIcon(0, QIcon(category_def['icon']))
+            category_menu.setText(0, category_def['label'])
 
-            # HACK ! fixme
-            if len(self.content[content]) > 2:
-                self.content[content][0].tab.currentChanged.connect(
-                    self.display_help_tab)
+            # Sub item
+            for sub_category_def in category_def['content']:
+                menu_entry = QTreeWidgetItem(category_menu)
+                menu_entry.setIcon(0, QIcon(sub_category_def['icon']))
+                menu_entry.setText(0, sub_category_def['label'])
 
-        index = self.content.keys().index(100)
-        self.stack.setCurrentIndex(index)
-        self.help.hide()
+                # Add widget or add tab
+                if isinstance(sub_category_def['content'], dict):
+                    widget = sub_category_def['content']['widget']
+                    self.stack.addWidget(widget)
+                    self.help_list.append(sub_category_def['content']['help'])
+                else:
+                    tab = QTabWidget(self.stack)
+                    tab.setIconSize(QSize(32, 32))
+                    self.stack.addWidget(tab)
 
-    def display_help_tab(self, i):
-        current_index = self.menu.currentIndex()
-        parent = current_index.parent()
-        if parent.row() == -1:
-            tree_index = current_index.row() * 10 + 10
-        else:
-            tree_index = current_index.row() + 1 + parent.row() * 10 + 10
+                    tab_help = []
+                    tab_bar = sub_category_def['content']
+                    for item in tab_bar:
+                        label = item['label']
+                        icon = QIcon(item['icon'])
+                        widget = item['content']['widget']
+                        help_widget = item['content']['help']
+                        tab_help.append(help_widget)
+                        tab.addTab(widget, icon, label)
+                    self.help_list.append(tab_help)
+        self.stack.setCurrentIndex(0)
 
-        try:
-            self.help.setHtml(self.content[tree_index][i + 1])
-            self.help.show()
-        except KeyError:
-            self.help.hide()
-        except IndexError:
-            self.help.hide()
+    def display_help_tab(self, tab_index):
+        index = self.stack.currentIndex() - 2
+        content = self.help_list[index]
+        self.help.setHtml(content[tab_index])
 
     def show_status(self, level, message):
         self.messageBar.pushMessage('', message, level, 5)
 
     def expand(self, i):
+        """Auto expand item on single click."""
         self.menu.setExpanded(i, not self.menu.isExpanded(i))
 
+    def _fetch_widget_index(self, parent_item, current_item):
+        if parent_item.row() == -1:
+            return None
+
+        row = 0
+        for i in range(0, parent_item.row()):
+            cat = self.menu.topLevelItem(i)
+            count_in_category = cat.childCount()
+            row += count_in_category
+
+        row += current_item.row()
+
+        return row
+
     def display_content(self):
-        current_index = self.menu.currentIndex()
-        parent = current_index.parent()
-        if parent.row() == -1:
-            tree_index = current_index.row() * 10 + 10
+        """Return the row number"""
+        current_item = self.menu.currentIndex()
+        parent = current_item.parent()
+
+        index = self._fetch_widget_index(parent, current_item)
+
+        if index is None:
+            self.stack.setCurrentIndex(0)
         else:
-            tree_index = current_index.row() + 1 + parent.row() * 10 + 10
+            # Index start from FIXME
+            self.stack.setCurrentIndex(index + 2)
+            current_widget = self.stack.currentWidget()
+            if isinstance(current_widget, QTabWidget):
+                current_widget.setCurrentIndex(0)
+                # noinspection PyUnresolvedReferences
+                current_widget.currentChanged.connect(self.display_help_tab)
+            else:
+                try:
+                    current_widget.currentChanged.disconnect(self.display_help_tab)
+                except AttributeError:
+                    pass
 
-        if tree_index in self.content.keys():
-            index = self.content.keys().index(tree_index)
-        else:
-            index = self.content.keys().index(100)
-
-        self.stack.setCurrentIndex(index)
-
-        # Hack fixme
-        #if len(self.content[tree_index]) > 2:
-        #    self.content[tree_index][0].tab.setCurrentIndex(0)
-
+        # Set th help
         try:
-            self.help.setHtml(self.content[tree_index][1])
+            if index is None:
+                raise IndexError
+            content = self.help_list[index]
+            if isinstance(content, list):
+                self.help.setHtml(content[0])
+            else:
+                self.help.setHtml(content)
             self.help.show()
-        except KeyError:
-            self.help.hide()
         except IndexError:
             self.help.hide()
 
+        """
         # Try to refresh layers if needed
         widget = self.stack.currentWidget()
         try:
             widget.fill_combobox_layer()
         except AttributeError:
             pass
+        """

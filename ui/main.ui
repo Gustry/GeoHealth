@@ -92,170 +92,6 @@ QTreeWidget::item:!has-children
          <string>Menu</string>
         </property>
        </column>
-       <item>
-        <property name="text">
-         <string>Import</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../resources/resources.qrc">
-          <normaloff>:/plugins/GeoHealth/resources/import.png</normaloff>:/plugins/GeoHealth/resources/import.png</iconset>
-        </property>
-        <item>
-         <property name="text">
-          <string>Shapefile</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/shp.png</normaloff>:/plugins/GeoHealth/resources/shp.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Raster</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/raster.png</normaloff>:/plugins/GeoHealth/resources/raster.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Table XLS, DBF</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/csv.png</normaloff>:/plugins/GeoHealth/resources/csv.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Table CSV</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/csv.png</normaloff>:/plugins/GeoHealth/resources/csv.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>XY to map</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/xy.png</normaloff>:/plugins/GeoHealth/resources/xy.png</iconset>
-         </property>
-        </item>
-       </item>
-       <item>
-        <property name="text">
-         <string>Analysis</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../resources/resources.qrc">
-          <normaloff>:/plugins/GeoHealth/resources/gears.png</normaloff>:/plugins/GeoHealth/resources/gears.png</iconset>
-        </property>
-        <item>
-         <property name="text">
-          <string>Blur</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/blur.png</normaloff>:/plugins/GeoHealth/resources/blur.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Incidence</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/incidence.png</normaloff>:/plugins/GeoHealth/resources/incidence.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Density</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/incidence.png</normaloff>:/plugins/GeoHealth/resources/incidence.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Histogram</string>
-         </property>
-         <property name="font">
-          <font>
-           <strikeout>true</strikeout>
-          </font>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/histogram.png</normaloff>:/plugins/GeoHealth/resources/histogram.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Statistics</string>
-         </property>
-         <property name="font">
-          <font>
-           <strikeout>true</strikeout>
-          </font>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/sigma.png</normaloff>:/plugins/GeoHealth/resources/sigma.png</iconset>
-         </property>
-        </item>
-       </item>
-       <item>
-        <property name="text">
-         <string>Export</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../resources/resources.qrc">
-          <normaloff>:/plugins/GeoHealth/resources/export.png</normaloff>:/plugins/GeoHealth/resources/export.png</iconset>
-        </property>
-        <item>
-         <property name="text">
-          <string>Attribute table</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/csv.png</normaloff>:/plugins/GeoHealth/resources/csv.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>KML</string>
-         </property>
-         <property name="font">
-          <font>
-           <strikeout>true</strikeout>
-          </font>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/kml.png</normaloff>:/plugins/GeoHealth/resources/kml.png</iconset>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>SHP</string>
-         </property>
-         <property name="font">
-          <font>
-           <strikeout>true</strikeout>
-          </font>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/resources.qrc">
-           <normaloff>:/plugins/GeoHealth/resources/shp.png</normaloff>:/plugins/GeoHealth/resources/shp.png</iconset>
-         </property>
-        </item>
-       </item>
       </widget>
      </item>
      <item>
@@ -266,8 +102,25 @@ QTreeWidget::item:!has-children
        <item>
         <widget class="QStackedWidget" name="stack">
          <property name="currentIndex">
-          <number>-1</number>
+          <number>0</number>
          </property>
+         <widget class="QWidget" name="page">
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QTabWidget" name="tabWidget">
+             <property name="currentIndex">
+              <number>-1</number>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
       </layout>
