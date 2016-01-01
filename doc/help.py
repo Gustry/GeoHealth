@@ -194,7 +194,31 @@ def help_density():
     intro = tr('Compute density')
     inputs = [
         tr('Point layer : disease'),
-        tr('Polygon layer : administrative boundary')]
+        tr('Polygon layer : administrative boundary'),
+        tr('Case field'),
+        tr('Ratio'),
+        tr('New column')
+    ]
+    outputs = [
+        tr('New polygon layer with the density')
+    ]
+    more = [
+        tr('This algorithm will count the number of points inside each polygons and run a formula to get the density.'),
+        tr('number of cases / area * ratio')
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
+
+def help_density_point():
+    title = tr('Density with case layer')
+    intro = tr('Compute density')
+    inputs = [
+        tr('Case layer'),
+        tr('Polygon layer : administrative boundary with two fields pop and case'),
+        tr('Ratio'),
+        tr('New column')
+    ]
     outputs = [
         tr('New polygon layer with the density')
     ]
@@ -251,8 +275,32 @@ def help_incidence():
     title = tr('Incidence')
     intro = tr('You can create an incidence map about a disease.')
     inputs = [
+        tr('Polygon layer : administrative boundary with a population and case fields'),
+        tr('Case field'),
+        tr('Population field'),
+        tr('Ratio'),
+        tr('New column')
+    ]
+    outputs = [
+        tr('New polygon layer with the incidence')
+    ]
+    more = [
+        tr('This algorithm will count the number of points inside each polygons and run a formula to get the incidence.'),
+        tr('number of cases / population * ratio')
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
+
+def help_incidence_point():
+    title = tr('Incidence with case layer')
+    intro = tr('You can create an incidence map about a disease.')
+    inputs = [
         tr('Point layer : disease'),
-        tr('Polygon layer : administrative boundary with a population field')
+        tr('Polygon layer : administrative boundary with a population field'),
+        tr('Population field'),
+        tr('Ratio'),
+        tr('New column')
     ]
     outputs = [
         tr('New polygon layer with the incidence')

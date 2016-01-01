@@ -122,18 +122,18 @@ class MainDialog(QDialog, Ui_Dialog):
                         'icon': ':/plugins/GeoHealth/resources/incidence.png',
                         'content': [
                             {
-                                'label': 'Polygone uniquement',
+                                'label': 'Polygon layer only',
                                 'icon': ':/plugins/GeoHealth/resources/incidence.png',
                                 'content': {
                                     'widget': IncidenceDialog(),
                                     'help': help_incidence()
                                 }
                             }, {
-                                'label': 'Polygone et point',
+                                'label': 'Case and aggregation layers',
                                 'icon': ':/plugins/GeoHealth/resources/incidence.png',
                                 'content': {
                                     'widget': IncidencePointDialog(),
-                                    'help': help_density()
+                                    'help': help_incidence_point()
                                 }
                             }
                         ]
@@ -142,18 +142,18 @@ class MainDialog(QDialog, Ui_Dialog):
                         'icon': ':/plugins/GeoHealth/resources/incidence.png',
                         'content': [
                             {
-                                'label': 'Polygone uniquement',
+                                'label': 'Polygon layer only',
                                 'icon': ':/plugins/GeoHealth/resources/incidence.png',
                                 'content': {
                                     'widget': DensityDialog(),
                                     'help': help_density()
                                 }
                             }, {
-                                'label': 'Polygone et point',
+                                'label': 'Case and aggregation layers',
                                 'icon': ':/plugins/GeoHealth/resources/incidence.png',
                                 'content': {
                                     'widget': DensityPointDialog(),
-                                    'help': help_incidence()
+                                    'help': help_density_point()
                                 }
                             }
                         ]
