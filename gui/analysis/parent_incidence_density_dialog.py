@@ -53,6 +53,7 @@ from GeoHealth.core.exceptions import \
     NoLayerProvidedException,\
     DifferentCrsException,\
     FieldExistingException,\
+    FieldException,\
     NotANumberException
 from GeoHealth.core.stats import Stats
 
@@ -214,6 +215,10 @@ class IncidenceDensityDialog(QDialog):
                     raise DifferentCrsException(
                         epsg1=crs_point_layer.authid(),
                         epsg2=crs_admin_layer.authid())
+
+            if not self.use_point_layer and not self.use_area:
+                if index_population == index_case:
+                    raise FieldException(field_1='Population', field_2='Case')
 
             try:
                 ratio = float(ratio)

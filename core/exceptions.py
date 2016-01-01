@@ -91,3 +91,12 @@ class NotANumberException(GeoHealthException):
         if suffix:
             msg += " : %s" % suffix
         GeoHealthException.__init__(self, msg)
+
+
+class FieldException(GeoHealthException):
+    def __init__(self, msg=None, field_1=None, field_2=None):
+        if not msg:
+            msg = tr(u'Fields are not different')
+        if field_1 and field_2:
+            msg += " : %s and %s " % (field_1, field_2)
+        GeoHealthException.__init__(self, msg)
