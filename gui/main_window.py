@@ -277,11 +277,12 @@ class MainDialog(QDialog, Ui_Dialog):
         except IndexError:
             self.help.hide()
 
-        """
         # Try to refresh layers if needed
         widget = self.stack.currentWidget()
         try:
-            widget.fill_combobox_layer()
+            if isinstance(widget, QTabWidget):
+                widget.currentWidget().fill_combobox_layer()
+            else:
+                widget.fill_combobox_layer()
         except AttributeError:
             pass
-        """
