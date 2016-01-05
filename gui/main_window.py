@@ -30,6 +30,8 @@ from GeoHealth.gui.import_gui.open_shapefile import OpenShapefileWidget
 from GeoHealth.gui.import_gui.open_csv import OpenCsv
 from GeoHealth.gui.import_gui.raster import OpenRasterWidget
 from GeoHealth.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
+from GeoHealth.gui.analysis.blur_dialog import BlurWidget
+from GeoHealth.gui.analysis.stats_dialog import StatsWidget
 from GeoHealth.gui.analysis.incidence_dialog import IncidenceDialog
 from GeoHealth.gui.analysis.incidence_point_dialog import IncidencePointDialog
 from GeoHealth.gui.analysis.density_dialog import DensityDialog
@@ -105,14 +107,14 @@ class MainDialog(QDialog, Ui_Dialog):
                                 'label': 'Blur',
                                 'icon': ':/plugins/GeoHealth/resources/blur.png',
                                 'content': {
-                                    'widget': IncidenceDialog(),
+                                    'widget': BlurWidget(),
                                     'help': help_blur()
                                 }
                             }, {
                                 'label': 'Stats',
                                 'icon': ':/plugins/GeoHealth/resources/sigma.png',
                                 'content': {
-                                    'widget': IncidenceDialog(),
+                                    'widget': StatsWidget(),
                                     'help': help_stats_blurring()
                                 }
                             }
