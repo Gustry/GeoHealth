@@ -23,7 +23,7 @@
 
 from os.path import dirname
 from qgis.core import QGis, QgsFeatureRequest, QgsSpatialIndex
-from qgis.utils import iface
+from qgis.gui import QgsMapLayerProxyModel
 
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import \
@@ -72,16 +72,10 @@ class StatsWidget(QWidget, Ui_Stats):
 
         self.tab = []
 
-    def fill_comboxbox_layers(self):
-        self.comboBox_blurredLayer.clear()
-        self.comboBox_statsLayer.clear()
-
-        for layer in iface.legendInterface().layers():
-            if layer.type() == 0:
-                self.comboBox_statsLayer.addItem(layer.name(), layer)
-
-                if layer.geometryType() == 2:
-                    self.comboBox_blurredLayer.addItem(layer.name(), layer)
+        self.comboBox_blurredLayer.setFilters(
+            QgsMapLayerProxyModel.PolygonLayer)
+        self.comboBox_statsLayer.setFilters(
+            QgsMapLayerProxyModel.PolygonLayer)
 
     def run_stats(self):
         self.progressBar_stats.setValue(0)
@@ -89,11 +83,8 @@ class StatsWidget(QWidget, Ui_Stats):
         # noinspection PyArgumentList
         QApplication.processEvents()
 
-        index = self.comboBox_blurredLayer.currentIndex()
-        blurred_layer = self.comboBox_blurredLayer.itemData(index)
-
-        index = self.comboBox_statsLayer.currentIndex()
-        stats_layer = self.comboBox_statsLayer.itemData(index)
+        blurred_layer = self.comboBox_blurredLayer.currentLayer()
+        stats_layer = self.comboBox_statsLayer.currentLayer()
 
         try:
 
@@ -157,6 +148,7 @@ class StatsWidget(QWidget, Ui_Stats):
 
             # noinspection PyArgumentList
             QApplication.processEvents()
+            self.tab = []
             for i, feature in enumerate(blurred_layer.getFeatures()):
                 count = 0
                 ids = index.intersects(feature.geometry().boundingBox())

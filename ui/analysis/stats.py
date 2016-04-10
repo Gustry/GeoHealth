@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'stats.ui'
 #
-# Created: Fri Oct 30 18:48:16 2015
+# Created: Sun Apr 10 16:51:01 2016
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,36 +33,34 @@ class Ui_Stats(object):
         self.formLayout = QtGui.QFormLayout()
         self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.ExpandingFieldsGrow)
         self.formLayout.setObjectName(_fromUtf8("formLayout"))
-        self.label = QtGui.QLabel(Stats)
-        self.label.setObjectName(_fromUtf8("label"))
-        self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.label)
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
-        self.comboBox_blurredLayer = QtGui.QComboBox(Stats)
+        self.formLayout.setLayout(0, QtGui.QFormLayout.FieldRole, self.horizontalLayout_4)
+        self.horizontalLayout_5 = QtGui.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
+        self.formLayout.setLayout(3, QtGui.QFormLayout.FieldRole, self.horizontalLayout_5)
+        self.comboBox_blurredLayer = QgsMapLayerComboBox(Stats)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.comboBox_blurredLayer.sizePolicy().hasHeightForWidth())
         self.comboBox_blurredLayer.setSizePolicy(sizePolicy)
-        self.comboBox_blurredLayer.setSizeAdjustPolicy(QtGui.QComboBox.AdjustToContentsOnFirstShow)
         self.comboBox_blurredLayer.setObjectName(_fromUtf8("comboBox_blurredLayer"))
-        self.horizontalLayout_4.addWidget(self.comboBox_blurredLayer)
-        self.formLayout.setLayout(0, QtGui.QFormLayout.FieldRole, self.horizontalLayout_4)
-        self.label_2 = QtGui.QLabel(Stats)
-        self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_2)
-        self.horizontalLayout_5 = QtGui.QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
-        self.comboBox_statsLayer = QtGui.QComboBox(Stats)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Fixed)
+        self.formLayout.setWidget(2, QtGui.QFormLayout.FieldRole, self.comboBox_blurredLayer)
+        self.label = QtGui.QLabel(Stats)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.label)
+        self.comboBox_statsLayer = QgsMapLayerComboBox(Stats)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.comboBox_statsLayer.sizePolicy().hasHeightForWidth())
         self.comboBox_statsLayer.setSizePolicy(sizePolicy)
-        self.comboBox_statsLayer.setSizeAdjustPolicy(QtGui.QComboBox.AdjustToContentsOnFirstShow)
         self.comboBox_statsLayer.setObjectName(_fromUtf8("comboBox_statsLayer"))
-        self.horizontalLayout_5.addWidget(self.comboBox_statsLayer)
-        self.formLayout.setLayout(2, QtGui.QFormLayout.FieldRole, self.horizontalLayout_5)
+        self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.comboBox_statsLayer)
+        self.label_2 = QtGui.QLabel(Stats)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.formLayout.setWidget(4, QtGui.QFormLayout.LabelRole, self.label_2)
         self.verticalLayout.addLayout(self.formLayout)
         self.label_progressStats = QtGui.QLabel(Stats)
         self.label_progressStats.setText(_fromUtf8("progress"))
@@ -128,4 +126,5 @@ class Ui_Stats(object):
         item = self.tableWidget.horizontalHeaderItem(1)
         item.setText(_translate("Stats", "Value", None))
 
+from qgis.gui import QgsMapLayerComboBox
 from GeoHealth.resources import resources_rc
