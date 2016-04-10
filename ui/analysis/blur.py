@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'blur.ui'
 #
-# Created: Fri Oct 30 18:47:40 2015
+# Created: Sun Apr 10 16:31:05 2016
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -56,7 +56,7 @@ class Ui_Blur(object):
         self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_3)
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
-        self.comboBox_layerToBlur = QtGui.QComboBox(Blur)
+        self.comboBox_layerToBlur = QgsMapLayerComboBox(Blur)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -64,8 +64,6 @@ class Ui_Blur(object):
         self.comboBox_layerToBlur.setSizePolicy(sizePolicy)
         self.comboBox_layerToBlur.setObjectName(_fromUtf8("comboBox_layerToBlur"))
         self.horizontalLayout_2.addWidget(self.comboBox_layerToBlur)
-        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem)
         self.formLayout.setLayout(1, QtGui.QFormLayout.FieldRole, self.horizontalLayout_2)
         self.spinBox_radius = QtGui.QDoubleSpinBox(Blur)
         self.spinBox_radius.setMinimum(0.0)
@@ -90,9 +88,8 @@ class Ui_Blur(object):
         self.pushButton_browseFolder.setObjectName(_fromUtf8("pushButton_browseFolder"))
         self.horizontalLayout.addWidget(self.pushButton_browseFolder)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.groupBox_advanced = gui.QgsCollapsibleGroupBox(Blur)
-        self.groupBox_advanced.setCollapsed(True)
-        self.groupBox_advanced.setSaveCollapsedState(False)
+        self.groupBox_advanced = QgsCollapsibleGroupBox(Blur)
+        self.groupBox_advanced.setCollapsed(False)
         self.groupBox_advanced.setObjectName(_fromUtf8("groupBox_advanced"))
         self.verticalLayout_4 = QtGui.QVBoxLayout(self.groupBox_advanced)
         self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
@@ -133,7 +130,7 @@ class Ui_Blur(object):
         self.checkBox_envelope = QtGui.QCheckBox(self.frame_2)
         self.checkBox_envelope.setObjectName(_fromUtf8("checkBox_envelope"))
         self.horizontalLayout_3.addWidget(self.checkBox_envelope)
-        self.comboBox_envelope = QtGui.QComboBox(self.frame_2)
+        self.comboBox_envelope = QgsMapLayerComboBox(self.frame_2)
         self.comboBox_envelope.setObjectName(_fromUtf8("comboBox_envelope"))
         self.horizontalLayout_3.addWidget(self.comboBox_envelope)
         self.verticalLayout_3.addLayout(self.horizontalLayout_3)
@@ -155,8 +152,8 @@ class Ui_Blur(object):
         self.buttonBox_blur.setObjectName(_fromUtf8("buttonBox_blur"))
         self.horizontalLayout_4.addWidget(self.buttonBox_blur)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
-        spacerItem1 = QtGui.QSpacerItem(17, 66, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem1)
+        spacerItem = QtGui.QSpacerItem(17, 66, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem)
 
         self.retranslateUi(Blur)
         QtCore.QObject.connect(self.checkBox_envelope, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.comboBox_envelope.setEnabled)
@@ -176,5 +173,6 @@ class Ui_Blur(object):
         self.checkBox_exportCentroid.setText(_translate("Blur", "X and Y of centroid", None))
         self.checkBox_envelope.setText(_translate("Blur", "Use envelope", None))
 
-from qgis import gui
+from qgis.gui import QgsCollapsibleGroupBox
+from qgis.gui import QgsMapLayerComboBox
 from GeoHealth.resources import resources_rc

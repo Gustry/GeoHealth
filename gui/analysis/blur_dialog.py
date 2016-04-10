@@ -23,7 +23,7 @@
 
 from os.path import dirname, basename
 from qgis.utils import iface, QGis
-from qgis.gui import QgsMessageBar
+from qgis.gui import QgsMessageBar, QgsMapLayerProxyModel
 from qgis.core import \
     QgsField,\
     QgsVectorFileWriter, \
@@ -70,6 +70,9 @@ class BlurWidget(QWidget, Ui_Blur):
 
         self.settings = QSettings()
 
+        self.comboBox_layerToBlur.setFilters(QgsMapLayerProxyModel.PointLayer)
+        self.comboBox_envelope.setFilters(QgsMapLayerProxyModel.PolygonLayer)
+
     def select_file(self):
         last_folder = get_last_input_path()
         # noinspection PyArgumentList
@@ -85,18 +88,6 @@ class BlurWidget(QWidget, Ui_Blur):
             set_last_input_path(path)
         else:
             self.lineEdit_outputFile.setText('')
-
-    def fill_comboxbox_layers(self):
-        self.comboBox_layerToBlur.clear()
-        self.comboBox_envelope.clear()
-
-        for layer in iface.legendInterface().layers():
-            if layer.type() == QgsMapLayer.VectorLayer:
-                if layer.geometryType() == QGis.Point:
-                    self.comboBox_layerToBlur.addItem(layer.name(), layer)
-
-                if layer.geometryType() == QGis.Polygon:
-                    self.comboBox_envelope.addItem(layer.name(), layer)
         
     def run_blur(self):
 
@@ -104,8 +95,7 @@ class BlurWidget(QWidget, Ui_Blur):
         self.label_progress.setText('')
 
         """Get all the fields"""
-        index = self.comboBox_layerToBlur.currentIndex()
-        layer_to_blur = self.comboBox_layerToBlur.itemData(index)
+        layer_to_blur = self.comboBox_layerToBlur.currentLayer()
         radius = self.spinBox_radius.value()
         display = self.checkBox_addToMap.isChecked()
         selected_features_only = self.checkBox_selectedOnlyFeatures.isChecked()
@@ -114,8 +104,7 @@ class BlurWidget(QWidget, Ui_Blur):
         export_centroid = self.checkBox_exportCentroid.isChecked()
 
         if self.checkBox_envelope.isChecked():
-            index = self.comboBox_envelope.currentIndex()
-            layer_envelope = self.comboBox_envelope.itemData(index)
+            layer_envelope = self.comboBox_envelope.currentLayer()
         else:
             layer_envelope = None
 

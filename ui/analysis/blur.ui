@@ -67,7 +67,7 @@
      <item row="1" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QComboBox" name="comboBox_layerToBlur">
+        <widget class="QgsMapLayerComboBox" name="comboBox_layerToBlur">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -75,19 +75,6 @@
           </sizepolicy>
          </property>
         </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </item>
@@ -149,9 +136,6 @@
       <string>Advanced</string>
      </property>
      <property name="collapsed">
-      <bool>true</bool>
-     </property>
-     <property name="saveCollapsedState">
       <bool>false</bool>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -219,7 +203,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox_envelope"/>
+            <widget class="QgsMapLayerComboBox" name="comboBox_envelope"/>
            </item>
           </layout>
          </item>
@@ -279,6 +263,11 @@
    <header>qgscollapsiblegroupbox.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>QgsMapLayerComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsmaplayercombobox.h</header>
+  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../resources/resources.qrc"/>
@@ -292,11 +281,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>133</x>
-     <y>280</y>
+     <y>316</y>
     </hint>
     <hint type="destinationlabel">
      <x>365</x>
-     <y>280</y>
+     <y>316</y>
     </hint>
    </hints>
   </connection>
