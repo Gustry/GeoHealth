@@ -25,8 +25,7 @@ import codecs
 from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
 from PyQt4.QtCore import pyqtSignal
 
-from qgis.utils import iface
-from qgis.core import QgsMapLayer
+from qgis.gui import QgsMapLayerProxyModel
 
 from GeoHealth.ui.export.export_csv import Ui_Form
 from GeoHealth.core.tools import tr
@@ -41,7 +40,6 @@ class CsvExport(QWidget, Ui_Form):
         self.parent = parent
         super(CsvExport, self).__init__()
         self.setupUi(self)
-        self.fill_combobox_layer()
 
         self.buttonBox.button(QDialogButtonBox.Save).clicked.connect(
             self.save_csv)
@@ -57,13 +55,7 @@ class CsvExport(QWidget, Ui_Form):
             'semicolon': ';'
         }
 
-    def fill_combobox_layer(self):
-        """Fill combobox about layers."""
-        self.cbx_layer.clear()
-
-        for layer in iface.legendInterface().layers():
-            if layer.type() == QgsMapLayer.VectorLayer:
-                self.cbx_layer.addItem(layer.name(), layer)
+        self.cbx_layer.setFilters(QgsMapLayerProxyModel.VectorLayer)
 
     def open_file_browser(self):
         # noinspection PyArgumentList
@@ -75,8 +67,7 @@ class CsvExport(QWidget, Ui_Form):
 
     def save_csv(self):
         path = self.le_output.text()
-        index = self.cbx_layer.currentIndex()
-        layer = self.cbx_layer.itemData(index)
+        layer = self.cbx_layer.currentLayer()
 
         if self.tab_delimiter.isChecked():
             delimiter = self.delimiters['tab']

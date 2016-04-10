@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'export_csv.ui'
 #
-# Created: Fri Oct 30 16:28:36 2015
+# Created: Sun Apr 10 15:43:44 2016
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -34,14 +34,6 @@ class Ui_Form(object):
         self.label_3 = QtGui.QLabel(Form)
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_3)
-        self.cbx_layer = QtGui.QComboBox(Form)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.cbx_layer.sizePolicy().hasHeightForWidth())
-        self.cbx_layer.setSizePolicy(sizePolicy)
-        self.cbx_layer.setObjectName(_fromUtf8("cbx_layer"))
-        self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.cbx_layer)
         self.label = QtGui.QLabel(Form)
         self.label.setObjectName(_fromUtf8("label"))
         self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.label)
@@ -83,6 +75,14 @@ class Ui_Form(object):
         self.bt_browse.setObjectName(_fromUtf8("bt_browse"))
         self.horizontalLayout_3.addWidget(self.bt_browse)
         self.formLayout.setLayout(2, QtGui.QFormLayout.FieldRole, self.horizontalLayout_3)
+        self.cbx_layer = QgsMapLayerComboBox(Form)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.cbx_layer.sizePolicy().hasHeightForWidth())
+        self.cbx_layer.setSizePolicy(sizePolicy)
+        self.cbx_layer.setObjectName(_fromUtf8("cbx_layer"))
+        self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.cbx_layer)
         self.verticalLayout.addLayout(self.formLayout)
         self.buttonBox = QtGui.QDialogButtonBox(Form)
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Save)
@@ -105,3 +105,4 @@ class Ui_Form(object):
         self.label_2.setText(_translate("Form", "Output", None))
         self.bt_browse.setText(_translate("Form", "Browse", None))
 
+from qgis.gui import QgsMapLayerComboBox
