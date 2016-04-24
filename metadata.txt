@@ -10,7 +10,7 @@
 name=GeoHealth
 qgisMinimumVersion=2.0
 description=Geohealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.
-version=1.0
+version=0.9
 author=Etienne Trimaille
 email=etienne@trimaille.eu
 
@@ -29,7 +29,7 @@ tracker=https://github.com/Gustry/GeoHealth/issues
 repository=https://github.com/Gustry/GeoHealth
 icon=resources/icon-32.png
 # experimental flag
-experimental=False
+experimental=True
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
