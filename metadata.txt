@@ -9,7 +9,8 @@
 [general]
 name=GeoHealth
 qgisMinimumVersion=2.0
-description=Geohealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.
+about=GeoHealth offers a simplified interface for users in public health.
+description=GeoHealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.
 version=0.9
 author=Etienne Trimaille
 email=etienne@trimaille.eu
