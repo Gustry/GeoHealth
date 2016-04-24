@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'density.ui'
 #
-# Created: Fri Jan  1 18:17:33 2016
+# Created: Sun Apr 10 17:10:18 2016
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -35,17 +35,9 @@ class Ui_Density(object):
         self.label = QtGui.QLabel(Density)
         self.label.setObjectName(_fromUtf8("label"))
         self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.label)
-        self.cbx_aggregation_layer = QtGui.QComboBox(Density)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.cbx_aggregation_layer.sizePolicy().hasHeightForWidth())
-        self.cbx_aggregation_layer.setSizePolicy(sizePolicy)
-        self.cbx_aggregation_layer.setObjectName(_fromUtf8("cbx_aggregation_layer"))
-        self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.cbx_aggregation_layer)
         self.label_2 = QtGui.QLabel(Density)
         self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_2)
+        self.formLayout.setWidget(4, QtGui.QFormLayout.LabelRole, self.label_2)
         self.cbx_ratio = QtGui.QComboBox(Density)
         self.cbx_ratio.setEditable(True)
         self.cbx_ratio.setObjectName(_fromUtf8("cbx_ratio"))
@@ -54,24 +46,24 @@ class Ui_Density(object):
         self.cbx_ratio.addItem(_fromUtf8(""))
         self.cbx_ratio.addItem(_fromUtf8(""))
         self.cbx_ratio.addItem(_fromUtf8(""))
-        self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.cbx_ratio)
+        self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.cbx_ratio)
         self.label_3 = QtGui.QLabel(Density)
         self.label_3.setObjectName(_fromUtf8("label_3"))
-        self.formLayout.setWidget(4, QtGui.QFormLayout.LabelRole, self.label_3)
+        self.formLayout.setWidget(5, QtGui.QFormLayout.LabelRole, self.label_3)
         self.le_new_column = QtGui.QLineEdit(Density)
         self.le_new_column.setMaxLength(10)
         self.le_new_column.setObjectName(_fromUtf8("le_new_column"))
-        self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.le_new_column)
+        self.formLayout.setWidget(5, QtGui.QFormLayout.FieldRole, self.le_new_column)
         self.checkBox_addNbIntersections = QtGui.QCheckBox(Density)
         self.checkBox_addNbIntersections.setObjectName(_fromUtf8("checkBox_addNbIntersections"))
-        self.formLayout.setWidget(5, QtGui.QFormLayout.FieldRole, self.checkBox_addNbIntersections)
+        self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.checkBox_addNbIntersections)
         self.checkBox_incidence_runStats = QtGui.QCheckBox(Density)
         self.checkBox_incidence_runStats.setChecked(True)
         self.checkBox_incidence_runStats.setObjectName(_fromUtf8("checkBox_incidence_runStats"))
-        self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.checkBox_incidence_runStats)
+        self.formLayout.setWidget(7, QtGui.QFormLayout.FieldRole, self.checkBox_incidence_runStats)
         self.label_5 = QtGui.QLabel(Density)
         self.label_5.setObjectName(_fromUtf8("label_5"))
-        self.formLayout.setWidget(7, QtGui.QFormLayout.LabelRole, self.label_5)
+        self.formLayout.setWidget(8, QtGui.QFormLayout.LabelRole, self.label_5)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.le_output_filepath = QtGui.QLineEdit(Density)
@@ -80,20 +72,28 @@ class Ui_Density(object):
         self.button_browse = QtGui.QPushButton(Density)
         self.button_browse.setObjectName(_fromUtf8("button_browse"))
         self.horizontalLayout.addWidget(self.button_browse)
-        self.formLayout.setLayout(7, QtGui.QFormLayout.FieldRole, self.horizontalLayout)
+        self.formLayout.setLayout(8, QtGui.QFormLayout.FieldRole, self.horizontalLayout)
         self.label_4 = QtGui.QLabel(Density)
         self.label_4.setObjectName(_fromUtf8("label_4"))
-        self.formLayout.setWidget(2, QtGui.QFormLayout.LabelRole, self.label_4)
-        self.cbx_case_field = QtGui.QComboBox(Density)
+        self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.label_4)
+        self.cbx_aggregation_layer = QgsMapLayerComboBox(Density)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.cbx_aggregation_layer.sizePolicy().hasHeightForWidth())
+        self.cbx_aggregation_layer.setSizePolicy(sizePolicy)
+        self.cbx_aggregation_layer.setObjectName(_fromUtf8("cbx_aggregation_layer"))
+        self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.cbx_aggregation_layer)
+        self.cbx_case_field = QgsFieldComboBox(Density)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.cbx_case_field.sizePolicy().hasHeightForWidth())
         self.cbx_case_field.setSizePolicy(sizePolicy)
         self.cbx_case_field.setObjectName(_fromUtf8("cbx_case_field"))
-        self.formLayout.setWidget(2, QtGui.QFormLayout.FieldRole, self.cbx_case_field)
+        self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.cbx_case_field)
         self.verticalLayout.addLayout(self.formLayout)
-        self.symbology = gui.QgsCollapsibleGroupBox(Density)
+        self.symbology = QgsCollapsibleGroupBox(Density)
         self.symbology.setCheckable(True)
         self.symbology.setCollapsed(False)
         self.symbology.setObjectName(_fromUtf8("symbology"))
@@ -104,7 +104,7 @@ class Ui_Density(object):
         self.label_9 = QtGui.QLabel(self.symbology)
         self.label_9.setObjectName(_fromUtf8("label_9"))
         self.horizontalLayout_3.addWidget(self.label_9)
-        self.color_low_value = gui.QgsColorButtonV2(self.symbology)
+        self.color_low_value = QgsColorButtonV2(self.symbology)
         self.color_low_value.setColor(QtGui.QColor(255, 246, 246))
         self.color_low_value.setObjectName(_fromUtf8("color_low_value"))
         self.horizontalLayout_3.addWidget(self.color_low_value)
@@ -113,7 +113,7 @@ class Ui_Density(object):
         self.label_10 = QtGui.QLabel(self.symbology)
         self.label_10.setObjectName(_fromUtf8("label_10"))
         self.horizontalLayout_3.addWidget(self.label_10)
-        self.color_high_value = gui.QgsColorButtonV2(self.symbology)
+        self.color_high_value = QgsColorButtonV2(self.symbology)
         self.color_high_value.setColor(QtGui.QColor(202, 33, 36))
         self.color_high_value.setObjectName(_fromUtf8("color_high_value"))
         self.horizontalLayout_3.addWidget(self.color_high_value)
@@ -166,6 +166,7 @@ class Ui_Density(object):
 
         self.retranslateUi(Density)
         self.cbx_ratio.setCurrentIndex(4)
+        QtCore.QObject.connect(self.cbx_aggregation_layer, QtCore.SIGNAL(_fromUtf8("layerChanged(QgsMapLayer*)")), self.cbx_case_field.setLayer)
         QtCore.QMetaObject.connectSlotsByName(Density)
 
     def retranslateUi(self, Density):
@@ -196,4 +197,7 @@ class Ui_Density(object):
         item = self.tableWidget.horizontalHeaderItem(1)
         item.setText(_translate("Density", "Value", None))
 
-from qgis import gui
+from qgis.gui import QgsFieldComboBox
+from qgis.gui import QgsMapLayerComboBox
+from qgis.gui import QgsCollapsibleGroupBox
+from qgis.gui import QgsColorButtonV2

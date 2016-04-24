@@ -42,7 +42,6 @@ class HistogramDialog(QDialog, Ui_Histogram):
         """Constructor."""
         QDialog.__init__(self, parent)
         self.setupUi(self)
-        self.fill_combobox_layer()
 
         # Connect slot.
         self.button_box.button(QDialogButtonBox.Ok).clicked.connect(
@@ -60,16 +59,6 @@ class HistogramDialog(QDialog, Ui_Histogram):
         self.toolbar = CustomNavigationToolbar(self.canvas, self)
         self.layout_plot.addWidget(self.toolbar)
         self.layout_plot.addWidget(self.canvas)
-
-    def fill_combobox_layer(self):
-        """Fill combobox about layers."""
-        self.cbx_layer.clear()
-
-        for layer in iface.legendInterface().layers():
-            if layer.type() == QgsMapLayer.VectorLayer:
-                render = layer.rendererV2()
-                if type(render) is QgsGraduatedSymbolRendererV2:
-                    self.cbx_layer.addItem(layer.name(), layer)
 
     def draw_plot(self):
         """Function to draw the plot and display it in the canvas."""

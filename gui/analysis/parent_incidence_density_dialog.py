@@ -30,7 +30,8 @@ from PyQt4.QtGui import \
 from PyQt4.QtCore import QSize, QVariant, Qt, pyqtSignal
 from PyQt4.QtGui import QFileDialog
 
-from qgis.utils import iface, QGis
+from qgis.utils import QGis
+from qgis.gui import QgsMapLayerProxyModel
 from qgis.core import \
     QgsField,\
     QgsVectorGradientColorRampV2,\
@@ -64,7 +65,14 @@ class IncidenceDensityDialog(QDialog):
     signalStatus = pyqtSignal(int, str, name='signalStatus')
 
     def __init__(self, parent=None):
-        """Constructor."""
+        """Constructor.
+
+        Base class for Incidence and Density dialogs.
+
+        use_area : If you use the area of the polygon or the population field.
+        use_point_layer : If you a point a layer, or a field in the polygon
+         layer.
+        """
         self.parent = parent
         QDialog.__init__(self, parent)
         self.name_field = None
@@ -110,75 +118,51 @@ class IncidenceDensityDialog(QDialog):
         self.layout_plot.addWidget(self.toolbar)
         self.layout_plot.addWidget(self.canvas)
 
-        # Connect slot.
-        if not self.use_area or not self.use_point_layer:
-            # noinspection PyUnresolvedReferences
-            self.cbx_aggregation_layer.currentIndexChanged.connect(
-                self.update_fields)
+        self.cbx_aggregation_layer.setFilters(QgsMapLayerProxyModel.PolygonLayer)
+
+        if self.use_point_layer:
+            self.cbx_case_layer.setFilters(QgsMapLayerProxyModel.PointLayer)
+
+        if not self.use_area:
+            self.cbx_population_field.setLayer(self.cbx_aggregation_layer.currentLayer())
+            self.cbx_aggregation_layer.layerChanged.connect(self.cbx_population_field.setLayer)
+            self.cbx_aggregation_layer.layerChanged.connect(self.reset_field_population)
+            self.reset_field_population()
+
+        if not self.use_point_layer:
+            self.cbx_case_field.setLayer(self.cbx_aggregation_layer.currentLayer())
+            self.cbx_aggregation_layer.layerChanged.connect(self.cbx_case_field.setLayer)
+            self.cbx_aggregation_layer.layerChanged.connect(self.reset_field_case)
+            self.reset_field_case()
+
+    def reset_field_population(self):
+        self.cbx_population_field.setCurrentIndex(0)
+
+    def reset_field_case(self):
+        self.cbx_case_field.setCurrentIndex(0)
 
     def open_file_browser(self):
         output_file = QFileDialog.getSaveFileNameAndFilter(
             self.parent, tr('Save shapefile'), filter='SHP (*.shp)')
         self.le_output_filepath.setText(output_file[0])
 
-    def update_fields(self):
-        """Update the combobox about the population field and case field."""
-        if not self.use_area:
-            self.cbx_population_field.clear()
-        if not self.use_point_layer:
-            self.cbx_case_field.clear()
-
-        index = self.cbx_aggregation_layer.currentIndex()
-        admin_layer = self.cbx_aggregation_layer.itemData(index)
-        if not admin_layer:
-            return False
-
-        fields = admin_layer.dataProvider().fields()
-
-        for item in fields:
-            if not self.use_area:
-                self.cbx_population_field.addItem(item.name(), item)
-            if not self.use_point_layer:
-                self.cbx_case_field.addItem(item.name(), item)
-
-    def fill_combobox_layer(self):
-        """Fill combobox about layers."""
-
-        if self.use_point_layer:
-            self.cbx_case_layer.clear()
-
-        self.cbx_aggregation_layer.clear()
-
-        for layer in iface.legendInterface().layers():
-            if layer.type() == 0:
-
-                if layer.geometryType() == 0 and self.use_point_layer:
-                    self.cbx_case_layer.addItem(
-                        layer.name(), layer)
-
-                if layer.geometryType() == 2:
-                    self.cbx_aggregation_layer.addItem(
-                        layer.name(), layer)
-
     def run_stats(self):
         """Main function which do the process."""
 
         # Get the common fields.
-        index = self.cbx_aggregation_layer.currentIndex()
-        self.admin_layer = self.cbx_aggregation_layer.itemData(index)
+        self.admin_layer = self.cbx_aggregation_layer.currentLayer()
 
         if self.use_point_layer:
             # If we use a point layer.
-            index = self.cbx_case_layer.currentIndex()
-            point_layer = self.cbx_case_layer.itemData(index)
+            point_layer = self.cbx_case_layer.currentLayer()
         else:
             # If we use a column with number of case.
-            case_column = self.cbx_case_field.currentText()
+            case_column = self.cbx_case_field.currentField()
             index_case = self.admin_layer.fieldNameIndex(case_column)
 
         if not self.use_area:
             # If we don't use density.
-            population = self.cbx_population_field.currentText()
+            population = self.cbx_population_field.currentField()
             index_population = self.admin_layer.fieldNameIndex(population)
 
         if not self.name_field:

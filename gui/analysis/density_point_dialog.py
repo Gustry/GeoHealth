@@ -36,7 +36,6 @@ class DensityPointDialog(IncidenceDensityDialog, Ui_DensityPoint):
         self.use_point_layer = True
 
         self.setup_ui()
-        self.fill_combobox_layer()
 
     def run_stats(self):
         """Main function which do the process."""
