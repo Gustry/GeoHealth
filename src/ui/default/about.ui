@@ -70,7 +70,7 @@
             <item>
              <widget class="QLabel" name="label_13">
               <property name="text">
-               <string>Geohealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.</string>
+               <string>GeoPublicHealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.</string>
               </property>
               <property name="wordWrap">
                <bool>true</bool>

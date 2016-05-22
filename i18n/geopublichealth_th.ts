@@ -413,7 +413,7 @@
     </message>
     <message>
         <location filename="ui/about.py" line="189"/>
-        <source>Geohealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.</source>
+        <source>GeoPublicHealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

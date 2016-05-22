@@ -186,7 +186,7 @@ class Ui_About(object):
     def retranslateUi(self, About):
         About.setWindowTitle(_translate("About", "Form", None))
         self.groupBox_6.setTitle(_translate("About", "GeoPublicHealth", None))
-        self.label_13.setText(_translate("About", "Geohealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.", None))
+        self.label_13.setText(_translate("About", "GeoPublicHealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.", None))
         self.groupBox.setTitle(_translate("About", "Design", None))
         self.label_5.setText(_translate("About", "<html><head/><body><p> This plugin was designed by <a href=\"http://www.espace-dev.fr\"><span style=\" text-decoration: underline; color:#0057ae;\">UMR ESPACE-DEV</span></a> (IRD, Univ. Guyane, Univ. Montpellier, Univ. Réunion) : <a href=\"mailto:vincent.herbreteau@ird.fr?subject=Plugin GeoPublicHealth\"><span style=\" color:#0057ae;\" style=\"text-decoration:none;\">Vincent Herbreteau (IRD)</span></a> and <a href=\"mailto:christophe.revillion@univ-reunion.fr?subject=Plugin GeoPublicHealth\" style=\"text-decoration:none;\">Christophe Révillion (IRD)</a>, with contributions from the ESoR research group (Environment, Societies and Health Risk).</p></body></html>", None))
         self.groupBox_2.setTitle(_translate("About", "Realization", None))
