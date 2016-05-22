@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="th" sourcelanguage="en">
+<!DOCTYPE TS><TS version="2.0" language="en" sourcelanguage="en">
 <context>
     <name>@default</name>
     <message>
@@ -408,7 +407,7 @@
     </message>
     <message>
         <location filename="ui/about.py" line="188"/>
-        <source>GeoHealth</source>
+        <source>GeoPublicHealth</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -423,7 +422,7 @@
     </message>
     <message>
         <location filename="ui/about.py" line="191"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt; This plugin was designed by &lt;a href=&quot;http://www.espace-dev.fr&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;UMR ESPACE-DEV&lt;/span&gt;&lt;/a&gt; (IRD, Univ. Guyane, Univ. Montpellier, Univ. RÃ©union) : &lt;a href=&quot;mailto:vincent.herbreteau@ird.fr?subject=Plugin GeoHealth&quot;&gt;&lt;span style=&quot; color:#0057ae;&quot; style=&quot;text-decoration:none;&quot;&gt;Vincent Herbreteau (IRD)&lt;/span&gt;&lt;/a&gt; and &lt;a href=&quot;mailto:christophe.revillion@univ-reunion.fr?subject=Plugin GeoHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Christophe RÃ©villion (IRD)&lt;/a&gt;, with contributions from the ESoR research group (Environment, Societies and Health Risk).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt; This plugin was designed by &lt;a href=&quot;http://www.espace-dev.fr&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;UMR ESPACE-DEV&lt;/span&gt;&lt;/a&gt; (IRD, Univ. Guyane, Univ. Montpellier, Univ. R&#xc3;&#xa9;union) : &lt;a href=&quot;mailto:vincent.herbreteau@ird.fr?subject=Plugin GeoPublicHealth&quot;&gt;&lt;span style=&quot; color:#0057ae;&quot; style=&quot;text-decoration:none;&quot;&gt;Vincent Herbreteau (IRD)&lt;/span&gt;&lt;/a&gt; and &lt;a href=&quot;mailto:christophe.revillion@univ-reunion.fr?subject=Plugin GeoPublicHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Christophe R&#xc3;&#xa9;villion (IRD)&lt;/a&gt;, with contributions from the ESoR research group (Environment, Societies and Health Risk).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -438,7 +437,7 @@
     </message>
     <message>
         <location filename="ui/about.py" line="194"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The web-based translating platform &lt;a href=&quot;https://www.transifex.com/geohealth/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Transifex&lt;/span&gt;&lt;/a&gt; is used. It&apos;s easier for translators.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The web-based translating platform &lt;a href=&quot;https://www.transifex.com/geopublichealth/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Transifex&lt;/span&gt;&lt;/a&gt; is used. It&apos;s easier for translators.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

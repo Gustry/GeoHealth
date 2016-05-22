@@ -2,7 +2,7 @@
 """
 /***************************************************************************
 
-                                 GeoHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
@@ -27,8 +27,13 @@ from PyQt4.QtCore import pyqtSignal
 
 from qgis.gui import QgsMapLayerProxyModel
 
+<<<<<<< HEAD:src/gui/export/csv.py
 from GeoHealth.src.core.tools import tr
 from GeoHealth.src.utilities.resources import get_ui_class
+=======
+from GeoPublicHealth.ui.export.export_csv import Ui_Form
+from GeoPublicHealth.core.tools import tr
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/export/csv.py
 
 FORM_CLASS = get_ui_class('export', 'export_csv.ui')
 

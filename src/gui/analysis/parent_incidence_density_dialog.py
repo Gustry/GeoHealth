@@ -2,7 +2,7 @@
 """
 /***************************************************************************
 
-                                 GeoHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
@@ -47,16 +47,27 @@ from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
+<<<<<<< HEAD:src/gui/analysis/parent_incidence_density_dialog.py
 from GeoHealth.src.core.graph_toolbar import CustomNavigationToolbar
 from GeoHealth.src.core.tools import display_message_bar, tr
 from GeoHealth.src.core.exceptions import \
     GeoHealthException,\
+=======
+from GeoPublicHealth.core.graph_toolbar import CustomNavigationToolbar
+from GeoPublicHealth.core.tools import display_message_bar, tr
+from GeoPublicHealth.core.exceptions import \
+    GeoPublicHealthException,\
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/analysis/parent_incidence_density_dialog.py
     NoLayerProvidedException,\
     DifferentCrsException,\
     FieldExistingException,\
     FieldException,\
     NotANumberException
+<<<<<<< HEAD:src/gui/analysis/parent_incidence_density_dialog.py
 from GeoHealth.src.core.stats import Stats
+=======
+from GeoPublicHealth.core.stats import Stats
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/analysis/parent_incidence_density_dialog.py
 
 
 class IncidenceDensityDialog(QDialog):
@@ -220,7 +231,7 @@ class IncidenceDensityDialog(QDialog):
             if not self.output_file_path:
                 temp_file = NamedTemporaryFile(
                     delete=False,
-                    suffix='-geohealth.shp')
+                    suffix='-geopublichealth.shp')
                 self.output_file_path = temp_file.name
                 temp_file.flush()
                 temp_file.close()
@@ -340,7 +351,7 @@ class IncidenceDensityDialog(QDialog):
 
             self.signalStatus.emit(3, tr('Successful process'))
 
-        except GeoHealthException, e:
+        except GeoPublicHealthException, e:
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
 
         finally:

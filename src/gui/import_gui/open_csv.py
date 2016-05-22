@@ -2,7 +2,7 @@
 """
 /***************************************************************************
 
-                                 GeoHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
@@ -27,7 +27,11 @@ from qgis.core import QgsProviderRegistry
 from qgis.utils import iface
 
 
+<<<<<<< HEAD:src/gui/import_gui/open_csv.py
 from GeoHealth.src.core.tools import tr
+=======
+from GeoPublicHealth.core.tools import tr
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/import_gui/open_csv.py
 
 
 class OpenCsv(QWidget):

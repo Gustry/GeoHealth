@@ -1,5 +1,5 @@
 SOURCES = \
-    geohealth.py \
+    geopublichealth.py \
     core/tools.py \
     core/exceptions.py \
     core/graph_toolbar.py \
@@ -39,6 +39,6 @@ SOURCES = \
     ui/import_ui/open_xls_dbf.py
 
 TRANSLATIONS = \
-    i18n/geohealth_en.ts \
-    i18n/geohealth_fr.ts \
-    i18n/geohealth_th.ts
+    i18n/geopublichealth_en.ts \
+    i18n/geopublichealth_fr.ts \
+    i18n/geopublichealth_th.ts

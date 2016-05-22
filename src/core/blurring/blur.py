@@ -2,7 +2,7 @@
 """
 /***************************************************************************
 
-                                 GeoHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
@@ -26,7 +26,11 @@ from math import pi, cos, sin
 
 from qgis.core import QgsFeature, QgsGeometry, QgsPoint
 
+<<<<<<< HEAD:src/core/blurring/blur.py
 from GeoHealth.src.core.exceptions import PointOutsideEnvelopeException
+=======
+from GeoPublicHealth.core.exceptions import PointOutsideEnvelopeException
+>>>>>>> Change the files for the new name GeoPublicHealth:core/blurring/blur.py
 
 
 # noinspection PyArgumentList

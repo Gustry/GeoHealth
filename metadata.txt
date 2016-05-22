@@ -7,10 +7,10 @@
 # This file should be included when you package your plugin.# Mandatory items:
 
 [general]
-name=GeoHealth
+name=GeoPublicHealth
 qgisMinimumVersion=2.0
-about=GeoHealth offers a simplified interface for users in public health.
-description=GeoHealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.
+about=GeoPublicHealth offers a simplified interface for users in public health.
+description=GeoPublicHealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.
 version=0.9
 author=Etienne Trimaille
 email=etienne@trimaille.eu
@@ -25,9 +25,9 @@ email=etienne@trimaille.eu
 # Tags are comma separated with spaces allowed
 tags=health,epidemiolgy,blur,blurring 
 
-homepage=https://github.com/Gustry/GeoHealth
-tracker=https://github.com/Gustry/GeoHealth/issues
-repository=https://github.com/Gustry/GeoHealth
+homepage=https://github.com/Gustry/GeoPublicHealth
+tracker=https://github.com/Gustry/GeoPublicHealth/issues
+repository=https://github.com/Gustry/GeoPublicHealth
 icon=resources/icon-32.png
 # experimental flag
 experimental=True

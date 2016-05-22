@@ -2,7 +2,7 @@
 """
 /***************************************************************************
 
-                                 GeoHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
@@ -21,8 +21,13 @@
  ***************************************************************************/
 """
 
+<<<<<<< HEAD:src/gui/about.py
 from PyQt4.QtGui import QWidget, QPixmap
 from GeoHealth.src.utilities.resources import get_ui_class, resource
+=======
+from PyQt4.QtGui import QWidget
+from GeoPublicHealth.ui.about import Ui_About
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/about.py
 
 FORM_CLASS = get_ui_class('default', 'about.ui')
 

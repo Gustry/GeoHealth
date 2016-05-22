@@ -2,7 +2,7 @@
 """
 /***************************************************************************
 
-                                 GeoHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
@@ -24,6 +24,7 @@
 from PyQt4.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
 from PyQt4.QtCore import QSize
 
+<<<<<<< HEAD:src/gui/main_window.py
 from GeoHealth.src.doc.help import (
     help_density,
     help_open_shapefile,
@@ -54,6 +55,22 @@ from GeoHealth.src.gui.analysis.density_point_dialog import (
 from GeoHealth.src.gui.export.csv import CsvExport
 from GeoHealth.src.gui.about import AboutWidget
 from GeoHealth.src.utilities.resources import get_ui_class, resource
+=======
+from GeoPublicHealth.doc.help import *
+from GeoPublicHealth.ui.main import Ui_Dialog
+from GeoPublicHealth.gui.import_gui.open_shapefile import OpenShapefileWidget
+from GeoPublicHealth.gui.import_gui.open_csv import OpenCsv
+from GeoPublicHealth.gui.import_gui.raster import OpenRasterWidget
+from GeoPublicHealth.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
+from GeoPublicHealth.gui.analysis.blur_dialog import BlurWidget
+from GeoPublicHealth.gui.analysis.stats_dialog import StatsWidget
+from GeoPublicHealth.gui.analysis.incidence_dialog import IncidenceDialog
+from GeoPublicHealth.gui.analysis.incidence_point_dialog import IncidencePointDialog
+from GeoPublicHealth.gui.analysis.density_dialog import DensityDialog
+from GeoPublicHealth.gui.analysis.density_point_dialog import DensityPointDialog
+from GeoPublicHealth.gui.export.csv import CsvExport
+from GeoPublicHealth.gui.about import AboutWidget
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
 
 FORM_CLASS = get_ui_class('default', 'main.ui')
 
@@ -74,39 +91,63 @@ class MainDialog(QDialog, FORM_CLASS):
         self.tree_menu = [
             {
                 'label': 'Import',
+<<<<<<< HEAD:src/gui/main_window.py
                 'icon': resource('import.png'),
                 'content': [
                     {
                         'label': 'Shapefile',
                         'icon': resource('shp.png'),
+=======
+                'icon': ':/plugins/GeoPublicHealth/resources/import.png',
+                'content': [
+                    {
+                        'label': 'Shapefile',
+                        'icon': ':/plugins/GeoPublicHealth/resources/shp.png',
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
                         'content': {
                             'widget': OpenShapefileWidget(),
                             'help': help_open_shapefile()
                         }
                     }, {
                         'label': 'Raster',
+<<<<<<< HEAD:src/gui/main_window.py
                         'icon': resource('raster.png'),
+=======
+                        'icon': ':/plugins/GeoPublicHealth/resources/raster.png',
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
                         'content': {
                             'widget': OpenRasterWidget(),
                             'help': help_open_raster()
                         }
                     }, {
                         'label': 'Table XLS/DBF',
+<<<<<<< HEAD:src/gui/main_window.py
                         'icon': resource('xls.png'),
+=======
+                        'icon': ':/plugins/GeoPublicHealth/resources/xls.png',
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
                         'content': {
                             'widget': OpenXlsDbfFileWidget(),
                             'help': help_open_table()
                         }
                     }, {
                         'label': 'Table CSV',
+<<<<<<< HEAD:src/gui/main_window.py
                         'icon': resource('csv.png'),
+=======
+                        'icon': ':/plugins/GeoPublicHealth/resources/csv.png',
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
                         'content': {
                             'widget': OpenCsv(),
                             'help': help_open_csv()
                         }
                     }, {
                         'label': 'XY to map',
+<<<<<<< HEAD:src/gui/main_window.py
                         'icon': resource('xy.png'),
+=======
+                        'icon': ':/plugins/GeoPublicHealth/resources/xy.png',
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
                         'content': {
                             'widget': OpenCsv(),
                             'help': help_open_csv()
@@ -115,6 +156,7 @@ class MainDialog(QDialog, FORM_CLASS):
                 ]
             }, {
                 'label': 'Analyse',
+<<<<<<< HEAD:src/gui/main_window.py
                 'icon': resource('gears.png'),
                 'content': [
                     {
@@ -124,13 +166,28 @@ class MainDialog(QDialog, FORM_CLASS):
                             {
                                 'label': 'Blur',
                                 'icon': resource('blur.png'),
+=======
+                'icon': ':/plugins/GeoPublicHealth/resources/gears.png',
+                'content': [
+                    {
+                        'label': 'Blur',
+                        'icon': ':/plugins/GeoPublicHealth/resources/blur.png',
+                        'content': [
+                            {
+                                'label': 'Blur',
+                                'icon': ':/plugins/GeoPublicHealth/resources/blur.png',
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
                                 'content': {
                                     'widget': BlurWidget(),
                                     'help': help_blur()
                                 }
                             }, {
                                 'label': 'Stats',
+<<<<<<< HEAD:src/gui/main_window.py
                                 'icon': resource('sigma.png'),
+=======
+                                'icon': ':/plugins/GeoPublicHealth/resources/sigma.png',
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
                                 'content': {
                                     'widget': StatsWidget(),
                                     'help': help_stats_blurring()
@@ -139,18 +196,30 @@ class MainDialog(QDialog, FORM_CLASS):
                         ]
                     }, {
                         'label': 'Incidence',
+<<<<<<< HEAD:src/gui/main_window.py
                         'icon': resource('incidence.png'),
                         'content': [
                             {
                                 'label': 'Polygon layer only',
                                 'icon': resource('incidence.png'),
+=======
+                        'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+                        'content': [
+                            {
+                                'label': 'Polygon layer only',
+                                'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
                                 'content': {
                                     'widget': IncidenceDialog(),
                                     'help': help_incidence()
                                 }
                             }, {
                                 'label': 'Case and aggregation layers',
+<<<<<<< HEAD:src/gui/main_window.py
                                 'icon': resource('incidence.png'),
+=======
+                                'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
                                 'content': {
                                     'widget': IncidencePointDialog(),
                                     'help': help_incidence_point()
@@ -159,18 +228,30 @@ class MainDialog(QDialog, FORM_CLASS):
                         ]
                     }, {
                         'label': 'Density',
+<<<<<<< HEAD:src/gui/main_window.py
                         'icon': resource('incidence.png'),
                         'content': [
                             {
                                 'label': 'Polygon layer only',
                                 'icon': resource('incidence.png'),
+=======
+                        'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+                        'content': [
+                            {
+                                'label': 'Polygon layer only',
+                                'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
                                 'content': {
                                     'widget': DensityDialog(),
                                     'help': help_density()
                                 }
                             }, {
                                 'label': 'Case and aggregation layers',
+<<<<<<< HEAD:src/gui/main_window.py
                                 'icon': resource('incidence.png'),
+=======
+                                'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
                                 'content': {
                                     'widget': DensityPointDialog(),
                                     'help': help_density_point()
@@ -182,11 +263,19 @@ class MainDialog(QDialog, FORM_CLASS):
             },
             {
                 'label': 'Export',
+<<<<<<< HEAD:src/gui/main_window.py
                 'icon': resource('export.png'),
                 'content': [
                     {
                         'label': 'Attribute table',
                         'icon': resource('csv.png'),
+=======
+                'icon': ':/plugins/GeoPublicHealth/resources/export.png',
+                'content': [
+                    {
+                        'label': 'Attribute table',
+                        'icon': ':/plugins/GeoPublicHealth/resources/csv.png',
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/main_window.py
                         'content': {
                             'widget': CsvExport(),
                             'help': help_attribute_table()

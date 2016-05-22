@@ -2,7 +2,7 @@
 """
 /***************************************************************************
 
-                                 GeoHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
@@ -32,6 +32,7 @@ from PyQt4.QtGui import \
     QWidget, QDialogButtonBox, QApplication, QTableWidgetItem, QFileDialog
 from PyQt4.QtCore import pyqtSignal, QSize
 
+<<<<<<< HEAD:src/gui/analysis/stats_dialog.py
 from GeoHealth.src.core.graph_toolbar import CustomNavigationToolbar
 from GeoHealth.src.core.stats import Stats
 from GeoHealth.src.core.tools import \
@@ -39,6 +40,15 @@ from GeoHealth.src.core.tools import \
 from GeoHealth.src.core.exceptions import \
     GeoHealthException, NoLayerProvidedException, DifferentCrsException
 from GeoHealth.src.utilities.resources import get_ui_class
+=======
+from GeoPublicHealth.ui.analysis.stats import Ui_Stats
+from GeoPublicHealth.core.graph_toolbar import CustomNavigationToolbar
+from GeoPublicHealth.core.stats import Stats
+from GeoPublicHealth.core.tools import \
+    tr, display_message_bar, get_last_input_path, set_last_input_path
+from GeoPublicHealth.core.exceptions import \
+    GeoPublicHealthException, NoLayerProvidedException, DifferentCrsException
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/analysis/stats_dialog.py
 
 FORM_CLASS = get_ui_class('analysis', 'stats.ui')
 
@@ -194,7 +204,7 @@ class StatsWidget(QWidget, FORM_CLASS):
 
             self.draw_plot(self.tab)
 
-        except GeoHealthException, e:
+        except GeoPublicHealthException, e:
             self.label_progressStats.setText('')
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
 

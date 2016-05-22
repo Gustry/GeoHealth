@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- GeoHealth
+ GeoPublicHealth
                                  A QGIS plugin
- GeoHealth
+ GeoPublicHealth
                              -------------------
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
@@ -20,8 +20,17 @@
  ***************************************************************************/
 """
 
+<<<<<<< HEAD
 from GeoHealth.src.plugin import GeoHealthPlugin
 
 
 def classFactory(iface):
     return GeoHealthPlugin(iface)
+=======
+from geopublichealth import GeoPublicHealth
+
+
+def classFactory(iface):
+
+    return GeoPublicHealth(iface)
+>>>>>>> Change the files for the new name GeoPublicHealth

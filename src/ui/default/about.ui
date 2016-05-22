@@ -39,7 +39,7 @@
        <item>
         <widget class="QGroupBox" name="groupBox_6">
          <property name="title">
-          <string>GeoHealth</string>
+          <string>GeoPublicHealth</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
@@ -56,7 +56,11 @@
                <string notr="true"/>
               </property>
               <property name="pixmap">
+<<<<<<< HEAD:src/ui/default/about.ui
                <pixmap>../../resources/icon-100.png</pixmap>
+=======
+               <pixmap resource="../resources/resources.qrc">:/plugins/GeoPublicHealth/resources/icon-100.png</pixmap>
+>>>>>>> Change the files for the new name GeoPublicHealth:ui/about.ui
               </property>
               <property name="textInteractionFlags">
                <set>Qt::NoTextInteraction</set>
@@ -87,7 +91,7 @@
           <item>
            <widget class="QLabel" name="label_5">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt; This plugin was designed by &lt;a href=&quot;http://www.espace-dev.fr&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;UMR ESPACE-DEV&lt;/span&gt;&lt;/a&gt; (IRD, Univ. Guyane, Univ. Montpellier, Univ. Réunion) : &lt;a href=&quot;mailto:vincent.herbreteau@ird.fr?subject=Plugin GeoHealth&quot;&gt;&lt;span style=&quot; color:#0057ae;&quot; style=&quot;text-decoration:none;&quot;&gt;Vincent Herbreteau (IRD)&lt;/span&gt;&lt;/a&gt; and &lt;a href=&quot;mailto:christophe.revillion@univ-reunion.fr?subject=Plugin GeoHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Christophe Révillion (IRD)&lt;/a&gt;, with contributions from the ESoR research group (Environment, Societies and Health Risk).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt; This plugin was designed by &lt;a href=&quot;http://www.espace-dev.fr&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;UMR ESPACE-DEV&lt;/span&gt;&lt;/a&gt; (IRD, Univ. Guyane, Univ. Montpellier, Univ. Réunion) : &lt;a href=&quot;mailto:vincent.herbreteau@ird.fr?subject=Plugin GeoPublicHealth&quot;&gt;&lt;span style=&quot; color:#0057ae;&quot; style=&quot;text-decoration:none;&quot;&gt;Vincent Herbreteau (IRD)&lt;/span&gt;&lt;/a&gt; and &lt;a href=&quot;mailto:christophe.revillion@univ-reunion.fr?subject=Plugin GeoPublicHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Christophe Révillion (IRD)&lt;/a&gt;, with contributions from the ESoR research group (Environment, Societies and Health Risk).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -102,7 +106,11 @@
                <string notr="true"/>
               </property>
               <property name="pixmap">
+<<<<<<< HEAD:src/ui/default/about.ui
                <pixmap>../../resources/logo_ird.png</pixmap>
+=======
+               <pixmap resource="../resources/resources.qrc">:/plugins/GeoPublicHealth/resources/IRD-200.png</pixmap>
+>>>>>>> Change the files for the new name GeoPublicHealth:ui/about.ui
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -129,7 +137,11 @@
                  <string notr="true"/>
                 </property>
                 <property name="pixmap">
+<<<<<<< HEAD:src/ui/default/about.ui
                  <pixmap>../../resources/espace-dev.png</pixmap>
+=======
+                 <pixmap resource="../resources/resources.qrc">:/plugins/GeoPublicHealth/resources/espace-dev.png</pixmap>
+>>>>>>> Change the files for the new name GeoPublicHealth:ui/about.ui
                 </property>
                 <property name="scaledContents">
                  <bool>false</bool>
@@ -162,7 +174,7 @@
               <item>
                <widget class="QLabel" name="label_11">
                 <property name="text">
-                 <string notr="true">&lt;a href=&quot;mailto:etienne@trimaille.eu?subject=Plugin GeoHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Etienne Trimaille&lt;/a&gt;</string>
+                 <string notr="true">&lt;a href=&quot;mailto:etienne@trimaille.eu?subject=Plugin GeoPublicHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Etienne Trimaille&lt;/a&gt;</string>
                 </property>
                 <property name="wordWrap">
                  <bool>true</bool>
@@ -185,7 +197,7 @@
           <item>
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The web-based translating platform &lt;a href=&quot;https://www.transifex.com/geohealth/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Transifex&lt;/span&gt;&lt;/a&gt; is used. It's easier for translators.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The web-based translating platform &lt;a href=&quot;https://www.transifex.com/geopublichealth/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Transifex&lt;/span&gt;&lt;/a&gt; is used. It's easier for translators.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -270,7 +282,7 @@
             <item row="0" column="1">
              <widget class="QLabel" name="label_22">
               <property name="text">
-               <string notr="true">&lt;a href=&quot;https://github.com/Gustry/GeoHealth&quot; style=&quot;text-decoration:none;&quot;&gt;https://github.com/Gustry/GeoHealth&lt;/a&gt;</string>
+               <string notr="true">&lt;a href=&quot;https://github.com/Gustry/GeoPublicHealth&quot; style=&quot;text-decoration:none;&quot;&gt;https://github.com/Gustry/GeoPublicHealth&lt;/a&gt;</string>
               </property>
               <property name="wordWrap">
                <bool>true</bool>

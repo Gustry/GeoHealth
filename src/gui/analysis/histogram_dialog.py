@@ -2,7 +2,7 @@
 """
 /***************************************************************************
 
-                                 GeoHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
@@ -27,10 +27,15 @@ from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
+<<<<<<< HEAD:src/gui/analysis/histogram_dialog.py
 from GeoHealth.src.core.graph_toolbar import CustomNavigationToolbar
 from GeoHealth.src.utilities.resources import get_ui_class
 
 FORM_CLASS = get_ui_class('analysis', 'histogram.ui')
+=======
+from GeoPublicHealth.core.graph_toolbar import CustomNavigationToolbar
+from GeoPublicHealth.ui.analysis.histogram import Ui_Histogram
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/analysis/histogram_dialog.py
 
 
 class HistogramDialog(QDialog, FORM_CLASS):

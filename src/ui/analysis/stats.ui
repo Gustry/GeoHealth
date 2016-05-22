@@ -173,6 +173,12 @@
    <header>qgis.gui.h</header>
   </customwidget>
  </customwidgets>
+<<<<<<< HEAD:src/ui/analysis/stats.ui
  <resources/>
+=======
+ <resources>
+  <include location="../../../../../../plugins/GeoPublicHealth/resources/resources.qrc"/>
+ </resources>
+>>>>>>> Change the files for the new name GeoPublicHealth:ui/analysis/stats.ui
  <connections/>
 </ui>

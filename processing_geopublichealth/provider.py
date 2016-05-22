@@ -21,30 +21,39 @@
  ***************************************************************************/
 """
 
-<<<<<<< HEAD:src/gui/analysis/density_dialog.py
-from GeoHealth.src.gui.analysis.parent_incidence_density_dialog import (
-    IncidenceDensityDialog)
-from GeoHealth.src.utilities.resources import get_ui_class
-=======
-from GeoPublicHealth.ui.analysis.density import Ui_Density
-from GeoPublicHealth.gui.analysis.parent_incidence_density_dialog import IncidenceDensityDialog
->>>>>>> Change the files for the new name GeoPublicHealth:gui/analysis/density_dialog.py
+from PyQt4.QtGui import QIcon
+from processing.core.AlgorithmProvider import AlgorithmProvider
 
-FORM_CLASS = get_ui_class('analysis', 'density.ui')
+from GeoPublicHealth.processing_geopublichealth.blurring import BlurringGeoAlgorithm
 
 
-class DensityDialog(IncidenceDensityDialog, FORM_CLASS):
-    def __init__(self, parent=None):
-        """Constructor."""
-        IncidenceDensityDialog.__init__(self, parent)
-        # noinspection PyArgumentList
-        FORM_CLASS.setupUi(self, self)
+class Provider(AlgorithmProvider):
+    """QGIS Processing"""
 
-        self.use_area = True
-        self.use_point_layer = False
-
-        self.setup_ui()
-
-    def run_stats(self):
-        """Main function which do the process."""
-        IncidenceDensityDialog.run_stats(self)
+    def __init__(self):
+        AlgorithmProvider.__init__(self)
+    
+        self.activate = True
+    
+        # Load algorithms
+        self.alglist = [BlurringGeoAlgorithm()]
+        for alg in self.alglist:
+            alg.provider = self
+    
+    def initializeSettings(self):
+        AlgorithmProvider.initializeSettings(self)
+    
+    def unload(self):
+        AlgorithmProvider.unload(self)
+    
+    def getName(self):
+        return 'GeoPublicHealth'
+    
+    def getDescription(self):
+        return 'GeoPublicHealth'
+    
+    def getIcon(self):
+        return QIcon(':/plugins/GeoPublicHealth/resources/icon-32.png')
+    
+    def _loadAlgorithms(self):
+        self.algs = self.alglist

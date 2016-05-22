@@ -2,7 +2,7 @@
 """
 /***************************************************************************
 
-                                 GeoHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
@@ -21,41 +21,35 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QIcon
-from processing.core.AlgorithmProvider import AlgorithmProvider
-
-from GeoHealth.src.processing_geohealth.blurring import (
-    BlurringGeoAlgorithm)
-from GeoHealth.src.utilities.resources import resource
+from PyQt4.QtCore import QSettings
+from PyQt4.QtGui import QApplication
+from qgis.utils import iface
+from qgis.gui import QgsMessageBar
 
 
-class Provider(AlgorithmProvider):
-    """QGIS Processing"""
+def get_last_input_path():
+    settings = QSettings()
+    return settings.value('LastInputPath')
 
-    def __init__(self):
-        AlgorithmProvider.__init__(self)
 
-        self.activate = True
+def set_last_input_path(directory):
+    settings = QSettings()
+    settings.setValue('LastInputPath', str(directory))
 
-        # Load algorithms
-        self.alglist = [BlurringGeoAlgorithm()]
-        for alg in self.alglist:
-            alg.provider = self
 
-    def initializeSettings(self):
-        AlgorithmProvider.initializeSettings(self)
+def tr(msg):
+    # noinspection PyCallByClass,PyArgumentList
+    return QApplication.translate('GeoPublicHealth', msg)
 
-    def unload(self):
-        AlgorithmProvider.unload(self)
 
-    def getName(self):
-        return 'GeoHealth'
+def display_message_bar(
+        title=None, msg=None, level=QgsMessageBar.INFO, duration=5):
 
-    def getDescription(self):
-        return 'GeoHealth'
-
-    def getIcon(self):
-        return QIcon(resource('icon-32.png'))
-
-    def _loadAlgorithms(self):
-        self.algs = self.alglist
+    try:
+        if iface.Blurring_mainWindowDialog.isVisible():
+            iface.Blurring_mainWindowDialog.messageBar.pushMessage(
+                title, msg, level, duration)
+        else:
+            iface.messageBar().pushMessage(title, msg, level, duration)
+    except AttributeError:
+        iface.messageBar().pushMessage(title, msg, level, duration)

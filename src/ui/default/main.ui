@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string notr="true">GeoHealth</string>
+   <string notr="true">GeoPublicHealth</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <property name="margin">

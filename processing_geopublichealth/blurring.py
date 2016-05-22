@@ -2,7 +2,7 @@
 """
 /***************************************************************************
 
-                                 GeoHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
@@ -22,20 +22,14 @@
 """
 
 from PyQt4.QtGui import QIcon
-from PyQt4.QtCore import QVariant, QSettings
+from PyQt4.QtCore import QVariant
 from qgis.utils import QGis
 from qgis.core import QgsVectorFileWriter, QgsField
-from processing.core.GeoAlgorithm import GeoAlgorithm
-from processing.core.parameters import (
-    ParameterVector, ParameterNumber, ParameterBoolean)
-from processing.core.outputs import OutputVector
-from processing.tools.vector import dataobjects, features
 
-
-from GeoHealth.src.core.blurring.blur import Blur
-from GeoHealth.src.core.blurring.layer_index import LayerIndex
-from GeoHealth.src.core.tools import tr
-from GeoHealth.src.utilities.resources import resource
+from GeoPublicHealth.core.blurring.blur import Blur
+from GeoPublicHealth.core.blurring.layer_index import LayerIndex
+from GeoPublicHealth.core.tools import tr
+from GeoPublicHealth.processing_geopublichealth import *
 
 
 class BlurringGeoAlgorithm(GeoAlgorithm):
@@ -90,13 +84,13 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
         return True, tr(
             'For more explanations, go to the vector\'s menu then "Blurring"'
             ' -> "Help"<br />')
-
+    
     def getIcon(self):
-        return QIcon(resource('blur.png'))
+        return QIcon(':/plugins/GeoPublicHealth/resources/blur.png')
 
     def processAlgorithm(self, progress):
 
-        # Get parameters
+        #Get parameters
         input_filename = self.getParameterValue(self.INPUT_LAYER)
         radius = self.getParameterValue(self.RADIUS_FIELD)
         export_radius = self.getParameterValue(self.RADIUS_EXPORT)
@@ -105,8 +99,8 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
         output = self.getOutputValue(self.OUTPUT_LAYER)
 
         vector_layer = dataobjects.getObjectFromUri(input_filename)
-
-        # If we use a mask, envelope
+        
+        #If we use a mask, envelope
         vector_layer_envelope_index = None
         if envelope_layer_field is not None:
             vector_layer_envelope = dataobjects.getObjectFromUri(
@@ -117,21 +111,21 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
         system_encoding = settings.value('/UI/encoding', 'System')
         provider = vector_layer.dataProvider()
         fields = provider.fields()
-
+        
         if export_radius:
             fields.append(QgsField(u"Radius", QVariant.Int))
-
+        
         if export_centroid:
             fields.append(QgsField(u"X centroid", QVariant.Int))
             fields.append(QgsField(u"Y centroid", QVariant.Int))
-
+        
         writer = QgsVectorFileWriter(
             output,
             system_encoding,
             fields,
             QGis.WKBPolygon,
             provider.crs())
-
+        
         # Creating a algorithm with all these parameters.
         algorithm = Blur(
             radius,
@@ -139,6 +133,6 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
             export_radius,
             export_centroid)
 
-        for feature in features(vector_layer):
+        for feature in vector.features(vector_layer):
             feature = algorithm.blur(feature)
             writer.addFeature(feature)

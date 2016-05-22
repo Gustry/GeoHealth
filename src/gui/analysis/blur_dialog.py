@@ -2,7 +2,7 @@
 """
 /***************************************************************************
 
-                                 GeoHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
@@ -35,17 +35,30 @@ from PyQt4.QtGui import (
 from PyQt4.QtCore import pyqtSignal, QSettings, QVariant
 from processing.tools.system import getTempFilenameInTempFolder
 
+<<<<<<< HEAD:src/gui/analysis/blur_dialog.py
 from GeoHealth.src.core.blurring.layer_index import LayerIndex
 from GeoHealth.src.core.blurring.blur import Blur
 from GeoHealth.src.core.tools import \
     get_last_input_path, set_last_input_path, tr, display_message_bar
 from GeoHealth.src.core.exceptions import \
     GeoHealthException, \
+=======
+from GeoPublicHealth.core.blurring.layer_index import LayerIndex
+from GeoPublicHealth.core.blurring.blur import Blur
+from GeoPublicHealth.core.tools import \
+    get_last_input_path, set_last_input_path, tr, display_message_bar
+from GeoPublicHealth.core.exceptions import \
+    GeoPublicHealthException, \
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/analysis/blur_dialog.py
     NoLayerProvidedException,\
     NoFileNoDisplayException, \
     DifferentCrsException,\
     CreatingShapeFileException
+<<<<<<< HEAD:src/gui/analysis/blur_dialog.py
 from GeoHealth.src.utilities.resources import get_ui_class
+=======
+from GeoPublicHealth.ui.analysis.blur import Ui_Blur
+>>>>>>> Change the files for the new name GeoPublicHealth:gui/analysis/blur_dialog.py
 
 FORM_CLASS = get_ui_class('analysis', 'blur.ui')
 
@@ -204,7 +217,7 @@ class BlurWidget(QWidget, FORM_CLASS):
 
             self.signalAskCloseWindow.emit()
 
-        except GeoHealthException, e:
+        except GeoPublicHealthException, e:
             self.label_progress.setText('')
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
 
