@@ -289,6 +289,24 @@ def help_stats_blurring():
     html = html_table(title, intro, inputs, outputs, more)
     return html
 
+def help_composite_index():
+    title = tr('Composite Index')
+    intro = tr('You can create an Unmet Health Index Map using several indicators.')
+    inputs = [
+        tr('Polygon layer : administrative boundary with the indicators fields'),
+        tr('Indicators field'),
+        tr('New column')
+    ]
+    outputs = [
+        tr('New polygon layer with the Unmet Health Index ')
+    ]
+    more = [
+        tr('This algorithm will  use the Z-scores for each selected indicator to have a Composite index'),
+        tr('Please be sure to check the vector direction for each Indicator')
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
 
 def help_incidence():
     title = tr('Incidence')

@@ -200,6 +200,7 @@ class MainDialog(QDialog, FORM_CLASS):
                             }
                         ]
                     }, {
+<<<<<<< HEAD:src/gui/main_window.py
                         'label': 'Incidence',
 <<<<<<< HEAD:src/gui/main_window.py
                         'icon': resource('incidence.png'),
@@ -208,6 +209,29 @@ class MainDialog(QDialog, FORM_CLASS):
                                 'label': 'Polygon layer only',
                                 'icon': resource('incidence.png'),
 =======
+=======
+                        'label': 'Composite Index',
+                        'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+                        'content': [
+                            {
+                                'label': 'Polygon layer only',
+                                'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+                                'content': {
+                                    'widget': CompositeIndexDialog(),
+                                    'help': help_composite_index()
+                                }
+                            }, {
+                                'label': 'Case and aggregation layers',
+                                'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+                                'content': {
+                                    'widget': IncidencePointDialog(),
+                                    'help': help_incidence_point()
+                                }
+                            }
+                        ]
+                    }, {
+                        'label': 'Incidence',
+>>>>>>> Update help for Composite Index and delete some widgets in the Dialog:gui/main_window.py
                         'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
                         'content': [
                             {
