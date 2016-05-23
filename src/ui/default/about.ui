@@ -91,7 +91,7 @@
           <item>
            <widget class="QLabel" name="label_5">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt; This plugin was designed by &lt;a href=&quot;http://www.espace-dev.fr&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;UMR ESPACE-DEV&lt;/span&gt;&lt;/a&gt; (IRD, Univ. Guyane, Univ. Montpellier, Univ. Réunion) : &lt;a href=&quot;mailto:vincent.herbreteau@ird.fr?subject=Plugin GeoPublicHealth&quot;&gt;&lt;span style=&quot; color:#0057ae;&quot; style=&quot;text-decoration:none;&quot;&gt;Vincent Herbreteau (IRD)&lt;/span&gt;&lt;/a&gt; and &lt;a href=&quot;mailto:christophe.revillion@univ-reunion.fr?subject=Plugin GeoPublicHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Christophe Révillion (IRD)&lt;/a&gt;, with contributions from the ESoR research group (Environment, Societies and Health Risk).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This plugin was developed by &lt;a href=&quot;http://gpho.info/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;JHU Global Public Health Observatory&lt;/span&gt;&lt;/a&gt; and &lt;a href=&quot;http://epublichealth.co/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;ePublicHealth&lt;/span&gt;&lt;/a&gt; based on the GeoHealth plugin designed by &lt;a href=&quot;http://www.espace-dev.fr&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;UMR ESPACE-DEV&lt;/span&gt;&lt;/a&gt; (IRD, Univ. Guyane, Univ. Montpellier, Univ. Réunion) with contributions from the ESoR research group (Environment, Societies and Health Risk).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -101,16 +101,44 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
+<<<<<<< HEAD:src/ui/default/about.ui
              <widget class="QLabel" name="logo_ird">
+=======
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <item>
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap resource="../resources/resources.qrc">:/plugins/GeoPublicHealth/resources/gpho_logo.png</pixmap>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_9">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+>>>>>>> Updating the about.ui for reflecting the changes on GeoPublicHealth:ui/about.ui
               <property name="text">
                <string notr="true"/>
               </property>
               <property name="pixmap">
 <<<<<<< HEAD:src/ui/default/about.ui
+<<<<<<< HEAD:src/ui/default/about.ui
                <pixmap>../../resources/logo_ird.png</pixmap>
 =======
                <pixmap resource="../resources/resources.qrc">:/plugins/GeoPublicHealth/resources/IRD-200.png</pixmap>
 >>>>>>> Change the files for the new name GeoPublicHealth:ui/about.ui
+=======
+               <pixmap resource="../resources/resources.qrc">:/plugins/GeoPublicHealth/resources/eph_logo.png</pixmap>
+>>>>>>> Updating the about.ui for reflecting the changes on GeoPublicHealth:ui/about.ui
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -124,9 +152,15 @@
              </widget>
             </item>
             <item>
+<<<<<<< HEAD:src/ui/default/about.ui
              <layout class="QVBoxLayout" name="verticalLayout_6">
               <item>
                <widget class="QLabel" name="logo_umr">
+=======
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_6">
+>>>>>>> Updating the about.ui for reflecting the changes on GeoPublicHealth:ui/about.ui
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                   <horstretch>0</horstretch>
@@ -154,6 +188,19 @@
                 </property>
                </widget>
               </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap resource="../resources/resources.qrc">:/plugins/GeoPublicHealth/resources/IRD-200.png</pixmap>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
              </layout>
             </item>
            </layout>
@@ -164,7 +211,7 @@
        <item>
         <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
-          <string>Realization</string>
+          <string>Development Team</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
@@ -174,7 +221,10 @@
               <item>
                <widget class="QLabel" name="label_11">
                 <property name="text">
-                 <string notr="true">&lt;a href=&quot;mailto:etienne@trimaille.eu?subject=Plugin GeoPublicHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Etienne Trimaille&lt;/a&gt;</string>
+                 <string notr="true">&lt;strong&gt;JHU/GPHO&lt;/strong&gt; &lt;a href=&quot;mailto:ccastil3@jhu.edu?subject=Plugin GeoPublicHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Dr. Carlos Castillo-Salgado&lt;/a&gt;&lt;br /&gt;
+&lt;strong&gt;ePublicHealth&lt;/strong&gt;
+&lt;a href=&quot;mailto:manuel@epublichealth.co?subject=Plugin GeoPublicHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Manuel Vidaurre&lt;/a&gt;
+&lt;a href=&quot;mailto:javier@epublichealth.co?subject=Plugin GeoPublicHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Javier Cervantes&lt;/a&gt;</string>
                 </property>
                 <property name="wordWrap">
                  <bool>true</bool>
@@ -282,7 +332,7 @@
             <item row="0" column="1">
              <widget class="QLabel" name="label_22">
               <property name="text">
-               <string notr="true">&lt;a href=&quot;https://github.com/Gustry/GeoPublicHealth&quot; style=&quot;text-decoration:none;&quot;&gt;https://github.com/Gustry/GeoPublicHealth&lt;/a&gt;</string>
+               <string notr="true">&lt;a href=&quot;https://github.com/ePublicHealth/GeoPublicHealth&quot; style=&quot;text-decoration:none;&quot;&gt;https://github.com/ePublicHealth/GeoPublicHealth&lt;/a&gt;</string>
               </property>
               <property name="wordWrap">
                <bool>true</bool>

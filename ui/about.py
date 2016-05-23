@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'about.ui'
 #
-# Created: Fri Oct 30 13:58:12 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created by: PyQt4 UI code generator 4.11.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -35,7 +34,7 @@ class Ui_About(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
         self.scrollAreaWidgetContents = QtGui.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1005, 781))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 989, 765))
         self.scrollAreaWidgetContents.setObjectName(_fromUtf8("scrollAreaWidgetContents"))
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
@@ -72,16 +71,26 @@ class Ui_About(object):
         self.verticalLayout_7.addWidget(self.label_5)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.horizontalLayout_10 = QtGui.QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(_fromUtf8("horizontalLayout_10"))
+        self.label_8 = QtGui.QLabel(self.groupBox)
+        self.label_8.setText(_fromUtf8(""))
+        self.label_8.setPixmap(QtGui.QPixmap(_fromUtf8(":/plugins/GeoPublicHealth/resources/gpho_logo.png")))
+        self.label_8.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_8.setObjectName(_fromUtf8("label_8"))
+        self.horizontalLayout_10.addWidget(self.label_8)
+        self.horizontalLayout.addLayout(self.horizontalLayout_10)
         self.label_9 = QtGui.QLabel(self.groupBox)
+        self.label_9.setEnabled(True)
         self.label_9.setText(_fromUtf8(""))
-        self.label_9.setPixmap(QtGui.QPixmap(_fromUtf8(":/plugins/GeoPublicHealth/resources/IRD-200.png")))
+        self.label_9.setPixmap(QtGui.QPixmap(_fromUtf8(":/plugins/GeoPublicHealth/resources/eph_logo.png")))
         self.label_9.setAlignment(QtCore.Qt.AlignCenter)
         self.label_9.setWordWrap(True)
         self.label_9.setOpenExternalLinks(True)
         self.label_9.setObjectName(_fromUtf8("label_9"))
         self.horizontalLayout.addWidget(self.label_9)
-        self.verticalLayout_6 = QtGui.QVBoxLayout()
-        self.verticalLayout_6.setObjectName(_fromUtf8("verticalLayout_6"))
+        self.gridLayout = QtGui.QGridLayout()
+        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.label_6 = QtGui.QLabel(self.groupBox)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
@@ -94,8 +103,14 @@ class Ui_About(object):
         self.label_6.setAlignment(QtCore.Qt.AlignCenter)
         self.label_6.setOpenExternalLinks(True)
         self.label_6.setObjectName(_fromUtf8("label_6"))
-        self.verticalLayout_6.addWidget(self.label_6)
-        self.horizontalLayout.addLayout(self.verticalLayout_6)
+        self.gridLayout.addWidget(self.label_6, 1, 0, 1, 1)
+        self.label_7 = QtGui.QLabel(self.groupBox)
+        self.label_7.setText(_fromUtf8(""))
+        self.label_7.setPixmap(QtGui.QPixmap(_fromUtf8(":/plugins/GeoPublicHealth/resources/IRD-200.png")))
+        self.label_7.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_7.setObjectName(_fromUtf8("label_7"))
+        self.gridLayout.addWidget(self.label_7, 0, 0, 1, 1)
+        self.horizontalLayout.addLayout(self.gridLayout)
         self.verticalLayout_7.addLayout(self.horizontalLayout)
         self.verticalLayout_3.addWidget(self.groupBox)
         self.groupBox_2 = QtGui.QGroupBox(self.scrollAreaWidgetContents)
@@ -107,7 +122,10 @@ class Ui_About(object):
         self.verticalLayout_10 = QtGui.QVBoxLayout()
         self.verticalLayout_10.setObjectName(_fromUtf8("verticalLayout_10"))
         self.label_11 = QtGui.QLabel(self.groupBox_2)
-        self.label_11.setText(_fromUtf8("<a href=\"mailto:etienne@trimaille.eu?subject=Plugin GeoPublicHealth\" style=\"text-decoration:none;\">Etienne Trimaille</a>"))
+        self.label_11.setText(_fromUtf8("<strong>JHU/GPHO</strong> <a href=\"mailto:ccastil3@jhu.edu?subject=Plugin GeoPublicHealth\" style=\"text-decoration:none;\">Dr. Carlos Castillo-Salgado</a><br />\n"
+"<strong>ePublicHealth</strong>\n"
+"<a href=\"mailto:manuel@epublichealth.co?subject=Plugin GeoPublicHealth\" style=\"text-decoration:none;\">Manuel Vidaurre</a>\n"
+"<a href=\"mailto:javier@epublichealth.co?subject=Plugin GeoPublicHealth\" style=\"text-decoration:none;\">Javier Cervantes</a>"))
         self.label_11.setWordWrap(True)
         self.label_11.setObjectName(_fromUtf8("label_11"))
         self.verticalLayout_10.addWidget(self.label_11)
@@ -160,7 +178,7 @@ class Ui_About(object):
         self.label_21.setObjectName(_fromUtf8("label_21"))
         self.gridLayout_5.addWidget(self.label_21, 0, 0, 1, 1)
         self.label_22 = QtGui.QLabel(self.groupBox_4)
-        self.label_22.setText(_fromUtf8("<a href=\"https://github.com/Gustry/GeoPublicHealth\" style=\"text-decoration:none;\">https://github.com/Gustry/GeoPublicHealth</a>"))
+        self.label_22.setText(_fromUtf8("<a href=\"https://github.com/ePublicHealth/GeoPublicHealth\" style=\"text-decoration:none;\">https://github.com/ePublicHealth/GeoPublicHealth</a>"))
         self.label_22.setWordWrap(True)
         self.label_22.setOpenExternalLinks(True)
         self.label_22.setObjectName(_fromUtf8("label_22"))
@@ -188,8 +206,8 @@ class Ui_About(object):
         self.groupBox_6.setTitle(_translate("About", "GeoPublicHealth", None))
         self.label_13.setText(_translate("About", "GeoPublicHealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.", None))
         self.groupBox.setTitle(_translate("About", "Design", None))
-        self.label_5.setText(_translate("About", "<html><head/><body><p> This plugin was designed by <a href=\"http://www.espace-dev.fr\"><span style=\" text-decoration: underline; color:#0057ae;\">UMR ESPACE-DEV</span></a> (IRD, Univ. Guyane, Univ. Montpellier, Univ. Réunion) : <a href=\"mailto:vincent.herbreteau@ird.fr?subject=Plugin GeoPublicHealth\"><span style=\" color:#0057ae;\" style=\"text-decoration:none;\">Vincent Herbreteau (IRD)</span></a> and <a href=\"mailto:christophe.revillion@univ-reunion.fr?subject=Plugin GeoPublicHealth\" style=\"text-decoration:none;\">Christophe Révillion (IRD)</a>, with contributions from the ESoR research group (Environment, Societies and Health Risk).</p></body></html>", None))
-        self.groupBox_2.setTitle(_translate("About", "Realization", None))
+        self.label_5.setText(_translate("About", "<html><head/><body><p>This plugin was developed by <a href=\"http://gpho.info/\"><span style=\" text-decoration: underline; color:#0057ae;\">JHU Global Public Health Observatory</span></a> and <a href=\"http://epublichealth.co/\"><span style=\" text-decoration: underline; color:#0057ae;\">ePublicHealth</span></a> based on the GeoHealth plugin designed by <a href=\"http://www.espace-dev.fr\"><span style=\" text-decoration: underline; color:#0057ae;\">UMR ESPACE-DEV</span></a> (IRD, Univ. Guyane, Univ. Montpellier, Univ. Réunion) with contributions from the ESoR research group (Environment, Societies and Health Risk).</p></body></html>", None))
+        self.groupBox_2.setTitle(_translate("About", "Development Team", None))
         self.groupBox_5.setTitle(_translate("About", "Translation", None))
         self.label.setText(_translate("About", "<html><head/><body><p>The web-based translating platform <a href=\"https://www.transifex.com/geopublichealth/\"><span style=\" text-decoration: underline; color:#0057ae;\">Transifex</span></a> is used. It\'s easier for translators.</p></body></html>", None))
         self.label_3.setText(_translate("About", "French", None))

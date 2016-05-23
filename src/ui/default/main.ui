@@ -14,7 +14,16 @@
    <string notr="true">GeoPublicHealth</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
@@ -159,6 +168,14 @@ QTreeWidget::item:!has-children
    <container>1</container>
   </customwidget>
  </customwidgets>
+<<<<<<< HEAD:src/ui/default/main.ui
  <resources/>
+=======
+ <resources>
+  <include location="../resources/resources.qrc"/>
+  <include location="../resources/resources.qrc"/>
+  <include location="../resources/resources.qrc"/>
+ </resources>
+>>>>>>> Updating the about.ui for reflecting the changes on GeoPublicHealth:ui/main.ui
  <connections/>
 </ui>
