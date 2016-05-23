@@ -1,10 +1,23 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
+<<<<<<< HEAD:__init__.py
  GeoPublicHealth
                                  A QGIS plugin
  GeoPublicHealth
                              -------------------
+=======
+
+                               GeoPublicHealth
+                                 A QGIS plugin
+
+                              -------------------
+        begin                : 2016-02-17
+        copyright            : (C) 2016 by ePublicHealth
+        email                : manuel@epublichealth.co
+        
+        Based on the work of Geohealth                  
+>>>>>>> Updating the license notices on the files:gui/about.py
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
