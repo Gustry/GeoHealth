@@ -107,6 +107,7 @@ class IncidenceDensityDialog(QDialog):
         # Connect slot.
         # noinspection PyUnresolvedReferences
         self.button_browse.clicked.connect(self.open_file_browser)
+        self.command_link_button.clicked.connect(self.add_indicator)
         self.button_box_ok.button(QDialogButtonBox.Ok).clicked.connect(
             self.run_stats)
         self.button_box_ok.button(QDialogButtonBox.Cancel).clicked.connect(
@@ -161,6 +162,12 @@ class IncidenceDensityDialog(QDialog):
 
     def reset_field_case(self):
         self.cbx_case_field.setCurrentIndex(0)
+
+    def add_indicator(self):
+        self.cbx_list_indicators.addItem(self.cbx_indicator_field.currentField() + " " + self.vector_direction())
+
+    def vector_direction(self):
+        return "+"
 
     def open_file_browser(self):
         output_file = QFileDialog.getSaveFileNameAndFilter(
