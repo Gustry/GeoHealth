@@ -167,7 +167,10 @@ class IncidenceDensityDialog(QDialog):
         self.cbx_list_indicators.addItem(self.cbx_indicator_field.currentField() + " " + self.vector_direction())
 
     def vector_direction(self):
-        return "+"
+        if self.radioButton_vector_positive.isChecked():
+            return "+"
+        else:
+            return "-"
 
     def open_file_browser(self):
         output_file = QFileDialog.getSaveFileNameAndFilter(
