@@ -119,8 +119,6 @@ class IncidenceDensityDialog(QDialog):
 
         # Add items in symbology
         self.cbx_mode.addItem(
-            'Equal interval', QgsGraduatedSymbolRendererV2.EqualInterval)
-        self.cbx_mode.addItem(
             'Quantile (equal count)', QgsGraduatedSymbolRendererV2.Quantile)
         self.cbx_mode.addItem(
             'Natural breaks', QgsGraduatedSymbolRendererV2.Jenks)
@@ -128,6 +126,8 @@ class IncidenceDensityDialog(QDialog):
             'Standard deviation', QgsGraduatedSymbolRendererV2.StdDev)
         self.cbx_mode.addItem(
             'Pretty breaks', QgsGraduatedSymbolRendererV2.Pretty)
+        self.cbx_mode.addItem(
+            'Equal interval', QgsGraduatedSymbolRendererV2.EqualInterval)
 
         # Setup the graph.
         self.figure = Figure()
@@ -149,6 +149,8 @@ class IncidenceDensityDialog(QDialog):
             self.cbx_aggregation_layer.layerChanged.connect(
                 self.reset_field_population)
             self.reset_field_population()
+
+        self.cbx_list_indicators.itemDoubleClicked.connect(self.remove_item) 
 
         if not self.use_point_layer:
 <<<<<<< HEAD:src/gui/analysis/parent_incidence_density_dialog.py
@@ -173,8 +175,19 @@ class IncidenceDensityDialog(QDialog):
     def reset_field_case(self):
         self.cbx_case_field.setCurrentIndex(0)
 
+    def remove_item(self):
+        self.cbx_list_indicators.takeItem( self.cbx_list_indicators.currentRow())
+
     def add_indicator(self):
-        self.cbx_list_indicators.addItem(self.cbx_indicator_field.currentField() + " " + self.vector_direction())
+        present = False
+        for index in range(self.cbx_list_indicators.count()):
+            if self.cbx_list_indicators.item(index).text() == self.vector_indicator():
+                present = True
+        if not present:
+            self.cbx_list_indicators.addItem(self.vector_indicator())
+
+    def vector_indicator(self):
+        return self.cbx_indicator_field.currentField() + " " + self.vector_direction()
 
     def vector_direction(self):
         if self.radioButton_vector_positive.isChecked():

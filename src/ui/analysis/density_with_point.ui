@@ -75,7 +75,11 @@
        </item>
       </widget>
      </item>
+<<<<<<< HEAD:src/ui/analysis/density_with_point.ui
      <item row="4" column="0">
+=======
+     <item row="11" column="0">
+>>>>>>> Imlementing the capacity for remove indicators from the list:ui/analysis/composite_index.ui
       <widget class="QLabel" name="label_3">
        <property name="text">
         <string>New column</string>
@@ -112,15 +116,25 @@
        </property>
       </widget>
      </item>
+<<<<<<< HEAD:src/ui/analysis/density_with_point.ui
      <item row="7" column="0">
       <widget class="QLabel" name="label_5">
+=======
+     <item row="12" column="0">
+      <widget class="QLabel" name="label_8">
+>>>>>>> Imlementing the capacity for remove indicators from the list:ui/analysis/composite_index.ui
        <property name="text">
         <string>Output</string>
        </property>
       </widget>
      </item>
+<<<<<<< HEAD:src/ui/analysis/density_with_point.ui
      <item row="7" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout">
+=======
+     <item row="12" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+>>>>>>> Imlementing the capacity for remove indicators from the list:ui/analysis/composite_index.ui
        <item>
         <widget class="QLineEdit" name="le_output_filepath">
          <property name="placeholderText">
@@ -137,6 +151,7 @@
        </item>
       </layout>
      </item>
+<<<<<<< HEAD:src/ui/analysis/density_with_point.ui
      <item row="0" column="1">
       <widget class="QgsMapLayerComboBox" name="cbx_case_layer">
        <property name="sizePolicy">
@@ -154,6 +169,58 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+=======
+     <item row="13" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout"/>
+     </item>
+     <item row="5" column="1">
+      <widget class="QRadioButton" name="radioButton_vector_positive">
+       <property name="text">
+        <string>Higher the value of the indicator better the conditions for the population</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">buttonGroup_2</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QRadioButton" name="radioButton_vector_negative">
+       <property name="text">
+        <string>Higher the value of the indicator worse the conditions for the population</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">buttonGroup_2</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QLineEdit" name="le_new_column">
+       <property name="maxLength">
+        <number>10</number>
+       </property>
+       <property name="placeholderText">
+        <string>UHN</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QListWidget" name="cbx_list_indicators"/>
+     </item>
+     <item row="8" column="1">
+      <widget class="QCommandLinkButton" name="command_link_button">
+       <property name="text">
+        <string>Add to Index</string>
+>>>>>>> Imlementing the capacity for remove indicators from the list:ui/analysis/composite_index.ui
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>For removing and Indicator Click Twice in the one you want to remove</string>
        </property>
       </widget>
      </item>
