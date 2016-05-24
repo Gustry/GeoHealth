@@ -175,6 +175,7 @@ class MainDialog(QDialog, FORM_CLASS):
                 'icon': ':/plugins/GeoPublicHealth/resources/gears.png',
                 'content': [
                     {
+<<<<<<< HEAD:src/gui/main_window.py
                         'label': 'Blur',
                         'icon': ':/plugins/GeoPublicHealth/resources/blur.png',
                         'content': [
@@ -210,6 +211,8 @@ class MainDialog(QDialog, FORM_CLASS):
                                 'icon': resource('incidence.png'),
 =======
 =======
+=======
+>>>>>>> Changing the order of Analize methods:gui/main_window.py
                         'label': 'Composite Index',
                         'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
                         'content': [
@@ -280,7 +283,27 @@ class MainDialog(QDialog, FORM_CLASS):
                                 }
                             }
                         ]
-                    }
+                    }, {
+                        'label': 'Blur',
+                        'icon': ':/plugins/GeoPublicHealth/resources/blur.png',
+                        'content': [
+                            {
+                                'label': 'Blur',
+                                'icon': ':/plugins/GeoPublicHealth/resources/blur.png',
+                                'content': {
+                                    'widget': BlurWidget(),
+                                    'help': help_blur()
+                                }
+                            }, {
+                                'label': 'Stats',
+                                'icon': ':/plugins/GeoPublicHealth/resources/sigma.png',
+                                'content': {
+                                    'widget': StatsWidget(),
+                                    'help': help_stats_blurring()
+                                }
+                            }
+                        ]
+                    }, 
                 ]
             },
             {
