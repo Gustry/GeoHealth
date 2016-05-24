@@ -36,7 +36,9 @@ from PyQt4.QtCore import QSize, QVariant, Qt, pyqtSignal
 from PyQt4.QtGui import QFileDialog
 
 from qgis.utils import QGis
-from qgis.gui import QgsMapLayerProxyModel
+from qgis.gui import \
+    QgsMapLayerProxyModel,\
+    QgsFieldProxyModel
 from qgis.core import \
     QgsField,\
     QgsVectorGradientColorRampV2,\
@@ -149,6 +151,7 @@ class IncidenceDensityDialog(QDialog):
             self.reset_field_population()
 
         if not self.use_point_layer:
+<<<<<<< HEAD:src/gui/analysis/parent_incidence_density_dialog.py
             self.cbx_case_field.setLayer(
                 self.cbx_aggregation_layer.currentLayer())
             self.cbx_aggregation_layer.layerChanged.connect(
@@ -159,6 +162,13 @@ class IncidenceDensityDialog(QDialog):
 
     def reset_field_population(self):
         self.cbx_population_field.setCurrentIndex(0)
+=======
+            self.cbx_indicator_field.setFilters(QgsFieldProxyModel.Numeric)
+            self.cbx_indicator_field.setLayer(self.cbx_aggregation_layer.currentLayer())
+            self.cbx_aggregation_layer.layerChanged.connect(self.cbx_indicator_field.setLayer)
+            self.cbx_aggregation_layer.layerChanged.connect(self.reset_field_indicator)
+            self.reset_field_indicator()
+>>>>>>> Filtering only the Numeric Attributes for the Indicators ComboBox for the Composite Index:gui/analysis/composite_index_dialog.py
 
     def reset_field_case(self):
         self.cbx_case_field.setCurrentIndex(0)
