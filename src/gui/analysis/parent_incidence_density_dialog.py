@@ -31,6 +31,7 @@ from PyQt4.QtGui import \
     QDialog,\
     QDialogButtonBox,\
     QTableWidgetItem,\
+    QMessageBox,\
     QApplication
 from PyQt4.QtCore import QSize, QVariant, Qt, pyqtSignal
 from PyQt4.QtGui import QFileDialog
@@ -200,12 +201,20 @@ class IncidenceDensityDialog(QDialog):
             self.parent, tr('Save shapefile'), filter='SHP (*.shp)')
         self.le_output_filepath.setText(output_file[0])
 
+    def indicators_list(self):
+        items = []
+        for index in xrange(self.cbx_list_indicators.count()):
+            items.append(self.cbx_list_indicators.item(index))
+        return [i.text().split() for i in items]
+    
+
     def run_stats(self):
         """Main function which do the process."""
 
         # Get the common fields.
         self.admin_layer = self.cbx_aggregation_layer.currentLayer()
 
+<<<<<<< HEAD:src/gui/analysis/parent_incidence_density_dialog.py
         if self.use_point_layer:
             # If we use a point layer.
             point_layer = self.cbx_case_layer.currentLayer()
@@ -213,6 +222,9 @@ class IncidenceDensityDialog(QDialog):
             # If we use a column with number of case.
             case_column = self.cbx_case_field.currentField()
             index_case = self.admin_layer.fieldNameIndex(case_column)
+=======
+        selected_indicators = self.indicators_list()
+>>>>>>> WIP Adding ZScore fields:gui/analysis/composite_index_dialog.py
 
         if not self.use_area:
             # If we don't use density.
@@ -221,13 +233,6 @@ class IncidenceDensityDialog(QDialog):
 
         if not self.name_field:
             self.name_field = self.le_new_column.placeholderText()
-
-        # Add new column.
-        add_nb_intersections = self.checkBox_addNbIntersections.isChecked()
-
-        # Ratio
-        ratio = self.cbx_ratio.currentText()
-        ratio = ratio.replace(' ', '')
 
         # Output.
         self.output_file_path = self.le_output_filepath.text()
@@ -247,21 +252,9 @@ class IncidenceDensityDialog(QDialog):
 
             crs_admin_layer = self.admin_layer.crs()
 
-            if self.use_point_layer:
-                crs_point_layer = point_layer.crs()
-                if crs_admin_layer != crs_point_layer:
-                    raise DifferentCrsException(
-                        epsg1=crs_point_layer.authid(),
-                        epsg2=crs_admin_layer.authid())
-
             if not self.use_point_layer and not self.use_area:
-                if index_population == index_case:
-                    raise FieldException(field_1='Population', field_2='Case')
-
-            try:
-                ratio = float(ratio)
-            except ValueError:
-                raise NotANumberException(suffix=ratio)
+                if not self.cbx_list_indicators:
+                    raise FieldException(field_1='List Indicators should not empty')
 
             # Output
             if not self.output_file_path:
@@ -280,11 +273,8 @@ class IncidenceDensityDialog(QDialog):
 
             fields.append(QgsField(self.name_field, QVariant.Double))
 
-            if add_nb_intersections:
-                fields.append(QgsField('nb_of_intersections', QVariant.Int))
-
-            data = []
-
+            for indicator_selected in selected_indicators:
+                fields.append(QgsField("Z" + indicator_selected[0], QVariant.Double))
             file_writer = QgsVectorFileWriter(
                 self.output_file_path,
                 'utf-8',
@@ -293,52 +283,41 @@ class IncidenceDensityDialog(QDialog):
                 self.admin_layer.crs(),
                 'ESRI Shapefile')
 
-            if self.use_point_layer:
-                total_case = point_layer.featureCount()
-            else:
-                total_case = 0
+            count = self.admin_layer.featureCount()
+            for indicator_selected in selected_indicators:
+                sumValue = 0
+                values = []
 
-            for i, feature in enumerate(self.admin_layer.getFeatures()):
-                attributes = feature.attributes()
+                for i, feature in enumerate(self.admin_layer.getFeatures()):
+                    index = self.admin_layer.fieldNameIndex(str(indicator_selected[0]))
 
-                if self.use_point_layer:
-                    count = 0
-                    for f in point_layer.getFeatures():
-                        if f.geometry().intersects(feature.geometry()):
-                            count += 1
-                else:
-                    count = int(attributes[index_case])
-                    total_case += count
-
-                try:
-                    if self.use_area:
-                        area = feature.geometry().area()
-                        value = float(count) / area * ratio
+                    if feature[index]:
+                        value = float(feature[index])
                     else:
-                        try:
-                            population = float(attributes[index_population])
-                        except ValueError:
-                            raise NotANumberException(
-                                suffix=attributes[index_population])
-                        value = float(count) / population * ratio
+                        value = 0.0
+                    values.append(value)
 
-                except ZeroDivisionError:
-                    value = None
-                except TypeError:
-                    value = None
+                stats = Stats(values)
 
-                data.append(value)
-                attributes.append(value)
+                for i, feature in enumerate(self.admin_layer.getFeatures()):
+                    attributes = feature.attributes()
+                    index = self.admin_layer.fieldNameIndex(str(indicator_selected[0]))
 
-                if add_nb_intersections:
-                    attributes.append(count)
+                    if feature[index]:
+                        value = float(feature[index])
+                    else:
+                        value = 0.0
 
-                new_feature = QgsFeature()
-                new_geom = QgsGeometry(feature.geometry())
-                new_feature.setAttributes(attributes)
-                new_feature.setGeometry(new_geom)
+                    zscore = (value - stats.average()) / stats.standard_deviation()
 
-                file_writer.addFeature(new_feature)
+                    attributes.append(zscore)
+
+                    new_feature = QgsFeature()
+                    new_geom = QgsGeometry(feature.geometry())
+                    new_feature.setAttributes(attributes)
+                    new_feature.setGeometry(new_geom)
+
+                    file_writer.addFeature(new_feature)
 
             del file_writer
 
@@ -347,40 +326,6 @@ class IncidenceDensityDialog(QDialog):
                 self.name_field,
                 'ogr')
             QgsMapLayerRegistry.instance().addMapLayer(self.output_layer)
-
-            if self.checkBox_incidence_runStats.isChecked():
-
-                stats = Stats(data)
-
-                items_stats = [
-                    'Incidence null,%d' % stats.null_values(),
-                    'Count(point),%d' % total_case,
-                    'Count(polygon),%d' % self.admin_layer.featureCount(),
-                    'Min,%d' % stats.min(),
-                    'Average,%f' % stats.average(),
-                    'Max,%d' % stats.max(),
-                    'Median,%f' % stats.median(),
-                    'Range,%d' % stats.range(),
-                    'Variance,%f' % stats.variance(),
-                    'Standard deviation,%f' % stats.standard_deviation()
-                ]
-
-                self.tableWidget.clear()
-                self.tableWidget.setColumnCount(2)
-                labels = ['Parameters', 'Values']
-                self.tableWidget.setHorizontalHeaderLabels(labels)
-                self.tableWidget.setRowCount(len(items_stats))
-
-                for i, item in enumerate(items_stats):
-                    s = item.split(',')
-                    self.tableWidget.setItem(i, 0, QTableWidgetItem(s[0]))
-                    self.tableWidget.setItem(i, 1, QTableWidgetItem(s[1]))
-                self.tableWidget.resizeRowsToContents()
-
-                self.draw_plot(data)
-
-            else:
-                self.hide()
 
             if self.symbology.isChecked():
                 self.add_symbology()
