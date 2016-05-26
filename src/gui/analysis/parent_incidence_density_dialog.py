@@ -271,10 +271,10 @@ class IncidenceDensityDialog(QDialog):
             if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
                 raise FieldExistingException(field=self.name_field)
 
-            fields.append(QgsField(self.name_field, QVariant.Double))
-
             for indicator_selected in selected_indicators:
                 fields.append(QgsField("Z" + indicator_selected[0], QVariant.Double))
+            fields.append(QgsField(self.name_field, QVariant.Double))
+
             file_writer = QgsVectorFileWriter(
                 self.output_file_path,
                 'utf-8',
@@ -284,12 +284,13 @@ class IncidenceDensityDialog(QDialog):
                 'ESRI Shapefile')
 
             count = self.admin_layer.featureCount()
+            stats = {}
             for indicator_selected in selected_indicators:
-                sumValue = 0
                 values = []
+                indicator_selected_name = str(indicator_selected[0])
 
                 for i, feature in enumerate(self.admin_layer.getFeatures()):
-                    index = self.admin_layer.fieldNameIndex(str(indicator_selected[0]))
+                    index = self.admin_layer.fieldNameIndex(indicator_selected_name)
 
                     if feature[index]:
                         value = float(feature[index])
@@ -297,27 +298,34 @@ class IncidenceDensityDialog(QDialog):
                         value = 0.0
                     values.append(value)
 
-                stats = Stats(values)
+                stats[indicator_selected_name] = Stats(values)
 
-                for i, feature in enumerate(self.admin_layer.getFeatures()):
-                    attributes = feature.attributes()
-                    index = self.admin_layer.fieldNameIndex(str(indicator_selected[0]))
+            for i, feature in enumerate(self.admin_layer.getFeatures()):
+                attributes = feature.attributes()
+                
+                composite_index_value = 0.0
+                for indicator_selected in selected_indicators:
+                    indicator_selected_name = str(indicator_selected[0])
+                    index = self.admin_layer.fieldNameIndex(indicator_selected_name)
 
                     if feature[index]:
                         value = float(feature[index])
                     else:
                         value = 0.0
 
-                    zscore = (value - stats.average()) / stats.standard_deviation()
+                    zscore = (value - stats[indicator_selected_name].average()) / stats[indicator_selected_name].standard_deviation()
+                    attributes.append(float(zscore))
+                    if indicator_selected[1] == '+':
+                        composite_index_value -= zscore
+                    else:
+                        composite_index_value += zscore
 
-                    attributes.append(zscore)
-
-                    new_feature = QgsFeature()
-                    new_geom = QgsGeometry(feature.geometry())
-                    new_feature.setAttributes(attributes)
-                    new_feature.setGeometry(new_geom)
-
-                    file_writer.addFeature(new_feature)
+                attributes.append(float(composite_index_value))
+                new_feature = QgsFeature()
+                new_geom = QgsGeometry(feature.geometry())
+                new_feature.setAttributes(attributes)
+                new_feature.setGeometry(new_geom)
+                file_writer.addFeature(new_feature)
 
             del file_writer
 
