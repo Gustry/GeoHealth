@@ -108,7 +108,7 @@ class Ui_Composite_Index(object):
         self.label_9.setObjectName(_fromUtf8("label_9"))
         self.horizontalLayout_3.addWidget(self.label_9)
         self.color_low_value = QgsColorButtonV2(self.symbology)
-        self.color_low_value.setProperty("color", QtGui.QColor(255, 246, 246))
+        self.color_low_value.setProperty("color", QtGui.QColor(50, 164, 46))
         self.color_low_value.setObjectName(_fromUtf8("color_low_value"))
         self.horizontalLayout_3.addWidget(self.color_low_value)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
