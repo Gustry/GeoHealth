@@ -121,7 +121,7 @@ class Ui_Autocorrelation(object):
         self.horizontalLayout_4.addWidget(self.label_11)
         self.spinBox_classes = QtGui.QSpinBox(self.symbology)
         self.spinBox_classes.setMinimum(1)
-        self.spinBox_classes.setProperty("value", 5)
+        self.spinBox_classes.setProperty("value", 4)
         self.spinBox_classes.setObjectName(_fromUtf8("spinBox_classes"))
         self.horizontalLayout_4.addWidget(self.spinBox_classes)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)

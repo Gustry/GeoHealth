@@ -130,6 +130,7 @@ class IncidenceDensityDialog(QDialog):
         self.cbx_mode.addItem(
             'Equal interval', QgsGraduatedSymbolRendererV2.EqualInterval)
 
+<<<<<<< HEAD:src/gui/analysis/parent_incidence_density_dialog.py
         # Setup the graph.
         self.figure = Figure()
         self.canvas = FigureCanvas(self.figure)
@@ -150,6 +151,9 @@ class IncidenceDensityDialog(QDialog):
             self.cbx_aggregation_layer.layerChanged.connect(
                 self.reset_field_population)
             self.reset_field_population()
+=======
+        self.cbx_aggregation_layer.setFilters(QgsMapLayerProxyModel.PolygonLayer)
+>>>>>>> First funcional integration of LISA:gui/analysis/composite_index_dialog.py
 
         self.cbx_list_indicators.itemDoubleClicked.connect(self.remove_item) 
 
