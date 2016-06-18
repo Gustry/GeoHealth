@@ -42,8 +42,8 @@ from qgis.gui import \
     QgsFieldProxyModel
 from qgis.core import \
     QgsField,\
-    QgsVectorGradientColorRampV2,\
-    QgsGraduatedSymbolRendererV2,\
+    QgsRendererCategoryV2,\
+    QgsCategorizedSymbolRendererV2,\
     QgsSymbolV2,\
     QgsVectorFileWriter,\
     QgsFeature,\
@@ -111,25 +111,19 @@ class CommonAutocorrelationDialog(QDialog):
         self.button_box_ok.button(QDialogButtonBox.Cancel).clicked.connect(
             self.signalAskCloseWindow.emit)
 
-        # Add items in symbology
-
-        self.cbx_mode.addItem(
-            'Natural breaks', QgsGraduatedSymbolRendererV2.Jenks)
-        self.cbx_mode.addItem(
-            'Standard deviation', QgsGraduatedSymbolRendererV2.StdDev)
-        self.cbx_mode.addItem(
-            'Pretty breaks', QgsGraduatedSymbolRendererV2.Pretty)
-        self.cbx_mode.addItem(
-            'Equal interval', QgsGraduatedSymbolRendererV2.EqualInterval)
-        self.cbx_mode.addItem(
-            'Quantile (equal count)', QgsGraduatedSymbolRendererV2.Quantile)
-
         self.cbx_aggregation_layer.setFilters(QgsMapLayerProxyModel.PolygonLayer)
 
 
         self.cbx_indicator_field.setFilters(QgsFieldProxyModel.Numeric)
         self.cbx_indicator_field.setLayer(self.cbx_aggregation_layer.currentLayer())
         self.cbx_aggregation_layer.layerChanged.connect(self.cbx_indicator_field.setLayer)
+
+        self.lisa = {
+            1 : ("red", "High - High"),
+            2 : ("darkcyan", "Low - High"),
+            3 : ("blue", "Low - Low"),
+            4 : ("orange", "High - Low")
+        }
 
     def open_file_browser(self):
         output_file = QFileDialog.getSaveFileNameAndFilter(
@@ -232,8 +226,8 @@ class CommonAutocorrelationDialog(QDialog):
                 'ogr')
             QgsMapLayerRegistry.instance().addMapLayer(self.output_layer)
 
-            if self.symbology.isChecked():
-                self.add_symbology()
+
+            self.add_symbology()
 
             self.signalStatus.emit(3, tr('Successful process'))
 
@@ -248,25 +242,17 @@ class CommonAutocorrelationDialog(QDialog):
             QApplication.processEvents()
 
     def add_symbology(self):
-        low_color = self.color_low_value.color()
-        high_color = self.color_high_value.color()
-        index = self.cbx_mode.currentIndex()
-        mode = self.cbx_mode.itemData(index)
-        classes = self.spinBox_classes.value()
+        categories = []
+        for lisaCategory, (color, label) in self.lisa.items():
+            sym = QgsSymbolV2.defaultSymbol(self.output_layer.geometryType())
+            sym.setColor(QColor(color))
+            category = QgsRendererCategoryV2(lisaCategory, sym, label)
+            categories.append(category)
 
-        # Compute renderer
         # noinspection PyArgumentList
-        symbol = QgsSymbolV2.defaultSymbol(QGis.Polygon)
-
-        color_ramp = QgsVectorGradientColorRampV2(low_color, high_color)
-        # noinspection PyArgumentList
-        renderer = QgsGraduatedSymbolRendererV2.createRenderer(
-            self.output_layer,
+        renderer = QgsCategorizedSymbolRendererV2(
             'MORANS_Q',
-            classes,
-            mode,
-            symbol,
-            color_ramp)
+            categories)
         self.output_layer.setRendererV2(renderer)
 
 class AutocorrelationDialog(CommonAutocorrelationDialog, Ui_Autocorrelation):
