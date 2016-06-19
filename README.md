@@ -20,6 +20,30 @@ GeoPublicHealth aims to provide a simplified interface for users in epidemiology
 
 ## Setup
 
+For using the autocorrelation, please install [PySAL](https://pysal.readthedocs.io/ )
+
+###Installing PySAL for [OSGeo4W](http://trac.osgeo.org/osgeo4w/)
+
+  1. Run the OSGeo4W Shell on `Start -> All Programs -> OSGeo4W` menu
+  2. Run in the OSGeo4W Shell  the following command  `pip install pysal`
+  3. After the command finish a success message as Successfully installed `pysal-X.XX.X should appear`
+
+###Installing PySAL for OSX QGIS
+  1. In the Finder App please locate the `Applications` folder the `QGIS.app`
+  1. Right click over the icon
+  1. Select from the menu `Show Package Contents`
+  1. Open a terminal console. Click `[Command+Space]` and write `Terminal` and press `[return]` key
+  1. Write there in the Terminal prompt `cd ` (be sure that after the cd to enter a blank space)
+  1. Drag from the Finder Window the `python` folder
+  1. Something like `cd /Applications/QGIS.app/Contents/Resources/python` should be in your Terminal. That will depend of the actual folder where you installed QGIS
+  1. Run `sudo easy_install pip` in the Terminal
+  1. Run in the Terminal `pip install pysal`
+  1. After the command finish a success message as `Successfully installed pysal-X.XX.X` should appear.
+  1. Run in the Terminal the command  `pip install pysal` again to obtain the folder for installation
+  1. Copy the folder name, for example: `/opt/boxen/homebrew/lib/python2.7/site-package`
+  1. Run a command based on the copied folder name as: `cp -Rv /opt/boxen/homebrew/lib/python2.7/site-packages/pysal pysal`
+
+
 ## Contributing
 
   1. Fork it!
