@@ -173,11 +173,11 @@ class CommonAutocorrelationDialog(QDialog):
             if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
                 raise FieldExistingException(field=self.name_field)
 
-            fields.append(QgsField('MORANS_P', QVariant.Double))
-            fields.append(QgsField('MORANS_Z', QVariant.Double))
-            fields.append(QgsField('MORANS_Q', QVariant.Int))
-            fields.append(QgsField('MORANS_I', QVariant.Double))
-            fields.append(QgsField('MORANS_C', QVariant.Double))
+            fields.append(QgsField('LISA_P', QVariant.Double))
+            fields.append(QgsField('LISA_Z', QVariant.Double))
+            fields.append(QgsField('LISA_Q', QVariant.Int))
+            fields.append(QgsField('LISA_I', QVariant.Double))
+            fields.append(QgsField('LISA_C', QVariant.Double))
 
             file_writer = QgsVectorFileWriter(
                 self.output_file_path,
@@ -198,7 +198,7 @@ class CommonAutocorrelationDialog(QDialog):
             y = np.array(f.by_col[str(field)])
             lm = pysal.Moran_Local(y, w, transformation = "r", permutations = 999)
 
-            sig_q = lm.q * (lm.p_sim <= 0.01) # could make significance level an option
+            sig_q = lm.q * (lm.p_sim <= 0.05) # could make significance level an option
             outFeat = QgsFeature()
             i = 0
 
@@ -251,7 +251,7 @@ class CommonAutocorrelationDialog(QDialog):
 
         # noinspection PyArgumentList
         renderer = QgsCategorizedSymbolRendererV2(
-            'MORANS_Q',
+            'LISA_Q',
             categories)
         self.output_layer.setRendererV2(renderer)
 
