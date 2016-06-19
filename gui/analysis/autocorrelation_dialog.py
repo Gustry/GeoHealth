@@ -222,7 +222,7 @@ class CommonAutocorrelationDialog(QDialog):
 
             self.output_layer = QgsVectorLayer(
                 self.output_file_path,
-                self.name_field,
+                "LISA Local Moran's I - " + field,
                 'ogr')
             QgsMapLayerRegistry.instance().addMapLayer(self.output_layer)
 
