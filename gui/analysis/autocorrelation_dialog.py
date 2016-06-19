@@ -119,10 +119,10 @@ class CommonAutocorrelationDialog(QDialog):
         self.cbx_aggregation_layer.layerChanged.connect(self.cbx_indicator_field.setLayer)
 
         self.lisa = {
-            1 : ("red", "High - High"),
-            2 : ("darkcyan", "Low - High"),
-            3 : ("blue", "Low - Low"),
-            4 : ("orange", "High - Low")
+            1 : ("#b92815", "High - High"),
+            2 : ("#3f70df", "Low - High"),
+            3 : ("#aecbdd", "Low - Low"),
+            4 : ("#e79e2c", "High - Low")
         }
 
     def open_file_browser(self):

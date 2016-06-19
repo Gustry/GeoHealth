@@ -334,15 +334,20 @@ def help_autocorrelation():
     intro = tr('Local Moran / LISA')
     inputs = [
         tr('Polygon layer : administrative boundary with the indicators fields'),
-        tr('Indicators field'),
-        tr('New column')
+        tr('Field: for calculating the LISA (Local Moran)'),
+        tr('Contiguity: Contiguity Based Weights criteria "Rook" (takes as neighbors any pair of cells that share an edge) or "Queen" (include the vertices of the lattice to define contiguitie)'),
+        tr('Output: the shapefile were the calcultaions will be available')
     ]
     outputs = [
-        tr('New polygon layer with the Unmet Health Index ')
+        tr('New polygon layer with:'),
+        tr('MORANS_P = pseudo p-values for each LISA'),
+        tr('MORANS_Z = standardized Moran\'s I for each LISA based on permutations'),
+        tr('MORANS_Q = values or each LISA indicate quandrant location 1 HH, 2 LH, 3 LL, 4 HL'),
+        tr('MORANS_I = local Moran\’s I values for each LISA'),
+        tr('MORANS_C = significance level ')
     ]
     more = [
-        tr('This algorithm will  use the Z-scores for each selected indicator to have a Composite index'),
-        tr('Please be sure to check the vector direction for each Indicator')
+        tr('Local Moran\'s I measures local autocorrelation quantitatively which results in n values of local spatial autocorrelation, one for each spatial unit.'),
     ]
     html = html_table(title, intro, inputs, outputs, more)
     return html
