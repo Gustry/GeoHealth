@@ -209,7 +209,7 @@ class IncidenceDensityDialog(QDialog):
         items = []
         for index in xrange(self.cbx_list_indicators.count()):
             items.append(self.cbx_list_indicators.item(index))
-        return [i.text().split() for i in items]
+        return [[i.text()[:-2], i.text()[-1]] for i in items]
     
 
     def run_stats(self):
@@ -319,6 +319,11 @@ class IncidenceDensityDialog(QDialog):
 
                     zscore = (value - stats[indicator_selected_name].average()) / stats[indicator_selected_name].standard_deviation()
                     attributes.append(float(zscore))
+
+                    #msgBox = QMessageBox()
+                    #msgBox.setText("indicator_selected: " + str(indicator_selected) + " value: " + str(value) + " stats[indicator_selected_name].average(): " + str(stats[indicator_selected_name].average()) + " zscore: " + str(zscore))
+                    #msgBox.exec_()
+
                     if indicator_selected[1] == '+':
                         composite_index_value -= zscore
                     else:
