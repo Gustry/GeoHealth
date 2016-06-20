@@ -44,6 +44,8 @@ from qgis.core import \
     QgsField,\
     QgsRendererCategoryV2,\
     QgsCategorizedSymbolRendererV2,\
+    QgsVectorGradientColorRampV2,\
+    QgsGraduatedSymbolRendererV2,\
     QgsSymbolV2,\
     QgsVectorFileWriter,\
     QgsFeature,\
@@ -138,7 +140,7 @@ class CommonAutocorrelationDialog(QDialog):
         input_name =  self.admin_layer.name()
         field = self.cbx_indicator_field.currentField() 
 
-        layer = processing.getObject(input_name)
+        self.layer = processing.getObject(input_name)
 
         # Output.
         self.output_file_path = self.le_output_filepath.text()
@@ -167,7 +169,7 @@ class CommonAutocorrelationDialog(QDialog):
                 temp_file.flush()
                 temp_file.close()
 
-            admin_layer_provider = layer.dataProvider()
+            admin_layer_provider = self.layer.dataProvider()
             fields = admin_layer_provider.fields()
 
             if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
@@ -222,7 +224,7 @@ class CommonAutocorrelationDialog(QDialog):
 
             self.output_layer = QgsVectorLayer(
                 self.output_file_path,
-                "LISA Local Moran's I - " + field,
+                "LISA Moran's I - " + field,
                 'ogr')
             QgsMapLayerRegistry.instance().addMapLayer(self.output_layer)
 
@@ -249,11 +251,31 @@ class CommonAutocorrelationDialog(QDialog):
             category = QgsRendererCategoryV2(lisaCategory, sym, label)
             categories.append(category)
 
+        self.newlayer = QgsVectorLayer(
+            self.output_layer.source(),
+            self.output_layer.name() + " significance test", 
+            self.output_layer.providerType())
+        QgsMapLayerRegistry.instance().addMapLayer(self.newlayer)
+
         # noinspection PyArgumentList
         renderer = QgsCategorizedSymbolRendererV2(
             'LISA_Q',
             categories)
         self.output_layer.setRendererV2(renderer)
+
+        symbol = QgsSymbolV2.defaultSymbol(QGis.Polygon)
+
+        color_ramp = QgsVectorGradientColorRampV2(QColor(0,0,0), QColor(255,0,0))
+        # noinspection PyArgumentList
+        renderer = QgsGraduatedSymbolRendererV2.createRenderer(
+            self.newlayer,
+            'LISA_C',
+            4,
+            QgsGraduatedSymbolRendererV2.Jenks,
+            symbol,
+            color_ramp)
+        self.newlayer.setRendererV2(renderer)
+        self.newlayer.setLayerTransparency(40)
 
 class AutocorrelationDialog(CommonAutocorrelationDialog, Ui_Autocorrelation):
     def __init__(self, parent=None):
