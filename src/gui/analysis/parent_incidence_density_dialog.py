@@ -270,7 +270,7 @@ class IncidenceDensityDialog(QDialog):
                 temp_file.close()
 
             admin_layer_provider = self.admin_layer.dataProvider()
-            fields = admin_layer_provider.fields()
+            fields = self.admin_layer.pendingFields() 
 
             if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
                 raise FieldExistingException(field=self.name_field)
@@ -278,6 +278,7 @@ class IncidenceDensityDialog(QDialog):
             for indicator_selected in selected_indicators:
                 fields.append(QgsField("Z" + indicator_selected[0], QVariant.Double))
             fields.append(QgsField(self.name_field, QVariant.Double))
+
 
             file_writer = QgsVectorFileWriter(
                 self.output_file_path,
@@ -342,6 +343,7 @@ class IncidenceDensityDialog(QDialog):
                 self.output_file_path,
                 self.name_field,
                 'ogr')
+
             QgsMapLayerRegistry.instance().addMapLayer(self.output_layer)
 
             if self.symbology.isChecked():
