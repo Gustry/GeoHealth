@@ -20,7 +20,7 @@ GeoPublicHealth aims to provide a simplified interface for users in epidemiology
 
 ##Setup
 
-###Installing PySAL for [OSGeo4W](http://trac.osgeo.org/osgeo4w/)
+###Installing PySAL for Windows using [OSGeo4W](http://trac.osgeo.org/osgeo4w/)
 
   1. Run the OSGeo4W Shell on `Start -> All Programs -> OSGeo4W` menu
   2. Run in the OSGeo4W Shell  the following command  `pip install pysal`
@@ -30,7 +30,7 @@ GeoPublicHealth aims to provide a simplified interface for users in epidemiology
   * If you receive an error message as Could not import setuptools... please use pip install setuptools 
   * If you receive an alert about You are using pip version… consider upgrading… please use python -m pip install --upgrade pip
 
-###Installing PySAL for OSX QGIS
+###Installing PySAL for Apple Mac - OSX QGIS
   1. In the Finder App please locate the `Applications` folder the `QGIS.app`
   1. Right click over the icon
   1. Select from the menu `Show Package Contents`
