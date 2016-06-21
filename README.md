@@ -20,24 +20,15 @@ GeoPublicHealth aims to provide a simplified interface for users in epidemiology
 
 ##Setup
 
-###Installing GeoPublicHealth Plugin
-  1. Start QGIS and launch the plugins manager by going to the **Plugins menu and selecting Manage and Install Plugins….**
-  1. In the **Settings** tab of the plugins settings dialog, scroll down and click on the **Add…** button.
-  1. Give the plugin repository the name **epipublichealth** and then add the complete URL **http://epublichealth.co/oss/qgis/plugins/plugins.xml** in the URL field.
-  1. Click on the **OK** button.
-  1. Activate the **All** tab and in the **Search** field input **geopu**.
-  1. Select the *GeoPublicHealth* plugin
-  1. Click on the **Install plugin** button
-  1. Close the Plugins dialog 
-  1. Check in the **Plugins** menu that the **GeoPublicHealth** plugin is a new option there
-
-For using the autocorrelation, please install [PySAL](https://pysal.readthedocs.io/ )
-
 ###Installing PySAL for [OSGeo4W](http://trac.osgeo.org/osgeo4w/)
 
   1. Run the OSGeo4W Shell on `Start -> All Programs -> OSGeo4W` menu
   2. Run in the OSGeo4W Shell  the following command  `pip install pysal`
   3. After the command finish a success message as Successfully installed `pysal-X.XX.X should appear`
+
+####Solving error messages:
+  * If you receive an error message as Could not import setuptools... please use pip install setuptools 
+  * If you receive an alert about You are using pip version… consider upgrading… please use python -m pip install --upgrade pip
 
 ###Installing PySAL for OSX QGIS
   1. In the Finder App please locate the `Applications` folder the `QGIS.app`
@@ -53,6 +44,20 @@ For using the autocorrelation, please install [PySAL](https://pysal.readthedocs.
   1. Run in the Terminal the command  `pip install pysal` again to obtain the folder for installation
   1. Copy the folder name, for example: `/opt/boxen/homebrew/lib/python2.7/site-package`
   1. Run a command based on the copied folder name as: `cp -Rv /opt/boxen/homebrew/lib/python2.7/site-packages/pysal pysal`
+
+###Installing GeoPublicHealth Plugin
+  1. Start QGIS and launch the plugins manager by going to the **Plugins menu and selecting Manage and Install Plugins….**
+  1. In the **Settings** tab of the plugins settings dialog, scroll down and click on the **Add…** button.
+  1. Give the plugin repository the name **epipublichealth** and then add the complete URL **http://epublichealth.co/oss/qgis/plugins/plugins.xml** in the URL field.
+  1. Please be sure that Show also experimental plugins is checked
+  1. Click on the **OK** button.
+  1. Activate the **All** tab and in the **Search** field input **geopu**.
+  1. Select the *GeoPublicHealth* plugin
+  1. Click on the **Install plugin** button
+  1. Close the Plugins dialog 
+  1. Check in the **Plugins** menu that the **GeoPublicHealth** plugin is a new option there
+
+For using the autocorrelation, please install [PySAL](https://pysal.readthedocs.io/ )
 
 
 ## Contributing
