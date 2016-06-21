@@ -56,7 +56,7 @@ For using the autocorrelation, please install [PySAL](https://pysal.readthedocs.
 
 
 ## Contributing
-Please review the [Contribution Guidelines](CONTRIBUTING)
+Please review the [Contribution Guidelines](CONTRIBUTING.md)
 
   1. Fork it!
   2. Create your feature branch: `git checkout -b my-new-feature`
