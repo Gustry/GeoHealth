@@ -340,11 +340,11 @@ def help_autocorrelation():
     ]
     outputs = [
         tr('New polygon layer with:'),
-        tr('MORANS_P = pseudo p-values for each LISA'),
-        tr('MORANS_Z = standardized Moran\'s I for each LISA based on permutations'),
-        tr('MORANS_Q = values or each LISA indicate quandrant location 1 HH, 2 LH, 3 LL, 4 HL'),
-        tr('MORANS_I = local Moran\’s I values for each LISA'),
-        tr('MORANS_C = significance level ')
+        tr('LISA_P = pseudo p-values for each LISA'),
+        tr('LISA_Z = standardized Moran\'s I for each LISA based on permutations'),
+        tr('LISA_Q = values or each LISA indicate quandrant location 1 HH, 2 LH, 3 LL, 4 HL'),
+        tr('LISA_I = local Moran\’s I values for each LISA'),
+        tr('LISA_C = significance level ')
     ]
     more = [
         tr('Local Moran\'s I measures local autocorrelation quantitatively which results in n values of local spatial autocorrelation, one for each spatial unit.'),
