@@ -21,7 +21,7 @@
  This script initializes the plugin, making it known to QGIS.
 """
 
-from geohealth import GeoHealth
+from GeoHealth.geohealth import GeoHealth
 
 
 def classFactory(iface):

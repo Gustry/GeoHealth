@@ -21,35 +21,23 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtCore import QSettings
-from PyQt4.QtGui import QApplication
-from qgis.utils import iface
-from qgis.gui import QgsMessageBar
+from GeoHealth.ui.analysis.incidence import Ui_Incidence
+from GeoHealth.gui.analysis.parent_incidence_density_dialog import (
+    IncidenceDensityDialog)
 
 
-def get_last_input_path():
-    settings = QSettings()
-    return settings.value('LastInputPath')
+class IncidenceDialog(IncidenceDensityDialog, Ui_Incidence):
+    def __init__(self, parent=None):
+        """Constructor."""
+        IncidenceDensityDialog.__init__(self, parent)
+        # noinspection PyArgumentList
+        Ui_Incidence.setupUi(self, self)
 
+        self.use_area = False
+        self.use_point_layer = False
 
-def set_last_input_path(directory):
-    settings = QSettings()
-    settings.setValue('LastInputPath', str(directory))
+        self.setup_ui()
 
-
-def tr(msg):
-    # noinspection PyCallByClass,PyArgumentList
-    return QApplication.translate('GeoHealth', msg)
-
-
-def display_message_bar(
-        title=None, msg=None, level=QgsMessageBar.INFO, duration=5):
-
-    try:
-        if iface.Blurring_mainWindowDialog.isVisible():
-            iface.Blurring_mainWindowDialog.messageBar.pushMessage(
-                title, msg, level, duration)
-        else:
-            iface.messageBar().pushMessage(title, msg, level, duration)
-    except AttributeError:
-        iface.messageBar().pushMessage(title, msg, level, duration)
+    def run_stats(self):
+        """Main function which do the process."""
+        IncidenceDensityDialog.run_stats(self)

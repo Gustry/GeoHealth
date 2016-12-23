@@ -21,8 +21,8 @@
  ***************************************************************************/
 """
 
-from qgis.core import QgsSpatialIndex, QgsFeatureRequest, QgsGeometry
-from qgis.core import QGis
+from qgis.core import QgsSpatialIndex, QgsFeatureRequest, QgsGeometry, QGis
+
 
 class LayerIndex:
     """Check an intersection between a QgsGeometry and a QgsVectorLayer."""

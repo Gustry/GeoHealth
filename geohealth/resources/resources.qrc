@@ -1,5 +1,5 @@
 <RCC>
-	<qresource prefix="/plugins/GeoHealth/resources" >
+	<qresource prefix="/plugins/GeoHealth/geohealth/resources" >
 		<file>icon-32.png</file>
 		<file>icon-100.png</file>
 		<file>espace-dev.png</file>

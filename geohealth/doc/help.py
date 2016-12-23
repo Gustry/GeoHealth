@@ -22,10 +22,10 @@
 """
 
 from os.path import dirname, abspath, join
+from GeoHealth.core.tools import tr
+
 
 PATH = dirname(abspath(__file__))
-
-from GeoHealth.core.tools import tr
 
 
 def html_table(title, intro, inputs, outputs, more):

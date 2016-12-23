@@ -37,7 +37,7 @@ from GeoHealth.core.graph_toolbar import CustomNavigationToolbar
 from GeoHealth.core.stats import Stats
 from GeoHealth.core.tools import \
     tr, display_message_bar, get_last_input_path, set_last_input_path
-from GeoHealth.core.exceptions import \
+from geohealth.core.exceptions import \
     GeoHealthException, NoLayerProvidedException, DifferentCrsException
 
 

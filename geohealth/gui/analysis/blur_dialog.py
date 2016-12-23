@@ -27,7 +27,6 @@ from qgis.gui import QgsMessageBar, QgsMapLayerProxyModel
 from qgis.core import \
     QgsField,\
     QgsVectorFileWriter, \
-    QgsMapLayer, \
     QgsMapLayerRegistry, \
     QgsVectorLayer
 
@@ -39,13 +38,13 @@ from GeoHealth.core.blurring.layer_index import LayerIndex
 from GeoHealth.core.blurring.blur import Blur
 from GeoHealth.core.tools import \
     get_last_input_path, set_last_input_path, tr, display_message_bar
-from GeoHealth.core.exceptions import \
+from Geohealth.core.exceptions import \
     GeoHealthException, \
     NoLayerProvidedException,\
     NoFileNoDisplayException, \
     DifferentCrsException,\
     CreatingShapeFileException
-from GeoHealth.ui.analysis.blur import Ui_Blur
+from Geohealth.ui.analysis.blur import Ui_Blur
 
 
 class BlurWidget(QWidget, Ui_Blur):
