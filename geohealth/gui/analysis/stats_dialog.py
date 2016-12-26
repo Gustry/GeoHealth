@@ -32,16 +32,18 @@ from PyQt4.QtGui import \
     QWidget, QDialogButtonBox, QApplication, QTableWidgetItem, QFileDialog
 from PyQt4.QtCore import pyqtSignal, QSize
 
-from GeoHealth.ui.analysis.stats import Ui_Stats
 from GeoHealth.core.graph_toolbar import CustomNavigationToolbar
 from GeoHealth.core.stats import Stats
 from GeoHealth.core.tools import \
     tr, display_message_bar, get_last_input_path, set_last_input_path
 from geohealth.core.exceptions import \
     GeoHealthException, NoLayerProvidedException, DifferentCrsException
+from geohealth.utilities.resources import get_ui_class
+
+FORM_CLASS = get_ui_class('analysis', 'stats.ui')
 
 
-class StatsWidget(QWidget, Ui_Stats):
+class StatsWidget(QWidget, FORM_CLASS):
 
     signalAskCloseWindow = pyqtSignal(name='signalAskCloseWindow')
 

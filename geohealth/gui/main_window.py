@@ -25,10 +25,9 @@ from PyQt4.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
 from PyQt4.QtCore import QSize
 
 from GeoHealth.doc.help import *
-from GeoHealth.ui.main import Ui_Dialog
 from GeoHealth.gui.import_gui.open_shapefile import OpenShapefileWidget
 from GeoHealth.gui.import_gui.open_csv import OpenCsv
-from GeoHealth.gui.import_gui.raster import OpenRasterWidget
+from GeoHealth.gui.import_gui.open_raster import OpenRasterWidget
 from GeoHealth.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
 from GeoHealth.gui.analysis.blur_dialog import BlurWidget
 from GeoHealth.gui.analysis.stats_dialog import StatsWidget
@@ -38,9 +37,12 @@ from GeoHealth.gui.analysis.density_dialog import DensityDialog
 from GeoHealth.gui.analysis.density_point_dialog import DensityPointDialog
 from GeoHealth.gui.export.csv import CsvExport
 from GeoHealth.gui.about import AboutWidget
+from geohealth.utilities.resources import get_ui_class
+
+FORM_CLASS = get_ui_class('main.ui')
 
 
-class MainDialog(QDialog, Ui_Dialog):
+class MainDialog(QDialog, FORM_CLASS):
 
     def __init__(self, parent=None):
         """Constructor."""

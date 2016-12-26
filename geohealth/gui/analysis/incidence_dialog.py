@@ -21,17 +21,19 @@
  ***************************************************************************/
 """
 
-from GeoHealth.ui.analysis.incidence import Ui_Incidence
 from GeoHealth.gui.analysis.parent_incidence_density_dialog import (
     IncidenceDensityDialog)
+from geohealth.utilities.resources import get_ui_class
+
+FORM_CLASS = get_ui_class('analysis', 'incidence.ui')
 
 
-class IncidenceDialog(IncidenceDensityDialog, Ui_Incidence):
+class IncidenceDialog(IncidenceDensityDialog, FORM_CLASS):
     def __init__(self, parent=None):
         """Constructor."""
         IncidenceDensityDialog.__init__(self, parent)
         # noinspection PyArgumentList
-        Ui_Incidence.setupUi(self, self)
+        FORM_CLASS.setupUi(self, self)
 
         self.use_area = False
         self.use_point_layer = False

@@ -28,10 +28,12 @@ from matplotlib.backends.backend_qt4agg import \
 from matplotlib.figure import Figure
 
 from GeoHealth.core.graph_toolbar import CustomNavigationToolbar
-from GeoHealth.ui.analysis.histogram import Ui_Histogram
+from geohealth.utilities.resources import get_ui_class
+
+FORM_CLASS = get_ui_class('analysis', 'histogram.ui')
 
 
-class HistogramDialog(QDialog, Ui_Histogram):
+class HistogramDialog(QDialog, FORM_CLASS):
 
     signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
 

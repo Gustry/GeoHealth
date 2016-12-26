@@ -25,11 +25,13 @@ from qgis.core import QgsMapLayerRegistry, QgsRasterLayer, QgsProviderRegistry
 
 from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
 
-from GeoHealth.ui.import_ui.open_raster import Ui_Form
 from GeoHealth.core.tools import tr
+from geohealth.utilities.resources import get_ui_class
+
+FORM_CLASS = get_ui_class('import_ui', 'open_raster.ui')
 
 
-class OpenRasterWidget(QWidget, Ui_Form):
+class OpenRasterWidget(QWidget, FORM_CLASS):
 
     signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
     signalStatus = pyqtSignal(int, str, name='signalStatus')

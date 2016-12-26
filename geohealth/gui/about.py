@@ -22,10 +22,12 @@
 """
 
 from PyQt4.QtGui import QWidget
-from GeoHealth.ui.about import Ui_About
+from geohealth.utilities.resources import get_ui_class
+
+FORM_CLASS = get_ui_class('about.ui')
 
 
-class AboutWidget(QWidget, Ui_About):
+class AboutWidget(QWidget, FORM_CLASS):
 
     def __init__(self, parent=None):
         self.parent = parent

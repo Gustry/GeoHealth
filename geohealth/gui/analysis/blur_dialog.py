@@ -44,10 +44,12 @@ from Geohealth.core.exceptions import \
     NoFileNoDisplayException, \
     DifferentCrsException,\
     CreatingShapeFileException
-from Geohealth.ui.analysis.blur import Ui_Blur
+from geohealth.utilities.resources import get_ui_class
+
+FORM_CLASS = get_ui_class('analysis', 'blur.ui')
 
 
-class BlurWidget(QWidget, Ui_Blur):
+class BlurWidget(QWidget, FORM_CLASS):
 
     signalAskCloseWindow = pyqtSignal(name='signalAskCloseWindow')
 

@@ -27,11 +27,13 @@ from PyQt4.QtCore import pyqtSignal
 
 from qgis.gui import QgsMapLayerProxyModel
 
-from GeoHealth.ui.export.export_csv import Ui_Form
 from GeoHealth.core.tools import tr
+from geohealth.utilities.resources import get_ui_class
+
+FORM_CLASS = get_ui_class('export', 'export_csv.ui')
 
 
-class CsvExport(QWidget, Ui_Form):
+class CsvExport(QWidget, FORM_CLASS):
 
     signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
     signalStatus = pyqtSignal(int, str, name='signalStatus')

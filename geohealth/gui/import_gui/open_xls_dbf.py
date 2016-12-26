@@ -26,11 +26,13 @@ from qgis.core import QgsMapLayerRegistry, QgsVectorLayer
 from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
 from PyQt4.QtCore import pyqtSignal
 
-from GeoHealth.ui.import_ui.open_xls_dbf import Ui_Form
 from GeoHealth.core.tools import tr
+from geohealth.utilities.resources import get_ui_class
+
+FORM_CLASS = get_ui_class('import_ui', 'open_shapefile.ui')
 
 
-class OpenXlsDbfFileWidget(QWidget, Ui_Form):
+class OpenXlsDbfFileWidget(QWidget, FORM_CLASS):
 
     signalAskCloseWindow = pyqtSignal(int, name='signalAskCloseWindow')
     signalStatus = pyqtSignal(int, str, name='signalStatus')
