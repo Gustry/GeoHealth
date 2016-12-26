@@ -25,7 +25,7 @@ from qgis.core import QgsMapLayerRegistry, QgsRasterLayer, QgsProviderRegistry
 
 from qgis.PyQt.QtGui import QWidget, QDialogButtonBox, QFileDialog
 
-from GeoHealth.core.tools import tr
+from geohealth.core.tools import tr
 from geohealth.utilities.resources import get_ui_class
 
 FORM_CLASS = get_ui_class('import_ui', 'open_raster.ui')

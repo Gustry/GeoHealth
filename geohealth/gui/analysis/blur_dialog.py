@@ -35,11 +35,11 @@ from qgis.PyQt.QtGui import (
 from qgis.PyQt.QtCore import pyqtSignal, QSettings, QVariant
 from processing.tools.system import getTempFilenameInTempFolder
 
-from GeoHealth.core.blurring.layer_index import LayerIndex
-from GeoHealth.core.blurring.blur import Blur
-from GeoHealth.core.tools import \
+from geohealth.core.blurring.layer_index import LayerIndex
+from geohealth.core.blurring.blur import Blur
+from geohealth.core.tools import \
     get_last_input_path, set_last_input_path, tr, display_message_bar
-from Geohealth.core.exceptions import \
+from geohealth.core.exceptions import \
     GeoHealthException, \
     NoLayerProvidedException,\
     NoFileNoDisplayException, \

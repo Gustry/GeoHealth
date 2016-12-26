@@ -187,7 +187,7 @@
      <property name="checkable">
       <bool>true</bool>
      </property>
-     <property name="collapsed">
+     <property name="collapsed" stdset="0">
       <bool>false</bool>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -202,7 +202,7 @@
         </item>
         <item>
          <widget class="QgsColorButtonV2" name="color_low_value">
-          <property name="color">
+          <property name="color" stdset="0">
            <color>
             <red>255</red>
             <green>246</green>
@@ -233,7 +233,7 @@
         </item>
         <item>
          <widget class="QgsColorButtonV2" name="color_high_value">
-          <property name="color">
+          <property name="color" stdset="0">
            <color>
             <red>202</red>
             <green>33</green>
@@ -349,23 +349,23 @@
   <customwidget>
    <class>QgsCollapsibleGroupBox</class>
    <extends>QGroupBox</extends>
-   <header>qgscollapsiblegroupbox.h</header>
+   <header>qgis.gui</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>QgsColorButtonV2</class>
    <extends>QToolButton</extends>
-   <header>qgscolorbuttonv2.h</header>
+   <header>qgis.gui</header>
   </customwidget>
   <customwidget>
    <class>QgsFieldComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgsfieldcombobox.h</header>
+   <header>qgis.gui</header>
   </customwidget>
   <customwidget>
    <class>QgsMapLayerComboBox</class>
    <extends>QComboBox</extends>
-   <header>qgsmaplayercombobox.h</header>
+   <header>qgis.gui</header>
   </customwidget>
  </customwidgets>
  <resources/>

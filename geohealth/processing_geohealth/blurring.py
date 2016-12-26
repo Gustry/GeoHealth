@@ -26,10 +26,11 @@ from qgis.PyQt.QtCore import QVariant
 from qgis.utils import QGis
 from qgis.core import QgsVectorFileWriter, QgsField
 
-from GeoHealth.core.blurring.blur import Blur
-from GeoHealth.core.blurring.layer_index import LayerIndex
-from GeoHealth.core.tools import tr
-from GeoHealth.processing_geohealth import *
+from geohealth.core.blurring.blur import Blur
+from geohealth.core.blurring.layer_index import LayerIndex
+from geohealth.core.tools import tr
+from geohealth.processing_geohealth import *
+from geohealth.utilities.resources import resource
 
 
 class BlurringGeoAlgorithm(GeoAlgorithm):
@@ -86,7 +87,7 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
             ' -> "Help"<br />')
 
     def getIcon(self):
-        return QIcon(':/plugins/GeoHealth/resources/blur.png')
+        return QIcon(resource('blur.png'))
 
     def processAlgorithm(self, progress):
 

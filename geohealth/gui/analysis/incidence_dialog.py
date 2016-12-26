@@ -21,7 +21,7 @@
  ***************************************************************************/
 """
 
-from GeoHealth.gui.analysis.parent_incidence_density_dialog import (
+from geohealth.gui.analysis.parent_incidence_density_dialog import (
     IncidenceDensityDialog)
 from geohealth.utilities.resources import get_ui_class
 

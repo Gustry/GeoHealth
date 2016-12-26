@@ -25,7 +25,7 @@ from qgis.gui import QgsMessageBar
 from processing.core.GeoAlgorithmExecutionException import \
     GeoAlgorithmExecutionException
 
-from GeoHealth.core.tools import tr
+from geohealth.core.tools import tr
 
 """
 QApplication.translate doesn't work in contructor's parameters

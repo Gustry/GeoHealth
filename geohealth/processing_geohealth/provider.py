@@ -24,7 +24,8 @@
 from qgis.PyQt.QtGui import QIcon
 from processing.core.AlgorithmProvider import AlgorithmProvider
 
-from GeoHealth.processing_geohealth.blurring import BlurringGeoAlgorithm
+from geohealth.processing_geohealth.blurring import BlurringGeoAlgorithm
+from geohealth.utilities.resources import resource
 
 
 class Provider(AlgorithmProvider):
@@ -53,7 +54,7 @@ class Provider(AlgorithmProvider):
         return 'GeoHealth'
 
     def getIcon(self):
-        return QIcon(':/plugins/GeoHealth/resources/icon-32.png')
+        return QIcon(resource('icon-32.png'))
 
     def _loadAlgorithms(self):
         self.algs = self.alglist
