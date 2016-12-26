@@ -21,8 +21,8 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
-from PyQt4.QtCore import QSize
+from qgis.PyQt.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
+from qgis.PyQt.QtCore import QSize
 
 from GeoHealth.doc.help import *
 from GeoHealth.gui.import_gui.open_shapefile import OpenShapefileWidget

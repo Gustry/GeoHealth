@@ -23,8 +23,8 @@
 
 from os.path import dirname, join, exists
 
-from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt4.QtGui import QIcon, QAction
+from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
+from qgis.PyQt.QtGui import QIcon, QAction
 from processing.core.Processing import Processing
 
 from GeoHealth.gui.main_window import MainDialog
