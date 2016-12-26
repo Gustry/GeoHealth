@@ -203,7 +203,8 @@ def help_density():
         tr('New polygon layer with the density')
     ]
     more = [
-        tr('This algorithm will count the number of points inside each polygons and run a formula to get the density.'),
+        tr('This algorithm will count the number of points inside each '
+           'polygons and run a formula to get the density.'),
         tr('number of cases / area * ratio')
     ]
     html = html_table(title, intro, inputs, outputs, more)
@@ -215,7 +216,8 @@ def help_density_point():
     intro = tr('Compute density')
     inputs = [
         tr('Case layer'),
-        tr('Polygon layer : administrative boundary with two fields pop and case'),
+        tr('Polygon layer : administrative boundary with two fields pop and '
+           'case'),
         tr('Ratio'),
         tr('New column')
     ]
@@ -223,7 +225,8 @@ def help_density_point():
         tr('New polygon layer with the density')
     ]
     more = [
-        tr('This algorithm will count the number of points inside each polygons and run a formula to get the density.'),
+        tr('This algorithm will count the number of points inside each '
+           'polygons and run a formula to get the density.'),
         tr('number of cases / area * ratio')
     ]
     html = html_table(title, intro, inputs, outputs, more)
@@ -232,11 +235,14 @@ def help_density_point():
 
 def help_blur():
     title = tr('Blurring')
-    intro = tr('Plugin to blur point data, such as health personal data, and get some statistics about this blurring.')
+    intro = tr('Plugin to blur point data, such as health personal data, and '
+               'get some statistics about this blurring.')
     inputs = [
         tr('Point layer'),
         tr('Radius'),
-        tr('Enveloppe : The layer will force the algorithm to have an intersection between the centroid and this layer. This is like a mask.')
+        tr('Enveloppe : The layer will force the algorithm to have an '
+           'intersection between the centroid and this layer. This is like a '
+           'mask.')
     ]
     outputs = [
         tr('Blurred layer (polygon)')
@@ -246,7 +252,9 @@ def help_blur():
         picture('blurring_1.png'),
         tr('2 : Random selection of a point in each buffer'),
         picture('blurring_2.png'),
-        tr('3 : Creating a buffer around the new point with the same radius. The initial point is at a maximal distance 2r of the centroid of the buffer.'),
+        tr('3 : Creating a buffer around the new point with the same radius. '
+           'The initial point is at a maximal distance 2r of the centroid of '
+           'the buffer.'),
         picture('blurring_3.png'),
         tr('4 : Deleting the random point and the first buffer'),
         picture('blurring_4.png'),
@@ -257,10 +265,12 @@ def help_blur():
 
 def help_stats_blurring():
     title = tr('Stats')
-    intro = tr('With two layers, the plugin will count the number of intersections between them and produces some stats.')
+    intro = tr('With two layers, the plugin will count the number of '
+               'intersections between them and produces some stats.')
     inputs = [
         tr('Blurred layer'),
-        tr('Stats layer : buildings for instanceon layer : administrative boundary')]
+        tr('Stats layer : buildings for instanceon layer : administrative '
+           'boundary')]
     outputs = [
         tr('New polygon layer with the density')
     ]
@@ -275,7 +285,8 @@ def help_incidence():
     title = tr('Incidence')
     intro = tr('You can create an incidence map about a disease.')
     inputs = [
-        tr('Polygon layer : administrative boundary with a population and case fields'),
+        tr('Polygon layer : administrative boundary with a population and '
+           'case fields'),
         tr('Case field'),
         tr('Population field'),
         tr('Ratio'),
@@ -285,7 +296,8 @@ def help_incidence():
         tr('New polygon layer with the incidence')
     ]
     more = [
-        tr('This algorithm will count the number of points inside each polygons and run a formula to get the incidence.'),
+        tr('This algorithm will count the number of points inside each '
+           'polygons and run a formula to get the incidence.'),
         tr('number of cases / population * ratio')
     ]
     html = html_table(title, intro, inputs, outputs, more)
@@ -306,7 +318,8 @@ def help_incidence_point():
         tr('New polygon layer with the incidence')
     ]
     more = [
-        tr('This algorithm will count the number of points inside each polygons and run a formula to get the incidence.'),
+        tr('This algorithm will count the number of points inside each '
+           'polygons and run a formula to get the incidence.'),
         tr('number of cases / population * ratio')
     ]
     html = html_table(title, intro, inputs, outputs, more)

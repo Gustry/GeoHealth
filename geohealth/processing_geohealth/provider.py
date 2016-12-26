@@ -32,28 +32,28 @@ class Provider(AlgorithmProvider):
 
     def __init__(self):
         AlgorithmProvider.__init__(self)
-    
+
         self.activate = True
-    
+
         # Load algorithms
         self.alglist = [BlurringGeoAlgorithm()]
         for alg in self.alglist:
             alg.provider = self
-    
+
     def initializeSettings(self):
         AlgorithmProvider.initializeSettings(self)
-    
+
     def unload(self):
         AlgorithmProvider.unload(self)
-    
+
     def getName(self):
         return 'GeoHealth'
-    
+
     def getDescription(self):
         return 'GeoHealth'
-    
+
     def getIcon(self):
         return QIcon(':/plugins/GeoHealth/resources/icon-32.png')
-    
+
     def _loadAlgorithms(self):
         self.algs = self.alglist

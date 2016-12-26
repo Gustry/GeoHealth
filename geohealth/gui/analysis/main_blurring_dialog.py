@@ -42,4 +42,3 @@ class MainBlurringDialog(QDialog, Ui_Form):
             self.signalAskCloseWindow.emit)
         self.statistics.signalAskCloseWindow.connect(
             self.signalAskCloseWindow.emit)
-

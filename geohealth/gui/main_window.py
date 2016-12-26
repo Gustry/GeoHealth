@@ -105,14 +105,16 @@ class MainDialog(QDialog, Ui_Dialog):
                         'content': [
                             {
                                 'label': 'Blur',
-                                'icon': ':/plugins/GeoHealth/resources/blur.png',
+                                'icon': ':/plugins/GeoHealth/resources/'
+                                        'blur.png',
                                 'content': {
                                     'widget': BlurWidget(),
                                     'help': help_blur()
                                 }
                             }, {
                                 'label': 'Stats',
-                                'icon': ':/plugins/GeoHealth/resources/sigma.png',
+                                'icon': ':/plugins/GeoHealth/resources/'
+                                        'sigma.png',
                                 'content': {
                                     'widget': StatsWidget(),
                                     'help': help_stats_blurring()
@@ -125,14 +127,16 @@ class MainDialog(QDialog, Ui_Dialog):
                         'content': [
                             {
                                 'label': 'Polygon layer only',
-                                'icon': ':/plugins/GeoHealth/resources/incidence.png',
+                                'icon': ':/plugins/GeoHealth/resources/'
+                                        'incidence.png',
                                 'content': {
                                     'widget': IncidenceDialog(),
                                     'help': help_incidence()
                                 }
                             }, {
                                 'label': 'Case and aggregation layers',
-                                'icon': ':/plugins/GeoHealth/resources/incidence.png',
+                                'icon': ':/plugins/GeoHealth/resources/'
+                                        'incidence.png',
                                 'content': {
                                     'widget': IncidencePointDialog(),
                                     'help': help_incidence_point()
@@ -145,14 +149,16 @@ class MainDialog(QDialog, Ui_Dialog):
                         'content': [
                             {
                                 'label': 'Polygon layer only',
-                                'icon': ':/plugins/GeoHealth/resources/incidence.png',
+                                'icon': ':/plugins/GeoHealth/resources/'
+                                        'incidence.png',
                                 'content': {
                                     'widget': DensityDialog(),
                                     'help': help_density()
                                 }
                             }, {
                                 'label': 'Case and aggregation layers',
-                                'icon': ':/plugins/GeoHealth/resources/incidence.png',
+                                'icon': ':/plugins/GeoHealth/resources/'
+                                        'incidence.png',
                                 'content': {
                                     'widget': DensityPointDialog(),
                                     'help': help_density_point()
@@ -262,7 +268,8 @@ class MainDialog(QDialog, Ui_Dialog):
                 current_widget.currentChanged.connect(self.display_help_tab)
             else:
                 try:
-                    current_widget.currentChanged.disconnect(self.display_help_tab)
+                    current_widget.currentChanged.disconnect(
+                        self.display_help_tab)
                 except AttributeError:
                     pass
 

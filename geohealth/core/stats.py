@@ -32,7 +32,7 @@ class Stats:
         self.null = len([x for x in self.figures if x is None])
         self.figures = self.figures[self.null:]
         self.nb_items = len(figures)
-    
+
     def count(self):
         return self.nb_items
 
@@ -41,10 +41,10 @@ class Stats:
 
     def min(self):
         return self.figures[0]
-    
+
     def max(self):
         return self.figures[-1]
-    
+
     def range(self):
         return self.max() - self.min()
 

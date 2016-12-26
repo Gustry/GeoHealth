@@ -1,7 +1,6 @@
 *.pyc
 .idea
 index.html
-Makefile
 blurringTrad.py
 plugin_upload.py
 help/

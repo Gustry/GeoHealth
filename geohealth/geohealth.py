@@ -61,7 +61,7 @@ class GeoHealth:
         self.density_action = None
         self.histogram_action = None
 
-        #Add to processing
+        # Add to processing
         self.provider = Provider()
         Processing.addProvider(self.provider, True)
 

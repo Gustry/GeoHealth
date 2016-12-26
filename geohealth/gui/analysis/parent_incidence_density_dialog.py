@@ -118,21 +118,28 @@ class IncidenceDensityDialog(QDialog):
         self.layout_plot.addWidget(self.toolbar)
         self.layout_plot.addWidget(self.canvas)
 
-        self.cbx_aggregation_layer.setFilters(QgsMapLayerProxyModel.PolygonLayer)
+        self.cbx_aggregation_layer.setFilters(
+            QgsMapLayerProxyModel.PolygonLayer)
 
         if self.use_point_layer:
             self.cbx_case_layer.setFilters(QgsMapLayerProxyModel.PointLayer)
 
         if not self.use_area:
-            self.cbx_population_field.setLayer(self.cbx_aggregation_layer.currentLayer())
-            self.cbx_aggregation_layer.layerChanged.connect(self.cbx_population_field.setLayer)
-            self.cbx_aggregation_layer.layerChanged.connect(self.reset_field_population)
+            self.cbx_population_field.setLayer(
+                self.cbx_aggregation_layer.currentLayer())
+            self.cbx_aggregation_layer.layerChanged.connect(
+                self.cbx_population_field.setLayer)
+            self.cbx_aggregation_layer.layerChanged.connect(
+                self.reset_field_population)
             self.reset_field_population()
 
         if not self.use_point_layer:
-            self.cbx_case_field.setLayer(self.cbx_aggregation_layer.currentLayer())
-            self.cbx_aggregation_layer.layerChanged.connect(self.cbx_case_field.setLayer)
-            self.cbx_aggregation_layer.layerChanged.connect(self.reset_field_case)
+            self.cbx_case_field.setLayer(
+                self.cbx_aggregation_layer.currentLayer())
+            self.cbx_aggregation_layer.layerChanged.connect(
+                self.cbx_case_field.setLayer)
+            self.cbx_aggregation_layer.layerChanged.connect(
+                self.reset_field_case)
             self.reset_field_case()
 
     def reset_field_population(self):

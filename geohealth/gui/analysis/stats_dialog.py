@@ -52,7 +52,7 @@ class StatsWidget(QWidget, Ui_Stats):
 
         self.label_progressStats.setText('')
 
-        #Connect
+        # Connect
         # noinspection PyUnresolvedReferences
         self.pushButton_saveTable.clicked.connect(self.save_table)
         # noinspection PyUnresolvedReferences
@@ -255,7 +255,7 @@ class StatsWidget(QWidget, Ui_Stats):
             return True
 
     def draw_plot(self, data):
-        #Creating the plot
+        # Creating the plot
         # create an axis
         ax = self.figure.add_subplot(111)
         # discards the old graph
@@ -263,7 +263,7 @@ class StatsWidget(QWidget, Ui_Stats):
         # plot data
         ax.plot(data, '*-')
 
-        #ax.set_title('Number of intersections per entity')
+        # ax.set_title('Number of intersections per entity')
         ax.set_xlabel('Blurred entity')
         ax.set_ylabel('Number of intersections')
         ax.grid()

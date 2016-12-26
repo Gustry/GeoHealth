@@ -87,7 +87,7 @@ class BlurWidget(QWidget, Ui_Blur):
             set_last_input_path(path)
         else:
             self.lineEdit_outputFile.setText('')
-        
+
     def run_blur(self):
 
         self.progressBar_blur.setValue(0)
@@ -107,7 +107,7 @@ class BlurWidget(QWidget, Ui_Blur):
         else:
             layer_envelope = None
 
-        #Test values
+        # Test values
         try:
             if not layer_to_blur:
                 raise NoLayerProvidedException
@@ -144,7 +144,7 @@ class BlurWidget(QWidget, Ui_Blur):
                 features = layer_to_blur.getFeatures()
                 nb_features = layer_to_blur.featureCount()
 
-            #Fields
+            # Fields
             fields = layer_to_blur.pendingFields()
             if export_radius:
                 fields.append(QgsField(u"Radius", QVariant.Int))
@@ -152,7 +152,7 @@ class BlurWidget(QWidget, Ui_Blur):
                 fields.append(QgsField(u"X centroid", QVariant.Int))
                 fields.append(QgsField(u"Y centroid", QVariant.Int))
 
-            #Creating the output shapefile
+            # Creating the output shapefile
             file_writer = QgsVectorFileWriter(
                 file_name,
                 'utf-8',
@@ -164,7 +164,7 @@ class BlurWidget(QWidget, Ui_Blur):
             if file_writer.hasError() != QgsVectorFileWriter.NoError:
                 raise CreatingShapeFileException(suffix=file_writer.hasError())
 
-            #Creating the algorithm with radius
+            # Creating the algorithm with radius
             algo = Blur(radius, layer_envelope, export_radius, export_centroid)
 
             for j, feature in enumerate(features):
@@ -175,7 +175,7 @@ class BlurWidget(QWidget, Ui_Blur):
                 percent = int((j + 1) * 100 / nb_features)
                 self.progressBar_blur.setValue(percent)
 
-            #Write all features in the file
+            # Write all features in the file
             del file_writer
 
             if display:
