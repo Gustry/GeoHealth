@@ -24,22 +24,22 @@
 from qgis.PyQt.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
 from qgis.PyQt.QtCore import QSize
 
-from GeoHealth.doc.help import *
-from GeoHealth.gui.import_gui.open_shapefile import OpenShapefileWidget
-from GeoHealth.gui.import_gui.open_csv import OpenCsv
-from GeoHealth.gui.import_gui.open_raster import OpenRasterWidget
-from GeoHealth.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
-from GeoHealth.gui.analysis.blur_dialog import BlurWidget
-from GeoHealth.gui.analysis.stats_dialog import StatsWidget
-from GeoHealth.gui.analysis.incidence_dialog import IncidenceDialog
-from GeoHealth.gui.analysis.incidence_point_dialog import IncidencePointDialog
-from GeoHealth.gui.analysis.density_dialog import DensityDialog
-from GeoHealth.gui.analysis.density_point_dialog import DensityPointDialog
-from GeoHealth.gui.export.csv import CsvExport
-from GeoHealth.gui.about import AboutWidget
-from geohealth.utilities.resources import get_ui_class
+from geohealth.doc.help import *
+from geohealth.gui.import_gui.open_shapefile import OpenShapefileWidget
+from geohealth.gui.import_gui.open_csv import OpenCsv
+from geohealth.gui.import_gui.open_raster import OpenRasterWidget
+from geohealth.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
+from geohealth.gui.analysis.blur_dialog import BlurWidget
+from geohealth.gui.analysis.stats_dialog import StatsWidget
+from geohealth.gui.analysis.incidence_dialog import IncidenceDialog
+from geohealth.gui.analysis.incidence_point_dialog import IncidencePointDialog
+from geohealth.gui.analysis.density_dialog import DensityDialog
+from geohealth.gui.analysis.density_point_dialog import DensityPointDialog
+from geohealth.gui.export.csv import CsvExport
+from geohealth.gui.about import AboutWidget
+from geohealth.utilities.resources import get_ui_class, resource
 
-FORM_CLASS = get_ui_class('main.ui')
+FORM_CLASS = get_ui_class('default', 'main.ui')
 
 
 class MainDialog(QDialog, FORM_CLASS):
@@ -58,39 +58,39 @@ class MainDialog(QDialog, FORM_CLASS):
         self.tree_menu = [
             {
                 'label': 'Import',
-                'icon': ':/plugins/GeoHealth/resources/import.png',
+                'icon': resource('import.png'),
                 'content': [
                     {
                         'label': 'Shapefile',
-                        'icon': ':/plugins/GeoHealth/resources/shp.png',
+                        'icon': resource('shp.png'),
                         'content': {
                             'widget': OpenShapefileWidget(),
                             'help': help_open_shapefile()
                         }
                     }, {
                         'label': 'Raster',
-                        'icon': ':/plugins/GeoHealth/resources/raster.png',
+                        'icon': resource('raster.png'),
                         'content': {
                             'widget': OpenRasterWidget(),
                             'help': help_open_raster()
                         }
                     }, {
                         'label': 'Table XLS/DBF',
-                        'icon': ':/plugins/GeoHealth/resources/xls.png',
+                        'icon': resource('xls.png'),
                         'content': {
                             'widget': OpenXlsDbfFileWidget(),
                             'help': help_open_table()
                         }
                     }, {
                         'label': 'Table CSV',
-                        'icon': ':/plugins/GeoHealth/resources/csv.png',
+                        'icon': resource('csv.png'),
                         'content': {
                             'widget': OpenCsv(),
                             'help': help_open_csv()
                         }
                     }, {
                         'label': 'XY to map',
-                        'icon': ':/plugins/GeoHealth/resources/xy.png',
+                        'icon': resource('xy.png'),
                         'content': {
                             'widget': OpenCsv(),
                             'help': help_open_csv()
@@ -99,24 +99,22 @@ class MainDialog(QDialog, FORM_CLASS):
                 ]
             }, {
                 'label': 'Analyse',
-                'icon': ':/plugins/GeoHealth/resources/gears.png',
+                'icon': resource('gears.png'),
                 'content': [
                     {
                         'label': 'Blur',
-                        'icon': ':/plugins/GeoHealth/resources/blur.png',
+                        'icon': resource('blur.png'),
                         'content': [
                             {
                                 'label': 'Blur',
-                                'icon': ':/plugins/GeoHealth/resources/'
-                                        'blur.png',
+                                'icon': resource('blur.png'),
                                 'content': {
                                     'widget': BlurWidget(),
                                     'help': help_blur()
                                 }
                             }, {
                                 'label': 'Stats',
-                                'icon': ':/plugins/GeoHealth/resources/'
-                                        'sigma.png',
+                                'icon': resource('sigma.png'),
                                 'content': {
                                     'widget': StatsWidget(),
                                     'help': help_stats_blurring()
@@ -125,20 +123,18 @@ class MainDialog(QDialog, FORM_CLASS):
                         ]
                     }, {
                         'label': 'Incidence',
-                        'icon': ':/plugins/GeoHealth/resources/incidence.png',
+                        'icon': resource('incidence.png'),
                         'content': [
                             {
                                 'label': 'Polygon layer only',
-                                'icon': ':/plugins/GeoHealth/resources/'
-                                        'incidence.png',
+                                'icon': resource('incidence.png'),
                                 'content': {
                                     'widget': IncidenceDialog(),
                                     'help': help_incidence()
                                 }
                             }, {
                                 'label': 'Case and aggregation layers',
-                                'icon': ':/plugins/GeoHealth/resources/'
-                                        'incidence.png',
+                                'icon': resource('incidence.png'),
                                 'content': {
                                     'widget': IncidencePointDialog(),
                                     'help': help_incidence_point()
@@ -147,20 +143,18 @@ class MainDialog(QDialog, FORM_CLASS):
                         ]
                     }, {
                         'label': 'Density',
-                        'icon': ':/plugins/GeoHealth/resources/incidence.png',
+                        'icon': resource('incidence.png'),
                         'content': [
                             {
                                 'label': 'Polygon layer only',
-                                'icon': ':/plugins/GeoHealth/resources/'
-                                        'incidence.png',
+                                'icon': resource('incidence.png'),
                                 'content': {
                                     'widget': DensityDialog(),
                                     'help': help_density()
                                 }
                             }, {
                                 'label': 'Case and aggregation layers',
-                                'icon': ':/plugins/GeoHealth/resources/'
-                                        'incidence.png',
+                                'icon': resource('incidence.png'),
                                 'content': {
                                     'widget': DensityPointDialog(),
                                     'help': help_density_point()
@@ -172,11 +166,11 @@ class MainDialog(QDialog, FORM_CLASS):
             },
             {
                 'label': 'Export',
-                'icon': ':/plugins/GeoHealth/resources/export.png',
+                'icon': resource('export.png'),
                 'content': [
                     {
                         'label': 'Attribute table',
-                        'icon': ':/plugins/GeoHealth/resources/csv.png',
+                        'icon': resource('csv.png'),
                         'content': {
                             'widget': CsvExport(),
                             'help': help_attribute_table()

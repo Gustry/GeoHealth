@@ -26,7 +26,7 @@ from qgis.core import QgsMapLayerRegistry, QgsVectorLayer
 from qgis.PyQt.QtGui import QWidget, QDialogButtonBox, QFileDialog
 from qgis.PyQt.QtCore import pyqtSignal
 
-from GeoHealth.core.tools import tr
+from geohealth.core.tools import tr
 from geohealth.utilities.resources import get_ui_class
 
 FORM_CLASS = get_ui_class('import_ui', 'open_shapefile.ui')

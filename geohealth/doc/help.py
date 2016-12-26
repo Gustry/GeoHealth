@@ -22,7 +22,7 @@
 """
 
 from os.path import dirname, abspath, join
-from GeoHealth.core.tools import tr
+from geohealth.core.tools import tr
 
 
 PATH = dirname(abspath(__file__))

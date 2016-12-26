@@ -47,16 +47,16 @@ from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-from GeoHealth.core.graph_toolbar import CustomNavigationToolbar
-from GeoHealth.core.tools import display_message_bar, tr
-from GeoHealth.core.exceptions import \
+from geohealth.core.graph_toolbar import CustomNavigationToolbar
+from geohealth.core.tools import display_message_bar, tr
+from geohealth.core.exceptions import \
     GeoHealthException,\
     NoLayerProvidedException,\
     DifferentCrsException,\
     FieldExistingException,\
     FieldException,\
     NotANumberException
-from GeoHealth.core.stats import Stats
+from geohealth.core.stats import Stats
 
 
 class IncidenceDensityDialog(QDialog):

@@ -21,10 +21,10 @@
  ***************************************************************************/
 """
 
-from qgis.PyQt.QtGui import QWidget
-from geohealth.utilities.resources import get_ui_class
+from qgis.PyQt.QtGui import QWidget, QPixmap
+from geohealth.utilities.resources import get_ui_class, resource
 
-FORM_CLASS = get_ui_class('about.ui')
+FORM_CLASS = get_ui_class('default', 'about.ui')
 
 
 class AboutWidget(QWidget, FORM_CLASS):
@@ -33,3 +33,7 @@ class AboutWidget(QWidget, FORM_CLASS):
         self.parent = parent
         super(AboutWidget, self).__init__()
         self.setupUi(self)
+
+        self.logo_geohealth.setPixmap(QPixmap(resource('icon-100.png')))
+        self.logo_ird.setPixmap(QPixmap(resource('IRD-200.png')))
+        self.logo_umr.setPixmap(QPixmap(resource('espace-dev.png')))

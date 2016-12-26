@@ -27,11 +27,12 @@ from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
 from qgis.PyQt.QtGui import QIcon, QAction
 from processing.core.Processing import Processing
 
-from GeoHealth.gui.main_window import MainDialog
-from GeoHealth.processing_geohealth.provider import Provider
+from geohealth.gui.main_window import MainDialog
+from geohealth.processing_geohealth.provider import Provider
+from geohealth.utilities.resources import resource
 
 
-class GeoHealth:
+class GeoHealthPlugin:
 
     def __init__(self, iface):
 
@@ -70,7 +71,7 @@ class GeoHealth:
         self.plugin_menu = self.iface.pluginMenu()
 
         # Main window
-        icon = QIcon(':/plugins/GeoHealth/resources/icon-32.png')
+        icon = QIcon(resource('icon-32.png'))
         self.main_action = QAction(icon, 'GeoHealth', self.iface.mainWindow())
         self.plugin_menu.addAction(self.main_action)
         # noinspection PyUnresolvedReferences

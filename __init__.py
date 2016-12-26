@@ -20,10 +20,13 @@
  ***************************************************************************/
  This script initializes the plugin, making it known to QGIS.
 """
+import sys
+import os
 
-from GeoHealth.geohealth import GeoHealth
+sys.path.append(os.path.dirname(__file__))
+
+from geohealth.plugin import GeoHealthPlugin
 
 
 def classFactory(iface):
-
-    return GeoHealth(iface)
+    return GeoHealthPlugin(iface)
