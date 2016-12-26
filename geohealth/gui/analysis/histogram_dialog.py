@@ -21,8 +21,8 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QDialog, QDialogButtonBox
-from PyQt4.QtCore import QSize, pyqtSignal
+from qgis.PyQt.QtGui import QDialog, QDialogButtonBox
+from qgis.PyQt.QtCore import QSize, pyqtSignal
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure

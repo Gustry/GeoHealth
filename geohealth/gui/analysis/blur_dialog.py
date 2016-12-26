@@ -30,8 +30,9 @@ from qgis.core import \
     QgsMapLayerRegistry, \
     QgsVectorLayer
 
-from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog, QApplication
-from PyQt4.QtCore import pyqtSignal, QSettings, QVariant
+from qgis.PyQt.QtGui import (
+    QWidget, QDialogButtonBox, QFileDialog, QApplication)
+from qgis.PyQt.QtCore import pyqtSignal, QSettings, QVariant
 from processing.tools.system import getTempFilenameInTempFolder
 
 from GeoHealth.core.blurring.layer_index import LayerIndex

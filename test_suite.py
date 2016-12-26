@@ -14,7 +14,6 @@ Contact : etienne at kartoza dot com
 import sys
 import unittest
 from osgeo import gdal
-from PyQt4 import Qt
 
 __author__ = 'etiennetrimaille'
 __revision__ = '$Format:%H$'
@@ -27,7 +26,6 @@ def _run_tests(test_suite, package_name):
     print '########'
     print '%s tests has been discovered in %s' % (count, package_name)
     print 'Python GDAL : %s' % gdal.VersionInfo('VERSION_NUM')
-    print 'QT : %s' % Qt.QT_VERSION
     print '########'
     unittest.TextTestRunner(verbosity=3, stream=sys.stdout).run(test_suite)
 

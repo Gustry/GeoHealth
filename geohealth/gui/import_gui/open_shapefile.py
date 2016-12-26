@@ -23,8 +23,8 @@
 from os.path import splitext, basename
 from qgis.core import QgsMapLayerRegistry, QgsVectorLayer
 
-from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
-from PyQt4.QtCore import pyqtSignal
+from qgis.PyQt.QtGui import QWidget, QDialogButtonBox, QFileDialog
+from qgis.PyQt.QtCore import pyqtSignal
 
 from GeoHealth.core.tools import tr
 from geohealth.utilities.resources import get_ui_class
