@@ -35,5 +35,5 @@ class AboutWidget(QWidget, FORM_CLASS):
         self.setupUi(self)
 
         self.logo_geohealth.setPixmap(QPixmap(resource('icon-100.png')))
-        self.logo_ird.setPixmap(QPixmap(resource('IRD-200.png')))
+        self.logo_ird.setPixmap(QPixmap(resource('logo_ird.png')))
         self.logo_umr.setPixmap(QPixmap(resource('espace-dev.png')))

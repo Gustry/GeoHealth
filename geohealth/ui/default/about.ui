@@ -102,7 +102,7 @@
                <string notr="true"/>
               </property>
               <property name="pixmap">
-               <pixmap>../../resources/IRD-200.png</pixmap>
+               <pixmap>../../resources/logo_ird.png</pixmap>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
