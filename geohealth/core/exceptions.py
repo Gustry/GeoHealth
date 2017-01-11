@@ -27,9 +27,7 @@ from processing.core.GeoAlgorithmExecutionException import \
 
 from GeoHealth.geohealth.core.tools import tr
 
-"""
-QApplication.translate doesn't work in contructor's parameters
-"""
+# QApplication.translate doesn't work in constructor's parameters.
 
 
 class GeoHealthException(GeoAlgorithmExecutionException):

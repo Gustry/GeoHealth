@@ -24,7 +24,19 @@
 from qgis.PyQt.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
 from qgis.PyQt.QtCore import QSize
 
-from GeoHealth.geohealth.doc.help import *
+from GeoHealth.geohealth.doc.help import (
+    help_density,
+    help_open_shapefile,
+    help_open_raster,
+    help_open_table,
+    help_open_csv,
+    help_blur,
+    help_stats_blurring,
+    help_incidence,
+    help_incidence_point,
+    help_density_point,
+    help_attribute_table,
+)
 from GeoHealth.geohealth.gui.import_gui.open_shapefile import (
     OpenShapefileWidget)
 from GeoHealth.geohealth.gui.import_gui.open_csv import OpenCsv

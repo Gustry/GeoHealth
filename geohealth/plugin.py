@@ -32,7 +32,7 @@ from GeoHealth.geohealth.processing_geohealth.provider import Provider
 from GeoHealth.geohealth.utilities.resources import resource
 
 
-class GeoHealthPlugin:
+class GeoHealthPlugin(object):
 
     def __init__(self, iface):
 
