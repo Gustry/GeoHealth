@@ -6,7 +6,8 @@ GeoHealth aims to provide a simplified interface for users in epidemiology in QG
  * incidence map
 
 ## Quality control
- * Current test status master: [![Build Status](https://api.travis-ci.org/Gustry/GeoHealth.svg)](https://travis-ci.org/Gustry/GeoHealth)
+ * Travis : [![Build Status](https://api.travis-ci.org/Gustry/GeoHealth.svg)](https://travis-ci.org/Gustry/GeoHealth)
+ * Landscape : [![Code Health](https://landscape.io/github/Gustry/GeoHealth/master/landscape.svg?style=flat)](https://landscape.io/github/Gustry/GeoHealth/master)
 
 ## Authors
   * Etienne Trimaille
