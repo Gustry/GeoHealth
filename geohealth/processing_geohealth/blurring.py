@@ -25,11 +25,16 @@ from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtCore import QVariant, QSettings
 from qgis.utils import QGis
 from qgis.core import QgsVectorFileWriter, QgsField
+from processing.core.GeoAlgorithm import GeoAlgorithm
+from processing.core.parameters import (
+    ParameterVector, ParameterNumber, ParameterBoolean)
+from processing.core.outputs import OutputVector
+from processing.tools.vector import dataobjects, features
+
 
 from GeoHealth.geohealth.core.blurring.blur import Blur
 from GeoHealth.geohealth.core.blurring.layer_index import LayerIndex
 from GeoHealth.geohealth.core.tools import tr
-from GeoHealth.geohealth.processing_geohealth import *
 from GeoHealth.geohealth.utilities.resources import resource
 
 
@@ -134,6 +139,6 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
             export_radius,
             export_centroid)
 
-        for feature in vector.features(vector_layer):
+        for feature in features(vector_layer):
             feature = algorithm.blur(feature)
             writer.addFeature(feature)
