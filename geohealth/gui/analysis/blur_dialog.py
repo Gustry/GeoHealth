@@ -96,7 +96,7 @@ class BlurWidget(QWidget, FORM_CLASS):
         self.progressBar_blur.setValue(0)
         self.label_progress.setText('')
 
-        """Get all the fields"""
+        # Get all the fields.
         layer_to_blur = self.comboBox_layerToBlur.currentLayer()
         radius = self.spinBox_radius.value()
         display = self.checkBox_addToMap.isChecked()

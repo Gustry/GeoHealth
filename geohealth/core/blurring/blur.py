@@ -30,7 +30,7 @@ from GeoHealth.geohealth.core.exceptions import PointOutsideEnvelopeException
 
 
 # noinspection PyArgumentList
-class Blur:
+class Blur(object):
     """Blurring algorithm."""
 
     @staticmethod
@@ -89,7 +89,7 @@ class Blur:
             random_point = Blur.random_point_around_geom_point(
                 geom, self.__radius)
 
-        """Creating the second buffer"""
+        # Creating the second buffer.
         buffer_geom = random_point.buffer(self.__radius, 20)
         buffer_feature = QgsFeature()
         buffer_feature.setGeometry(buffer_geom)

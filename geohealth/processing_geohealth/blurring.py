@@ -22,7 +22,7 @@
 """
 
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtCore import QVariant
+from qgis.PyQt.QtCore import QVariant, QSettings
 from qgis.utils import QGis
 from qgis.core import QgsVectorFileWriter, QgsField
 

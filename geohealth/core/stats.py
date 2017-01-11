@@ -24,7 +24,7 @@
 from numpy import median, average, var, std
 
 
-class Stats:
+class Stats(object):
 
     def __init__(self, figures):
         figures.sort()
