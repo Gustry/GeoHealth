@@ -27,12 +27,12 @@ from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
 from qgis.PyQt.QtGui import QIcon, QAction
 from processing.core.Processing import Processing
 
-from geohealth.gui.main_window import MainDialog
-from geohealth.processing_geohealth.provider import Provider
-from geohealth.utilities.resources import resource
+from GeoHealth.geohealth.gui.main_window import MainDialog
+from GeoHealth.geohealth.processing_geohealth.provider import Provider
+from GeoHealth.geohealth.utilities.resources import resource
 
 
-class GeoHealthPlugin:
+class GeoHealthPlugin(object):
 
     def __init__(self, iface):
 

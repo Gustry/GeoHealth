@@ -24,7 +24,7 @@
 from qgis.core import QgsSpatialIndex, QgsFeatureRequest, QgsGeometry, QGis
 
 
-class LayerIndex:
+class LayerIndex(object):
     """Check an intersection between a QgsGeometry and a QgsVectorLayer."""
 
     def __init__(self, layer):

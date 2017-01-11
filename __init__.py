@@ -18,14 +18,9 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
- This script initializes the plugin, making it known to QGIS.
 """
-import sys
-import os
 
-sys.path.append(os.path.dirname(__file__))
-
-from geohealth.plugin import GeoHealthPlugin
+from GeoHealth.geohealth.plugin import GeoHealthPlugin
 
 
 def classFactory(iface):

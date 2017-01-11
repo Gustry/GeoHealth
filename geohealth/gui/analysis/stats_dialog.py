@@ -32,13 +32,13 @@ from qgis.PyQt.QtGui import \
     QWidget, QDialogButtonBox, QApplication, QTableWidgetItem, QFileDialog
 from qgis.PyQt.QtCore import pyqtSignal, QSize
 
-from geohealth.core.graph_toolbar import CustomNavigationToolbar
-from geohealth.core.stats import Stats
-from geohealth.core.tools import \
+from GeoHealth.geohealth.core.graph_toolbar import CustomNavigationToolbar
+from GeoHealth.geohealth.core.stats import Stats
+from GeoHealth.geohealth.core.tools import \
     tr, display_message_bar, get_last_input_path, set_last_input_path
-from geohealth.core.exceptions import \
+from GeoHealth.geohealth.core.exceptions import \
     GeoHealthException, NoLayerProvidedException, DifferentCrsException
-from geohealth.utilities.resources import get_ui_class
+from GeoHealth.geohealth.utilities.resources import get_ui_class
 
 FORM_CLASS = get_ui_class('analysis', 'stats.ui')
 
