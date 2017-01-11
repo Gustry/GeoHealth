@@ -35,17 +35,17 @@ from qgis.PyQt.QtGui import (
 from qgis.PyQt.QtCore import pyqtSignal, QSettings, QVariant
 from processing.tools.system import getTempFilenameInTempFolder
 
-from geohealth.core.blurring.layer_index import LayerIndex
-from geohealth.core.blurring.blur import Blur
-from geohealth.core.tools import \
+from GeoHealth.geohealth.core.blurring.layer_index import LayerIndex
+from GeoHealth.geohealth.core.blurring.blur import Blur
+from GeoHealth.geohealth.core.tools import \
     get_last_input_path, set_last_input_path, tr, display_message_bar
-from geohealth.core.exceptions import \
+from GeoHealth.geohealth.core.exceptions import \
     GeoHealthException, \
     NoLayerProvidedException,\
     NoFileNoDisplayException, \
     DifferentCrsException,\
     CreatingShapeFileException
-from geohealth.utilities.resources import get_ui_class
+from GeoHealth.geohealth.utilities.resources import get_ui_class
 
 FORM_CLASS = get_ui_class('analysis', 'blur.ui')
 

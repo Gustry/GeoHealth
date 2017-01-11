@@ -26,7 +26,7 @@ from math import pi, cos, sin
 
 from qgis.core import QgsFeature, QgsGeometry, QgsPoint
 
-from geohealth.core.exceptions import PointOutsideEnvelopeException
+from GeoHealth.geohealth.core.exceptions import PointOutsideEnvelopeException
 
 
 # noinspection PyArgumentList

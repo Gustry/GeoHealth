@@ -9,7 +9,7 @@ from qgis.core import (
     QgsRasterFileWriter
 )
 
-from geohealth.datastore.datastore import DataStore
+from GeoHealth.geohealth.datastore.datastore import DataStore
 
 VECTOR_EXTENSIONS = ('shp', 'kml', 'geojson')
 RASTER_EXTENSIONS = ('asc', 'tiff', 'tif')

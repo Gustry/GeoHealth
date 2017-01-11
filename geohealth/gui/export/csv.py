@@ -27,8 +27,8 @@ from qgis.PyQt.QtCore import pyqtSignal
 
 from qgis.gui import QgsMapLayerProxyModel
 
-from geohealth.core.tools import tr
-from geohealth.utilities.resources import get_ui_class
+from GeoHealth.geohealth.core.tools import tr
+from GeoHealth.geohealth.utilities.resources import get_ui_class
 
 FORM_CLASS = get_ui_class('export', 'export_csv.ui')
 

@@ -24,20 +24,20 @@
 from qgis.PyQt.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
 from qgis.PyQt.QtCore import QSize
 
-from geohealth.doc.help import *
-from geohealth.gui.import_gui.open_shapefile import OpenShapefileWidget
-from geohealth.gui.import_gui.open_csv import OpenCsv
-from geohealth.gui.import_gui.open_raster import OpenRasterWidget
-from geohealth.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
-from geohealth.gui.analysis.blur_dialog import BlurWidget
-from geohealth.gui.analysis.stats_dialog import StatsWidget
-from geohealth.gui.analysis.incidence_dialog import IncidenceDialog
-from geohealth.gui.analysis.incidence_point_dialog import IncidencePointDialog
-from geohealth.gui.analysis.density_dialog import DensityDialog
-from geohealth.gui.analysis.density_point_dialog import DensityPointDialog
-from geohealth.gui.export.csv import CsvExport
-from geohealth.gui.about import AboutWidget
-from geohealth.utilities.resources import get_ui_class, resource
+from GeoHealth.geohealth.doc.help import *
+from GeoHealth.geohealth.gui.import_gui.open_shapefile import OpenShapefileWidget
+from GeoHealth.geohealth.gui.import_gui.open_csv import OpenCsv
+from GeoHealth.geohealth.gui.import_gui.open_raster import OpenRasterWidget
+from GeoHealth.geohealth.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
+from GeoHealth.geohealth.gui.analysis.blur_dialog import BlurWidget
+from GeoHealth.geohealth.gui.analysis.stats_dialog import StatsWidget
+from GeoHealth.geohealth.gui.analysis.incidence_dialog import IncidenceDialog
+from GeoHealth.geohealth.gui.analysis.incidence_point_dialog import IncidencePointDialog
+from GeoHealth.geohealth.gui.analysis.density_dialog import DensityDialog
+from GeoHealth.geohealth.gui.analysis.density_point_dialog import DensityPointDialog
+from GeoHealth.geohealth.gui.export.csv import CsvExport
+from GeoHealth.geohealth.gui.about import AboutWidget
+from GeoHealth.geohealth.utilities.resources import get_ui_class, resource
 
 FORM_CLASS = get_ui_class('default', 'main.ui')
 
