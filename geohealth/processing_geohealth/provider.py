@@ -24,7 +24,8 @@
 from qgis.PyQt.QtGui import QIcon
 from processing.core.AlgorithmProvider import AlgorithmProvider
 
-from GeoHealth.geohealth.processing_geohealth.blurring import BlurringGeoAlgorithm
+from GeoHealth.geohealth.processing_geohealth.blurring import (
+    BlurringGeoAlgorithm)
 from GeoHealth.geohealth.utilities.resources import resource
 
 
