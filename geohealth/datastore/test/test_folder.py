@@ -19,15 +19,18 @@ from os.path import join
 # This import must come first to force sip2 api
 # noinspection PyUnresolvedReferences
 # pylint: disable=unused-import
-from qgis.core import QGis  # force sip2 api
+from qgis.core import QGis
 
 from PyQt4.QtCore import QDir
 
-from safe.test.utilities import (
-    get_qgis_app,
-    load_test_raster_layer,
-    load_test_vector_layer)
-QGIS_APP, CANVAS, IFACE, PARENT = get_qgis_app()
+from GeoHealth.geohealth.test.utilities import (
+    load_test_raster_layer, load_test_vector_layer)
+
+
+if iface:
+    APP = iface
+else:
+    APP = get_iface()
 
 from safe.datastore.folder import Folder
 
