@@ -37,7 +37,7 @@ def iface():
     """
     from qgis.utils import iface
     if iface is not None:
-        return iface()
+        return iface
     else:
         from qgis.testing.mocked import get_iface
         return get_iface()

@@ -16,10 +16,9 @@ import unittest
 from tempfile import mkdtemp
 from os.path import join
 
-from GeoHealth.geohealth.test.utilities import iface
 from PyQt4.QtCore import QDir
 
-from GeoHealth.geohealth.test.utilities import load_test_vector_layer
+from GeoHealth.geohealth.test.utilities import iface, load_test_vector_layer
 from GeoHealth.geohealth.datastore.folder import Folder
 
 iface()
