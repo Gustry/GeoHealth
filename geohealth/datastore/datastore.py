@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from abc import ABCMeta, abstractmethod
-from qgis.core import QgsMapLayer, QgsRasterLayer, QgsVectorLayer, QGis
+from qgis.core import QgsRasterLayer, QgsVectorLayer, QGis
 from GeoHealth.geohealth.core.tools import tr
 
 

@@ -4,7 +4,6 @@ from itertools import product
 from PyQt4.QtCore import QFileInfo, QDir, QFile
 from qgis.core import (
     QgsVectorFileWriter,
-    QgsRasterLayer,
     QgsRasterPipe,
     QgsRasterFileWriter
 )
@@ -119,8 +118,8 @@ class Folder(DataStore):
             if one_file.exists():
                 if one_file.baseName() == layer_name:
                     return one_file.absoluteFilePath()
-        else:
-            return None
+
+        return None
 
     def _add_tabular_layer(self, tabular_layer, layer_name):
         """Add a tabular layer to the folder.
