@@ -31,12 +31,13 @@ def _run_tests(test_suite, package_name):
     print '%s tests has been discovered in %s' % (count, package_name)
     print 'Python GDAL : %s' % gdal.VersionInfo('VERSION_NUM')
     print '########'
-    for path in sys.path:
-        print path
 
     currentdir = dirname(abspath(inspect.getfile(inspect.currentframe())))
     parentdir = dirname(currentdir)
+    print parentdir
     sys.path.insert(0, parentdir)
+    for path in sys.path:
+        print path
     help('modules')
     for dist in __import__('pkg_resources').working_set:
         print dist.project_name.replace('Python', '')
