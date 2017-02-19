@@ -37,7 +37,7 @@ def _run_tests(test_suite, package_name):
     unittest.TextTestRunner(verbosity=3, stream=sys.stdout).run(test_suite)
 
 
-def test_package(package='geohealth'):
+def test_package(package='src'):
     """Test package.
     This function is called by travis without arguments.
 
