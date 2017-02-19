@@ -22,8 +22,8 @@
 """
 
 from uuid import uuid4
-from qgis.PyQt.QtCore import QSettings
-from qgis.PyQt.QtGui import QApplication
+from PyQt4.QtCore import QSettings
+from PyQt4.QtGui import QApplication
 from qgis.utils import iface
 from qgis.gui import QgsMessageBar
 from qgis.core import QgsVectorLayer, QGis

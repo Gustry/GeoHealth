@@ -30,10 +30,10 @@ from qgis.core import \
     QgsMapLayerRegistry, \
     QgsVectorLayer
 
-from qgis.PyQt.QtGui import (
+from PyQt4.QtGui import (
     QWidget, QDialogButtonBox, QFileDialog, QApplication)
-from qgis.PyQt.QtCore import pyqtSignal, QSettings, QVariant
-from processing.tools.system import getTempFilenameInTempFolder
+from PyQt4.QtCore import pyqtSignal, QSettings, QVariant
+# from processing.tools.system import getTempFilenameInTempFolder
 
 from GeoHealth.geohealth.core.blurring.layer_index import LayerIndex
 from GeoHealth.geohealth.core.blurring.blur import Blur
@@ -125,7 +125,8 @@ class BlurWidget(QWidget, FORM_CLASS):
                     msg, level=QgsMessageBar.WARNING, duration=5)
 
             if not file_name:
-                file_name = getTempFilenameInTempFolder('blurring.shp')
+                # file_name = getTempFilenameInTempFolder('blurring.shp')
+                pass
 
             if layer_envelope:
 

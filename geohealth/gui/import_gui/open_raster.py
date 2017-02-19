@@ -20,10 +20,10 @@
  *                                                                         *
  ***************************************************************************/
 """
-from qgis.PyQt.QtCore import QFileInfo, pyqtSignal
+from PyQt4.QtCore import QFileInfo, pyqtSignal
 from qgis.core import QgsMapLayerRegistry, QgsRasterLayer, QgsProviderRegistry
 
-from qgis.PyQt.QtGui import QWidget, QDialogButtonBox, QFileDialog
+from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
 
 from GeoHealth.geohealth.core.tools import tr
 from GeoHealth.geohealth.utilities.resources import get_ui_class

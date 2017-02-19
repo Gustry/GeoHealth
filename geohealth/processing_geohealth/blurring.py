@@ -21,8 +21,8 @@
  ***************************************************************************/
 """
 
-from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtCore import QVariant, QSettings
+from PyQt4.QtGui import QIcon
+from PyQt4.QtCore import QVariant, QSettings
 from qgis.utils import QGis
 from qgis.core import QgsVectorFileWriter, QgsField
 from processing.core.GeoAlgorithm import GeoAlgorithm

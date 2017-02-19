@@ -22,13 +22,13 @@
 """
 
 from tempfile import NamedTemporaryFile
-from qgis.PyQt.QtGui import \
+from PyQt4.QtGui import \
     QDialog,\
     QDialogButtonBox,\
     QTableWidgetItem,\
     QApplication
-from qgis.PyQt.QtCore import QSize, QVariant, Qt, pyqtSignal
-from qgis.PyQt.QtGui import QFileDialog
+from PyQt4.QtCore import QSize, QVariant, Qt, pyqtSignal
+from PyQt4.QtGui import QFileDialog
 
 from qgis.utils import QGis
 from qgis.gui import QgsMapLayerProxyModel

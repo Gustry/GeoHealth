@@ -28,9 +28,9 @@ from qgis.gui import QgsMapLayerProxyModel
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
-from qgis.PyQt.QtGui import \
+from PyQt4.QtGui import \
     QWidget, QDialogButtonBox, QApplication, QTableWidgetItem, QFileDialog
-from qgis.PyQt.QtCore import pyqtSignal, QSize
+from PyQt4.QtCore import pyqtSignal, QSize
 
 from GeoHealth.geohealth.core.graph_toolbar import CustomNavigationToolbar
 from GeoHealth.geohealth.core.stats import Stats

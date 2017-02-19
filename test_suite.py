@@ -13,6 +13,8 @@ Contact : etienne at kartoza dot com
 
 import sys
 import unittest
+import qgis
+
 from osgeo import gdal
 
 __author__ = 'etiennetrimaille'

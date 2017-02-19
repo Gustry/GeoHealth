@@ -1,6 +1,6 @@
 from os.path import dirname, abspath, join
 from os import pardir
-from qgis.PyQt import uic
+from PyQt4 import uic
 
 
 def resource(*args):

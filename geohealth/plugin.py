@@ -23,12 +23,12 @@
 
 from os.path import dirname, join, exists
 
-from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from qgis.PyQt.QtGui import QIcon, QAction
-from processing.core.Processing import Processing
+from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
+from PyQt4.QtGui import QIcon, QAction
+# from processing.core.Processing import Processing
 
 from GeoHealth.geohealth.gui.main_window import MainDialog
-from GeoHealth.geohealth.processing_geohealth.provider import Provider
+# from GeoHealth.geohealth.processing_geohealth.provider import Provider
 from GeoHealth.geohealth.utilities.resources import resource
 
 
@@ -63,8 +63,8 @@ class GeoHealthPlugin(object):
         self.histogram_action = None
 
         # Add to processing
-        self.provider = Provider()
-        Processing.addProvider(self.provider, True)
+        # self.provider = Provider()
+        # Processing.addProvider(self.provider, True)
 
     def initGui(self):
 
@@ -79,7 +79,7 @@ class GeoHealthPlugin(object):
 
     def unload(self):
         self.plugin_menu.removeAction(self.main_action)
-        Processing.removeProvider(self.provider)
+        # Processing.removeProvider(self.provider)
 
     @staticmethod
     def open_main_window():

@@ -22,8 +22,8 @@
 """
 
 import codecs
-from qgis.PyQt.QtGui import QWidget, QDialogButtonBox, QFileDialog
-from qgis.PyQt.QtCore import pyqtSignal
+from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
+from PyQt4.QtCore import pyqtSignal
 
 from qgis.gui import QgsMapLayerProxyModel
 

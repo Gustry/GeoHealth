@@ -21,8 +21,8 @@
  ***************************************************************************/
 """
 
-from qgis.PyQt.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
-from qgis.PyQt.QtCore import QSize
+from PyQt4.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
+from PyQt4.QtCore import QSize
 
 from GeoHealth.geohealth.doc.help import (
     help_density,

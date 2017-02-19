@@ -22,17 +22,17 @@
 """
 
 from qgis.gui import QgsMessageBar
-from processing.core.GeoAlgorithmExecutionException import \
-    GeoAlgorithmExecutionException
+# from processing.core.GeoAlgorithmExecutionException import \
+#     GeoAlgorithmExecutionException
 
 from GeoHealth.geohealth.core.tools import tr
 
 # QApplication.translate doesn't work in constructor's parameters.
 
 
-class GeoHealthException(GeoAlgorithmExecutionException):
+class GeoHealthException(Exception):
     def __init__(self, msg=None):
-        GeoAlgorithmExecutionException.__init__(self, msg)
+        Exception.__init__(self, msg)
         self.level = QgsMessageBar.CRITICAL
         self.duration = 7
 
