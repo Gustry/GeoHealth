@@ -15,7 +15,8 @@ import sys
 import unittest
 import qgis
 import inspect
-from os.path import abspath, dirname
+from os.path import abspath, dirname, exists
+from os import listdir
 
 from osgeo import gdal
 
@@ -38,6 +39,8 @@ def _run_tests(test_suite, package_name):
     print parentdir
     sys.path.insert(0, parentdir)
     sys.path.insert(0, '/root/.qgis2/python/plugins/GeoHealth')
+    print exists('/root/.qgis2/python/plugins/GeoHealth')
+    print listdir('/root/.qgis2/python/plugins/GeoHealth')
     print 'SYS.PATH'
     for path in sys.path:
         print path
