@@ -58,7 +58,6 @@ install:
   - export PYTHONPATH=$PYTHONPATH:$(pwd)
   - export PYTHONPATH=$PYTHONPATH:$(dirname "$(pwd)")
   - echo $PYTHONPATH
-  - docker exec -it  qgis-testing-environment sh -c "ln -s /tests_directory /root/.qgis2/python/plugins/GeoHealth"
 
 script:
   - make pep8
