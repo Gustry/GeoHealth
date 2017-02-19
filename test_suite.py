@@ -39,8 +39,6 @@ def _run_tests(test_suite, package_name):
     for path in sys.path:
         print path
     help('modules')
-    for dist in __import__('pkg_resources').working_set:
-        print dist.project_name.replace('Python', '')
     unittest.TextTestRunner(verbosity=3, stream=sys.stdout).run(test_suite)
 
 
