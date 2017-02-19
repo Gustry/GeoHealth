@@ -27,6 +27,8 @@ def _run_tests(test_suite, package_name):
     print '%s tests has been discovered in %s' % (count, package_name)
     print 'Python GDAL : %s' % gdal.VersionInfo('VERSION_NUM')
     print '########'
+    for path in sys.path:
+        print path
     unittest.TextTestRunner(verbosity=3, stream=sys.stdout).run(test_suite)
 
 
