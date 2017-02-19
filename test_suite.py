@@ -34,10 +34,13 @@ def _run_tests(test_suite, package_name):
 
     currentdir = dirname(abspath(inspect.getfile(inspect.currentframe())))
     parentdir = dirname(currentdir)
+    print 'PARENT DIR'
     print parentdir
     sys.path.insert(0, parentdir)
+    print 'SYS.PATH'
     for path in sys.path:
         print path
+    print 'MODULES'
     help('modules')
     unittest.TextTestRunner(verbosity=3, stream=sys.stdout).run(test_suite)
 
