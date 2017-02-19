@@ -31,6 +31,7 @@ def _run_tests(test_suite, package_name):
     print '########'
     for path in sys.path:
         print path
+    help('modules')
     unittest.TextTestRunner(verbosity=3, stream=sys.stdout).run(test_suite)
 
 
