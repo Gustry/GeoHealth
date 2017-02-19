@@ -6,6 +6,7 @@
 TEST_NAME=$1
 
 cd /tests_directory
+ls
 echo "Running test $1 ..."
 OUTPUT=$(unbuffer qgis --nologo --code /usr/bin/qgis_testrunner.py $TEST_NAME  2>/dev/null | tee /dev/tty)
 EXIT_CODE="$?"
