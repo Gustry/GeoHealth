@@ -37,6 +37,7 @@ def _run_tests(test_suite, package_name):
     print 'PARENT DIR'
     print parentdir
     sys.path.insert(0, parentdir)
+    sys.path.insert(0, '/root/.qgis2/python/plugins/GeoHealth')
     print 'SYS.PATH'
     for path in sys.path:
         print path
