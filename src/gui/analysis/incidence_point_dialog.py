@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- GeoHealth
+
+                                 GeoHealth
                                  A QGIS plugin
- GeoHealth
-                             -------------------
+
+                              -------------------
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
@@ -20,8 +21,25 @@
  ***************************************************************************/
 """
 
-from GeoHealth.src.plugin import GeoHealthPlugin
+from GeoHealth.src.gui.analysis.parent_incidence_density_dialog import \
+    IncidenceDensityDialog
+from GeoHealth.src.utilities.resources import get_ui_class
+
+FORM_CLASS = get_ui_class('analysis', 'incidence_with_point.ui')
 
 
-def classFactory(iface):
-    return GeoHealthPlugin(iface)
+class IncidencePointDialog(IncidenceDensityDialog, FORM_CLASS):
+    def __init__(self, parent=None):
+        """Constructor."""
+        IncidenceDensityDialog.__init__(self, parent)
+        # noinspection PyArgumentList
+        FORM_CLASS.setupUi(self, self)
+
+        self.use_area = False
+        self.use_point_layer = True
+
+        self.setup_ui()
+
+    def run_stats(self):
+        """Main function which do the process."""
+        IncidenceDensityDialog.run_stats(self)

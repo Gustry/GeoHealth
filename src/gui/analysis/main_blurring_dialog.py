@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- GeoHealth
+
+                                 GeoHealth
                                  A QGIS plugin
- GeoHealth
-                             -------------------
+
+                              -------------------
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
@@ -20,8 +21,24 @@
  ***************************************************************************/
 """
 
-from GeoHealth.src.plugin import GeoHealthPlugin
+from PyQt4.QtGui import QDialog
+from PyQt4.QtCore import pyqtSignal
+
+from GeoHealth.src.ui.main_blurring import Ui_Form
 
 
-def classFactory(iface):
-    return GeoHealthPlugin(iface)
+class MainBlurringDialog(QDialog, Ui_Form):
+
+    signalAskCloseWindow = pyqtSignal(name='signalAskCloseWindow')
+
+    def __init__(self, parent=None):
+        """Constructor."""
+        self.parent = parent
+        QDialog.__init__(self)
+        self.setupUi(self)
+
+        # Connect
+        self.blur.signalAskCloseWindow.connect(
+            self.signalAskCloseWindow.emit)
+        self.statistics.signalAskCloseWindow.connect(
+            self.signalAskCloseWindow.emit)

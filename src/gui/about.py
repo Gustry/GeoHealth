@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- GeoHealth
+
+                                 GeoHealth
                                  A QGIS plugin
- GeoHealth
-                             -------------------
+
+                              -------------------
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
@@ -20,8 +21,19 @@
  ***************************************************************************/
 """
 
-from GeoHealth.src.plugin import GeoHealthPlugin
+from PyQt4.QtGui import QWidget, QPixmap
+from GeoHealth.src.utilities.resources import get_ui_class, resource
+
+FORM_CLASS = get_ui_class('default', 'about.ui')
 
 
-def classFactory(iface):
-    return GeoHealthPlugin(iface)
+class AboutWidget(QWidget, FORM_CLASS):
+
+    def __init__(self, parent=None):
+        self.parent = parent
+        super(AboutWidget, self).__init__()
+        self.setupUi(self)
+
+        self.logo_geohealth.setPixmap(QPixmap(resource('icon-100.png')))
+        self.logo_ird.setPixmap(QPixmap(resource('logo_ird.png')))
+        self.logo_umr.setPixmap(QPixmap(resource('espace-dev.png')))
