@@ -58,6 +58,7 @@ install:
   - export PYTHONPATH=$PYTHONPATH:$(pwd)
   - export PYTHONPATH=$PYTHONPATH:$(dirname "$(pwd)")
   - echo $PYTHONPATH
+  - docker exec -it  qgis-testing-environment sh -c "ls -l /root/.qgis2/python/plugins/"
   - docker exec -it  qgis-testing-environment sh -c "ln -s /tests_directory /root/.qgis2/python/plugins/GeoHealth"
 
 script:
