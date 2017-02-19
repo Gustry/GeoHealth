@@ -14,6 +14,8 @@ Contact : etienne at kartoza dot com
 import sys
 import unittest
 import qgis
+import inspect
+from os.path import abspath, dirname
 
 from osgeo import gdal
 
@@ -31,6 +33,10 @@ def _run_tests(test_suite, package_name):
     print '########'
     for path in sys.path:
         print path
+
+    currentdir = dirname(abspath(inspect.getfile(inspect.currentframe())))
+    parentdir = dirname(currentdir)
+    sys.path.insert(0, parentdir)
     help('modules')
     for dist in __import__('pkg_resources').working_set:
         print dist.project_name.replace('Python', '')
