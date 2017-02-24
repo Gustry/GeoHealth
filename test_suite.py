@@ -32,20 +32,10 @@ def _run_tests(test_suite, package_name):
     print '%s tests has been discovered in %s' % (count, package_name)
     print 'Python GDAL : %s' % gdal.VersionInfo('VERSION_NUM')
     print '########'
-
     currentdir = dirname(abspath(inspect.getfile(inspect.currentframe())))
     parentdir = dirname(currentdir)
-    print 'PARENT DIR'
-    print parentdir
     sys.path.insert(0, parentdir)
     sys.path.insert(0, '/root/.qgis2/python/plugins/GeoHealth')
-    print exists('/root/.qgis2/python/plugins/GeoHealth')
-    print listdir('/root/.qgis2/python/plugins/GeoHealth')
-    print 'SYS.PATH'
-    for path in sys.path:
-        print path
-    print 'MODULES'
-    help('modules')
     unittest.TextTestRunner(verbosity=3, stream=sys.stdout).run(test_suite)
 
 

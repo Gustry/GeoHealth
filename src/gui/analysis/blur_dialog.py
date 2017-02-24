@@ -33,7 +33,7 @@ from qgis.core import \
 from PyQt4.QtGui import (
     QWidget, QDialogButtonBox, QFileDialog, QApplication)
 from PyQt4.QtCore import pyqtSignal, QSettings, QVariant
-# from processing.tools.system import getTempFilenameInTempFolder
+from processing.tools.system import getTempFilenameInTempFolder
 
 from GeoHealth.src.core.blurring.layer_index import LayerIndex
 from GeoHealth.src.core.blurring.blur import Blur
@@ -125,7 +125,7 @@ class BlurWidget(QWidget, FORM_CLASS):
                     msg, level=QgsMessageBar.WARNING, duration=5)
 
             if not file_name:
-                # file_name = getTempFilenameInTempFolder('blurring.shp')
+                file_name = getTempFilenameInTempFolder('blurring.shp')
                 pass
 
             if layer_envelope:
