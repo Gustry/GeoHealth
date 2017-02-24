@@ -13,6 +13,11 @@ Contact : etienne at kartoza dot com
 
 import sys
 import unittest
+import qgis
+import inspect
+from os.path import abspath, dirname, exists
+from os import listdir
+
 from osgeo import gdal
 
 __author__ = 'etiennetrimaille'
@@ -27,10 +32,14 @@ def _run_tests(test_suite, package_name):
     print '%s tests has been discovered in %s' % (count, package_name)
     print 'Python GDAL : %s' % gdal.VersionInfo('VERSION_NUM')
     print '########'
+    currentdir = dirname(abspath(inspect.getfile(inspect.currentframe())))
+    parentdir = dirname(currentdir)
+    sys.path.insert(0, parentdir)
+    sys.path.insert(0, '/root/.qgis2/python/plugins/GeoHealth')
     unittest.TextTestRunner(verbosity=3, stream=sys.stdout).run(test_suite)
 
 
-def test_package(package='geohealth'):
+def test_package(package='src'):
     """Test package.
     This function is called by travis without arguments.
 
