@@ -51,14 +51,9 @@ before_install:
 install:
   - pip install --upgrade pip
   - pip install --upgrade pep8
-  - echo ${TRAVIS_BUILD_DIR}
   - docker run -d --name qgis-testing-environment -v ${TRAVIS_BUILD_DIR}:/tests_directory -e ON_TRAVIS=${ON_TRAVIS} -e DISPLAY=:99 ${IMAGE}:${QGIS_VERSION_TAG}
   - sleep 10
   - docker exec -it qgis-testing-environment sh -c "qgis_setup.sh GeoHealth"
-  - export PYTHONPATH=$PYTHONPATH:$(pwd)
-  - export PYTHONPATH=$PYTHONPATH:$(dirname "$(pwd)")
-  - echo $PYTHONPATH
-  - docker exec -it  qgis-testing-environment sh -c "ls -l /root/.qgis2/python/plugins/"
   - docker exec -it  qgis-testing-environment sh -c "rm -rf /root/.qgis2/python/plugins/GeoHealth"
   - docker exec -it  qgis-testing-environment sh -c "ln -s /tests_directory /root/.qgis2/python/plugins/GeoHealth"
   - docker exec -it  qgis-testing-environment sh -c "apt-get update"
@@ -68,7 +63,6 @@ install:
 script:
   - make pep8
   - docker exec -it qgis-testing-environment sh -c "qgis_testrunner.sh test_suite.test_package"
-  - docker exec -it qgis-testing-environment sh -c "echo $PYTHONPATH"
 
 notifications:
   email:
