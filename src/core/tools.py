@@ -26,7 +26,8 @@ from PyQt4.QtCore import QSettings
 from PyQt4.QtGui import QApplication
 from qgis.utils import iface
 from qgis.gui import QgsMessageBar
-from qgis.core import QgsVectorLayer, QGis
+from qgis.core import (
+    QgsVectorLayer, QGis, QgsGeometry, QgsFeature, QgsSpatialIndex)
 
 
 def create_memory_layer(
@@ -76,6 +77,62 @@ def create_memory_layer(
         memory_layer.updateFields()
 
     return memory_layer
+
+
+def copy_layer(source, target):
+    """Copy a vector layer to another one.
+
+    :param source: The vector layer to copy.
+    :type source: QgsVectorLayer
+
+    :param target: The destination.
+    :type source: QgsVectorLayer
+    """
+    out_feature = QgsFeature()
+    target.startEditing()
+
+    for feature in source.getFeatures():
+        geom = feature.geometry()
+        out_feature.setGeometry(QgsGeometry(geom))
+        out_feature.setAttributes(feature.attributes())
+        target.addFeature(out_feature)
+    target.commitChanges()
+
+
+def remove_fields(layer, fields_to_remove):
+    """Remove fields from a vector layer.
+
+    :param layer: The vector layer.
+    :type layer: QgsVectorLayer
+
+    :param fields_to_remove: List of fields to remove.
+    :type fields_to_remove: list
+    """
+    index_to_remove = []
+    data_provider = layer.dataProvider()
+
+    for field in fields_to_remove:
+        index = layer.fieldNameIndex(field)
+        if index != -1:
+            index_to_remove.append(index)
+
+    data_provider.deleteAttributes(index_to_remove)
+    layer.updateFields()
+
+
+def create_spatial_index(layer):
+    """Helper function to create the spatial index on a vector layer.
+
+    This function is mainly used to see the processing time with the decorator.
+
+    :param layer: The vector layer.
+    :type layer: QgsVectorLayer
+
+    :return: The index.
+    :rtype: QgsSpatialIndex
+    """
+    spatial_index = QgsSpatialIndex(layer.getFeatures())
+    return spatial_index
 
 
 def get_last_input_path():
