@@ -29,7 +29,7 @@ try:
     from matplotlib.backends.backend_qt4agg import \
         NavigationToolbar2QTAgg as NavigationToolbar
 except ImportError:
-    from matplotlib.backends.backend_qt4agg import \
+    from matplotlib.backend_qt4 import \
         NavigationToolbar2Qt as NavigationToolbar
 
 
