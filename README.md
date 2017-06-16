@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## GeoHealth
 
 GeoHealth aims to provide a simplified interface for users in epidemiology in QGIS : 
@@ -14,6 +13,7 @@ GeoHealth aims to provide a simplified interface for users in epidemiology in QG
   * Etienne Trimaille
   * This project was designed by UMR Espace-DEV (IRD, UAG, UM2, UR).
 =======
+
 # GeoPublicHealth 0.2
 
 GeoPublicHealth aims to provide a simplified interface for users in epidemiology and public health for QGIS . It is based on the [GeoHealth Plugin](https://github.com/Gustry/GeoHealth) developed by Etienne Trimaille. This includes additional methods that are very relevant for the use of GIS in public health and epidemiology.
@@ -124,5 +124,3 @@ GeoPublicHealth:
 
 ## License
 Please see [LICENSE](LICENSE)
-
->>>>>>> Updating the README

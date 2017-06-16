@@ -27,14 +27,8 @@
 """
 
 from os.path import dirname, abspath, join
-from GeoHealth.src.core.tools import tr
-
-
-<<<<<<< HEAD:src/doc/help.py
 PATH = dirname(abspath(__file__))
-=======
 from GeoPublicHealth.core.tools import tr
->>>>>>> Change the files for the new name GeoPublicHealth:doc/help.py
 
 
 def html_table(title, intro, inputs, outputs, more):

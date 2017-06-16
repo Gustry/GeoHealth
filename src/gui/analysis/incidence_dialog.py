@@ -26,14 +26,8 @@
  ***************************************************************************/
 """
 
-<<<<<<< HEAD:src/gui/analysis/incidence_dialog.py
-from GeoHealth.src.gui.analysis.parent_incidence_density_dialog import (
-    IncidenceDensityDialog)
-from GeoHealth.src.utilities.resources import get_ui_class
-=======
 from GeoPublicHealth.ui.analysis.incidence import Ui_Incidence
 from GeoPublicHealth.gui.analysis.parent_incidence_density_dialog import IncidenceDensityDialog
->>>>>>> Change the files for the new name GeoPublicHealth:gui/analysis/incidence_dialog.py
 
 FORM_CLASS = get_ui_class('analysis', 'incidence.ui')
 

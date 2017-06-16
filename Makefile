@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #/***************************************************************************
 # CompositeIndex
 #
@@ -216,21 +214,13 @@ pylint:
 	@echo "e.g. source run-env-linux.sh <path to qgis install>; make pylint"
 	@echo "----------------------"
 
->>>>>>> Add Makefile to source control on git
-
-# Run pep8 style checking
-#http://pypi.python.org/pypi/pep8
 pep8:
 	@echo
 	@echo "-----------"
 	@echo "PEP8 issues"
 	@echo "-----------"
-<<<<<<< HEAD
 	@pep8 --version
 	@pep8 --repeat --ignore=E203,E121,E122,E123,E124,E125,E126,E127,E128,E402 --exclude resources_rc.py,geohealth/ui/  . || true
-=======
-	@pep8 --repeat --ignore=E203,E121,E122,E123,E124,E125,E126,E127,E128 --exclude $(PEP8EXCLUDE) . || true
 	@echo "-----------"
 	@echo "Ignored in PEP8 check:"
 	@echo $(PEP8EXCLUDE)
->>>>>>> Add Makefile to source control on git

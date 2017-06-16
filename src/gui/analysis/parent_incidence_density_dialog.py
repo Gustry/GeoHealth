@@ -31,15 +31,12 @@ from PyQt4.QtGui import \
     QDialog,\
     QDialogButtonBox,\
     QTableWidgetItem,\
-    QMessageBox,\
     QApplication
 from PyQt4.QtCore import QSize, QVariant, Qt, pyqtSignal
 from PyQt4.QtGui import QFileDialog
 
 from qgis.utils import QGis
-from qgis.gui import \
-    QgsMapLayerProxyModel,\
-    QgsFieldProxyModel
+from qgis.gui import QgsMapLayerProxyModel
 from qgis.core import \
     QgsField,\
     QgsVectorGradientColorRampV2,\
@@ -55,27 +52,16 @@ from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-<<<<<<< HEAD:src/gui/analysis/parent_incidence_density_dialog.py
-from GeoHealth.src.core.graph_toolbar import CustomNavigationToolbar
-from GeoHealth.src.core.tools import display_message_bar, tr
-from GeoHealth.src.core.exceptions import \
-    GeoHealthException,\
-=======
 from GeoPublicHealth.core.graph_toolbar import CustomNavigationToolbar
 from GeoPublicHealth.core.tools import display_message_bar, tr
 from GeoPublicHealth.core.exceptions import \
     GeoPublicHealthException,\
->>>>>>> Change the files for the new name GeoPublicHealth:gui/analysis/parent_incidence_density_dialog.py
     NoLayerProvidedException,\
     DifferentCrsException,\
     FieldExistingException,\
     FieldException,\
     NotANumberException
-<<<<<<< HEAD:src/gui/analysis/parent_incidence_density_dialog.py
-from GeoHealth.src.core.stats import Stats
-=======
 from GeoPublicHealth.core.stats import Stats
->>>>>>> Change the files for the new name GeoPublicHealth:gui/analysis/parent_incidence_density_dialog.py
 
 
 class IncidenceDensityDialog(QDialog):
@@ -110,7 +96,6 @@ class IncidenceDensityDialog(QDialog):
         # Connect slot.
         # noinspection PyUnresolvedReferences
         self.button_browse.clicked.connect(self.open_file_browser)
-        self.command_link_button.clicked.connect(self.add_indicator)
         self.button_box_ok.button(QDialogButtonBox.Ok).clicked.connect(
             self.run_stats)
         self.button_box_ok.button(QDialogButtonBox.Cancel).clicked.connect(
@@ -120,6 +105,8 @@ class IncidenceDensityDialog(QDialog):
 
         # Add items in symbology
         self.cbx_mode.addItem(
+            'Equal interval', QgsGraduatedSymbolRendererV2.EqualInterval)
+        self.cbx_mode.addItem(
             'Quantile (equal count)', QgsGraduatedSymbolRendererV2.Quantile)
         self.cbx_mode.addItem(
             'Natural breaks', QgsGraduatedSymbolRendererV2.Jenks)
@@ -127,90 +114,42 @@ class IncidenceDensityDialog(QDialog):
             'Standard deviation', QgsGraduatedSymbolRendererV2.StdDev)
         self.cbx_mode.addItem(
             'Pretty breaks', QgsGraduatedSymbolRendererV2.Pretty)
-        self.cbx_mode.addItem(
-            'Equal interval', QgsGraduatedSymbolRendererV2.EqualInterval)
 
-<<<<<<< HEAD:src/gui/analysis/parent_incidence_density_dialog.py
         # Setup the graph.
         self.figure = Figure()
         self.canvas = FigureCanvas(self.figure)
         self.canvas.setMinimumSize(QSize(300, 0))
         self.toolbar = CustomNavigationToolbar(self.canvas, self)
+        self.layout_plot.addWidget(self.toolbar)
+        self.layout_plot.addWidget(self.canvas)
 
-        self.cbx_aggregation_layer.setFilters(
-            QgsMapLayerProxyModel.PolygonLayer)
+        self.cbx_aggregation_layer.setFilters(QgsMapLayerProxyModel.PolygonLayer)
 
         if self.use_point_layer:
             self.cbx_case_layer.setFilters(QgsMapLayerProxyModel.PointLayer)
 
         if not self.use_area:
-            self.cbx_population_field.setLayer(
-                self.cbx_aggregation_layer.currentLayer())
-            self.cbx_aggregation_layer.layerChanged.connect(
-                self.cbx_population_field.setLayer)
-            self.cbx_aggregation_layer.layerChanged.connect(
-                self.reset_field_population)
+            self.cbx_population_field.setLayer(self.cbx_aggregation_layer.currentLayer())
+            self.cbx_aggregation_layer.layerChanged.connect(self.cbx_population_field.setLayer)
+            self.cbx_aggregation_layer.layerChanged.connect(self.reset_field_population)
             self.reset_field_population()
-=======
-        self.cbx_aggregation_layer.setFilters(QgsMapLayerProxyModel.PolygonLayer)
->>>>>>> First funcional integration of LISA:gui/analysis/composite_index_dialog.py
-
-        self.cbx_list_indicators.itemDoubleClicked.connect(self.remove_item) 
 
         if not self.use_point_layer:
-<<<<<<< HEAD:src/gui/analysis/parent_incidence_density_dialog.py
-            self.cbx_case_field.setLayer(
-                self.cbx_aggregation_layer.currentLayer())
-            self.cbx_aggregation_layer.layerChanged.connect(
-                self.cbx_case_field.setLayer)
-            self.cbx_aggregation_layer.layerChanged.connect(
-                self.reset_field_case)
+            self.cbx_case_field.setLayer(self.cbx_aggregation_layer.currentLayer())
+            self.cbx_aggregation_layer.layerChanged.connect(self.cbx_case_field.setLayer)
+            self.cbx_aggregation_layer.layerChanged.connect(self.reset_field_case)
             self.reset_field_case()
 
     def reset_field_population(self):
         self.cbx_population_field.setCurrentIndex(0)
-=======
-            self.cbx_indicator_field.setFilters(QgsFieldProxyModel.Numeric)
-            self.cbx_indicator_field.setLayer(self.cbx_aggregation_layer.currentLayer())
-            self.cbx_aggregation_layer.layerChanged.connect(self.cbx_indicator_field.setLayer)
-            self.cbx_aggregation_layer.layerChanged.connect(self.reset_field_indicator)
-            self.reset_field_indicator()
->>>>>>> Filtering only the Numeric Attributes for the Indicators ComboBox for the Composite Index:gui/analysis/composite_index_dialog.py
 
     def reset_field_case(self):
         self.cbx_case_field.setCurrentIndex(0)
-
-    def remove_item(self):
-        self.cbx_list_indicators.takeItem( self.cbx_list_indicators.currentRow())
-
-    def add_indicator(self):
-        present = False
-        for index in range(self.cbx_list_indicators.count()):
-            if self.cbx_list_indicators.item(index).text() == self.vector_indicator():
-                present = True
-        if not present:
-            self.cbx_list_indicators.addItem(self.vector_indicator())
-
-    def vector_indicator(self):
-        return self.cbx_indicator_field.currentField() + " " + self.vector_direction()
-
-    def vector_direction(self):
-        if self.radioButton_vector_positive.isChecked():
-            return "+"
-        else:
-            return "-"
 
     def open_file_browser(self):
         output_file = QFileDialog.getSaveFileNameAndFilter(
             self.parent, tr('Save shapefile'), filter='SHP (*.shp)')
         self.le_output_filepath.setText(output_file[0])
-
-    def indicators_list(self):
-        items = []
-        for index in xrange(self.cbx_list_indicators.count()):
-            items.append(self.cbx_list_indicators.item(index))
-        return [[i.text()[:-2], i.text()[-1]] for i in items]
-    
 
     def run_stats(self):
         """Main function which do the process."""
@@ -218,7 +157,6 @@ class IncidenceDensityDialog(QDialog):
         # Get the common fields.
         self.admin_layer = self.cbx_aggregation_layer.currentLayer()
 
-<<<<<<< HEAD:src/gui/analysis/parent_incidence_density_dialog.py
         if self.use_point_layer:
             # If we use a point layer.
             point_layer = self.cbx_case_layer.currentLayer()
@@ -226,9 +164,6 @@ class IncidenceDensityDialog(QDialog):
             # If we use a column with number of case.
             case_column = self.cbx_case_field.currentField()
             index_case = self.admin_layer.fieldNameIndex(case_column)
-=======
-        selected_indicators = self.indicators_list()
->>>>>>> WIP Adding ZScore fields:gui/analysis/composite_index_dialog.py
 
         if not self.use_area:
             # If we don't use density.
@@ -237,6 +172,13 @@ class IncidenceDensityDialog(QDialog):
 
         if not self.name_field:
             self.name_field = self.le_new_column.placeholderText()
+
+        # Add new column.
+        add_nb_intersections = self.checkBox_addNbIntersections.isChecked()
+
+        # Ratio
+        ratio = self.cbx_ratio.currentText()
+        ratio = ratio.replace(' ', '')
 
         # Output.
         self.output_file_path = self.le_output_filepath.text()
@@ -256,9 +198,21 @@ class IncidenceDensityDialog(QDialog):
 
             crs_admin_layer = self.admin_layer.crs()
 
+            if self.use_point_layer:
+                crs_point_layer = point_layer.crs()
+                if crs_admin_layer != crs_point_layer:
+                    raise DifferentCrsException(
+                        epsg1=crs_point_layer.authid(),
+                        epsg2=crs_admin_layer.authid())
+
             if not self.use_point_layer and not self.use_area:
-                if not self.cbx_list_indicators:
-                    raise FieldException(field_1='List Indicators should not empty')
+                if index_population == index_case:
+                    raise FieldException(field_1='Population', field_2='Case')
+
+            try:
+                ratio = float(ratio)
+            except ValueError:
+                raise NotANumberException(suffix=ratio)
 
             # Output
             if not self.output_file_path:
@@ -270,15 +224,17 @@ class IncidenceDensityDialog(QDialog):
                 temp_file.close()
 
             admin_layer_provider = self.admin_layer.dataProvider()
-            fields = self.admin_layer.pendingFields() 
+            fields = admin_layer_provider.fields()
 
             if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
                 raise FieldExistingException(field=self.name_field)
 
-            for indicator_selected in selected_indicators:
-                fields.append(QgsField("Z" + indicator_selected[0], QVariant.Double))
             fields.append(QgsField(self.name_field, QVariant.Double))
 
+            if add_nb_intersections:
+                fields.append(QgsField('nb_of_intersections', QVariant.Int))
+
+            data = []
 
             file_writer = QgsVectorFileWriter(
                 self.output_file_path,
@@ -288,53 +244,51 @@ class IncidenceDensityDialog(QDialog):
                 self.admin_layer.crs(),
                 'ESRI Shapefile')
 
-            count = self.admin_layer.featureCount()
-            stats = {}
-            for indicator_selected in selected_indicators:
-                values = []
-                indicator_selected_name = str(indicator_selected[0])
-
-                for i, feature in enumerate(self.admin_layer.getFeatures()):
-                    index = self.admin_layer.fieldNameIndex(indicator_selected_name)
-
-                    if feature[index]:
-                        value = float(feature[index])
-                    else:
-                        value = 0.0
-                    values.append(value)
-
-                stats[indicator_selected_name] = Stats(values)
+            if self.use_point_layer:
+                total_case = point_layer.featureCount()
+            else:
+                total_case = 0
 
             for i, feature in enumerate(self.admin_layer.getFeatures()):
                 attributes = feature.attributes()
-                
-                composite_index_value = 0.0
-                for indicator_selected in selected_indicators:
-                    indicator_selected_name = str(indicator_selected[0])
-                    index = self.admin_layer.fieldNameIndex(indicator_selected_name)
 
-                    if feature[index]:
-                        value = float(feature[index])
+                if self.use_point_layer:
+                    count = 0
+                    for f in point_layer.getFeatures():
+                        if f.geometry().intersects(feature.geometry()):
+                            count += 1
+                else:
+                    count = int(attributes[index_case])
+                    total_case += count
+
+                try:
+                    if self.use_area:
+                        area = feature.geometry().area()
+                        value = float(count) / area * ratio
                     else:
-                        value = 0.0
+                        try:
+                            population = float(attributes[index_population])
+                        except ValueError:
+                            raise NotANumberException(
+                                suffix=attributes[index_population])
+                        value = float(count) / population * ratio
 
-                    zscore = (value - stats[indicator_selected_name].average()) / stats[indicator_selected_name].standard_deviation()
-                    attributes.append(float(zscore))
+                except ZeroDivisionError:
+                    value = None
+                except TypeError:
+                    value = None
 
-                    #msgBox = QMessageBox()
-                    #msgBox.setText("indicator_selected: " + str(indicator_selected) + " value: " + str(value) + " stats[indicator_selected_name].average(): " + str(stats[indicator_selected_name].average()) + " zscore: " + str(zscore))
-                    #msgBox.exec_()
+                data.append(value)
+                attributes.append(value)
 
-                    if indicator_selected[1] == '+':
-                        composite_index_value -= zscore
-                    else:
-                        composite_index_value += zscore
+                if add_nb_intersections:
+                    attributes.append(count)
 
-                attributes.append(float(composite_index_value))
                 new_feature = QgsFeature()
                 new_geom = QgsGeometry(feature.geometry())
                 new_feature.setAttributes(attributes)
                 new_feature.setGeometry(new_geom)
+
                 file_writer.addFeature(new_feature)
 
             del file_writer
@@ -343,8 +297,41 @@ class IncidenceDensityDialog(QDialog):
                 self.output_file_path,
                 self.name_field,
                 'ogr')
-
             QgsMapLayerRegistry.instance().addMapLayer(self.output_layer)
+
+            if self.checkBox_incidence_runStats.isChecked():
+
+                stats = Stats(data)
+
+                items_stats = [
+                    'Incidence null,%d' % stats.null_values(),
+                    'Count(point),%d' % total_case,
+                    'Count(polygon),%d' % self.admin_layer.featureCount(),
+                    'Min,%d' % stats.min(),
+                    'Average,%f' % stats.average(),
+                    'Max,%d' % stats.max(),
+                    'Median,%f' % stats.median(),
+                    'Range,%d' % stats.range(),
+                    'Variance,%f' % stats.variance(),
+                    'Standard deviation,%f' % stats.standard_deviation()
+                ]
+
+                self.tableWidget.clear()
+                self.tableWidget.setColumnCount(2)
+                labels = ['Parameters', 'Values']
+                self.tableWidget.setHorizontalHeaderLabels(labels)
+                self.tableWidget.setRowCount(len(items_stats))
+
+                for i, item in enumerate(items_stats):
+                    s = item.split(',')
+                    self.tableWidget.setItem(i, 0, QTableWidgetItem(s[0]))
+                    self.tableWidget.setItem(i, 1, QTableWidgetItem(s[1]))
+                self.tableWidget.resizeRowsToContents()
+
+                self.draw_plot(data)
+
+            else:
+                self.hide()
 
             if self.symbology.isChecked():
                 self.add_symbology()
