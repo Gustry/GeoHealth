@@ -7,7 +7,8 @@
 
                               -------------------
         begin                : 2014-08-20
-        copyright            : (C) 2014 by Etienne Trimaille
+        copyright            : (C) 2014 by Etienne Trimaille, (C) 2017 by
+        Rachel Gorée
         email                : etienne@trimaille.eu
  ***************************************************************************/
 
@@ -20,6 +21,7 @@
  *                                                                         *
  ***************************************************************************/
 """
+
 
 from PyQt4.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
 from PyQt4.QtCore import QSize
@@ -36,6 +38,7 @@ from GeoHealth.src.doc.help import (
     help_incidence_point,
     help_density_point,
     help_attribute_table,
+    help_export_kml,
 )
 from GeoHealth.src.gui.import_gui.open_shapefile import (
     OpenShapefileWidget)
@@ -52,6 +55,7 @@ from GeoHealth.src.gui.analysis.density_dialog import DensityDialog
 from GeoHealth.src.gui.analysis.density_point_dialog import (
     DensityPointDialog)
 from GeoHealth.src.gui.export.csv import CsvExport
+from GeoHealth.src.gui.export.kml import KmlExport
 from GeoHealth.src.gui.about import AboutWidget
 from GeoHealth.src.utilities.resources import get_ui_class, resource
 
@@ -190,6 +194,15 @@ class MainDialog(QDialog, FORM_CLASS):
                         'content': {
                             'widget': CsvExport(),
                             'help': help_attribute_table()
+                        }
+                    },
+
+                    {  # ajoute par Rachel Goree 30/05/2017
+                        'label': 'KML',
+                        'icon': resource('kml.png'),
+                        'content': {
+                            'widget': KmlExport(),
+                            'help': help_export_kml()
                         }
                     }
                 ]
