@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[code.geohealth_ents_1]
+file_filter = src/i18n/geohealth_<lang>.ts
+source_file = src/i18n/geohealth_en.ts
+source_lang = en
+type = QT
+

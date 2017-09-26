@@ -335,7 +335,7 @@ def help_attribute_table():
         tr('Vector layer')
     ]
     outputs = [
-        tr('CSV file')
+        tr('A new CSV file')
     ]
     more = [
     ]
