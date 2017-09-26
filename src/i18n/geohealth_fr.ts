@@ -42,277 +42,277 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="118"/>
+        <location filename="help.py" line="120"/>
         <source>Import shapefile</source>
         <translation>Importer un shapefile</translation>
     </message>
     <message>
-        <location filename="help.py" line="119"/>
+        <location filename="help.py" line="121"/>
         <source>Import a shapefile into QGIS.</source>
         <translation>Importer un shapefile dans QGIS.</translation>
     </message>
     <message>
-        <location filename="help.py" line="121"/>
+        <location filename="help.py" line="123"/>
         <source>Shapefile</source>
         <translation>Shapefile</translation>
     </message>
     <message>
-        <location filename="help.py" line="184"/>
+        <location filename="help.py" line="186"/>
         <source>New layer</source>
         <translation>Nouvelle couche</translation>
     </message>
     <message>
-        <location filename="help.py" line="133"/>
+        <location filename="help.py" line="135"/>
         <source>Import raster</source>
         <translation>Importer un raster</translation>
     </message>
     <message>
-        <location filename="help.py" line="134"/>
+        <location filename="help.py" line="136"/>
         <source>Import a raster into QGIS.</source>
         <translation>Importer un raster dans QGIS.</translation>
     </message>
     <message>
-        <location filename="help.py" line="136"/>
+        <location filename="help.py" line="138"/>
         <source>Raster file</source>
         <translation>Fichier raster</translation>
     </message>
     <message>
-        <location filename="help.py" line="148"/>
+        <location filename="help.py" line="150"/>
         <source>Import table</source>
         <translation>Importer une table</translation>
     </message>
     <message>
-        <location filename="help.py" line="149"/>
+        <location filename="help.py" line="151"/>
         <source>XLS or DBF format.</source>
         <translation>Format XLS ou DBF.</translation>
     </message>
     <message>
-        <location filename="help.py" line="151"/>
+        <location filename="help.py" line="153"/>
         <source>Table file</source>
         <translation>Fichier table</translation>
     </message>
     <message>
-        <location filename="help.py" line="169"/>
+        <location filename="help.py" line="171"/>
         <source>New table</source>
         <translation>Nouvelle table</translation>
     </message>
     <message>
-        <location filename="help.py" line="178"/>
+        <location filename="help.py" line="180"/>
         <source>Import CSV table</source>
         <translation>Importer un fichier CSV</translation>
     </message>
     <message>
-        <location filename="help.py" line="164"/>
+        <location filename="help.py" line="166"/>
         <source>CSV format without geometry.</source>
         <translation>CSV sans géométrie</translation>
     </message>
     <message>
-        <location filename="help.py" line="181"/>
+        <location filename="help.py" line="183"/>
         <source>CSV file</source>
         <translation>Fichier CSV</translation>
     </message>
     <message>
-        <location filename="help.py" line="179"/>
+        <location filename="help.py" line="181"/>
         <source>CSV format with geometry.</source>
         <translation>Format CSV sans géométrie</translation>
     </message>
     <message>
-        <location filename="help.py" line="193"/>
+        <location filename="help.py" line="195"/>
         <source>Density</source>
         <translation>Densité</translation>
     </message>
     <message>
-        <location filename="help.py" line="216"/>
+        <location filename="help.py" line="218"/>
         <source>Compute density</source>
         <translation>Calculer la densité</translation>
     </message>
     <message>
-        <location filename="help.py" line="311"/>
+        <location filename="help.py" line="313"/>
         <source>Point layer : disease</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="197"/>
+        <location filename="help.py" line="199"/>
         <source>Polygon layer : administrative boundary</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="290"/>
+        <location filename="help.py" line="292"/>
         <source>Case field</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="314"/>
+        <location filename="help.py" line="316"/>
         <source>Ratio</source>
         <translation>Ratio</translation>
     </message>
     <message>
-        <location filename="help.py" line="315"/>
+        <location filename="help.py" line="317"/>
         <source>New column</source>
         <translation>Nouvelle colonne</translation>
     </message>
     <message>
-        <location filename="help.py" line="275"/>
+        <location filename="help.py" line="277"/>
         <source>New polygon layer with the density</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="228"/>
+        <location filename="help.py" line="230"/>
         <source>This algorithm will count the number of points inside each polygons and run a formula to get the density.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="230"/>
+        <location filename="help.py" line="232"/>
         <source>number of cases / area * ratio</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="215"/>
+        <location filename="help.py" line="217"/>
         <source>Density with case layer</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="218"/>
+        <location filename="help.py" line="220"/>
         <source>Case layer</source>
         <translation>Couche des cas</translation>
     </message>
     <message>
-        <location filename="help.py" line="219"/>
+        <location filename="help.py" line="221"/>
         <source>Polygon layer : administrative boundary with two fields pop and case</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="237"/>
+        <location filename="help.py" line="239"/>
         <source>Blurring</source>
         <translation>Floutage</translation>
     </message>
     <message>
-        <location filename="help.py" line="238"/>
+        <location filename="help.py" line="240"/>
         <source>Plugin to blur point data, such as health personal data, and get some statistics about this blurring.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="241"/>
+        <location filename="help.py" line="243"/>
         <source>Point layer</source>
         <translation>Couche ponctuelle</translation>
     </message>
     <message>
-        <location filename="help.py" line="242"/>
+        <location filename="help.py" line="244"/>
         <source>Radius</source>
         <translation>Rayon</translation>
     </message>
     <message>
-        <location filename="help.py" line="243"/>
+        <location filename="help.py" line="245"/>
         <source>Enveloppe : The layer will force the algorithm to have an intersection between the centroid and this layer. This is like a mask.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="248"/>
+        <location filename="help.py" line="250"/>
         <source>Blurred layer (polygon)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="251"/>
+        <location filename="help.py" line="253"/>
         <source>1 : Creating a buffer (radius r)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="253"/>
+        <location filename="help.py" line="255"/>
         <source>2 : Random selection of a point in each buffer</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="255"/>
+        <location filename="help.py" line="257"/>
         <source>3 : Creating a buffer around the new point with the same radius. The initial point is at a maximal distance 2r of the centroid of the buffer.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="259"/>
+        <location filename="help.py" line="261"/>
         <source>4 : Deleting the random point and the first buffer</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="267"/>
+        <location filename="help.py" line="269"/>
         <source>Stats</source>
         <translation>Statistiques</translation>
     </message>
     <message>
-        <location filename="help.py" line="268"/>
+        <location filename="help.py" line="270"/>
         <source>With two layers, the plugin will count the number of intersections between them and produces some stats.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="271"/>
+        <location filename="help.py" line="273"/>
         <source>Blurred layer</source>
         <translation>Couche floutée</translation>
     </message>
     <message>
-        <location filename="help.py" line="272"/>
+        <location filename="help.py" line="274"/>
         <source>Stats layer : buildings for instanceon layer : administrative boundary</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="278"/>
+        <location filename="help.py" line="280"/>
         <source>This is usefull if you want to rate your blurring.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="285"/>
+        <location filename="help.py" line="287"/>
         <source>Incidence</source>
         <translation>incidence</translation>
     </message>
     <message>
-        <location filename="help.py" line="309"/>
+        <location filename="help.py" line="311"/>
         <source>You can create an incidence map about a disease.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="288"/>
+        <location filename="help.py" line="290"/>
         <source>Polygon layer : administrative boundary with a population and case fields</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="313"/>
+        <location filename="help.py" line="315"/>
         <source>Population field</source>
         <translation>Champ population</translation>
     </message>
     <message>
-        <location filename="help.py" line="318"/>
+        <location filename="help.py" line="320"/>
         <source>New polygon layer with the incidence</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="321"/>
+        <location filename="help.py" line="323"/>
         <source>This algorithm will count the number of points inside each polygons and run a formula to get the incidence.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="323"/>
+        <location filename="help.py" line="325"/>
         <source>number of cases / population * ratio</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="308"/>
+        <location filename="help.py" line="310"/>
         <source>Incidence with case layer</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="312"/>
+        <location filename="help.py" line="314"/>
         <source>Polygon layer : administrative boundary with a population field</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="330"/>
+        <location filename="help.py" line="332"/>
         <source>Export attribute table</source>
         <translation>Export table attributaire</translation>
     </message>
     <message>
-        <location filename="help.py" line="331"/>
+        <location filename="help.py" line="333"/>
         <source>Export as CSV format without geometry.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="333"/>
+        <location filename="help.py" line="335"/>
         <source>Vector layer</source>
         <translation>Couche vecteur</translation>
     </message>
@@ -362,7 +362,7 @@
         <translation>Exporter comme CSV</translation>
     </message>
     <message>
-        <location filename="csv.py" line="98"/>
+        <location filename="kml.py" line="70"/>
         <source>Successful export to %s</source>
         <translation type="unfinished"/>
     </message>
@@ -407,9 +407,34 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="help.py" line="336"/>
+        <location filename="help.py" line="338"/>
         <source>A new CSV file</source>
         <translation>Nouveau fichier CSV</translation>
+    </message>
+    <message>
+        <location filename="help.py" line="347"/>
+        <source>Export KML</source>
+        <translation>Export KML</translation>
+    </message>
+    <message>
+        <location filename="help.py" line="348"/>
+        <source>Export a vector layer as KML</source>
+        <translation>Exporter une couche en KML</translation>
+    </message>
+    <message>
+        <location filename="help.py" line="350"/>
+        <source>Choose a vector layer</source>
+        <translation>Choisir une couche vecteur</translation>
+    </message>
+    <message>
+        <location filename="help.py" line="353"/>
+        <source>Choose a path and name to store the KML file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="kml.py" line="59"/>
+        <source>Export as KML</source>
+        <translation>Exporter en tant que KML</translation>
     </message>
 </context>
 <context>
@@ -795,7 +820,7 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="export_csv.ui" line="22"/>
+        <location filename="export_kml.ui" line="22"/>
         <source>Layer</source>
         <translation>Couche</translation>
     </message>
@@ -825,7 +850,7 @@
         <translation>point virgule</translation>
     </message>
     <message>
-        <location filename="export_csv.ui" line="110"/>
+        <location filename="export_kml.ui" line="30"/>
         <source>Output</source>
         <translation>Sortie</translation>
     </message>
