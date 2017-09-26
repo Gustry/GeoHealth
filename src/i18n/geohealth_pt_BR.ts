@@ -1,20 +1,20 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" sourcelanguage="en" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_BR" sourcelanguage="en" version="2.0">
 <context>
     <name>@default</name>
     <message>
         <location filename="exceptions.py" line="43"/>
         <source>No layer was provided.</source>
-        <translation>Absence d&apos;une couche.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="exceptions.py" line="50"/>
         <source>No file provided, &quot;add result to canvas&quot; required</source>
-        <translation>Pas de fichier en sortie, &quot;ajouter le résultat à la carte&quot; obligatoire</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="exceptions.py" line="57"/>
         <source>Error while creating the shapefile</source>
-        <translation>Erreur lors de la création du shapefile</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="exceptions.py" line="66"/>
@@ -34,7 +34,7 @@
     <message>
         <location filename="exceptions.py" line="88"/>
         <source>It&apos;s not a number</source>
-        <translation>Ce n&apos;est pas un nombre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="exceptions.py" line="97"/>
@@ -44,87 +44,87 @@
     <message>
         <location filename="help.py" line="118"/>
         <source>Import shapefile</source>
-        <translation>Importer un shapefile</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="119"/>
         <source>Import a shapefile into QGIS.</source>
-        <translation>Importer un shapefile dans QGIS.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="121"/>
         <source>Shapefile</source>
-        <translation>Shapefile</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="184"/>
         <source>New layer</source>
-        <translation>Nouvelle couche</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="133"/>
         <source>Import raster</source>
-        <translation>Importer un raster</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="134"/>
         <source>Import a raster into QGIS.</source>
-        <translation>Importer un raster dans QGIS.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="136"/>
         <source>Raster file</source>
-        <translation>Fichier raster</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="148"/>
         <source>Import table</source>
-        <translation>Importer une table</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="149"/>
         <source>XLS or DBF format.</source>
-        <translation>Format XLS ou DBF.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="151"/>
         <source>Table file</source>
-        <translation>Fichier table</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="169"/>
         <source>New table</source>
-        <translation>Nouvelle table</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="178"/>
         <source>Import CSV table</source>
-        <translation>Importer un fichier CSV</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="164"/>
         <source>CSV format without geometry.</source>
-        <translation>CSV sans géométrie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="181"/>
         <source>CSV file</source>
-        <translation>Fichier CSV</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="179"/>
         <source>CSV format with geometry.</source>
-        <translation>Format CSV sans géométrie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="193"/>
         <source>Density</source>
-        <translation>Densité</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="216"/>
         <source>Compute density</source>
-        <translation>Calculer la densité</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="311"/>
@@ -144,12 +144,12 @@
     <message>
         <location filename="help.py" line="314"/>
         <source>Ratio</source>
-        <translation>Ratio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="315"/>
         <source>New column</source>
-        <translation>Nouvelle colonne</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="275"/>
@@ -174,7 +174,7 @@
     <message>
         <location filename="help.py" line="218"/>
         <source>Case layer</source>
-        <translation>Couche des cas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="219"/>
@@ -184,7 +184,7 @@
     <message>
         <location filename="help.py" line="237"/>
         <source>Blurring</source>
-        <translation>Floutage</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="238"/>
@@ -194,12 +194,12 @@
     <message>
         <location filename="help.py" line="241"/>
         <source>Point layer</source>
-        <translation>Couche ponctuelle</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="242"/>
         <source>Radius</source>
-        <translation>Rayon</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="243"/>
@@ -234,7 +234,7 @@
     <message>
         <location filename="help.py" line="267"/>
         <source>Stats</source>
-        <translation>Statistiques</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="268"/>
@@ -244,7 +244,7 @@
     <message>
         <location filename="help.py" line="271"/>
         <source>Blurred layer</source>
-        <translation>Couche floutée</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="272"/>
@@ -259,7 +259,7 @@
     <message>
         <location filename="help.py" line="285"/>
         <source>Incidence</source>
-        <translation>incidence</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="309"/>
@@ -274,7 +274,7 @@
     <message>
         <location filename="help.py" line="313"/>
         <source>Population field</source>
-        <translation>Champ population</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="318"/>
@@ -304,7 +304,7 @@
     <message>
         <location filename="help.py" line="330"/>
         <source>Export attribute table</source>
-        <translation>Export table attributaire</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="help.py" line="331"/>
@@ -314,7 +314,7 @@
     <message>
         <location filename="help.py" line="333"/>
         <source>Vector layer</source>
-        <translation>Couche vecteur</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="stats_dialog.py" line="244"/>
@@ -334,7 +334,7 @@
     <message>
         <location filename="parent_incidence_density_dialog.py" line="152"/>
         <source>Save shapefile</source>
-        <translation>Enregistrer le shapefile</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="parent_incidence_density_dialog.py" line="341"/>
@@ -359,7 +359,7 @@
     <message>
         <location filename="csv.py" line="64"/>
         <source>Export as CSV</source>
-        <translation>Exporter comme CSV</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="csv.py" line="98"/>
@@ -369,7 +369,7 @@
     <message>
         <location filename="open_csv.py" line="46"/>
         <source>Open a CSV</source>
-        <translation>Ouvrir un CSV</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="open_csv.py" line="57"/>
@@ -379,7 +379,7 @@
     <message>
         <location filename="open_shapefile.py" line="54"/>
         <source>Select shapefile</source>
-        <translation>Sélection d&apos;un shapefile</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="open_xls_dbf.py" line="70"/>
@@ -389,12 +389,12 @@
     <message>
         <location filename="open_xls_dbf.py" line="54"/>
         <source>Select table</source>
-        <translation>Sélection de la table</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="open_raster.py" line="57"/>
         <source>Select raster</source>
-        <translation>Sélection du raster</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="datastore.py" line="89"/>
@@ -409,7 +409,7 @@
     <message>
         <location filename="help.py" line="336"/>
         <source>A new CSV file</source>
-        <translation>Nouveau fichier CSV</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -422,7 +422,7 @@
     <message>
         <location filename="about.ui" line="42"/>
         <source>GeoHealth</source>
-        <translation>GeoHealth</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="about.ui" line="69"/>
@@ -432,7 +432,7 @@
     <message>
         <location filename="about.ui" line="84"/>
         <source>Design</source>
-        <translation>Conception</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="about.ui" line="90"/>
@@ -442,37 +442,37 @@
     <message>
         <location filename="about.ui" line="155"/>
         <source>Realization</source>
-        <translation>Réalisation</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="about.ui" line="182"/>
         <source>Translation</source>
-        <translation>Traduction</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="about.ui" line="203"/>
         <source>French</source>
-        <translation>Français</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="about.ui" line="228"/>
         <source>Sources</source>
-        <translation>Sources</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="about.ui" line="236"/>
         <source>Github&apos;s repository</source>
-        <translation>Dépôt Github</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="about.ui" line="266"/>
         <source>Licence</source>
-        <translation>Licence</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="about.ui" line="276"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-2.0.html&quot;&gt;&lt;span style=&quot; text-decoration: none; color:#0057ae;&quot;&gt;Licence GPL Version 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl-2.0.html&quot;&gt;&lt;span style=&quot; text-decoration: none; color:#0057ae;&quot;&gt;Licence GPL Version 2&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="about.ui" line="188"/>
@@ -485,62 +485,62 @@
     <message>
         <location filename="blur.ui" line="46"/>
         <source>Radius (map&apos;s unit)</source>
-        <translation>Rayon (unité de la carte)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="blur.ui" line="69"/>
         <source>Use only selected features</source>
-        <translation>Utiliser uniquement les valeurs sélectionnées</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="blur.ui" line="83"/>
         <source>Add result to canvas</source>
-        <translation>Ajouter le résultat à la carte</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="blur.ui" line="25"/>
         <source>Point layer</source>
-        <translation>Couche ponctuelle</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="blur.ui" line="104"/>
         <source>Output :</source>
-        <translation>Sortie :</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="blur.ui" line="120"/>
         <source>Save to temporary file</source>
-        <translation>Enregistrer dans un fichier temporaire</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="blur.ui" line="127"/>
         <source>Browse</source>
-        <translation>Parcourir</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="blur.ui" line="136"/>
         <source>Advanced</source>
-        <translation>Avancé</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="blur.ui" line="160"/>
         <source>Add to the attribute table :</source>
-        <translation>Ajouter à la table attributaire :</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="blur.ui" line="167"/>
         <source>the radius</source>
-        <translation>le rayon</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="blur.ui" line="174"/>
         <source>X and Y of centroid</source>
-        <translation>X et Y du centroïd</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="blur.ui" line="201"/>
         <source>Use envelope</source>
-        <translation>Utiliser une enveloppe</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -548,77 +548,77 @@
     <message>
         <location filename="density.ui" line="14"/>
         <source>Density</source>
-        <translation>Densité</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="25"/>
         <source>Layer</source>
-        <translation>Couche</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="32"/>
         <source>Ratio</source>
-        <translation>Ratio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="46"/>
         <source>10</source>
-        <translation>10</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="51"/>
         <source>100</source>
-        <translation>100</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="56"/>
         <source>1 000</source>
-        <translation>1 000</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="61"/>
         <source>10 000</source>
-        <translation>10 000</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="66"/>
         <source>100 000</source>
-        <translation>100 000</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="74"/>
         <source>New column</source>
-        <translation>Nouvelle colonne</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="84"/>
         <source>density</source>
-        <translation>densité</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="94"/>
         <source>Add the number of cases per unit to the attribute table</source>
-        <translation>Ajouter le nombre de cas par unité à la table</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="101"/>
         <source>Calculate statistics</source>
-        <translation>Calculer les statistiques</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="111"/>
         <source>Output</source>
-        <translation>Sortie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="120"/>
         <source>Save to temporary file</source>
-        <translation>Enregistrer dans un fichier temporaire</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="127"/>
         <source>Browse</source>
-        <translation>Parcourir</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="136"/>
@@ -628,37 +628,37 @@
     <message>
         <location filename="density.ui" line="165"/>
         <source>Add a symbology</source>
-        <translation>Ajouter une symbologie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="179"/>
         <source>Low incidence</source>
-        <translation>Incidence basse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="210"/>
         <source>High incidence</source>
-        <translation>Incidence haute</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="232"/>
         <source>Classes</source>
-        <translation>Classes</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="262"/>
         <source>Mode</source>
-        <translation>Mode</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="311"/>
         <source>Parameter</source>
-        <translation>Paramètre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density.ui" line="316"/>
         <source>Value</source>
-        <translation>Valeur</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -666,117 +666,117 @@
     <message>
         <location filename="density_with_point.ui" line="14"/>
         <source>Density</source>
-        <translation>Densité</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="25"/>
         <source>Case layer</source>
-        <translation>Couche des cas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="32"/>
         <source>Layer for aggregation</source>
-        <translation>Couche des unités d’agrégation</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="39"/>
         <source>Ratio</source>
-        <translation>Ratio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="53"/>
         <source>10</source>
-        <translation>10</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="58"/>
         <source>100</source>
-        <translation>100</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="63"/>
         <source>1 000</source>
-        <translation>1 000</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="68"/>
         <source>10 000</source>
-        <translation>10 000</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="73"/>
         <source>100 000</source>
-        <translation>100 000</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="81"/>
         <source>New column</source>
-        <translation>Nouvelle colonne</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="91"/>
         <source>density</source>
-        <translation>densité</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="101"/>
         <source>Add the number of cases per unit to the attribute table</source>
-        <translation>Ajouter le nombre de cas par unité à la table</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="108"/>
         <source>Calculate statistics</source>
-        <translation>Calculer les statistiques</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="118"/>
         <source>Output</source>
-        <translation>Sortie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="127"/>
         <source>Save to temporary file</source>
-        <translation>Enregistrer dans un fichier temporaire</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="134"/>
         <source>Browse</source>
-        <translation>Parcourir</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="165"/>
         <source>Add a symbology</source>
-        <translation>Ajouter une symbologie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="179"/>
         <source>Low incidence</source>
-        <translation>Incidence basse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="210"/>
         <source>High incidence</source>
-        <translation>Incidence haute</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="232"/>
         <source>Classes</source>
-        <translation>Classes</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="262"/>
         <source>Mode</source>
-        <translation>Mode</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="311"/>
         <source>Parameter</source>
-        <translation>Paramètre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="density_with_point.ui" line="316"/>
         <source>Value</source>
-        <translation>Valeur</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -784,7 +784,7 @@
     <message>
         <location filename="main.ui" line="92"/>
         <source>Menu</source>
-        <translation>Menu</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -797,62 +797,62 @@
     <message>
         <location filename="export_csv.ui" line="22"/>
         <source>Layer</source>
-        <translation>Couche</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="export_csv.ui" line="29"/>
         <source>Delimiter</source>
-        <translation>Délimiteur</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="export_csv.ui" line="38"/>
         <source>tab</source>
-        <translation>tabulation</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="export_csv.ui" line="61"/>
         <source>comma</source>
-        <translation>virgule</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="export_csv.ui" line="81"/>
         <source>pipe</source>
-        <translation>barre verticale</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="export_csv.ui" line="101"/>
         <source>semicolon</source>
-        <translation>point virgule</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="export_csv.ui" line="110"/>
         <source>Output</source>
-        <translation>Sortie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="open_xls_dbf.ui" line="37"/>
         <source>Browse</source>
-        <translation>Parcourir</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="open_raster.ui" line="14"/>
         <source>Open raster</source>
-        <translation>Ouvrir un raster</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="open_raster.ui" line="25"/>
         <source>Raster</source>
-        <translation>Raster</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="open_shapefile.ui" line="25"/>
         <source>Shapefile</source>
-        <translation>Shapefile</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="open_xls_dbf.ui" line="25"/>
         <source>Table XLS or DBF</source>
-        <translation>Table XLS ou DBF</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -860,12 +860,12 @@
     <message>
         <location filename="histogram.ui" line="14"/>
         <source>Histogram</source>
-        <translation>Histogramme</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="histogram.ui" line="25"/>
         <source>Layer</source>
-        <translation>Couche</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -873,82 +873,82 @@
     <message>
         <location filename="incidence.ui" line="14"/>
         <source>Incidence</source>
-        <translation>Incidence</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="25"/>
         <source>Layer</source>
-        <translation>Couche</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="32"/>
         <source>Population field</source>
-        <translation>Champ population</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="39"/>
         <source>Ratio</source>
-        <translation>Ratio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="53"/>
         <source>10</source>
-        <translation>10</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="58"/>
         <source>100</source>
-        <translation>100</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="63"/>
         <source>1 000</source>
-        <translation>1 000</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="68"/>
         <source>10 000</source>
-        <translation>10 000</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="73"/>
         <source>100 000</source>
-        <translation>100 000</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="81"/>
         <source>New column</source>
-        <translation>Nouvelle colonne</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="91"/>
         <source>incidence</source>
-        <translation>incidence</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="101"/>
         <source>Add the number of cases per unit to the attribute table</source>
-        <translation>Ajouter le nombre de cas par unité à la table</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="108"/>
         <source>Calculate statistics</source>
-        <translation>Calculer les statistiques</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="118"/>
         <source>Output</source>
-        <translation>Sortie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="127"/>
         <source>Save to temporary file</source>
-        <translation>Enregistrer dans un fichier temporaire</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="134"/>
         <source>Browse</source>
-        <translation>Parcourir</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="146"/>
@@ -958,37 +958,37 @@
     <message>
         <location filename="incidence.ui" line="185"/>
         <source>Add a symbology</source>
-        <translation>Ajouter une symbologie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="199"/>
         <source>Low incidence</source>
-        <translation>Incidence basse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="230"/>
         <source>High incidence</source>
-        <translation>Incidence haute</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="252"/>
         <source>Classes</source>
-        <translation>Classes</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="282"/>
         <source>Mode</source>
-        <translation>Mode</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="331"/>
         <source>Parameter</source>
-        <translation>Paramètre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence.ui" line="336"/>
         <source>Value</source>
-        <translation>Valeur</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -996,122 +996,122 @@
     <message>
         <location filename="incidence_with_point.ui" line="14"/>
         <source>Incidence</source>
-        <translation>Incidence</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="25"/>
         <source>Case layer</source>
-        <translation>Couche des cas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="32"/>
         <source>Layer for aggregation</source>
-        <translation>Couche des unités d’agrégation</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="39"/>
         <source>Population field</source>
-        <translation>Champ population</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="46"/>
         <source>Ratio</source>
-        <translation>Ratio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="60"/>
         <source>10</source>
-        <translation>10</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="65"/>
         <source>100</source>
-        <translation>100</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="70"/>
         <source>1 000</source>
-        <translation>1 000</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="75"/>
         <source>10 000</source>
-        <translation>10 000</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="80"/>
         <source>100 000</source>
-        <translation>100 000</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="88"/>
         <source>New column</source>
-        <translation>Nouvelle colonne</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="98"/>
         <source>incidence</source>
-        <translation>incidence</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="108"/>
         <source>Add the number of cases per unit to the attribute table</source>
-        <translation>Ajouter le nombre de cas par unité à la table</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="115"/>
         <source>Calculate statistics</source>
-        <translation>Calculer les statistiques</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="125"/>
         <source>Output</source>
-        <translation>Sortie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="134"/>
         <source>Save to temporary file</source>
-        <translation>Enregistrer dans un fichier temporaire</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="141"/>
         <source>Browse</source>
-        <translation>Parcourir</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="185"/>
         <source>Add a symbology</source>
-        <translation>Ajouter une symbologie</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="199"/>
         <source>Low incidence</source>
-        <translation>Incidence basse</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="230"/>
         <source>High incidence</source>
-        <translation>Incidence haute</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="252"/>
         <source>Classes</source>
-        <translation>Classes</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="282"/>
         <source>Mode</source>
-        <translation>Mode</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="331"/>
         <source>Parameter</source>
-        <translation>Paramètre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="incidence_with_point.ui" line="336"/>
         <source>Value</source>
-        <translation>Valeur</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1119,32 +1119,32 @@
     <message>
         <location filename="stats.ui" line="42"/>
         <source>Blurred layer</source>
-        <translation>Couche floutée</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="stats.ui" line="49"/>
         <source>Stats layer</source>
-        <translation>Couche statistique</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="stats.ui" line="105"/>
         <source>Save table</source>
-        <translation>Enregistrer la table</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="stats.ui" line="112"/>
         <source>Save Y values</source>
-        <translation>Enregistrer les valeurs en Y</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="stats.ui" line="152"/>
         <source>Parameter</source>
-        <translation>Paramètre</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="stats.ui" line="157"/>
         <source>Value</source>
-        <translation>Valeur</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>
