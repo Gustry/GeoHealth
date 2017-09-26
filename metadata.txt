@@ -11,7 +11,7 @@ name=GeoHealth
 qgisMinimumVersion=2.0
 about=GeoHealth offers a simplified interface for users in public health.
 description=GeoHealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.
-version=0.9
+version=1.0
 author=Etienne Trimaille
 email=etienne@trimaille.eu
 
@@ -23,14 +23,14 @@ email=etienne@trimaille.eu
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=health,epidemiolgy,blur,blurring 
+tags=health,epidemiolgy,blur,blurring,incidence,density
 
 homepage=https://github.com/Gustry/GeoHealth
 tracker=https://github.com/Gustry/GeoHealth/issues
 repository=https://github.com/Gustry/GeoHealth
 icon=resources/icon-32.png
 # experimental flag
-experimental=True
+experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
