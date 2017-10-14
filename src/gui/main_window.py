@@ -24,7 +24,7 @@
 
 
 from PyQt4.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
-from PyQt4.QtCore import QSize
+from PyQt4.QtCore import QSize, Qt
 
 from GeoHealth.src.doc.help import (
     help_density,
@@ -70,9 +70,7 @@ class MainDialog(QDialog, FORM_CLASS):
         self.parent = parent
         self.setupUi(self)
 
-        # noinspection PyUnresolvedReferences
         self.menu.clicked.connect(self.expand)
-        # noinspection PyUnresolvedReferences
         self.menu.clicked.connect(self.display_content)
 
         self.tree_menu = [
@@ -247,6 +245,9 @@ class MainDialog(QDialog, FORM_CLASS):
                     self.help_list.append(tab_help)
 
         self.stack.setCurrentIndex(1)
+
+        # https://github.com/Gustry/GeoHealth/issues/20
+        self.menu.setAttribute(Qt.WA_MacShowFocusRect, False)
 
     def display_help_tab(self, tab_index):
         index = self.stack.currentIndex() - 2
