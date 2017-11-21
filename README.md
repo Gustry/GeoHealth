@@ -12,3 +12,8 @@ GeoHealth aims to provide a simplified interface for users in epidemiology in QG
 ## Authors
   * Etienne Trimaille
   * This project was designed by UMR Espace-DEV (IRD, UAG, UM2, UR).
+
+![UMR Espace Dev Logo](https://github.com/Gustry/GeoHealth/blob/master/src/resources/espace-dev.png?raw=true "UMR Espace Dev Logo")
+
+![IRD Logo](https://github.com/Gustry/GeoHealth/blob/master/src/resources/IRD-200.png?raw=true "IRD Logo")
+  
