@@ -12,7 +12,8 @@
         
         Based on the work of Geohealth                  
         begin                : 2014-08-20
-        copyright            : (C) 2014 by Etienne Trimaille
+        copyright            : (C) 2014 by Etienne Trimaille, (C) 2017 by
+        Rachel Gorée
         email                : etienne@trimaille.eu
  ***************************************************************************/
 
@@ -26,8 +27,9 @@
  ***************************************************************************/
 """
 
+
 from PyQt4.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
-from PyQt4.QtCore import QSize
+from PyQt4.QtCore import QSize, Qt
 
 from GeoPublicHealth.doc.help import *
 from GeoPublicHealth.ui.main import Ui_Dialog
@@ -55,9 +57,7 @@ class MainDialog(QDialog, Ui_Dialog):
         self.parent = parent
         self.setupUi(self)
 
-        # noinspection PyUnresolvedReferences
         self.menu.clicked.connect(self.expand)
-        # noinspection PyUnresolvedReferences
         self.menu.clicked.connect(self.display_content)
 
         self.tree_menu = [
@@ -206,6 +206,15 @@ class MainDialog(QDialog, Ui_Dialog):
                             'widget': CsvExport(),
                             'help': help_attribute_table()
                         }
+                    },
+
+                    {  # ajoute par Rachel Goree 30/05/2017
+                        'label': 'KML',
+                        'icon': resource('kml.png'),
+                        'content': {
+                            'widget': KmlExport(),
+                            'help': help_export_kml()
+                        }
                     }
                 ]
             }
@@ -249,6 +258,9 @@ class MainDialog(QDialog, Ui_Dialog):
                     self.help_list.append(tab_help)
 
         self.stack.setCurrentIndex(1)
+
+        # https://github.com/Gustry/GeoHealth/issues/20
+        self.menu.setAttribute(Qt.WA_MacShowFocusRect, False)
 
     def display_help_tab(self, tab_index):
         index = self.stack.currentIndex() - 2

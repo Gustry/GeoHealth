@@ -12,7 +12,8 @@
         
         Based on the work of Geohealth                  
         begin                : 2014-08-20
-        copyright            : (C) 2014 by Etienne Trimaille
+        copyright            : (C) 2014 by Etienne Trimaille, (C) 2017 by
+        Rachel Gorée et Christophe Révillion
         email                : etienne@trimaille.eu
  ***************************************************************************/
 
@@ -25,6 +26,7 @@
  *                                                                         *
  ***************************************************************************/
 """
+
 
 from os.path import dirname, abspath, join
 PATH = dirname(abspath(__file__))
@@ -375,7 +377,22 @@ def help_attribute_table():
         tr('Vector layer')
     ]
     outputs = [
-        tr('CSV file')
+        tr('A new CSV file')
+    ]
+    more = [
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
+
+def help_export_kml():
+    title = tr('Export KML')
+    intro = tr('Export a vector layer as KML')
+    inputs = [
+        tr('Choose a vector layer')
+    ]
+    outputs = [
+        tr('Choose a path and name to store the KML file')
     ]
     more = [
     ]

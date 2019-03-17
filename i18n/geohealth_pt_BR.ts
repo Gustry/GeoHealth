@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="th" sourcelanguage="en" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_BR" sourcelanguage="en" version="2.0">
 <context>
     <name>@default</name>
     <message>
@@ -420,14 +420,14 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="ui/about.py" line="188"/>
+        <location filename="about.ui" line="42"/>
         <source>GeoHealth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="ui/about.py" line="189"/>
+        <location filename="about.ui" line="69"/>
         <source>Geohealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="about.ui" line="84"/>
@@ -435,9 +435,9 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="ui/about.py" line="191"/>
+        <location filename="about.ui" line="90"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt; This plugin was designed by &lt;a href=&quot;http://www.espace-dev.fr&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;UMR ESPACE-DEV&lt;/span&gt;&lt;/a&gt; (IRD, Univ. Guyane, Univ. Montpellier, Univ. RÃ©union) : &lt;a href=&quot;mailto:vincent.herbreteau@ird.fr?subject=Plugin GeoHealth&quot;&gt;&lt;span style=&quot; color:#0057ae;&quot; style=&quot;text-decoration:none;&quot;&gt;Vincent Herbreteau (IRD)&lt;/span&gt;&lt;/a&gt; and &lt;a href=&quot;mailto:christophe.revillion@univ-reunion.fr?subject=Plugin GeoHealth&quot; style=&quot;text-decoration:none;&quot;&gt;Christophe RÃ©villion (IRD)&lt;/a&gt;, with contributions from the ESoR research group (Environment, Societies and Health Risk).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="about.ui" line="155"/>
@@ -450,12 +450,7 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="ui/about.py" line="194"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The web-based translating platform &lt;a href=&quot;https://www.transifex.com/geohealth/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;Transifex&lt;/span&gt;&lt;/a&gt; is used. It&apos;s easier for translators.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ui/about.py" line="195"/>
+        <location filename="about.ui" line="203"/>
         <source>French</source>
         <translation type="unfinished"/>
     </message>

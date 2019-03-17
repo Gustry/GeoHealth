@@ -30,7 +30,7 @@ try:
         NavigationToolbar2QTAgg as NavigationToolbar
 except ImportError:
     from matplotlib.backends.backend_qt4agg import \
-        NavigationToolbar2Qt as NavigationToolbar
+        NavigationToolbar2QT as NavigationToolbar
 
 
 class CustomNavigationToolbar(NavigationToolbar):

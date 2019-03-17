@@ -1,3 +1,7 @@
+## Links
+* geohealth_sample_data.zip French version
+* geohealth_sample_data_en.zip English version
+
 ## Sample data
 Ce jeu de données est destiné à tester l’utilisation des extensions GeoHealth et QBAN(O) du logiciel QGIS:
 * **cas_fictif** : il s’agit d’une couche vectorielle de points (format shapefile) qui représente des cas fictifs de deux maladies inexistantes à La Réunion : la Télédose et la Fièvre Q-GIS.

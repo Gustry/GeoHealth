@@ -20,6 +20,8 @@ email=manuel@epublichealth.co, javier@epublichealth.co, etienne@trimaille.eu, cc
 
 # Uncomment the following line and add your changelog:
 # changelog=
+    Version 1.0.1:
+    - Fix import error matplotlib
 
 # Tags are comma separated with spaces allowed
 tags=health,epidemiolgy, incidence rates, unmet health needs, blur,blurring 
@@ -29,7 +31,7 @@ tracker=https://github.com/GeoPublicHealth/GeoPublicHealth/issues
 repository=https://github.com/GeoPublicHealth/GeoPublicHealth
 icon=resources/icon-32.png
 # experimental flag
-experimental=True
+experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
