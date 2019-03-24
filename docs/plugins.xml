@@ -1,14 +1,14 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <?xml-stylesheet type="text/xsl" href="" ?>
     <plugins>
-        <pyqgis_plugin name="GeoPublicHealth" version="0.93" plugin_id="1968">
+        <pyqgis_plugin name="GeoPublicHealth" version="0.94" plugin_id="1968">
             <description>
                 <![CDATA[GeoPublicHealth offers a simplified interface for users in public health and epidemiology]]>
             </description>
             <about></about>
-            <version>0.93</version>
+            <version>0.94</version>
             <qgis_minimum_version>2.0.0</qgis_minimum_version>
-            <qgis_maximum_version>2.19.9</qgis_maximum_version>
+            <qgis_maximum_version>2.18.24</qgis_maximum_version>
             <homepage>
                 <![CDATA[https://github.com/ePublicHealth/GeoPublicHealth]]>
             </homepage>
@@ -20,13 +20,13 @@
                 <![CDATA[Manuel Vidaurre, Javier Cervantes, Etienne Trimaille, Dr Carlos Castillo-Salgado]]>
             </author_name>
             <download_url>
-                http://epublichealth.github.io/GeoPublicHealth/docs/GeoPublicHealth.zip
+                http://epipublichealth.epizy.com/GeoPublicHealth.zip
             </download_url>
             <uploaded_by>
                 <![CDATA[mvidaurre]]>
             </uploaded_by>
             <create_date>2016-04-24T15:31:19.824333</create_date>
-            <update_date>2016-06-20T23:09:19.824333</update_date>
+            <update_date>2019-03-20T08:09:19.824333</update_date>
             <experimental>True</experimental>
             <deprecated>False</deprecated>
             <tracker>
