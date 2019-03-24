@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <?xml-stylesheet type="text/xsl" href="" ?>
     <plugins>
-        <pyqgis_plugin name="GeoPublicHealth" version="0.93" plugin_id="1968">
+        <pyqgis_plugin name="GeoPublicHealth" version="0.94" plugin_id="1968">
             <description>
                 <![CDATA[GeoPublicHealth offers a simplified interface for users in public health and epidemiology]]>
             </description>
