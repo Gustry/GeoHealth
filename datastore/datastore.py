@@ -2,7 +2,7 @@
 
 from abc import ABCMeta, abstractmethod
 from qgis.core import QgsRasterLayer, QgsVectorLayer, QGis
-from GeoHealth.src.core.tools import tr
+from GeoPublicHealth.src.core.tools import tr
 
 
 class DataStore(object):

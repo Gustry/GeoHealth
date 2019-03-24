@@ -119,4 +119,3 @@ class Ui_Dialog(object):
 
 from qgis import gui
 from PyQt4 import QtWebKit
-from GeoPublicHealth.resources import resources_rc

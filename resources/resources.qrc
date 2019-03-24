@@ -1,9 +1,5 @@
 <RCC>
-<<<<<<< HEAD:src/resources/resources.qrc
-	<qresource prefix="/plugins/GeoHealth/geohealth/resources" >
-=======
 	<qresource prefix="/plugins/GeoPublicHealth/resources" >
->>>>>>> Change the files for the new name GeoPublicHealth:resources/resources.qrc
 		<file>icon-32.png</file>
 		<file>icon-100.png</file>
 		<file>espace-dev.png</file>

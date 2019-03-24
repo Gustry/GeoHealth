@@ -30,8 +30,8 @@ from PyQt4.QtCore import pyqtSignal
 from qgis.gui import QgsMapLayerProxyModel
 from qgis.core import QgsVectorFileWriter
 
-from GeoHealth.src.core.tools import tr
-from GeoHealth.src.utilities.resources import get_ui_class
+from GeoPublicHealth.src.core.tools import tr
+from GeoPublicHealth.src.utilities.resources import get_ui_class
 
 FORM_CLASS = get_ui_class('export', 'export_kml.ui')
 

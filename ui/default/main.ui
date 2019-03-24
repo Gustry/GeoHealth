@@ -168,14 +168,6 @@ QTreeWidget::item:!has-children
    <container>1</container>
   </customwidget>
  </customwidgets>
-<<<<<<< HEAD:src/ui/default/main.ui
  <resources/>
-=======
- <resources>
-  <include location="../resources/resources.qrc"/>
-  <include location="../resources/resources.qrc"/>
-  <include location="../resources/resources.qrc"/>
- </resources>
->>>>>>> Updating the about.ui for reflecting the changes on GeoPublicHealth:ui/main.ui
  <connections/>
 </ui>

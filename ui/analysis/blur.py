@@ -175,4 +175,3 @@ class Ui_Blur(object):
 
 from qgis.gui import QgsCollapsibleGroupBox
 from qgis.gui import QgsMapLayerComboBox
-from GeoPublicHealth.resources import resources_rc

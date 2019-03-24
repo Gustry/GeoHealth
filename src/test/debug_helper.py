@@ -21,8 +21,8 @@ from qgis.core import (
     QgsCoordinateReferenceSystem,
 )
 
-from GeoHealth.src.core.tools import create_memory_layer
-from GeoHealth.src.datastore.folder import Folder
+from GeoPublicHealth.src.core.tools import create_memory_layer
+from GeoPublicHealth.src.datastore.folder import Folder
 
 __author__ = 'etienne@kartoza.com'
 __date__ = '20/04/2016'

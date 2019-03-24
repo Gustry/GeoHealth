@@ -127,4 +127,3 @@ class Ui_Stats(object):
         item.setText(_translate("Stats", "Value", None))
 
 from qgis.gui import QgsMapLayerComboBox
-from GeoPublicHealth.resources import resources_rc

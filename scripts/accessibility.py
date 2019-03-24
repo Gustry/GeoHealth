@@ -14,12 +14,12 @@ from PyQt4.QtCore import QVariant, QPyNullVariant
 
 
 from safe.common.utilities import unique_filename
-from GeoHealth.src.test.debug_helper import show_qgis_layer
-from GeoHealth.src.core.tools import create_memory_layer, create_spatial_index
-from GeoHealth.src.core.gis.reproject import reproject
-from GeoHealth.src.core.tools import copy_layer, remove_fields
+from GeoPublicHealth.src.test.debug_helper import show_qgis_layer
+from GeoPublicHealth.src.core.tools import create_memory_layer, create_spatial_index
+from GeoPublicHealth.src.core.gis.reproject import reproject
+from GeoPublicHealth.src.core.tools import copy_layer, remove_fields
 
-from GeoHealth.src.core.accessibility.network import Graph
+from GeoPublicHealth.src.core.accessibility.network import Graph
 
 import processing
 

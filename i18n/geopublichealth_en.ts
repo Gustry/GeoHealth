@@ -447,7 +447,7 @@
     </message>
     <message>
         <location filename="ui/about.py" line="188"/>
-        <source>GeoHealth</source>
+        <source>GeoPublicHealth</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

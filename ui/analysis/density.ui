@@ -6,13 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-<<<<<<< HEAD:src/ui/analysis/density.ui
     <width>651</width>
     <height>613</height>
-=======
-    <width>814</width>
-    <height>754</height>
->>>>>>> Include List Widget for adding selected indicators for the Composite Index:ui/analysis/composite_index.ui
    </rect>
   </property>
   <property name="windowTitle">
@@ -73,14 +68,13 @@
        </item>
       </widget>
      </item>
-     <item row="9" column="0">
+     <item row="5" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Composite Index</string>
+        <string>New column</string>
        </property>
       </widget>
      </item>
-<<<<<<< HEAD:src/ui/analysis/density.ui
      <item row="5" column="1">
       <widget class="QLineEdit" name="le_new_column">
        <property name="maxLength">
@@ -113,22 +107,13 @@
      </item>
      <item row="8" column="0">
       <widget class="QLabel" name="label_5">
-=======
-     <item row="10" column="0">
-      <widget class="QLabel" name="label_8">
->>>>>>> Include List Widget for adding selected indicators for the Composite Index:ui/analysis/composite_index.ui
        <property name="text">
         <string>Output</string>
        </property>
       </widget>
      </item>
-<<<<<<< HEAD:src/ui/analysis/density.ui
      <item row="8" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout">
-=======
-     <item row="10" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_6">
->>>>>>> Include List Widget for adding selected indicators for the Composite Index:ui/analysis/composite_index.ui
        <item>
         <widget class="QLineEdit" name="le_output_filepath">
          <property name="placeholderText">
@@ -145,7 +130,6 @@
        </item>
       </layout>
      </item>
-<<<<<<< HEAD:src/ui/analysis/density.ui
      <item row="3" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
@@ -170,53 +154,6 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
-       </property>
-      </widget>
-=======
-     <item row="11" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout"/>
->>>>>>> Include List Widget for adding selected indicators for the Composite Index:ui/analysis/composite_index.ui
-     </item>
-     <item row="5" column="1">
-      <widget class="QRadioButton" name="radioButton_vector_positive">
-       <property name="text">
-        <string>Higher the value of the indicator better the conditions for the population</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-       <attribute name="buttonGroup">
-        <string notr="true">buttonGroup_2</string>
-       </attribute>
-      </widget>
-     </item>
-     <item row="6" column="1">
-      <widget class="QRadioButton" name="radioButton_vector_negative">
-       <property name="text">
-        <string>Higher the value of the indicator worse the conditions for the population</string>
-       </property>
-       <attribute name="buttonGroup">
-        <string notr="true">buttonGroup_2</string>
-       </attribute>
-      </widget>
-     </item>
-     <item row="9" column="1">
-      <widget class="QLineEdit" name="le_new_column">
-       <property name="maxLength">
-        <number>10</number>
-       </property>
-       <property name="placeholderText">
-        <string>UHN</string>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="1">
-      <widget class="QListWidget" name="cbx_list_indicators"/>
-     </item>
-     <item row="7" column="1">
-      <widget class="QCommandLinkButton" name="command_link_button">
-       <property name="text">
-        <string>Add to Index</string>
        </property>
       </widget>
      </item>
@@ -344,7 +281,6 @@
      </property>
     </widget>
    </item>
-<<<<<<< HEAD:src/ui/analysis/density.ui
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
@@ -387,8 +323,6 @@
      </item>
     </layout>
    </item>
-=======
->>>>>>> Update help for Composite Index and delete some widgets in the Dialog:ui/analysis/composite_index.ui
   </layout>
  </widget>
  <customwidgets>
@@ -433,7 +367,4 @@
    </hints>
   </connection>
  </connections>
- <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
- </buttongroups>
 </ui>

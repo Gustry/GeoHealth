@@ -421,7 +421,7 @@
     </message>
     <message>
         <location filename="about.ui" line="42"/>
-        <source>GeoHealth</source>
+        <source>GeoPublicHealth</source>
         <translation type="unfinished"/>
     </message>
     <message>

@@ -50,11 +50,7 @@ from GeoPublicHealth.core.exceptions import \
     NoFileNoDisplayException, \
     DifferentCrsException,\
     CreatingShapeFileException
-<<<<<<< HEAD:src/gui/analysis/blur_dialog.py
-from GeoHealth.src.utilities.resources import get_ui_class
-=======
-from GeoPublicHealth.ui.analysis.blur import Ui_Blur
->>>>>>> Change the files for the new name GeoPublicHealth:gui/analysis/blur_dialog.py
+from GeoPublicHealth.src.utilities.resources import get_ui_class
 
 FORM_CLASS = get_ui_class('analysis', 'blur.ui')
 

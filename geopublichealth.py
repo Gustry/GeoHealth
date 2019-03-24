@@ -32,7 +32,7 @@ from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
 from PyQt4.QtGui import QIcon, QAction
 from processing.core.Processing import Processing
 
-from GeoPublicHealth.gui.main_window import MainDialog
+from GeoPublicHealth.src.gui.main_window import MainDialog
 from GeoPublicHealth.processing_geopublichealth.provider import Provider
 
 

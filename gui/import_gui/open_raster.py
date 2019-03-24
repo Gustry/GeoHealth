@@ -30,13 +30,8 @@ from qgis.core import QgsMapLayerRegistry, QgsRasterLayer, QgsProviderRegistry
 
 from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
 
-<<<<<<< HEAD:src/gui/import_gui/open_raster.py
-from GeoHealth.src.core.tools import tr
-from GeoHealth.src.utilities.resources import get_ui_class
-=======
-from GeoPublicHealth.ui.import_ui.open_raster import Ui_Form
-from GeoPublicHealth.core.tools import tr
->>>>>>> Change the files for the new name GeoPublicHealth:gui/import_gui/raster.py
+from GeoPublicHealth.src.core.tools import tr
+from GeoPublicHealth.src.utilities.resources import get_ui_class
 
 FORM_CLASS = get_ui_class('import_ui', 'open_raster.ui')
 

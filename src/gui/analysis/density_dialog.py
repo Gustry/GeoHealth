@@ -27,7 +27,7 @@
 """
 
 from GeoPublicHealth.ui.analysis.density import Ui_Density
-from GeoPublicHealth.gui.analysis.parent_incidence_density_dialog import IncidenceDensityDialog
+from GeoPublicHealth.src.gui.analysis.parent_incidence_density_dialog import IncidenceDensityDialog
 
 FORM_CLASS = get_ui_class('analysis', 'density.ui')
 

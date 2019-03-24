@@ -30,22 +30,23 @@ from PyQt4.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
 from PyQt4.QtCore import QSize
 
 from GeoPublicHealth.doc.help import *
-from GeoPublicHealth.ui.main import Ui_Dialog
-from GeoPublicHealth.gui.import_gui.open_shapefile import OpenShapefileWidget
-from GeoPublicHealth.gui.import_gui.open_csv import OpenCsv
-from GeoPublicHealth.gui.import_gui.raster import OpenRasterWidget
-from GeoPublicHealth.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
-from GeoPublicHealth.gui.analysis.blur_dialog import BlurWidget
-from GeoPublicHealth.gui.analysis.stats_dialog import StatsWidget
-from GeoPublicHealth.gui.analysis.composite_index_dialog import CompositeIndexDialog
-from GeoPublicHealth.gui.analysis.incidence_dialog import IncidenceDialog
-from GeoPublicHealth.gui.analysis.incidence_point_dialog import IncidencePointDialog
-from GeoPublicHealth.gui.analysis.density_dialog import DensityDialog
-from GeoPublicHealth.gui.analysis.density_point_dialog import DensityPointDialog
-from GeoPublicHealth.gui.analysis.autocorrelation_dialog import AutocorrelationDialog
-from GeoPublicHealth.gui.export.csv import CsvExport
-from GeoPublicHealth.gui.about import AboutWidget
+from GeoPublicHealth.src.gui.import_gui.open_shapefile import OpenShapefileWidget
+from GeoPublicHealth.src.gui.import_gui.open_csv import OpenCsv
+from GeoPublicHealth.src.gui.import_gui.raster import OpenRasterWidget
+from GeoPublicHealth.src.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
+from GeoPublicHealth.src.gui.analysis.blur_dialog import BlurWidget
+from GeoPublicHealth.src.gui.analysis.stats_dialog import StatsWidget
+from GeoPublicHealth.src.gui.analysis.composite_index_dialog import CompositeIndexDialog
+from GeoPublicHealth.src.gui.analysis.incidence_dialog import IncidenceDialog
+from GeoPublicHealth.src.gui.analysis.incidence_point_dialog import IncidencePointDialog
+from GeoPublicHealth.src.gui.analysis.density_dialog import DensityDialog
+from GeoPublicHealth.src.gui.analysis.density_point_dialog import DensityPointDialog
+from GeoPublicHealth.src.gui.analysis.autocorrelation_dialog import AutocorrelationDialog
+from GeoPublicHealth.src.gui.export.csv import CsvExport
+from GeoPublicHealth.src.gui.about import AboutWidget
+from GeoPublicHealth.src.utilities.resources import get_ui_class, resource
 
+FORM_CLASS = get_ui_class('default', 'main.ui')
 
 class MainDialog(QDialog, Ui_Dialog):
 

@@ -4,8 +4,8 @@ import unittest
 
 from qgis.core import QgsCoordinateReferenceSystem
 
-from GeoHealth.src.test.utilities import iface, load_test_vector_layer
-from GeoHealth.src.core.gis.reproject import reproject
+from GeoPublicHealth.src.test.utilities import iface, load_test_vector_layer
+from GeoPublicHealth.src.core.gis.reproject import reproject
 
 iface()
 

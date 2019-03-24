@@ -26,14 +26,9 @@
  ***************************************************************************/
 """
 
-<<<<<<< HEAD:src/gui/analysis/density_point_dialog.py
-from GeoHealth.src.gui.analysis.parent_incidence_density_dialog import (
+from GeoPublicHealth.src.gui.analysis.parent_incidence_density_dialog import (
     IncidenceDensityDialog)
-from GeoHealth.src.utilities.resources import get_ui_class
-=======
-from GeoPublicHealth.ui.analysis.density_with_point import Ui_DensityPoint
-from GeoPublicHealth.gui.analysis.parent_incidence_density_dialog import IncidenceDensityDialog
->>>>>>> Change the files for the new name GeoPublicHealth:gui/analysis/density_point_dialog.py
+from GeoPublicHealth.src.utilities.resources import get_ui_class
 
 FORM_CLASS = get_ui_class('analysis', 'density_with_point.ui')
 

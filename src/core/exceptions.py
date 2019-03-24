@@ -30,11 +30,7 @@ from qgis.gui import QgsMessageBar
 from processing.core.GeoAlgorithmExecutionException import \
     GeoAlgorithmExecutionException
 
-<<<<<<< HEAD:src/core/exceptions.py
-from GeoHealth.src.core.tools import tr
-=======
-from GeoPublicHealth.core.tools import tr
->>>>>>> Change the files for the new name GeoPublicHealth:core/exceptions.py
+from GeoPublicHealth.src.core.tools import tr
 
 # QApplication.translate doesn't work in constructor's parameters.
 
