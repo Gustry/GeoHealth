@@ -2,17 +2,13 @@
 """
 /***************************************************************************
 
-                               GeoPublicHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
-        begin                : 2016-02-17
-        copyright            : (C) 2016 by ePublicHealth
-        email                : manuel@epublichealth.co
-        
-        Based on the work of Geohealth                  
         begin                : 2014-08-20
-        copyright            : (C) 2014 by Etienne Trimaille
+        copyright            : (C) 2014 by Etienne Trimaille, (C) 2017 by
+        Rachel Gorée
         email                : etienne@trimaille.eu
  ***************************************************************************/
 
@@ -26,28 +22,53 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
-from PyQt4.QtCore import QSize
 
-from GeoPublicHealth.doc.help import *
-from GeoPublicHealth.src.gui.import_gui.open_shapefile import OpenShapefileWidget
+from PyQt4.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
+from PyQt4.QtCore import QSize, Qt
+
+from GeoPublicHealth.src.doc.help import (
+    help_density,
+    help_autocorrelation,
+    help_open_shapefile,
+    help_open_raster,
+    help_open_table,
+    help_open_csv,
+    help_blur,
+    help_stats_blurring,
+    help_composite_index,
+    help_incidence,
+    help_incidence_point,
+    help_density_point,
+    help_attribute_table,
+    help_export_kml,
+)
+from GeoPublicHealth.src.gui.import_gui.open_shapefile import (
+    OpenShapefileWidget)
 from GeoPublicHealth.src.gui.import_gui.open_csv import OpenCsv
-from GeoPublicHealth.src.gui.import_gui.open_xls_dbf import OpenXlsDbfFileWidget
+from GeoPublicHealth.src.gui.import_gui.open_raster import OpenRasterWidget
+from GeoPublicHealth.src.gui.import_gui.open_xls_dbf import (
+    OpenXlsDbfFileWidget)
 from GeoPublicHealth.src.gui.analysis.blur_dialog import BlurWidget
 from GeoPublicHealth.src.gui.analysis.stats_dialog import StatsWidget
-from GeoPublicHealth.src.gui.analysis.composite_index_dialog import CompositeIndexDialog
+from GeoPublicHealth.src.gui.analysis.composite_index_dialog import (
+    CompositeIndexDialog)
 from GeoPublicHealth.src.gui.analysis.incidence_dialog import IncidenceDialog
-from GeoPublicHealth.src.gui.analysis.incidence_point_dialog import IncidencePointDialog
+from GeoPublicHealth.src.gui.analysis.incidence_point_dialog import (
+    IncidencePointDialog)
 from GeoPublicHealth.src.gui.analysis.density_dialog import DensityDialog
-from GeoPublicHealth.src.gui.analysis.density_point_dialog import DensityPointDialog
-from GeoPublicHealth.src.gui.analysis.autocorrelation_dialog import AutocorrelationDialog
+from GeoPublicHealth.src.gui.analysis.density_point_dialog import (
+    DensityPointDialog)
+from GeoPublicHealth.src.gui.analysis.autocorrelation_dialog import (
+    AutocorrelationDialog)
 from GeoPublicHealth.src.gui.export.csv import CsvExport
+from GeoPublicHealth.src.gui.export.kml import KmlExport
 from GeoPublicHealth.src.gui.about import AboutWidget
 from GeoPublicHealth.src.utilities.resources import get_ui_class, resource
 
 FORM_CLASS = get_ui_class('default', 'main.ui')
 
-class MainDialog(QDialog, Ui_Dialog):
+
+class MainDialog(QDialog, FORM_CLASS):
 
     def __init__(self, parent=None):
         """Constructor."""
@@ -55,47 +76,45 @@ class MainDialog(QDialog, Ui_Dialog):
         self.parent = parent
         self.setupUi(self)
 
-        # noinspection PyUnresolvedReferences
         self.menu.clicked.connect(self.expand)
-        # noinspection PyUnresolvedReferences
         self.menu.clicked.connect(self.display_content)
 
         self.tree_menu = [
             {
                 'label': 'Import',
-                'icon': ':/plugins/GeoPublicHealth/resources/import.png',
+                'icon': resource('import.png'),
                 'content': [
                     {
                         'label': 'Shapefile',
-                        'icon': ':/plugins/GeoPublicHealth/resources/shp.png',
+                        'icon': resource('shp.png'),
                         'content': {
                             'widget': OpenShapefileWidget(),
                             'help': help_open_shapefile()
                         }
                     }, {
                         'label': 'Raster',
-                        'icon': ':/plugins/GeoPublicHealth/resources/raster.png',
+                        'icon': resource('raster.png'),
                         'content': {
                             'widget': OpenRasterWidget(),
                             'help': help_open_raster()
                         }
                     }, {
                         'label': 'Table XLS/DBF',
-                        'icon': ':/plugins/GeoPublicHealth/resources/xls.png',
+                        'icon': resource('xls.png'),
                         'content': {
                             'widget': OpenXlsDbfFileWidget(),
                             'help': help_open_table()
                         }
                     }, {
                         'label': 'Table CSV',
-                        'icon': ':/plugins/GeoPublicHealth/resources/csv.png',
+                        'icon': resource('csv.png'),
                         'content': {
                             'widget': OpenCsv(),
                             'help': help_open_csv()
                         }
                     }, {
                         'label': 'XY to map',
-                        'icon': ':/plugins/GeoPublicHealth/resources/xy.png',
+                        'icon': resource('xy.png'),
                         'content': {
                             'widget': OpenCsv(),
                             'help': help_open_csv()
@@ -103,16 +122,49 @@ class MainDialog(QDialog, Ui_Dialog):
                     }
                 ]
             }, {
-                'label': 'Analyze',
-                'icon': ':/plugins/GeoPublicHealth/resources/gears.png',
+                'label': 'Analyse',
+                'icon': resource('gears.png'),
                 'content': [
                     {
-                        'label': 'Composite Index',
-                        'icon': ':/plugins/GeoPublicHealth/resources/composite_index.png',
+                        'label': 'Blur',
+                        'icon': resource('blur.png'),
+                        'content': [
+                            {
+                                'label': 'Blur',
+                                'icon': resource('blur.png'),
+                                'content': {
+                                    'widget': BlurWidget(),
+                                    'help': help_blur()
+                                }
+                            }, {
+                                'label': 'Stats',
+                                'icon': resource('sigma.png'),
+                                'content': {
+                                    'widget': StatsWidget(),
+                                    'help': help_stats_blurring()
+                                }
+                            }
+                        ]
+                    }, {
+                        'label': 'Autocorrelation',
+                        'icon':resource('autocorrelation.png'),
                         'content': [
                             {
                                 'label': 'Polygon layer only',
-                                'icon': ':/plugins/GeoPublicHealth/resources/composite_index.png',
+                                'icon': resource('autocorrelation.png'),
+                                'content': {
+                                    'widget': AutocorrelationDialog(),
+                                    'help': help_autocorrelation()
+                                }
+                            }
+                        ]
+                    }, {
+                        'label': 'Composite Index',
+                        'icon': resource('composite_index.png'),
+                        'content': [
+                            {
+                                'label': 'Polygon layer only',
+                                'icon': resource('composite_index.png'),
                                 'content': {
                                     'widget': CompositeIndexDialog(),
                                     'help': help_composite_index()
@@ -121,18 +173,18 @@ class MainDialog(QDialog, Ui_Dialog):
                         ]
                     }, {
                         'label': 'Incidence',
-                        'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+                        'icon': resource('incidence.png'),
                         'content': [
                             {
                                 'label': 'Polygon layer only',
-                                'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+                                'icon': resource('incidence.png'),
                                 'content': {
                                     'widget': IncidenceDialog(),
                                     'help': help_incidence()
                                 }
                             }, {
                                 'label': 'Case and aggregation layers',
-                                'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+                                'icon': resource('incidence.png'),
                                 'content': {
                                     'widget': IncidencePointDialog(),
                                     'help': help_incidence_point()
@@ -141,70 +193,46 @@ class MainDialog(QDialog, Ui_Dialog):
                         ]
                     }, {
                         'label': 'Density',
-                        'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+                        'icon': resource('incidence.png'),
                         'content': [
                             {
                                 'label': 'Polygon layer only',
-                                'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+                                'icon': resource('incidence.png'),
                                 'content': {
                                     'widget': DensityDialog(),
                                     'help': help_density()
                                 }
                             }, {
                                 'label': 'Case and aggregation layers',
-                                'icon': ':/plugins/GeoPublicHealth/resources/incidence.png',
+                                'icon': resource('incidence.png'),
                                 'content': {
                                     'widget': DensityPointDialog(),
                                     'help': help_density_point()
                                 }
                             }
                         ]
-                    }, {
-                        'label': 'Autocorrelation',
-                        'icon': ':/plugins/GeoPublicHealth/resources/autocorrelation.png',
-                        'content': [
-                            {
-                                'label': 'Polygon layer only',
-                                'icon': ':/plugins/GeoPublicHealth/resources/autocorrelation.png',
-                                'content': {
-                                    'widget': AutocorrelationDialog(),
-                                    'help': help_autocorrelation()
-                                }
-                            }
-                        ]
-                    }, {
-                        'label': 'Blur',
-                        'icon': ':/plugins/GeoPublicHealth/resources/blur.png',
-                        'content': [
-                            {
-                                'label': 'Blur',
-                                'icon': ':/plugins/GeoPublicHealth/resources/blur.png',
-                                'content': {
-                                    'widget': BlurWidget(),
-                                    'help': help_blur()
-                                }
-                            }, {
-                                'label': 'Stats',
-                                'icon': ':/plugins/GeoPublicHealth/resources/sigma.png',
-                                'content': {
-                                    'widget': StatsWidget(),
-                                    'help': help_stats_blurring()
-                                }
-                            }
-                        ]
-                    }, 
+                    }
                 ]
             },
             {
                 'label': 'Export',
-                'icon': ':/plugins/GeoPublicHealth/resources/export.png',
+                'icon': resource('export.png'),
                 'content': [
                     {
                         'label': 'Attribute table',
-                        'icon': ':/plugins/GeoPublicHealth/resources/csv.png',
+                        'icon': resource('csv.png'),
                         'content': {
                             'widget': CsvExport(),
                             'help': help_attribute_table()
+                        }
+                    },
+
+                    {  # ajoute par Rachel Goree 30/05/2017
+                        'label': 'KML',
+                        'icon': resource('kml.png'),
+                        'content': {
+                            'widget': KmlExport(),
+                            'help': help_export_kml()
                         }
                     }
                 ]
@@ -249,6 +277,9 @@ class MainDialog(QDialog, Ui_Dialog):
                     self.help_list.append(tab_help)
 
         self.stack.setCurrentIndex(1)
+
+        # https://github.com/Gustry/GeoPublicHealth/issues/20
+        self.menu.setAttribute(Qt.WA_MacShowFocusRect, False)
 
     def display_help_tab(self, tab_index):
         index = self.stack.currentIndex() - 2
@@ -295,7 +326,8 @@ class MainDialog(QDialog, Ui_Dialog):
                 current_widget.currentChanged.connect(self.display_help_tab)
             else:
                 try:
-                    current_widget.currentChanged.disconnect(self.display_help_tab)
+                    current_widget.currentChanged.disconnect(
+                        self.display_help_tab)
                 except AttributeError:
                     pass
 

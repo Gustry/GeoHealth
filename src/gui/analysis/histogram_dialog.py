@@ -2,15 +2,10 @@
 """
 /***************************************************************************
 
-                               GeoPublicHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
-        begin                : 2016-02-17
-        copyright            : (C) 2016 by ePublicHealth
-        email                : manuel@epublichealth.co
-        
-        Based on the work of Geohealth                  
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
@@ -32,8 +27,10 @@ from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-from GeoPublicHealth.core.graph_toolbar import CustomNavigationToolbar
-from GeoPublicHealth.ui.analysis.histogram import Ui_Histogram
+from GeoPublicHealth.src.core.graph_toolbar import CustomNavigationToolbar
+from GeoPublicHealth.src.utilities.resources import get_ui_class
+
+FORM_CLASS = get_ui_class('analysis', 'histogram.ui')
 
 
 class HistogramDialog(QDialog, FORM_CLASS):

@@ -2,15 +2,10 @@
 """
 /***************************************************************************
 
-                               GeoPublicHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
-        begin                : 2016-02-17
-        copyright            : (C) 2016 by ePublicHealth
-        email                : manuel@epublichealth.co
-        
-        Based on the work of Geohealth                  
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
@@ -52,16 +47,16 @@ from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-from GeoPublicHealth.core.graph_toolbar import CustomNavigationToolbar
-from GeoPublicHealth.core.tools import display_message_bar, tr
-from GeoPublicHealth.core.exceptions import \
+from GeoPublicHealth.src.core.graph_toolbar import CustomNavigationToolbar
+from GeoPublicHealth.src.core.tools import display_message_bar, tr
+from GeoPublicHealth.src.core.exceptions import \
     GeoPublicHealthException,\
     NoLayerProvidedException,\
     DifferentCrsException,\
     FieldExistingException,\
     FieldException,\
     NotANumberException
-from GeoPublicHealth.core.stats import Stats
+from GeoPublicHealth.src.core.stats import Stats
 
 
 class IncidenceDensityDialog(QDialog):
@@ -123,21 +118,28 @@ class IncidenceDensityDialog(QDialog):
         self.layout_plot.addWidget(self.toolbar)
         self.layout_plot.addWidget(self.canvas)
 
-        self.cbx_aggregation_layer.setFilters(QgsMapLayerProxyModel.PolygonLayer)
+        self.cbx_aggregation_layer.setFilters(
+            QgsMapLayerProxyModel.PolygonLayer)
 
         if self.use_point_layer:
             self.cbx_case_layer.setFilters(QgsMapLayerProxyModel.PointLayer)
 
         if not self.use_area:
-            self.cbx_population_field.setLayer(self.cbx_aggregation_layer.currentLayer())
-            self.cbx_aggregation_layer.layerChanged.connect(self.cbx_population_field.setLayer)
-            self.cbx_aggregation_layer.layerChanged.connect(self.reset_field_population)
+            self.cbx_population_field.setLayer(
+                self.cbx_aggregation_layer.currentLayer())
+            self.cbx_aggregation_layer.layerChanged.connect(
+                self.cbx_population_field.setLayer)
+            self.cbx_aggregation_layer.layerChanged.connect(
+                self.reset_field_population)
             self.reset_field_population()
 
         if not self.use_point_layer:
-            self.cbx_case_field.setLayer(self.cbx_aggregation_layer.currentLayer())
-            self.cbx_aggregation_layer.layerChanged.connect(self.cbx_case_field.setLayer)
-            self.cbx_aggregation_layer.layerChanged.connect(self.reset_field_case)
+            self.cbx_case_field.setLayer(
+                self.cbx_aggregation_layer.currentLayer())
+            self.cbx_aggregation_layer.layerChanged.connect(
+                self.cbx_case_field.setLayer)
+            self.cbx_aggregation_layer.layerChanged.connect(
+                self.reset_field_case)
             self.reset_field_case()
 
     def reset_field_population(self):
@@ -218,7 +220,7 @@ class IncidenceDensityDialog(QDialog):
             if not self.output_file_path:
                 temp_file = NamedTemporaryFile(
                     delete=False,
-                    suffix='-geopublichealth.shp')
+                    suffix='-geohealth.shp')
                 self.output_file_path = temp_file.name
                 temp_file.flush()
                 temp_file.close()

@@ -9,11 +9,12 @@
 [general]
 name=GeoPublicHealth
 qgisMinimumVersion=2.0
-about=GeoPublicHealth offers a simplified interface for users in public health and epidemiology.
-description=GeoPublicHealth offers a simplified interface for users in public health and epidemiology: import data, create incidence or density maps, unmet health needs index, spatially blur GPS location, run statistics and export results.
-version=0.93
-author=Manuel Vidaurre, Javier Cervantes, Etienne Trimaille, Dr Carlos Castillo-Salgado
-email=manuel@epublichealth.co, javier@epublichealth.co, etienne@trimaille.eu, ccastil3@jhu.edu
+about=GeoPublicHealth offers a simplified interface for users in public health.
+description=GeoPublicHealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.
+version=1.0.1
+author=Etienne Trimaille
+email=etienne@trimaille.eu
+
 # End of mandatory metadata
 
 # Optional items:
@@ -24,11 +25,11 @@ email=manuel@epublichealth.co, javier@epublichealth.co, etienne@trimaille.eu, cc
     - Fix import error matplotlib
 
 # Tags are comma separated with spaces allowed
-tags=health,epidemiolgy, incidence rates, unmet health needs, blur,blurring 
+tags=health,epidemiolgy,blur,blurring,incidence,density
 
-homepage=https://github.com/ePublicHealth/GeoPublicHealth
-tracker=https://github.com/GeoPublicHealth/GeoPublicHealth/issues
-repository=https://github.com/GeoPublicHealth/GeoPublicHealth
+homepage=https://github.com/Gustry/GeoPublicHealth
+tracker=https://github.com/Gustry/GeoPublicHealth/issues
+repository=https://github.com/Gustry/GeoPublicHealth
 icon=resources/icon-32.png
 # experimental flag
 experimental=False

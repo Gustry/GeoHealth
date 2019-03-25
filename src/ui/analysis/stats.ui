@@ -173,8 +173,6 @@
    <header>qgis.gui.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="../../../../../../plugins/GeoPublicHealth/resources/resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

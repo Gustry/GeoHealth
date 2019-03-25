@@ -14,23 +14,23 @@ GeoHealth aims to provide a simplified interface for users in epidemiology in QG
   * This project was designed by UMR Espace-DEV (IRD, UAG, UM2, UR).
 =======
 
-# GeoPublicHealth 0.2
+# GeoPublicHealth 0.95
 
 GeoPublicHealth aims to provide a simplified interface for users in epidemiology and public health for QGIS . It is based on the [GeoHealth Plugin](https://github.com/Gustry/GeoHealth) developed by Etienne Trimaille. This includes additional methods that are very relevant for the use of GIS in public health and epidemiology.
 
-##Setup
+## Setup
 
-###Installing PySAL for Windows using [OSGeo4W](http://trac.osgeo.org/osgeo4w/)
+### Installing PySAL for Windows using [OSGeo4W](http://trac.osgeo.org/osgeo4w/)
 
   1. Run the OSGeo4W Shell on `Start -> All Programs -> OSGeo4W` menu
   2. Run in the OSGeo4W Shell  the following command  `pip install pysal`
   3. After the command finish a success message as Successfully installed `pysal-X.XX.X should appear`
 
-####Solving error messages:
+#### Solving error messages:
   * If you receive an error message as Could not import setuptools... please use pip install setuptools 
   * If you receive an alert about You are using pip version… consider upgrading… please use python -m pip install --upgrade pip
 
-###Installing PySAL for Apple Mac - OSX QGIS
+### Installing PySAL for Apple Mac - OSX QGIS
   1. In the Finder App please locate the `Applications` folder the `QGIS.app`
   1. Right click over the icon
   1. Select from the menu `Show Package Contents`
@@ -45,7 +45,7 @@ GeoPublicHealth aims to provide a simplified interface for users in epidemiology
   1. Copy the folder name, for example: `/opt/boxen/homebrew/lib/python2.7/site-package`
   1. Run a command based on the copied folder name as: `cp -Rv /opt/boxen/homebrew/lib/python2.7/site-packages/pysal pysal`
 
-###Installing GeoPublicHealth Plugin
+### Installing GeoPublicHealth Plugin
   1. Start QGIS and launch the plugins manager by going to the **Plugins menu and selecting Manage and Install Plugins….**
   1. In the **Settings** tab of the plugins settings dialog, scroll down and click on the **Add…** button.
   1. Give the plugin repository the name **epipublichealth** and then add the complete URL **http://epublichealth.co/oss/qgis/plugins/plugins.xml** in the URL field.

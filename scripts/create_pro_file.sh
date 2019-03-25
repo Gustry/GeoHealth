@@ -3,7 +3,7 @@
 SAFE_PYFILES=`find src -name "**.py**" | grep -v "pyc$" | grep -v test`
 UI_FILES=`find src -name "**.ui**"`
 
-PRO_FILE=geohealth.pro
+PRO_FILE=geopublichealth.pro
 
 echo "SOURCES = \\" > ${PRO_FILE}
 
@@ -33,5 +33,5 @@ fi
 # Finally define which languages we are translating for
 
 echo "
-TRANSLATIONS = src/i18n/geohealth_fr.ts \\
-               src/i18n/geohealth_th.ts"  >> ${PRO_FILE}
+TRANSLATIONS = src/i18n/geopublichealth_fr.ts \\
+               src/i18n/geopublichealth_th.ts"  >> ${PRO_FILE}

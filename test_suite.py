@@ -1,6 +1,6 @@
 # coding=utf-8
 """
-Test Suite for GeoHealth.
+Test Suite for GeoPublicHealth.
 
 Contact : etienne at kartoza dot com
 
@@ -35,7 +35,7 @@ def _run_tests(test_suite, package_name):
     currentdir = dirname(abspath(inspect.getfile(inspect.currentframe())))
     parentdir = dirname(currentdir)
     sys.path.insert(0, parentdir)
-    sys.path.insert(0, '/root/.qgis2/python/plugins/GeoHealth')
+    sys.path.insert(0, '/root/.qgis2/python/plugins/GeoPublicHealth')
     unittest.TextTestRunner(verbosity=3, stream=sys.stdout).run(test_suite)
 
 

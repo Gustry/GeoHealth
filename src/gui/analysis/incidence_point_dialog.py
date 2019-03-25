@@ -2,15 +2,10 @@
 """
 /***************************************************************************
 
-                               GeoPublicHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
-        begin                : 2016-02-17
-        copyright            : (C) 2016 by ePublicHealth
-        email                : manuel@epublichealth.co
-        
-        Based on the work of Geohealth                  
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
@@ -26,8 +21,9 @@
  ***************************************************************************/
 """
 
-from GeoPublicHealth.ui.analysis.incidence_with_point import Ui_IncidencePoint
-from GeoPublicHealth.src.gui.analysis.parent_incidence_density_dialog import IncidenceDensityDialog
+from GeoPublicHealth.src.gui.analysis.parent_incidence_density_dialog import \
+    IncidenceDensityDialog
+from GeoPublicHealth.src.utilities.resources import get_ui_class
 
 FORM_CLASS = get_ui_class('analysis', 'incidence_with_point.ui')
 

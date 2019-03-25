@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>IncidencePoint</class>
- <widget class="QWidget" name="IncidencePoint">
+ <class>Density</class>
+ <widget class="QWidget" name="Composite_Index">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>663</width>
-    <height>695</height>
+    <width>651</width>
+    <height>613</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Incidence</string>
+   <string>Density</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -19,24 +19,10 @@
      <property name="fieldGrowthPolicy">
       <enum>QFormLayout::ExpandingFieldsGrow</enum>
      </property>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>Case layer</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
+     <item row="1" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Layer for aggregation</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string>Population field</string>
+        <string>Layer</string>
        </property>
       </widget>
      </item>
@@ -95,7 +81,7 @@
         <number>10</number>
        </property>
        <property name="placeholderText">
-        <string>incidence</string>
+        <string>density</string>
        </property>
       </widget>
      </item>
@@ -120,14 +106,14 @@
       </widget>
      </item>
      <item row="8" column="0">
-      <widget class="QLabel" name="label_8">
+      <widget class="QLabel" name="label_5">
        <property name="text">
         <string>Output</string>
        </property>
       </widget>
      </item>
      <item row="8" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QLineEdit" name="le_output_filepath">
          <property name="placeholderText">
@@ -144,20 +130,14 @@
        </item>
       </layout>
      </item>
-     <item row="9" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout"/>
-     </item>
-     <item row="0" column="1">
-      <widget class="QgsMapLayerComboBox" name="cbx_case_layer">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Case field</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="1" column="1">
       <widget class="QgsMapLayerComboBox" name="cbx_aggregation_layer">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -168,7 +148,7 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QgsFieldComboBox" name="cbx_population_field">
+      <widget class="QgsFieldComboBox" name="cbx_case_field">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -369,5 +349,22 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>cbx_aggregation_layer</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>cbx_case_field</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>376</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>376</x>
+     <y>61</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

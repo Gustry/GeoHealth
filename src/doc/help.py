@@ -2,15 +2,10 @@
 """
 /***************************************************************************
 
-                               GeoPublicHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
-        begin                : 2016-02-17
-        copyright            : (C) 2016 by ePublicHealth
-        email                : manuel@epublichealth.co
-        
-        Based on the work of Geohealth                  
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille, (C) 2017 by
         Rachel Gorée et Christophe Révillion
@@ -29,8 +24,10 @@
 
 
 from os.path import dirname, abspath, join
+from GeoPublicHealth.src.core.tools import tr
+
+
 PATH = dirname(abspath(__file__))
-from GeoPublicHealth.core.tools import tr
 
 
 def html_table(title, intro, inputs, outputs, more):
@@ -325,6 +322,28 @@ def help_incidence():
     html = html_table(title, intro, inputs, outputs, more)
     return html
 
+
+def help_incidence_point():
+    title = tr('Incidence with case layer')
+    intro = tr('You can create an incidence map about a disease.')
+    inputs = [
+        tr('Point layer : disease'),
+        tr('Polygon layer : administrative boundary with a population field'),
+        tr('Population field'),
+        tr('Ratio'),
+        tr('New column')
+    ]
+    outputs = [
+        tr('New polygon layer with the incidence')
+    ]
+    more = [
+        tr('This algorithm will count the number of points inside each '
+           'polygons and run a formula to get the incidence.'),
+        tr('number of cases / population * ratio')
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
 def help_autocorrelation():
     title = tr('Autocorrelation')
     intro = tr('Local Moran / LISA')
@@ -347,28 +366,6 @@ def help_autocorrelation():
     ]
     html = html_table(title, intro, inputs, outputs, more)
     return html
-    
-def help_incidence_point():
-    title = tr('Incidence with case layer')
-    intro = tr('You can create an incidence map about a disease.')
-    inputs = [
-        tr('Point layer : disease'),
-        tr('Polygon layer : administrative boundary with a population field'),
-        tr('Population field'),
-        tr('Ratio'),
-        tr('New column')
-    ]
-    outputs = [
-        tr('New polygon layer with the incidence')
-    ]
-    more = [
-        tr('This algorithm will count the number of points inside each '
-           'polygons and run a formula to get the incidence.'),
-        tr('number of cases / population * ratio')
-    ]
-    html = html_table(title, intro, inputs, outputs, more)
-    return html
-
 
 def help_attribute_table():
     title = tr('Export attribute table')

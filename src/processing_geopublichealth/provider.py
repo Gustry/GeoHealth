@@ -20,14 +20,42 @@
  *                                                                         *
  ***************************************************************************/
 """
-try:
-    from matplotlib.backends.backend_qt4agg import \
-        NavigationToolbar2QTAgg as NavigationToolbar
-except ImportError:
-    from matplotlib.backends.backend_qt4agg import \
-        NavigationToolbar2QT as NavigationToolbar
+
+from PyQt4.QtGui import QIcon
+from processing.core.AlgorithmProvider import AlgorithmProvider
+
+from GeoPublicHealth.src.processing_geopublichealth.blurring import (
+    BlurringGeoAlgorithm)
+from GeoPublicHealth.src.utilities.resources import resource
 
 
-class CustomNavigationToolbar(NavigationToolbar):
-    toolitems = [t for t in NavigationToolbar.toolitems if
-                 t[0] in ('Home', 'Back', 'Next', 'Pan', 'Zoom', 'Save')]
+class Provider(AlgorithmProvider):
+    """QGIS Processing"""
+
+    def __init__(self):
+        AlgorithmProvider.__init__(self)
+
+        self.activate = True
+
+        # Load algorithms
+        self.alglist = [BlurringGeoAlgorithm()]
+        for alg in self.alglist:
+            alg.provider = self
+
+    def initializeSettings(self):
+        AlgorithmProvider.initializeSettings(self)
+
+    def unload(self):
+        AlgorithmProvider.unload(self)
+
+    def getName(self):
+        return 'GeoPublicHealth'
+
+    def getDescription(self):
+        return 'GeoPublicHealth'
+
+    def getIcon(self):
+        return QIcon(resource('icon-32.png'))
+
+    def _loadAlgorithms(self):
+        self.algs = self.alglist

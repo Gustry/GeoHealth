@@ -22,7 +22,7 @@
 """
 
 from PyQt4.QtGui import QWidget, QPixmap
-from GeoPublicHealth.ui.about import Ui_About
+from GeoPublicHealth.src.utilities.resources import get_ui_class, resource
 
 FORM_CLASS = get_ui_class('default', 'about.ui')
 
@@ -34,6 +34,6 @@ class AboutWidget(QWidget, FORM_CLASS):
         super(AboutWidget, self).__init__()
         self.setupUi(self)
 
-        self.logo_geohealth.setPixmap(QPixmap(resource('icon-100.png')))
+        self.logo_geopublichealth.setPixmap(QPixmap(resource('icon-100.png')))
         self.logo_ird.setPixmap(QPixmap(resource('logo_ird.png')))
         self.logo_umr.setPixmap(QPixmap(resource('espace-dev.png')))

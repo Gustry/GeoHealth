@@ -2,15 +2,10 @@
 """
 /***************************************************************************
 
-                               GeoPublicHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
-        begin                : 2016-02-17
-        copyright            : (C) 2016 by ePublicHealth
-        email                : manuel@epublichealth.co
-        
-        Based on the work of Geohealth                  
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
@@ -43,7 +38,7 @@ from GeoPublicHealth.src.core.tools import \
     tr, display_message_bar, get_last_input_path, set_last_input_path
 from GeoPublicHealth.src.core.exceptions import \
     GeoPublicHealthException, NoLayerProvidedException, DifferentCrsException
-from GeoPublicHealth.src.utilities.resources import get_ui_class, resource
+from GeoPublicHealth.src.utilities.resources import get_ui_class
 
 FORM_CLASS = get_ui_class('analysis', 'stats.ui')
 

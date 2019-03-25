@@ -2,15 +2,10 @@
 """
 /***************************************************************************
 
-                               GeoPublicHealth
+                                 GeoPublicHealth
                                  A QGIS plugin
 
                               -------------------
-        begin                : 2016-02-17
-        copyright            : (C) 2016 by ePublicHealth
-        email                : manuel@epublichealth.co
-        
-        Based on the work of Geohealth                  
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
@@ -40,11 +35,11 @@ from PyQt4.QtGui import (
 from PyQt4.QtCore import pyqtSignal, QSettings, QVariant
 from processing.tools.system import getTempFilenameInTempFolder
 
-from GeoPublicHealth.core.blurring.layer_index import LayerIndex
-from GeoPublicHealth.core.blurring.blur import Blur
-from GeoPublicHealth.core.tools import \
+from GeoPublicHealth.src.core.blurring.layer_index import LayerIndex
+from GeoPublicHealth.src.core.blurring.blur import Blur
+from GeoPublicHealth.src.core.tools import \
     get_last_input_path, set_last_input_path, tr, display_message_bar
-from GeoPublicHealth.core.exceptions import \
+from GeoPublicHealth.src.core.exceptions import \
     GeoPublicHealthException, \
     NoLayerProvidedException,\
     NoFileNoDisplayException, \

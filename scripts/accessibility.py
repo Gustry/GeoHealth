@@ -23,7 +23,7 @@ from GeoPublicHealth.src.core.accessibility.network import Graph
 
 import processing
 
-path = '/Users/etienne/dev/python/GeoHealth/src/test/data'
+path = '/Users/etienne/dev/python/GeoPublicHealth/src/test/data'
 roads = QgsVectorLayer(join(path, 'roads.geojson'), 'roads', 'ogr')
 extent = QgsRectangle(335147, 6636000, 352384, 6650000)
 cell_size = 5000

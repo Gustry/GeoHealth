@@ -18,8 +18,8 @@ from os.path import join
 
 from PyQt4.QtCore import QDir
 
-from GeoHealth.src.test.utilities import iface, load_test_vector_layer
-from GeoHealth.src.datastore.folder import Folder
+from GeoPublicHealth.src.test.utilities import iface, load_test_vector_layer
+from GeoPublicHealth.src.datastore.folder import Folder
 
 iface()
 

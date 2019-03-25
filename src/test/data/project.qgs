@@ -88,7 +88,7 @@
         <ymax>-2372000</ymax>
       </extent>
       <id>base_layer20170122133114202</id>
-      <datasource>/Users/etienne/dev/python/GeoHealth/geohealth/test/data/base_layer.geojson</datasource>
+      <datasource>/Users/etienne/dev/python/GeoPublicHealth/geopublichealth/test/data/base_layer.geojson</datasource>
       <keywordList>
         <value></value>
       </keywordList>
@@ -207,7 +207,7 @@
         <ymax>7656239.13595716096460819</ymax>
       </extent>
       <id>crossing20170122133113935</id>
-      <datasource>/Users/etienne/dev/python/GeoHealth/geohealth/test/data/crossing.geojson</datasource>
+      <datasource>/Users/etienne/dev/python/GeoPublicHealth/geopublichealth/test/data/crossing.geojson</datasource>
       <keywordList>
         <value></value>
       </keywordList>
@@ -329,7 +329,7 @@
         <ymax>7653234.33258999977260828</ymax>
       </extent>
       <id>grid_500m20170122133114054</id>
-      <datasource>/Users/etienne/dev/python/GeoHealth/geohealth/test/data/grid-500m.geojson</datasource>
+      <datasource>/Users/etienne/dev/python/GeoPublicHealth/geopublichealth/test/data/grid-500m.geojson</datasource>
       <keywordList>
         <value></value>
       </keywordList>
@@ -441,7 +441,7 @@
         <ymax>7653234.33258689939975739</ymax>
       </extent>
       <id>roads20170122133113159</id>
-      <datasource>/Users/etienne/dev/python/GeoHealth/geohealth/test/data/roads.geojson</datasource>
+      <datasource>/Users/etienne/dev/python/GeoPublicHealth/geopublichealth/test/data/roads.geojson</datasource>
       <keywordList>
         <value></value>
       </keywordList>
