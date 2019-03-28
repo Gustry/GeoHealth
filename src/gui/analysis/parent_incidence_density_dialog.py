@@ -226,7 +226,7 @@ class IncidenceDensityDialog(QDialog):
                 temp_file.close()
 
             admin_layer_provider = self.admin_layer.dataProvider()
-            fields = admin_layer_provider.fields()
+            fields = self.admin_layer.pendingFields() 
 
             if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
                 raise FieldExistingException(field=self.name_field)

@@ -211,7 +211,7 @@ class CommonCompositeIndexDialog(QDialog):
                 temp_file.close()
 
             admin_layer_provider = self.admin_layer.dataProvider()
-            fields = admin_layer_provider.fields()
+            fields = self.admin_layer.pendingFields() 
 
             if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
                 raise FieldExistingException(field=self.name_field)
@@ -230,16 +230,17 @@ class CommonCompositeIndexDialog(QDialog):
 
             count = self.admin_layer.featureCount()
             stats = {}
-            stats = {}
+
             for indicator_selected in selected_indicators:
                 values = []
                 indicator_selected_name = str(indicator_selected[0])
 
                 for i, feature in enumerate(self.admin_layer.getFeatures()):
+                    attributes = feature.attributes()
                     index = self.admin_layer.fieldNameIndex(indicator_selected_name)
 
-                    if feature[index]:
-                        value = float(feature[index])
+                    if attributes[index]:
+                        value = float(attributes[index])
                     else:
                         value = 0.0
                     values.append(value)
@@ -254,8 +255,8 @@ class CommonCompositeIndexDialog(QDialog):
                     indicator_selected_name = str(indicator_selected[0])
                     index = self.admin_layer.fieldNameIndex(indicator_selected_name)
 
-                    if feature[index]:
-                        value = float(feature[index])
+                    if attributes[index]:
+                        value = float(attributes[index])
                     else:
                         value = 0.0
 
