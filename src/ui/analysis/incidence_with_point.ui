@@ -204,9 +204,9 @@
          <widget class="QgsColorButtonV2" name="color_low_value">
           <property name="color" stdset="0">
            <color>
-            <red>255</red>
-            <green>246</green>
-            <blue>246</blue>
+            <red>50</red>
+            <green>164</green>
+            <blue>46</blue>
            </color>
           </property>
          </widget>

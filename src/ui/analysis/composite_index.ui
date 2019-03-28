@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Density</class>
+ <class>Composite_Index</class>
  <widget class="QWidget" name="Composite_Index">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>651</width>
-    <height>613</height>
+    <width>814</width>
+    <height>754</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Density</string>
+   <string>Incidence</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -19,101 +19,56 @@
      <property name="fieldGrowthPolicy">
       <enum>QFormLayout::ExpandingFieldsGrow</enum>
      </property>
-     <item row="1" column="0">
+     <item row="2" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
         <string>Layer</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_2">
+     <item row="2" column="1">
+      <widget class="QgsMapLayerComboBox" name="cbx_aggregation_layer">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Ratio</string>
+        <string>Indicator field</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
-      <widget class="QComboBox" name="cbx_ratio">
-       <property name="editable">
-        <bool>true</bool>
+     <item row="3" column="1">
+      <widget class="QgsFieldComboBox" name="cbx_indicator_field">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
-       <property name="currentIndex">
-        <number>4</number>
-       </property>
-       <item>
-        <property name="text">
-         <string>10</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>100</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>1 000</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>10 000</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>100 000</string>
-        </property>
-       </item>
       </widget>
      </item>
-     <item row="5" column="0">
+     <item row="11" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>New column</string>
+        <string>Composite Index</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
-      <widget class="QLineEdit" name="le_new_column">
-       <property name="maxLength">
-        <number>10</number>
-       </property>
-       <property name="placeholderText">
-        <string>density</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="1">
-      <widget class="QCheckBox" name="checkBox_addNbIntersections">
-       <property name="toolTip">
-        <string>Add the number of cases per unit to the attribute table</string>
-       </property>
-       <property name="text">
-        <string>Add the number of cases per unit to the attribute table</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="1">
-      <widget class="QCheckBox" name="checkBox_incidence_runStats">
-       <property name="text">
-        <string>Calculate statistics</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="0">
-      <widget class="QLabel" name="label_5">
+     <item row="12" column="0">
+      <widget class="QLabel" name="label_8">
        <property name="text">
         <string>Output</string>
        </property>
       </widget>
      </item>
-     <item row="8" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout">
+     <item row="12" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
         <widget class="QLineEdit" name="le_output_filepath">
          <property name="placeholderText">
@@ -130,30 +85,56 @@
        </item>
       </layout>
      </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_4">
+     <item row="13" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout"/>
+     </item>
+     <item row="5" column="1">
+      <widget class="QRadioButton" name="radioButton_vector_positive">
        <property name="text">
-        <string>Case field</string>
+        <string>Higher the value of the indicator better the conditions for the population</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">buttonGroup_2</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QRadioButton" name="radioButton_vector_negative">
+       <property name="text">
+        <string>Higher the value of the indicator worse the conditions for the population</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">buttonGroup_2</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QLineEdit" name="le_new_column">
+       <property name="maxLength">
+        <number>10</number>
+       </property>
+       <property name="placeholderText">
+        <string>UHN</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QgsMapLayerComboBox" name="cbx_aggregation_layer">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
+     <item row="10" column="1">
+      <widget class="QListWidget" name="cbx_list_indicators"/>
+     </item>
+     <item row="8" column="1">
+      <widget class="QCommandLinkButton" name="command_link_button">
+       <property name="text">
+        <string>Add to Index</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
-      <widget class="QgsFieldComboBox" name="cbx_case_field">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
+     <item row="9" column="1">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>For removing and Indicator Click Twice in the one you want to remove</string>
        </property>
       </widget>
      </item>
@@ -176,7 +157,7 @@
         <item>
          <widget class="QLabel" name="label_9">
           <property name="text">
-           <string>Low incidence</string>
+           <string>Low Priority</string>
           </property>
          </widget>
         </item>
@@ -184,9 +165,9 @@
          <widget class="QgsColorButtonV2" name="color_low_value">
           <property name="color" stdset="0">
            <color>
-            <red>255</red>
-            <green>246</green>
-            <blue>246</blue>
+            <red>50</red>
+            <green>164</green>
+            <blue>46</blue>
            </color>
           </property>
          </widget>
@@ -207,7 +188,7 @@
         <item>
          <widget class="QLabel" name="label_10">
           <property name="text">
-           <string>High incidence</string>
+           <string>High Priority</string>
           </property>
          </widget>
         </item>
@@ -281,48 +262,6 @@
      </property>
     </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QTableWidget" name="tableWidget">
-       <property name="minimumSize">
-        <size>
-         <width>200</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>300</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <attribute name="verticalHeaderVisible">
-        <bool>false</bool>
-       </attribute>
-       <column>
-        <property name="text">
-         <string>Parameter</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>Value</string>
-        </property>
-       </column>
-      </widget>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="layout_plot"/>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -353,18 +292,21 @@
   <connection>
    <sender>cbx_aggregation_layer</sender>
    <signal>layerChanged(QgsMapLayer*)</signal>
-   <receiver>cbx_case_field</receiver>
+   <receiver>cbx_indicator_field</receiver>
    <slot>setLayer(QgsMapLayer*)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>376</x>
-     <y>23</y>
+     <x>390</x>
+     <y>27</y>
     </hint>
     <hint type="destinationlabel">
-     <x>376</x>
+     <x>390</x>
      <y>61</y>
     </hint>
    </hints>
   </connection>
  </connections>
+ <buttongroups>
+  <buttongroup name="buttonGroup_2"/>
+ </buttongroups>
 </ui>
