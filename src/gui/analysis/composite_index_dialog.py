@@ -126,12 +126,11 @@ class CommonCompositeIndexDialog(QDialog):
 
         self.cbx_list_indicators.itemDoubleClicked.connect(self.remove_item) 
 
-        if not self.use_point_layer:
-            self.cbx_indicator_field.setFilters(QgsFieldProxyModel.Numeric)
-            self.cbx_indicator_field.setLayer(self.cbx_aggregation_layer.currentLayer())
-            self.cbx_aggregation_layer.layerChanged.connect(self.cbx_indicator_field.setLayer)
-            self.cbx_aggregation_layer.layerChanged.connect(self.reset_field_indicator)
-            self.reset_field_indicator()
+        self.cbx_indicator_field.setFilters(QgsFieldProxyModel.Numeric)
+        self.cbx_indicator_field.setLayer(self.cbx_aggregation_layer.currentLayer())
+        self.cbx_aggregation_layer.layerChanged.connect(self.cbx_indicator_field.setLayer)
+        self.cbx_aggregation_layer.layerChanged.connect(self.reset_field_indicator)
+        self.reset_field_indicator()
 
     def reset_field_indicator(self):
         self.cbx_indicator_field.setCurrentIndex(0)
@@ -148,7 +147,7 @@ class CommonCompositeIndexDialog(QDialog):
             self.cbx_list_indicators.addItem(self.vector_indicator())
 
     def vector_indicator(self):
-        return self.cbx_indicator_field.currentField() + " " + self.vector_direction()
+        return self.cbx_indicator_field.currentField() + " | " + self.vector_direction()
 
     def vector_direction(self):
         if self.radioButton_vector_positive.isChecked():
@@ -165,7 +164,7 @@ class CommonCompositeIndexDialog(QDialog):
         items = []
         for index in xrange(self.cbx_list_indicators.count()):
             items.append(self.cbx_list_indicators.item(index))
-        return [i.text().split() for i in items]
+        return [i.text().split(" | ") for i in items]
     
 
     def run_stats(self):
@@ -218,6 +217,7 @@ class CommonCompositeIndexDialog(QDialog):
 
             for indicator_selected in selected_indicators:
                 fields.append(QgsField("Z" + indicator_selected[0], QVariant.Double))
+
             fields.append(QgsField(self.name_field, QVariant.Double))
 
             file_writer = QgsVectorFileWriter(
@@ -236,11 +236,10 @@ class CommonCompositeIndexDialog(QDialog):
                 indicator_selected_name = str(indicator_selected[0])
 
                 for i, feature in enumerate(self.admin_layer.getFeatures()):
-                    attributes = feature.attributes()
                     index = self.admin_layer.fieldNameIndex(indicator_selected_name)
 
-                    if attributes[index]:
-                        value = float(attributes[index])
+                    if feature[index]:
+                        value = float(feature[index])
                     else:
                         value = 0.0
                     values.append(value)
@@ -255,8 +254,8 @@ class CommonCompositeIndexDialog(QDialog):
                     indicator_selected_name = str(indicator_selected[0])
                     index = self.admin_layer.fieldNameIndex(indicator_selected_name)
 
-                    if attributes[index]:
-                        value = float(attributes[index])
+                    if feature[index]:
+                        value = float(feature[index])
                     else:
                         value = 0.0
 
