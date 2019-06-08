@@ -48,7 +48,7 @@ GeoPublicHealth aims to provide a simplified interface for users in epidemiology
 ### Installing GeoPublicHealth Plugin
   1. Start QGIS and launch the plugins manager by going to the **Plugins menu and selecting Manage and Install Plugins….**
   1. In the **Settings** tab of the plugins settings dialog, scroll down and click on the **Add…** button.
-  1. Give the plugin repository the name **epipublichealth** and then add the complete URL **http://epublichealth.co/oss/qgis/plugins/plugins.xml** in the URL field.
+  1. Give the plugin repository the name **epipublichealth** and then add the complete URL **https://raw.githubusercontent.com/ePublicHealth/GeoPublicHealth/master/docs/plugins.xml** in the URL field.
   1. Please be sure that Show also experimental plugins is checked
   1. Click on the **OK** button.
   1. Activate the **All** tab and in the **Search** field input **geopu**.
