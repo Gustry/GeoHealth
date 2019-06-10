@@ -23,8 +23,10 @@
 """
 
 
-from PyQt4.QtGui import QDialog, QTreeWidgetItem, QTabWidget, QIcon
-from PyQt4.QtCore import QSize, Qt
+from builtins import range
+from qgis.PyQt.QtWidgets import QDialog, QTreeWidgetItem, QTabWidget
+from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtCore import QSize, Qt
 
 from GeoHealth.src.doc.help import (
     help_density,

@@ -1,16 +1,18 @@
+from __future__ import print_function
+from builtins import next
 from os.path import join
 from qgis.core import (
     QgsVectorLayer,
     QgsRectangle,
     QgsFeatureRequest,
-    QGis,
+    Qgis,
     QgsFeature,
     QgsCoordinateReferenceSystem,
     QgsCoordinateTransform,
     QgsField,
     QgsFeature,
 )
-from PyQt4.QtCore import QVariant, QPyNullVariant
+from qgis.PyQt.QtCore import QVariant, QPyNullVariant
 
 
 from safe.common.utilities import unique_filename
@@ -62,7 +64,9 @@ def create_grid(size):
         'grid', layer.geometryType(), layer.crs(), layer.fields())
     copy_layer(layer, memory)
 
-    print "NB cells : %s" % layer.featureCount()
+    # fix_print_with_import
+    # fix_print_with_import
+print("NB cells : %s" % layer.featureCount())
 
     return memory
 
@@ -103,7 +107,7 @@ def centroids(layer):
     """Create centroids."""
     centroids_layer = create_memory_layer(
         'centroids',
-        QGis.Point,
+        Qgis.Point,
         layer.crs(),
         layer.fields())
 
@@ -163,7 +167,7 @@ def assign_cost_to_cells(network_graph, source, destination, id_field):
 
     fields = [QgsField('distance', QVariant.Int)]
     routes = create_memory_layer(
-        'routes', QGis.Line, destination.crs(), fields)
+        'routes', Qgis.Line, destination.crs(), fields)
     routes.startEditing()
 
     source.startEditing()
@@ -221,7 +225,8 @@ def assign_cost_to_cells(network_graph, source, destination, id_field):
             source.commitChanges()
 
         else:
-            print 'speedup'
+            # fix_print_with_import
+            print('speedup')
             geom, distance, _ = network_graph.route(
                 source_geometry_point,
                 destination_features[desination_id].geometry().asPoint())
@@ -229,7 +234,9 @@ def assign_cost_to_cells(network_graph, source, destination, id_field):
     source.commitChanges()
     # source.commitErrors()
     routes.commitChanges()
-    print 'Call : %s' % i
+    # fix_print_with_import
+    # fix_print_with_import
+print('Call : %s' % i)
     return routes, source
 
 if health_points.crs != roads.crs():

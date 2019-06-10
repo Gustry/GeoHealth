@@ -1,18 +1,18 @@
 # coding=utf-8
 
+from builtins import object
 from abc import ABCMeta, abstractmethod
-from qgis.core import QgsRasterLayer, QgsVectorLayer, QGis
+from qgis.core import QgsRasterLayer, QgsVectorLayer, Qgis
 from GeoHealth.src.core.tools import tr
+from future.utils import with_metaclass
 
 
-class DataStore(object):
+class DataStore(with_metaclass(ABCMeta, object)):
     """
     DataStore
 
     .. versionadded:: 4.0
     """
-
-    __metaclass__ = ABCMeta
 
     def __init__(self, uri):
         """
@@ -91,7 +91,7 @@ class DataStore(object):
         if isinstance(layer, QgsRasterLayer):
             result = self._add_raster_layer(layer, layer_name)
         else:
-            if layer.wkbType() == QGis.WKBNoGeometry:
+            if layer.wkbType() == Qgis.WKBNoGeometry:
                 result = self._add_tabular_layer(layer, layer_name)
             else:
                 result = self._add_vector_layer(layer, layer_name)

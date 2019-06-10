@@ -1,17 +1,9 @@
-# This file contains metadata for your plugin. Since 
-# version 2.0 of QGIS this is the proper way to supply 
-# information about a plugin. The old method of 
-# embedding metadata in __init__.py will 
-# is no longer supported since version 2.0.
-
-# This file should be included when you package your plugin.# Mandatory items:
-
 [general]
 name=GeoHealth
-qgisMinimumVersion=2.0
+qgisMinimumVersion=3.4
 about=GeoHealth offers a simplified interface for users in public health.
 description=GeoHealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.
-version=1.0.1
+version=2.0.0
 author=Etienne Trimaille
 email=etienne@trimaille.eu
 
@@ -21,6 +13,8 @@ email=etienne@trimaille.eu
 
 # Uncomment the following line and add your changelog:
 # changelog=
+    Version 2.0.0:
+    - Port to QGIS 3
     Version 1.0.1:
     - Fix import error matplotlib
 
@@ -30,7 +24,7 @@ tags=health,epidemiolgy,blur,blurring,incidence,density
 homepage=https://github.com/Gustry/GeoHealth
 tracker=https://github.com/Gustry/GeoHealth/issues
 repository=https://github.com/Gustry/GeoHealth
-icon=resources/icon-32.png
+icon=src/resources/icon-32.png
 # experimental flag
 experimental=False
 

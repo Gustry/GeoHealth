@@ -9,12 +9,15 @@ InaSAFE Disaster risk assessment tool developed by AusAid and World Bank
      (at your option) any later version.
 
 """
+from __future__ import print_function
 
+from builtins import zip
+from builtins import str
 from tempfile import mkdtemp
-from PyQt4.QtCore import QVariant
+from qgis.PyQt.QtCore import QVariant
 from qgis.core import (
-    QgsMapLayerRegistry,
-    QGis,
+    QgsProject,
+    Qgis,
     QgsFeature,
     QgsField,
     QgsFeatureRequest,
@@ -83,7 +86,7 @@ def show_qgis_layer(layer):
     :param layer: The layer to show.
     :type layer: QgsMapLayer
     """
-    QgsMapLayerRegistry.instance().addMapLayer(layer)
+    QgsProject.instance().addMapLayer(layer)
 
 
 def save_layer_to_file(layer):
@@ -134,7 +137,7 @@ def print_attribute_table(layer, limit=-1):
     :param limit: The limit in the query.
     :type limit: integer
     """
-    if layer.wkbType() == QGis.WKBNoGeometry:
+    if layer.wkbType() == Qgis.WKBNoGeometry:
         geometry = False
     else:
         geometry = True
@@ -155,4 +158,5 @@ def print_attribute_table(layer, limit=-1):
         attributes.extend(feature.attributes())
         data.append(attributes)
 
-    print pretty_table(data, headers)
+    # fix_print_with_import
+    print(pretty_table(data, headers))

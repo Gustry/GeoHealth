@@ -21,6 +21,7 @@
  ***************************************************************************/
 """
 
+from builtins import object
 from numpy import median, average, var, std
 
 

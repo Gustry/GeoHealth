@@ -21,7 +21,8 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QWidget, QPixmap
+from qgis.PyQt.QtWidgets import QWidget
+from qgis.PyQt.QtGui import QPixmap
 from GeoHealth.src.utilities.resources import get_ui_class, resource
 
 FORM_CLASS = get_ui_class('default', 'about.ui')

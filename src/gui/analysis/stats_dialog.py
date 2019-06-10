@@ -21,16 +21,16 @@
  ***************************************************************************/
 """
 
+from builtins import str
+from builtins import range
 from os.path import dirname
-from qgis.core import QGis, QgsFeatureRequest, QgsSpatialIndex
-from qgis.gui import QgsMapLayerProxyModel
+from qgis.core import Qgis, QgsFeatureRequest, QgsSpatialIndex, QgsMapLayerProxyModel
 
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
-from PyQt4.QtGui import \
-    QWidget, QDialogButtonBox, QApplication, QTableWidgetItem, QFileDialog
-from PyQt4.QtCore import pyqtSignal, QSize
+from qgis.PyQt.QtWidgets import QWidget, QDialogButtonBox, QApplication, QTableWidgetItem, QFileDialog
+from qgis.PyQt.QtCore import pyqtSignal, QSize
 
 from GeoHealth.src.core.graph_toolbar import CustomNavigationToolbar
 from GeoHealth.src.core.stats import Stats
@@ -115,7 +115,7 @@ class StatsWidget(QWidget, FORM_CLASS):
             label_creating = tr('Creating index on the stats layer')
             label_calculating = tr('Calculating')
 
-            if QGis.QGIS_VERSION_INT < 20700:
+            if Qgis.QGIS_VERSION_INT < 20700:
                 self.label_progressStats.setText('%s 1/3' % label_preparing)
 
                 for i, feature in enumerate(stats_layer.getFeatures()):
@@ -156,7 +156,7 @@ class StatsWidget(QWidget, FORM_CLASS):
                 ids = index.intersects(feature.geometry().boundingBox())
                 for unique_id in ids:
                     request = QgsFeatureRequest().setFilterFid(unique_id)
-                    f = stats_layer.getFeatures(request).next()
+                    f = next(stats_layer.getFeatures(request))
 
                     if f.geometry().intersects(feature.geometry()):
                         count += 1
@@ -194,7 +194,7 @@ class StatsWidget(QWidget, FORM_CLASS):
 
             self.draw_plot(self.tab)
 
-        except GeoHealthException, e:
+        except GeoHealthException as e:
             self.label_progressStats.setText('')
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
 
@@ -214,7 +214,7 @@ class StatsWidget(QWidget, FORM_CLASS):
         last_directory = get_last_input_path()
 
         # noinspection PyArgumentList
-        output_file = QFileDialog.getSaveFileName(
+        output_file, __ = QFileDialog.getSaveFileName(
             parent=self,
             caption=tr('Select file'),
             directory=last_directory,
@@ -241,7 +241,7 @@ class StatsWidget(QWidget, FORM_CLASS):
 
         last_directory = get_last_input_path()
         # noinspection PyArgumentList
-        output_file = QFileDialog.getSaveFileName(
+        output_file, __ = QFileDialog.getSaveFileName(
             parent=self,
             caption=tr('Select file'),
             directory=last_directory,

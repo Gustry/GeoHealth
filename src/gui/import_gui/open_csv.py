@@ -21,8 +21,8 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QWidget, QMdiArea, QVBoxLayout
-from PyQt4.QtCore import pyqtSignal
+from qgis.PyQt.QtWidgets import QWidget, QMdiArea, QVBoxLayout
+from qgis.PyQt.QtCore import pyqtSignal
 from qgis.core import QgsProviderRegistry
 from qgis.utils import iface
 
@@ -42,14 +42,14 @@ class OpenCsv(QWidget):
         mdi_area = QMdiArea()
 
         # noinspection PyArgumentList
-        dialog = QgsProviderRegistry.instance().selectWidget('delimitedtext')
+        dialog = QgsProviderRegistry.instance().createSelectionWidget('delimitedtext')
         dialog.setWindowTitle(tr('Open a CSV'))
 
         layout = QVBoxLayout(self)
         layout.addWidget(mdi_area)
         mdi_area.addSubWindow(dialog)
 
-        dialog.addVectorLayer[str, str, str].connect(self.success)
+        dialog.addVectorLayer.connect(self.success)
         dialog.rejected.connect(self.signalAskCloseWindow.emit)
 
     def success(self, path, base_name, provider_key):

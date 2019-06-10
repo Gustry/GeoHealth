@@ -20,9 +20,11 @@
  *                                                                         *
  ***************************************************************************/
 """
+from __future__ import print_function
 
-from PyQt4.QtGui import QDialog, QDialogButtonBox
-from PyQt4.QtCore import QSize, pyqtSignal
+from builtins import str
+from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox
+from qgis.PyQt.QtCore import QSize, pyqtSignal
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
@@ -64,15 +66,16 @@ class HistogramDialog(QDialog, FORM_CLASS):
 
         index = self.cbx_layer.currentIndex()
         layer = self.cbx_layer.itemData(index)
-        render = layer.rendererV2()
+        render = layer.renderer()
 
         for ran in render.ranges():
-            print "%f - %f: %s %s" % (
+            # fix_print_with_import
+            print("%f - %f: %s %s" % (
                 ran.lowerValue(),
                 ran.upperValue(),
                 ran.label(),
                 str(ran.symbol())
-            )
+            ))
 
         bar_list = self.ax.bar([1, 2, 3, 4], [1, 2, 3, 4])
         bar_list[0].set_color('r')

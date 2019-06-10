@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from builtins import range
+from builtins import object
 from qgis.networkanalysis import (
     QgsLineVectorLayerDirector,
     QgsGraphVertex,
@@ -16,10 +18,7 @@ from qgis.core import (
     QgsField
 )
 
-from PyQt4.QtCore import QVariant
-
-from processing.core.GeoAlgorithmExecutionException import \
-    GeoAlgorithmExecutionException
+from qgis.PyQt.QtCore import QVariant
 
 
 class Graph(object):
@@ -145,7 +144,7 @@ class Graph(object):
         :rtype: list
         """
         nb_vertices = self.graph.vertexCount()
-        return (self.graph.vertex(i) for i in xrange(0, nb_vertices))
+        return (self.graph.vertex(i) for i in range(0, nb_vertices))
 
     def get_id_vertices(self):
         """Get a generator to loop over all vertices id.
@@ -154,7 +153,7 @@ class Graph(object):
         :rtype: list
         """
         nb_vertices = self.graph.vertexCount()
-        return xrange(0, nb_vertices)
+        return range(0, nb_vertices)
 
     def get_arcs(self):
         """Get a generator to loop over all arcs.
@@ -163,7 +162,7 @@ class Graph(object):
         :rtype: list
         """
         nb_edges = self.graph.arcCount()
-        return (self.graph.arc(i) for i in xrange(0, nb_edges))
+        return (self.graph.arc(i) for i in range(0, nb_edges))
 
     def get_id_arcs(self):
         """Get a generator to loop over all arcs id.
@@ -172,7 +171,7 @@ class Graph(object):
         :rtype: list
         """
         nb_edges = self.graph.arcCount()
-        return xrange(0, nb_edges)
+        return range(0, nb_edges)
 
     ###
     # ARC
@@ -193,7 +192,7 @@ class Graph(object):
         """
         if id_arc < 0 or id_arc >= self.arc_count():
             msg = 'Arc %s doesn\'t exist' % id_arc
-            raise GeoAlgorithmExecutionException(msg)
+            raise Exception(msg)
 
         return self.graph.arc(id_arc)
 
@@ -253,7 +252,7 @@ class Graph(object):
         """
         if id_vertex < 0 or id_vertex >= self.vertex_count():
             msg = 'Vertex %s doesn\'t exist' % id_vertex
-            raise GeoAlgorithmExecutionException(msg)
+            raise Exception(msg)
 
         return self.graph.vertex(id_vertex)
 
@@ -307,7 +306,7 @@ class Graph(object):
                 vertex = self.get_nearest_vertex(point)
                 vertex_id = self.graph.findVertex(vertex.point())
         else:
-            raise GeoAlgorithmExecutionException('unknown type')
+            raise Exception('unknown type')
 
         return vertex_id
 
@@ -346,14 +345,14 @@ class Graph(object):
 
         if cost_strategy not in self.properties:
             msg = 'Cost %s does not exist' % cost_strategy
-            raise GeoAlgorithmExecutionException(msg)
+            raise Exception(msg)
 
         vertex_id = self.get_nearest_vertex_id(start)
 
-        if vertex_id not in self.dijkstra_results.keys():
+        if vertex_id not in list(self.dijkstra_results.keys()):
             self.dijkstra_results[vertex_id] = {}
 
-        if cost_strategy not in self.dijkstra_results[vertex_id].keys():
+        if cost_strategy not in list(self.dijkstra_results[vertex_id].keys()):
             criterion = self.properties.index(cost_strategy)
             dijkstra = QgsGraphAnalyzer.dijkstra(
                 self.graph, vertex_id, criterion)
@@ -401,7 +400,7 @@ class Graph(object):
         """
         cost = self.cost(start, end, cost_strategy)
         if cost < 0:
-            raise GeoAlgorithmExecutionException('Path not found')
+            raise Exception('Path not found')
 
         tree, cost = self.dijkstra(start, cost_strategy)
         vertex_start_id = self.get_nearest_vertex_id(start)

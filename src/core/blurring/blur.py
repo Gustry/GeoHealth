@@ -21,6 +21,7 @@
  ***************************************************************************/
 """
 
+from builtins import object
 from random import uniform
 from math import pi, cos, sin
 

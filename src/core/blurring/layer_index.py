@@ -21,7 +21,8 @@
  ***************************************************************************/
 """
 
-from qgis.core import QgsSpatialIndex, QgsFeatureRequest, QgsGeometry, QGis
+from builtins import object
+from qgis.core import QgsSpatialIndex, QgsFeatureRequest, QgsGeometry, Qgis
 
 
 class LayerIndex(object):
@@ -30,7 +31,7 @@ class LayerIndex(object):
     def __init__(self, layer):
         self.__layer = layer
 
-        if QGis.QGIS_VERSION_INT >= 20700:
+        if Qgis.QGIS_VERSION_INT >= 20700:
             self.__index = QgsSpatialIndex(layer.getFeatures())
         else:
             self.__index = QgsSpatialIndex()
@@ -42,7 +43,7 @@ class LayerIndex(object):
         intersects = self.__index.intersects(point.boundingBox())
         for i in intersects:
             request = QgsFeatureRequest().setFilterFid(i)
-            feat = self.__layer.getFeatures(request).next()
+            feat = next(self.__layer.getFeatures(request))
             if point.intersects(QgsGeometry(feat.geometry())):
                 return True
         return False
@@ -53,7 +54,7 @@ class LayerIndex(object):
         intersects = self.__index.intersects(buffer_geom.boundingBox())
         for i in intersects:
             request = QgsFeatureRequest().setFilterFid(i)
-            feat = self.__layer.getFeatures(request).next()
+            feat = next(self.__layer.getFeatures(request))
 
             if buffer_geom.intersects(QgsGeometry(feat.geometry())):
                 count += 1

@@ -21,8 +21,8 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QDialog
-from PyQt4.QtCore import pyqtSignal
+from qgis.PyQt.QtWidgets import QDialog
+from qgis.PyQt.QtCore import pyqtSignal
 
 from GeoHealth.src.ui.main_blurring import Ui_Form
 

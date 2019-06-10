@@ -181,7 +181,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QgsColorButtonV2" name="color_low_value">
+         <widget class="QgsColorButton" name="color_low_value">
           <property name="color" stdset="0">
            <color>
             <red>255</red>
@@ -212,7 +212,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QgsColorButtonV2" name="color_high_value">
+         <widget class="QgsColorButton" name="color_high_value">
           <property name="color" stdset="0">
            <color>
             <red>202</red>
@@ -333,7 +333,7 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>QgsColorButtonV2</class>
+   <class>QgsColorButton</class>
    <extends>QToolButton</extends>
    <header>qgis.gui</header>
   </customwidget>
