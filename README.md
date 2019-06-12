@@ -25,8 +25,14 @@ If you don't have Python in your system, it is possible to actual download PySAL
 ### Installing PySAL for Windows using [OSGeo4W](http://trac.osgeo.org/osgeo4w/)
 
   1. Run the OSGeo4W Shell on `Start -> All Programs -> OSGeo4W` menu
-  2. Run in the OSGeo4W Shell  the following command  `pip install pysal`
-  3. After the command finish, a success message as Successfully installed `pysal-X.XX.X` should appear.
+  1. Run in the OSGeo4W Shell  the following command  `pip install pysal`
+  1. After the command finish, a success message as Successfully installed `pysal-X.XX.X` should appear.
+  
+  *Alternate way copying the PySAL from http://bit.ly/pysal-qgis*
+  
+  1. Download the pysal folders in the DropBox
+  1. Copy the pysal folder that is inside the folder to the Python folder in QGIS. That folder is usually in `C:\Program Files\QGIS 2.18\apps\Python27\lib\site packages`
+  1. The `pysal` folder after this copy then should be in this path (if your installation was the usual): `C:\Program Files\QGIS 2.18\apps\Python27\lib\site packages\pysal`
 
 #### Solving error messages:
   * If you receive an error message as Could not import setuptools... please use `pip install setuptools` 
@@ -46,6 +52,12 @@ If you don't have Python in your system, it is possible to actual download PySAL
   1. Run in the Terminal the command  `pip install pysal` again to obtain the folder for installation
   1. Copy the folder name, for example: `/opt/boxen/homebrew/lib/python2.7/site-package`
   1. Run a command based on the copied folder name as: `cp -Rv /opt/boxen/homebrew/lib/python2.7/site-packages/pysal pysal`
+  
+  *Alternate way copying the PySAL from http://bit.ly/pysal-qgis*
+  
+  1. Download the pysal folders in the DropBox
+  1. Copy the pysal folder that is inside the folder to the Python folder in QGIS. That folder is usually in `/Applications/QGIS.app/Contents/Resources/python`
+  1. The `pysal` folder after this copy then should be in this path (if your installation was the usual): `/Applications/QGIS.app/Contents/Resources/python/pysal`
 
 ### Installing GeoPublicHealth Plugin
   1. Start QGIS and launch the plugins manager by going to the **Plugins menu and selecting Manage and Install Plugins….**
