@@ -65,10 +65,9 @@ from GeoPublicHealth.src.core.exceptions import \
     FieldExistingException,\
     FieldException,\
     NotANumberException
-from pysal import pysal
+import pysal
 from GeoPublicHealth.src.core.stats import Stats
 import processing
-from processing.tools.vector import VectorWriter
 import numpy as np
 
 from qgis.gui import QgsFieldComboBox

@@ -22,18 +22,18 @@
 """
 
 from PyQt4.QtGui import QIcon
-from processing.core.AlgorithmProvider import AlgorithmProvider
+from processing.core.QgsProcessingProvider import QgsProcessingProvider
 
 from GeoPublicHealth.src.processing_geopublichealth.blurring import (
     BlurringGeoAlgorithm)
 from GeoPublicHealth.src.utilities.resources import resource
 
 
-class Provider(AlgorithmProvider):
+class Provider(QgsProcessingProvider):
     """QGIS Processing"""
 
     def __init__(self):
-        AlgorithmProvider.__init__(self)
+        QgsProcessingProvider.__init__(self)
 
         self.activate = True
 
@@ -43,10 +43,10 @@ class Provider(AlgorithmProvider):
             alg.provider = self
 
     def initializeSettings(self):
-        AlgorithmProvider.initializeSettings(self)
+        QgsProcessingProvider.initializeSettings(self)
 
     def unload(self):
-        AlgorithmProvider.unload(self)
+        QgsProcessingProvider.unload(self)
 
     def getName(self):
         return 'GeoPublicHealth'

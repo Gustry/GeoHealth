@@ -24,11 +24,11 @@
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtCore import QVariant, QSettings
 from qgis.utils import Qgis
-from qgis.core import QgsVectorFileWriter, QgsField
-from processing.core.GeoAlgorithm import GeoAlgorithm
-from processing.core.parameters import (
-    ParameterVector, ParameterNumber, ParameterBoolean)
-from processing.core.outputs import OutputVector
+from qgis.core import QgsVectorFileWriter, QgsField, QgsProcessingAlgorithm
+#from processing.core.GeoAlgorithm import GeoAlgorithm
+#from processing.core.parameters import (ParameterVector, ParameterNumber, ParameterBoolean)
+from qgis.core import QgsProcessingParameterNumber,QgsProcessingParameterVectorLayer, QgsProcessingParameterBoolean,QgsProcessingOutputVectorLayer
+#from processing.core.outputs import OutputVector
 from processing.tools.vector import dataobjects, features
 
 
@@ -37,8 +37,8 @@ from GeoPublicHealth.src.core.blurring.layer_index import LayerIndex
 from GeoPublicHealth.src.core.tools import tr
 from GeoPublicHealth.src.utilities.resources import resource
 
-
-class BlurringGeoAlgorithm(GeoAlgorithm):
+class BlurringGeoAlgorithm(QgsProcessingAlgorithm):
+#class BlurringGeoAlgorithm(GeoAlgorithm):
     """QGIS Processing"""
 
     OUTPUT_LAYER = 'OUTPUT_LAYER'
@@ -49,40 +49,39 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
     DISTANCE_EXPORT = 'DISTANCE_EXPORT'
     ENVELOPE_LAYER = 'ENVELOPE_LAYER'
 
-    def defineCharacteristics(self):
+    def initAlgorithm(self):
         self.name = "Blurring a point layer"
         self.group = "Blurring a point layer"
 
-        self.addParameter(ParameterVector(
+        self.addParameter(QgsProcessingParameterVectorLayer(
             self.INPUT_LAYER,
             'Point layer',
-            [ParameterVector.VECTOR_TYPE_POINT],
-            False))
+            [QgsProcessing.TypeVectorPoint]),False)
 
-        self.addParameter(ParameterNumber(
+        self.addParameter(QgsProcessingParameterNumber(
             self.RADIUS_FIELD,
             'Radius (maps unit)',
             0,
             999999999,
             500.00))
 
-        self.addParameter(ParameterVector(
+        self.addParameter(QgsProcessingParameterVectorLayer(
             self.ENVELOPE_LAYER,
             'Envelope layer',
-            [ParameterVector.VECTOR_TYPE_POLYGON],
+            [QgsProcessingParameterVectorLayer.TypeVectorPolygon],
             True))
 
-        self.addParameter(ParameterBoolean(
+        self.addParameter(QgsProcessingParameterBoolean(
             self.RADIUS_EXPORT,
             'Add the radius to the attribute table',
             False))
 
-        self.addParameter(ParameterBoolean(
+        self.addParameter(QgsProcessingParameterBoolean(
             self.CENTROID_EXPORT,
             'Add the centroid to the attribute table',
             False))
 
-        self.addOutput(OutputVector(
+        self.addOutput(QgsProcessingOutputVectorLayer(
             self.OUTPUT_LAYER,
             'Output layer with selected features'))
 
@@ -91,7 +90,7 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
             'For more explanations, go to the vector\'s menu then "Blurring"'
             ' -> "Help"<br />')
 
-    def getIcon(self):
+    def icon(self):
         return QIcon(resource('blur.png'))
 
     def processAlgorithm(self, progress):
