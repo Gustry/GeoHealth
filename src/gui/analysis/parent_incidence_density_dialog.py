@@ -22,26 +22,22 @@
 """
 
 from tempfile import NamedTemporaryFile
-from PyQt4.QtGui import \
-    QDialog,\
-    QDialogButtonBox,\
-    QTableWidgetItem,\
-    QApplication
-from PyQt4.QtCore import QSize, QVariant, Qt, pyqtSignal
-from PyQt4.QtGui import QFileDialog
+from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox, QTableWidgetItem, QApplication
+from qgis.PyQt.QtCore import QSize, QVariant, Qt, pyqtSignal
+from qgis.PyQt.QtWidgets import QFileDialog
 
-from qgis.utils import QGis
-from qgis.gui import QgsMapLayerProxyModel
+from qgis.utils import Qgis
 from qgis.core import \
     QgsField,\
-    QgsVectorGradientColorRampV2,\
-    QgsGraduatedSymbolRendererV2,\
-    QgsSymbolV2,\
+    QgsGradientColorRamp,\
+    QgsGraduatedSymbolRenderer,\
+    QgsSymbol,\
     QgsVectorFileWriter,\
     QgsFeature,\
     QgsVectorLayer,\
-    QgsMapLayerRegistry,\
-    QgsGeometry
+    QgsProject,\
+    QgsGeometry,\
+    QgsMapLayerProxyModel
 
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
@@ -100,15 +96,15 @@ class IncidenceDensityDialog(QDialog):
 
         # Add items in symbology
         self.cbx_mode.addItem(
-            'Equal interval', QgsGraduatedSymbolRendererV2.EqualInterval)
+            'Equal interval', QgsGraduatedSymbolRenderer.EqualInterval)
         self.cbx_mode.addItem(
-            'Quantile (equal count)', QgsGraduatedSymbolRendererV2.Quantile)
+            'Quantile (equal count)', QgsGraduatedSymbolRenderer.Quantile)
         self.cbx_mode.addItem(
-            'Natural breaks', QgsGraduatedSymbolRendererV2.Jenks)
+            'Natural breaks', QgsGraduatedSymbolRenderer.Jenks)
         self.cbx_mode.addItem(
-            'Standard deviation', QgsGraduatedSymbolRendererV2.StdDev)
+            'Standard deviation', QgsGraduatedSymbolRenderer.StdDev)
         self.cbx_mode.addItem(
-            'Pretty breaks', QgsGraduatedSymbolRendererV2.Pretty)
+            'Pretty breaks', QgsGraduatedSymbolRenderer.Pretty)
 
         # Setup the graph.
         self.figure = Figure()
@@ -149,7 +145,7 @@ class IncidenceDensityDialog(QDialog):
         self.cbx_case_field.setCurrentIndex(0)
 
     def open_file_browser(self):
-        output_file = QFileDialog.getSaveFileNameAndFilter(
+        output_file, __ = QFileDialog.getSaveFileName(
             self.parent, tr('Save shapefile'), filter='SHP (*.shp)')
         self.le_output_filepath.setText(output_file[0])
 
@@ -226,7 +222,7 @@ class IncidenceDensityDialog(QDialog):
                 temp_file.close()
 
             admin_layer_provider = self.admin_layer.dataProvider()
-            fields = self.admin_layer.pendingFields() 
+            fields = self.admin_layer.pendingFields()
 
             if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
                 raise FieldExistingException(field=self.name_field)
@@ -242,7 +238,7 @@ class IncidenceDensityDialog(QDialog):
                 self.output_file_path,
                 'utf-8',
                 fields,
-                QGis.WKBPolygon,
+                Qgis.WKBPolygon,
                 self.admin_layer.crs(),
                 'ESRI Shapefile')
 
@@ -299,7 +295,7 @@ class IncidenceDensityDialog(QDialog):
                 self.output_file_path,
                 self.name_field,
                 'ogr')
-            QgsMapLayerRegistry.instance().addMapLayer(self.output_layer)
+            QgsProject.instance().addMapLayer(self.output_layer)
 
             if self.checkBox_incidence_runStats.isChecked():
 
@@ -340,7 +336,7 @@ class IncidenceDensityDialog(QDialog):
 
             self.signalStatus.emit(3, tr('Successful process'))
 
-        except GeoPublicHealthException, e:
+        except GeoPublicHealthException as e:
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
 
         finally:
@@ -373,11 +369,11 @@ class IncidenceDensityDialog(QDialog):
 
         # Compute renderer
         # noinspection PyArgumentList
-        symbol = QgsSymbolV2.defaultSymbol(QGis.Polygon)
+        symbol = QgsSymbol.defaultSymbol(Qgis.Polygon)
 
-        color_ramp = QgsVectorGradientColorRampV2(low_color, high_color)
+        color_ramp = QgsGradientColorRamp(low_color, high_color)
         # noinspection PyArgumentList
-        renderer = QgsGraduatedSymbolRendererV2.createRenderer(
+        renderer = QgsGraduatedSymbolRenderer.createRenderer(
             self.output_layer,
             self.name_field,
             classes,

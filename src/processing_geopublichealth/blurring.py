@@ -21,9 +21,9 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QIcon
-from PyQt4.QtCore import QVariant, QSettings
-from qgis.utils import QGis
+from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtCore import QVariant, QSettings
+from qgis.utils import Qgis
 from qgis.core import QgsVectorFileWriter, QgsField
 from processing.core.GeoAlgorithm import GeoAlgorithm
 from processing.core.parameters import (
@@ -129,7 +129,7 @@ class BlurringGeoAlgorithm(GeoAlgorithm):
             output,
             system_encoding,
             fields,
-            QGis.WKBPolygon,
+            Qgis.WKBPolygon,
             provider.crs())
 
         # Creating a algorithm with all these parameters.

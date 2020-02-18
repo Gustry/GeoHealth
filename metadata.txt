@@ -1,14 +1,14 @@
-# This file contains metadata for your plugin. Since 
-# version 2.0 of QGIS this is the proper way to supply 
-# information about a plugin. The old method of 
-# embedding metadata in __init__.py will 
+# This file contains metadata for your plugin. Since
+# version 2.0 of QGIS this is the proper way to supply
+# information about a plugin. The old method of
+# embedding metadata in __init__.py will
 # is no longer supported since version 2.0.
 
 # This file should be included when you package your plugin.# Mandatory items:
 
 [general]
 name=GeoPublicHealth
-qgisMinimumVersion=2.0
+qgisMinimumVersion=3.0
 about=GeoPublicHealth offers a simplified interface for users in public health.
 description=GeoPublicHealth offers a simplified interface for users in public health: import data, create incidence or density maps, spatially blur GPS location, run statistics and export results.
 version=1.0.1
@@ -36,4 +36,3 @@ experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
-

@@ -10,6 +10,7 @@ Contact : etienne at kartoza dot com
      (at your option) any later version.
 
 """
+from __future__ import print_function
 
 import sys
 import unittest
@@ -28,10 +29,18 @@ __date__ = '14/06/2016'
 def _run_tests(test_suite, package_name):
     """Core function to test a test suite."""
     count = test_suite.countTestCases()
-    print '########'
-    print '%s tests has been discovered in %s' % (count, package_name)
-    print 'Python GDAL : %s' % gdal.VersionInfo('VERSION_NUM')
-    print '########'
+    # fix_print_with_import
+    # fix_print_with_import
+print('########')
+    # fix_print_with_import
+    # fix_print_with_import
+print('%s tests has been discovered in %s' % (count, package_name))
+    # fix_print_with_import
+    # fix_print_with_import
+print('Python GDAL : %s' % gdal.VersionInfo('VERSION_NUM'))
+    # fix_print_with_import
+    # fix_print_with_import
+print('########')
     currentdir = dirname(abspath(inspect.getfile(inspect.currentframe())))
     parentdir = dirname(currentdir)
     sys.path.insert(0, parentdir)

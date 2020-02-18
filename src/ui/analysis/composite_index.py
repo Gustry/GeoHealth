@@ -6,7 +6,8 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt4 import QtCore, QtGui
+from builtins import object
+from qgis.PyQt import QtCore, QtGui
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -107,7 +108,7 @@ class Ui_Composite_Index(object):
         self.label_9 = QtGui.QLabel(self.symbology)
         self.label_9.setObjectName(_fromUtf8("label_9"))
         self.horizontalLayout_3.addWidget(self.label_9)
-        self.color_low_value = QgsColorButtonV2(self.symbology)
+        self.color_low_value = QgsColorButton(self.symbology)
         self.color_low_value.setProperty("color", QtGui.QColor(50, 164, 46))
         self.color_low_value.setObjectName(_fromUtf8("color_low_value"))
         self.horizontalLayout_3.addWidget(self.color_low_value)
@@ -116,7 +117,7 @@ class Ui_Composite_Index(object):
         self.label_10 = QtGui.QLabel(self.symbology)
         self.label_10.setObjectName(_fromUtf8("label_10"))
         self.horizontalLayout_3.addWidget(self.label_10)
-        self.color_high_value = QgsColorButtonV2(self.symbology)
+        self.color_high_value = QgsColorButton(self.symbology)
         self.color_high_value.setProperty("color", QtGui.QColor(202, 33, 36))
         self.color_high_value.setObjectName(_fromUtf8("color_high_value"))
         self.horizontalLayout_3.addWidget(self.color_high_value)
@@ -173,4 +174,4 @@ class Ui_Composite_Index(object):
 from qgis.gui import QgsFieldComboBox
 from qgis.gui import QgsMapLayerComboBox
 from qgis.gui import QgsCollapsibleGroupBox
-from qgis.gui import QgsColorButtonV2
+from qgis.gui import QgsColorButton

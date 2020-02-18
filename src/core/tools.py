@@ -21,13 +21,14 @@
  ***************************************************************************/
 """
 
+from builtins import str
 from uuid import uuid4
-from PyQt4.QtCore import QSettings
-from PyQt4.QtGui import QApplication
+from qgis.PyQt.QtCore import QSettings
+from qgis.PyQt.QtWidgets import QApplication
 from qgis.utils import iface
 from qgis.gui import QgsMessageBar
 from qgis.core import (
-    QgsVectorLayer, QGis, QgsGeometry, QgsFeature, QgsSpatialIndex)
+    QgsVectorLayer, Qgis, QgsGeometry, QgsFeature, QgsSpatialIndex)
 
 
 def create_memory_layer(
@@ -38,7 +39,7 @@ def create_memory_layer(
     :type layer_name: str
 
     :param geometry: The geometry of the layer.
-    :rtype geometry: QGis.WkbType
+    :rtype geometry: Qgis.WkbType
 
     :param coordinate_reference_system: The CRS of the memory layer.
     :type coordinate_reference_system: QgsCoordinateReferenceSystem
@@ -50,13 +51,13 @@ def create_memory_layer(
     :rtype: QgsVectorLayer
     """
 
-    if geometry == QGis.Point:
+    if geometry == Qgis.Point:
         type_string = 'MultiPoint'
-    elif geometry == QGis.Line:
+    elif geometry == Qgis.Line:
         type_string = 'MultiLineString'
-    elif geometry == QGis.Polygon:
+    elif geometry == Qgis.Polygon:
         type_string = 'MultiPolygon'
-    elif geometry == QGis.NoGeometry:
+    elif geometry == Qgis.NoGeometry:
         type_string = 'none'
     else:
         raise Exception(
@@ -151,7 +152,7 @@ def tr(msg):
 
 
 def display_message_bar(
-        title=None, msg=None, level=QgsMessageBar.INFO, duration=5):
+        title=None, msg=None, level=Qgis.Info, duration=5):
 
     try:
         if iface.Blurring_mainWindowDialog.isVisible():

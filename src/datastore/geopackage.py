@@ -1,8 +1,9 @@
 # coding=utf-8
 
 
+from builtins import range
 from osgeo import ogr, osr, gdal
-from PyQt4.QtCore import QFileInfo
+from qgis.PyQt.QtCore import QFileInfo
 from qgis.core import (
     QgsVectorLayer,
     QgsRasterLayer,
@@ -35,7 +36,7 @@ class GeoPackage(DataStore):
 
         if isinstance(uri, QFileInfo):
             self._uri = uri
-        elif isinstance(uri, basestring):
+        elif isinstance(uri, str):
             self._uri = QFileInfo(uri)
         else:
             raise ErrorDataStore('Unknown type')

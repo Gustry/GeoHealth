@@ -21,8 +21,8 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QWidget, QMdiArea, QVBoxLayout
-from PyQt4.QtCore import pyqtSignal
+from qgis.PyQt.QtWidgets import QWidget, QMdiArea, QVBoxLayout
+from qgis.PyQt.QtCore import pyqtSignal
 from qgis.core import QgsProviderRegistry
 from qgis.utils import iface
 

@@ -9,8 +9,8 @@
         begin                : 2016-02-17
         copyright            : (C) 2016 by ePublicHealth
         email                : manuel@epublichealth.co
-        
-        Based on the work of Geohealth                  
+
+        Based on the work of Geohealth
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
@@ -26,30 +26,26 @@
  ***************************************************************************/
 """
 
+from builtins import str
+from builtins import range
 from tempfile import NamedTemporaryFile
-from PyQt4.QtGui import \
-    QDialog,\
-    QDialogButtonBox,\
-    QTableWidgetItem,\
-    QMessageBox,\
-    QApplication
-from PyQt4.QtCore import QSize, QVariant, Qt, pyqtSignal
-from PyQt4.QtGui import QFileDialog
+from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox, QTableWidgetItem, QMessageBox, QApplication
+from qgis.PyQt.QtCore import QSize, QVariant, Qt, pyqtSignal
+from qgis.PyQt.QtWidgets import QFileDialog
 
-from qgis.utils import QGis
-from qgis.gui import \
-    QgsMapLayerProxyModel,\
-    QgsFieldProxyModel
-from qgis.core import \
+from qgis.utils import Qgis
+#from qgis.gui import QgsFieldProxyModel
+from qgis.core import (\
     QgsField,\
-    QgsVectorGradientColorRampV2,\
-    QgsGraduatedSymbolRendererV2,\
-    QgsSymbolV2,\
+    QgsGradientColorRamp,\
+    QgsGraduatedSymbolRenderer,\
+    QgsSymbol,\
     QgsVectorFileWriter,\
     QgsFeature,\
     QgsVectorLayer,\
-    QgsMapLayerRegistry,\
-    QgsGeometry
+    QgsProject,\
+    QgsGeometry,\
+    QgsMapLayerProxyModel, QgsFieldProxyModel)
 
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
@@ -112,19 +108,19 @@ class CommonCompositeIndexDialog(QDialog):
 
         # Add items in symbology
         self.cbx_mode.addItem(
-            'Quantile (equal count)', QgsGraduatedSymbolRendererV2.Quantile)
+            'Quantile (equal count)', QgsGraduatedSymbolRenderer.Quantile)
         self.cbx_mode.addItem(
-            'Natural breaks', QgsGraduatedSymbolRendererV2.Jenks)
+            'Natural breaks', QgsGraduatedSymbolRenderer.Jenks)
         self.cbx_mode.addItem(
-            'Standard deviation', QgsGraduatedSymbolRendererV2.StdDev)
+            'Standard deviation', QgsGraduatedSymbolRenderer.StdDev)
         self.cbx_mode.addItem(
-            'Pretty breaks', QgsGraduatedSymbolRendererV2.Pretty)
+            'Pretty breaks', QgsGraduatedSymbolRenderer.Pretty)
         self.cbx_mode.addItem(
-            'Equal interval', QgsGraduatedSymbolRendererV2.EqualInterval)
+            'Equal interval', QgsGraduatedSymbolRenderer.EqualInterval)
 
         self.cbx_aggregation_layer.setFilters(QgsMapLayerProxyModel.PolygonLayer)
 
-        self.cbx_list_indicators.itemDoubleClicked.connect(self.remove_item) 
+        self.cbx_list_indicators.itemDoubleClicked.connect(self.remove_item)
 
         self.cbx_indicator_field.setFilters(QgsFieldProxyModel.Numeric)
         self.cbx_indicator_field.setLayer(self.cbx_aggregation_layer.currentLayer())
@@ -156,16 +152,16 @@ class CommonCompositeIndexDialog(QDialog):
             return "-"
 
     def open_file_browser(self):
-        output_file = QFileDialog.getSaveFileNameAndFilter(
+        output_file, __ = QFileDialog.getSaveFileName(
             self.parent, tr('Save shapefile'), filter='SHP (*.shp)')
         self.le_output_filepath.setText(output_file[0])
 
     def indicators_list(self):
         items = []
-        for index in xrange(self.cbx_list_indicators.count()):
+        for index in range(self.cbx_list_indicators.count()):
             items.append(self.cbx_list_indicators.item(index))
         return [i.text().split(" | ") for i in items]
-    
+
 
     def run_stats(self):
         """Main function which do the process."""
@@ -210,7 +206,7 @@ class CommonCompositeIndexDialog(QDialog):
                 temp_file.close()
 
             admin_layer_provider = self.admin_layer.dataProvider()
-            fields = self.admin_layer.pendingFields() 
+            fields = self.admin_layer.pendingFields()
 
             if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
                 raise FieldExistingException(field=self.name_field)
@@ -224,7 +220,7 @@ class CommonCompositeIndexDialog(QDialog):
                 self.output_file_path,
                 'utf-8',
                 fields,
-                QGis.WKBPolygon,
+                Qgis.WKBPolygon,
                 self.admin_layer.crs(),
                 'ESRI Shapefile')
 
@@ -248,7 +244,7 @@ class CommonCompositeIndexDialog(QDialog):
 
             for i, feature in enumerate(self.admin_layer.getFeatures()):
                 attributes = feature.attributes()
-                
+
                 composite_index_value = 0.0
                 for indicator_selected in selected_indicators:
                     indicator_selected_name = str(indicator_selected[0])
@@ -284,14 +280,14 @@ class CommonCompositeIndexDialog(QDialog):
                 self.output_file_path,
                 self.name_field,
                 'ogr')
-            QgsMapLayerRegistry.instance().addMapLayer(self.output_layer)
+            QgsProject.instance().addMapLayer(self.output_layer)
 
             if self.symbology.isChecked():
                 self.add_symbology()
 
             self.signalStatus.emit(3, tr('Successful process'))
 
-        except GeoPublicHealthException, e:
+        except GeoPublicHealthException as e:
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
 
         finally:
@@ -324,11 +320,11 @@ class CommonCompositeIndexDialog(QDialog):
 
         # Compute renderer
         # noinspection PyArgumentList
-        symbol = QgsSymbolV2.defaultSymbol(QGis.Polygon)
+        symbol = QgsSymbol.defaultSymbol(Qgis.Polygon)
 
-        color_ramp = QgsVectorGradientColorRampV2(low_color, high_color)
+        color_ramp = QgsGradientColorRamp(low_color, high_color)
         # noinspection PyArgumentList
-        renderer = QgsGraduatedSymbolRendererV2.createRenderer(
+        renderer = QgsGraduatedSymbolRenderer.createRenderer(
             self.output_layer,
             self.name_field,
             classes,

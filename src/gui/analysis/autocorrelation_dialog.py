@@ -9,8 +9,8 @@
         begin                : 2016-02-17
         copyright            : (C) 2016 by ePublicHealth
         email                : manuel@epublichealth.co
-        
-        Based on the work of Geohealth                  
+
+        Based on the work of Geohealth
         begin                : 2014-08-20
         copyright            : (C) 2014 by Etienne Trimaille
         email                : etienne@trimaille.eu
@@ -25,33 +25,32 @@
  *                                                                         *
  ***************************************************************************/
 """
+from __future__ import print_function
 
+from builtins import str
 from tempfile import NamedTemporaryFile
-from PyQt4.QtGui import \
-    QDialog,\
-    QDialogButtonBox,\
-    QTableWidgetItem,\
-    QMessageBox,\
-    QApplication
-from PyQt4.QtCore import QSize, QVariant, Qt, pyqtSignal
-from PyQt4.QtGui import QFileDialog, QColor
+from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox, QTableWidgetItem, QMessageBox, QApplication
+from qgis.PyQt.QtCore import QSize, QVariant, Qt, pyqtSignal
+from qgis.PyQt.QtWidgets import QFileDialog
+from qgis.PyQt.QtGui import QColor
 
-from qgis.utils import QGis
-from qgis.gui import \
-    QgsMapLayerProxyModel,\
-    QgsFieldProxyModel
-from qgis.core import \
+from qgis.utils import Qgis
+#from qgis.gui import \
+#    QgsFieldProxyModel
+from qgis.core import (\
     QgsField,\
-    QgsRendererCategoryV2,\
-    QgsCategorizedSymbolRendererV2,\
-    QgsVectorGradientColorRampV2,\
-    QgsGraduatedSymbolRendererV2,\
-    QgsSymbolV2,\
+    QgsRendererCategory,\
+    QgsCategorizedSymbolRenderer,\
+    QgsGradientColorRamp,\
+    QgsGraduatedSymbolRenderer,\
+    QgsSymbol,\
     QgsVectorFileWriter,\
     QgsFeature,\
     QgsVectorLayer,\
-    QgsMapLayerRegistry,\
-    QgsGeometry
+    QgsProject,\
+    QgsGeometry,\
+    QgsMapLayerProxyModel,\
+    QgsFieldProxyModel,)
 
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
@@ -68,7 +67,7 @@ from GeoPublicHealth.src.core.exceptions import \
     NotANumberException
 from pysal import pysal
 from GeoPublicHealth.src.core.stats import Stats
-import processing 
+import processing
 from processing.tools.vector import VectorWriter
 import numpy as np
 
@@ -133,17 +132,17 @@ class CommonAutocorrelationDialog(QDialog):
         }
 
     def open_file_browser(self):
-        output_file = QFileDialog.getSaveFileNameAndFilter(
+        output_file, __ = QFileDialog.getSaveFileName(
             self.parent, tr('Save shapefile'), filter='SHP (*.shp)')
         self.le_output_filepath.setText(output_file[0])
 
     def run_stats(self):
         """Main function which do the process."""
 
-        # Get the common fields..currentField() 
+        # Get the common fields..currentField()
         self.admin_layer = self.cbx_aggregation_layer.currentLayer()
         input_name =  self.admin_layer.name()
-        field = self.cbx_indicator_field.currentField() 
+        field = self.cbx_indicator_field.currentField()
 
         self.layer = processing.getObject(input_name)
 
@@ -190,15 +189,17 @@ class CommonAutocorrelationDialog(QDialog):
                 self.output_file_path,
                 'utf-8',
                 fields,
-                QGis.WKBPolygon,
+                Qgis.WKBPolygon,
                 self.admin_layer.crs(),
                 'ESRI Shapefile')
 
             if self.cbx_contiguity.currentIndex()  == 0: # queen
-                print 'INFO: Local Moran\'s using queen contiguity'
+                # fix_print_with_import
+                print('Info: Local Moran\'s using queen contiguity')
                 w = pysal.queen_from_shapefile(self.admin_layer.source())
             else: # 1 for rook
-                print 'INFO: Local Moran\'s using rook contiguity'
+                # fix_print_with_import
+                print('Info: Local Moran\'s using rook contiguity')
                 w = pysal.rook_from_shapefile(self.admin_layer.source())
 
             f = pysal.open(self.admin_layer.source().replace('.shp','.dbf'))
@@ -218,7 +219,7 @@ class CommonAutocorrelationDialog(QDialog):
                 attributes.append(int(lm.q[i]))
                 attributes.append(float(lm.Is[i]))
                 attributes.append(int(sig_q[i]))
-              
+
                 new_feature = QgsFeature()
                 new_geom = QgsGeometry(feature.geometry())
                 new_feature.setAttributes(attributes)
@@ -231,14 +232,14 @@ class CommonAutocorrelationDialog(QDialog):
                 self.output_file_path,
                 "LISA Moran's I - " + field,
                 'ogr')
-            QgsMapLayerRegistry.instance().addMapLayer(self.output_layer)
+            QgsProject.instance().addMapLayer(self.output_layer)
 
 
             self.add_symbology()
 
             self.signalStatus.emit(3, tr('Successful process'))
 
-        except GeoPublicHealthException, e:
+        except GeoPublicHealthException as e:
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
 
         finally:
@@ -250,33 +251,33 @@ class CommonAutocorrelationDialog(QDialog):
 
     def add_symbology(self):
         categories = []
-        for lisaCategory, (color, label) in self.lisa.items():
-            sym = QgsSymbolV2.defaultSymbol(self.output_layer.geometryType())
+        for lisaCategory, (color, label) in list(self.lisa.items()):
+            sym = QgsSymbol.defaultSymbol(self.output_layer.geometryType())
             sym.setColor(QColor(color))
-            category = QgsRendererCategoryV2(lisaCategory, sym, label)
+            category = QgsRendererCategory(lisaCategory, sym, label)
             categories.append(category)
 
         self.newlayer = QgsVectorLayer(
             self.output_layer.source(),
-            self.output_layer.name() + " significance test", 
+            self.output_layer.name() + " significance test",
             self.output_layer.providerType())
-        QgsMapLayerRegistry.instance().addMapLayer(self.newlayer)
+        QgsProject.instance().addMapLayer(self.newlayer)
 
         # noinspection PyArgumentList
-        renderer = QgsCategorizedSymbolRendererV2(
+        renderer = QgsCategorizedSymbolRenderer(
             'LISA_Q',
             categories)
         self.output_layer.setRendererV2(renderer)
 
-        symbol = QgsSymbolV2.defaultSymbol(QGis.Polygon)
+        symbol = QgsSymbol.defaultSymbol(Qgis.Polygon)
 
-        color_ramp = QgsVectorGradientColorRampV2(QColor(0,0,0), QColor(255,0,0))
+        color_ramp = QgsGradientColorRamp(QColor(0,0,0), QColor(255,0,0))
         # noinspection PyArgumentList
-        renderer = QgsGraduatedSymbolRendererV2.createRenderer(
+        renderer = QgsGraduatedSymbolRenderer.createRenderer(
             self.newlayer,
             'LISA_C',
             4,
-            QgsGraduatedSymbolRendererV2.Jenks,
+            QgsGraduatedSymbolRenderer.Jenks,
             symbol,
             color_ramp)
         self.newlayer.setRendererV2(renderer)

@@ -24,10 +24,10 @@
 
 
 import codecs
-from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
-from PyQt4.QtCore import pyqtSignal
+from qgis.PyQt.QtWidgets import QWidget, QDialogButtonBox, QFileDialog
+from qgis.PyQt.QtCore import pyqtSignal
 
-from qgis.gui import QgsMapLayerProxyModel
+from qgis.core import QgsMapLayerProxyModel
 from qgis.core import QgsVectorFileWriter
 
 from GeoPublicHealth.src.core.tools import tr
@@ -56,7 +56,7 @@ class KmlExport(QWidget, FORM_CLASS):
 
     def open_file_browser(self):
         # noinspection PyArgumentList
-        output_file = QFileDialog.getSaveFileNameAndFilter(
+        output_file, __ = QFileDialog.getSaveFileName(
             parent=self.parent,
             caption=tr('Export as KML'),
             filter='KML (*.kml)')

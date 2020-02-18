@@ -22,18 +22,18 @@
 """
 
 from os.path import dirname, basename
-from qgis.utils import iface, QGis
-from qgis.gui import QgsMessageBar, QgsMapLayerProxyModel
+from qgis.utils import iface, Qgis
+from qgis.gui import QgsMessageBar
 from qgis.core import \
     QgsField,\
     QgsVectorFileWriter, \
-    QgsMapLayerRegistry, \
-    QgsVectorLayer
+    QgsProject, \
+    QgsVectorLayer,\
+    QgsMapLayerProxyModel
 
-from PyQt4.QtGui import (
-    QWidget, QDialogButtonBox, QFileDialog, QApplication)
-from PyQt4.QtCore import pyqtSignal, QSettings, QVariant
-from processing.tools.system import getTempFilenameInTempFolder
+from qgis.PyQt.QtWidgets import QWidget, QDialogButtonBox, QFileDialog, QApplication
+from qgis.PyQt.QtCore import pyqtSignal, QSettings, QVariant
+from processing.tools.system import getTempFilename
 
 from GeoPublicHealth.src.core.blurring.layer_index import LayerIndex
 from GeoPublicHealth.src.core.blurring.blur import Blur
@@ -78,7 +78,7 @@ class BlurWidget(QWidget, FORM_CLASS):
     def select_file(self):
         last_folder = get_last_input_path()
         # noinspection PyArgumentList
-        output_file = QFileDialog.getSaveFileName(
+        output_file, __ = QFileDialog.getSaveFileName(
             parent=self,
             caption=tr('Select file'),
             directory=last_folder,
@@ -125,7 +125,7 @@ class BlurWidget(QWidget, FORM_CLASS):
                     msg, level=QgsMessageBar.WARNING, duration=5)
 
             if not file_name:
-                file_name = getTempFilenameInTempFolder('blurring.shp')
+                file_name = getTempFilename('blurring.shp')
                 pass
 
             if layer_envelope:
@@ -161,7 +161,7 @@ class BlurWidget(QWidget, FORM_CLASS):
                 file_name,
                 'utf-8',
                 fields,
-                QGis.WKBPolygon,
+                Qgis.WKBPolygon,
                 layer_to_blur.crs(),
                 'ESRI Shapefile')
 
@@ -193,18 +193,18 @@ class BlurWidget(QWidget, FORM_CLASS):
                 new_layer.commitChanges()
                 new_layer.clearCacheImage()
                 # noinspection PyArgumentList
-                QgsMapLayerRegistry.instance().addMapLayers([new_layer])
+                QgsProject.instance().addMapLayers([new_layer])
 
                 self.settings.setValue(
                     '/Projections/defaultBehaviour', old_default_projection)
 
             msg = tr('Successful export in %s' % file_name)
             iface.messageBar().pushMessage(
-                msg, level=QgsMessageBar.INFO, duration=5)
+                msg, level=Qgis.Info, duration=5)
 
             self.signalAskCloseWindow.emit()
 
-        except GeoPublicHealthException, e:
+        except GeoPublicHealthException as e:
             self.label_progress.setText('')
             display_message_bar(msg=e.msg, level=e.level, duration=e.duration)
 

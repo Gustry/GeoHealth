@@ -21,7 +21,7 @@
  ***************************************************************************/
 """
 
-from PyQt4.QtGui import QIcon
+from qgis.PyQt.QtGui import QIcon
 from processing.core.AlgorithmProvider import AlgorithmProvider
 
 from GeoPublicHealth.src.processing_geopublichealth.blurring import (

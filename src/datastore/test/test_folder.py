@@ -16,7 +16,7 @@ import unittest
 from tempfile import mkdtemp
 from os.path import join
 
-from PyQt4.QtCore import QDir
+from qgis.PyQt.QtCore import QDir
 
 from GeoPublicHealth.src.test.utilities import iface, load_test_vector_layer
 from GeoPublicHealth.src.datastore.folder import Folder

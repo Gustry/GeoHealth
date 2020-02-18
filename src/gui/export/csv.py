@@ -21,11 +21,12 @@
  ***************************************************************************/
 """
 
+from builtins import str
 import codecs
-from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
-from PyQt4.QtCore import pyqtSignal
+from qgis.PyQt.QtWidgets import QWidget, QDialogButtonBox, QFileDialog
+from qgis.PyQt.QtCore import pyqtSignal
 
-from qgis.gui import QgsMapLayerProxyModel
+from qgis.core import QgsMapLayerProxyModel
 
 from GeoPublicHealth.src.core.tools import tr
 from GeoPublicHealth.src.utilities.resources import get_ui_class
@@ -61,7 +62,7 @@ class CsvExport(QWidget, FORM_CLASS):
 
     def open_file_browser(self):
         # noinspection PyArgumentList
-        output_file = QFileDialog.getSaveFileNameAndFilter(
+        output_file, __ = QFileDialog.getSaveFileName(
             parent=self.parent,
             caption=tr('Export as CSV'),
             filter='CSV (*.csv)')
@@ -90,7 +91,7 @@ class CsvExport(QWidget, FORM_CLASS):
 
         for feature in layer.getFeatures():
             attributes = feature.attributes()
-            line = u'%s\n' % delimiter.join([unicode(i) for i in attributes])
+            line = u'%s\n' % delimiter.join([str(i) for i in attributes])
             csv_file.write(line)
 
         csv_file.close()

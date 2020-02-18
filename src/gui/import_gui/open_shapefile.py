@@ -21,10 +21,10 @@
  ***************************************************************************/
 """
 from os.path import splitext, basename
-from qgis.core import QgsMapLayerRegistry, QgsVectorLayer
+from qgis.core import QgsProject, QgsVectorLayer
 
-from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
-from PyQt4.QtCore import pyqtSignal
+from qgis.PyQt.QtWidgets import QWidget, QDialogButtonBox, QFileDialog
+from qgis.PyQt.QtCore import pyqtSignal
 
 from GeoPublicHealth.src.core.tools import tr
 from GeoPublicHealth.src.utilities.resources import get_ui_class
@@ -51,7 +51,7 @@ class OpenShapefileWidget(QWidget, FORM_CLASS):
 
     def open_file_browser(self):
         # noinspection PyArgumentList
-        shapefile = QFileDialog.getOpenFileName(
+        shapefile, __ = QFileDialog.getOpenFileName(
             parent=self.parent,
             caption=tr('Select shapefile'),
             filter='Shapefile (*.shp)')
@@ -66,5 +66,5 @@ class OpenShapefileWidget(QWidget, FORM_CLASS):
         name = basename(splitext(path)[0])
         layer = QgsVectorLayer(path, name, 'ogr')
         # noinspection PyArgumentList
-        QgsMapLayerRegistry.instance().addMapLayer(layer)
+        QgsProject.instance().addMapLayer(layer)
         self.signalStatus.emit(3, tr('Successful import from %s' % path))

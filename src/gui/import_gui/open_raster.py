@@ -20,10 +20,10 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt4.QtCore import QFileInfo, pyqtSignal
-from qgis.core import QgsMapLayerRegistry, QgsRasterLayer, QgsProviderRegistry
+from qgis.PyQt.QtCore import QFileInfo, pyqtSignal
+from qgis.core import QgsProject, QgsRasterLayer, QgsProviderRegistry
 
-from PyQt4.QtGui import QWidget, QDialogButtonBox, QFileDialog
+from qgis.PyQt.QtWidgets import QWidget, QDialogButtonBox, QFileDialog
 
 from GeoPublicHealth.src.core.tools import tr
 from GeoPublicHealth.src.utilities.resources import get_ui_class
@@ -54,7 +54,7 @@ class OpenRasterWidget(QWidget, FORM_CLASS):
         raster_filter = QgsProviderRegistry.instance().fileRasterFilters()
 
         # noinspection PyArgumentList
-        raster = QFileDialog.getOpenFileName(
+        raster, __ = QFileDialog.getOpenFileName(
             parent=self.parent,
             caption=tr('Select raster'),
             filter=raster_filter)
@@ -67,5 +67,5 @@ class OpenRasterWidget(QWidget, FORM_CLASS):
         layer = QgsRasterLayer(path, file_info.baseName())
 
         # noinspection PyArgumentList
-        QgsMapLayerRegistry.instance().addMapLayer(layer)
+        QgsProject.instance().addMapLayer(layer)
         self.signalStatus.emit(3, tr('Successful import from %s' % path))
