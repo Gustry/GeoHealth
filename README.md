@@ -1,4 +1,12 @@
-## GeoHealth
+## GeoHealth upgrade for QGIS 3.0 (In progress)
+
+The project aims to upgrade the GeoPublicHealth 0.95 the GeoPublicHealth to work under QGIS 3.0. No change on the orginal function.
+
+##Current progress
+- qgis2to3 refactored
+- Revised code to work on QGIS API 3
+- <Working> Testing with PYSAL
+
 
 GeoHealth aims to provide a simplified interface for users in epidemiology in QGIS : 
  * blurring a point layer
@@ -12,6 +20,7 @@ GeoHealth aims to provide a simplified interface for users in epidemiology in QG
 ## Authors
   * Etienne Trimaille
   * This project was designed by UMR Espace-DEV (IRD, UAG, UM2, UR).
+  * Pai (Supharerk Thawillarp) -- QGIS2to3 Migration work
 =======
 
 # GeoPublicHealth 0.95
