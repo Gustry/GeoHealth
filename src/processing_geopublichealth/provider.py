@@ -22,14 +22,15 @@
 """
 
 from qgis.PyQt.QtGui import QIcon
+#from qgis.core import QgsProcessingProvider
 from qgis.core import QgsProcessingProvider
 
 from GeoPublicHealth.src.processing_geopublichealth.blurring import (
     BlurringGeoAlgorithm)
 from GeoPublicHealth.src.utilities.resources import resource
 
-
 class Provider(QgsProcessingProvider):
+#class Provider(QgsProcessingProvider):
     """QGIS Processing"""
 
     def __init__(self):
@@ -46,7 +47,13 @@ class Provider(QgsProcessingProvider):
         QgsProcessingProvider.initializeSettings(self)
 
     def unload(self):
-        QgsProcessingProvider.unload(self)
+        #QgsProcessingProvider.unload(self)
+        pass
+    def loadAlgorithms(self):
+        self.addAlgorithm(BlurringGeoAlgorithm())
+
+    def id(self):
+        return 'GeoPublicHealth'
 
     def getName(self):
         return 'GeoPublicHealth'

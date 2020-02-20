@@ -24,12 +24,13 @@
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtCore import QVariant, QSettings
 from qgis.utils import Qgis
-from qgis.core import QgsVectorFileWriter, QgsField, QgsProcessingAlgorithm
+from qgis.core import QgsVectorFileWriter, QgsField, QgsProcessingAlgorithm,QgsProcessingUtils
 #from processing.core.GeoAlgorithm import GeoAlgorithm
 #from processing.core.parameters import (ParameterVector, ParameterNumber, ParameterBoolean)
 from qgis.core import QgsProcessingParameterNumber,QgsProcessingParameterVectorLayer, QgsProcessingParameterBoolean,QgsProcessingOutputVectorLayer
 #from processing.core.outputs import OutputVector
-from processing.tools.vector import dataobjects, features
+#from processing.tools.vector import dataobjects, features
+#from processing.tools.vector import features
 
 
 from GeoPublicHealth.src.core.blurring.blur import Blur
@@ -103,13 +104,14 @@ class BlurringGeoAlgorithm(QgsProcessingAlgorithm):
         envelope_layer_field = self.getParameterValue(self.ENVELOPE_LAYER)
         output = self.getOutputValue(self.OUTPUT_LAYER)
 
-        vector_layer = dataobjects.getObjectFromUri(input_filename)
+        #vector_layer = dataobjects.getObjectFromUri(input_filename)
+        vector_layer=QgsProcessingUtils.mapLayerFromStrong(input_filename)
 
         # If we use a mask, envelope
         vector_layer_envelope_index = None
         if envelope_layer_field is not None:
-            vector_layer_envelope = dataobjects.getObjectFromUri(
-                envelope_layer_field)
+            #vector_layer_envelope = dataobjects.getObjectFromUri(envelope_layer_field)
+            vector_layer_envelope=QgsProcessingUtils.mapLayerFromStrong(envelope_layer_field)
             vector_layer_envelope_index = LayerIndex(vector_layer_envelope)
 
         settings = QSettings()
@@ -137,7 +139,8 @@ class BlurringGeoAlgorithm(QgsProcessingAlgorithm):
             vector_layer_envelope_index,
             export_radius,
             export_centroid)
-
-        for feature in features(vector_layer):
+        selection=vector_layer.selectedFeatures()
+        #for feature in features(vector_layer):
+        for feature in selection:
             feature = algorithm.blur(feature)
             writer.addFeature(feature)

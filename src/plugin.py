@@ -23,11 +23,11 @@
 
 from builtins import object
 from os.path import dirname, join, exists
-
+from qgis.core import QgsProcessingRegistry,QgsProcessingProvider,QgsApplication
 from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
-from processing.core.Processing import Processing
+#from processing.core.Processing import Processing
 
 from GeoPublicHealth.src.gui.main_window import MainDialog
 from GeoPublicHealth.src.processing_geopublichealth.provider import Provider
@@ -66,7 +66,10 @@ class GeoPublicHealthPlugin(object):
 
         # Add to processing
         self.provider = Provider()
-        Processing.addProvider(self.provider, True)
+        #self.provider=QgsProcessingProvider(0)
+        #QgsProcessingRegistry.addProvider(self.provider, True)
+        #QgsProcessingRegistry.addProvider(self.provider)
+        QgsApplication.processingRegistry().addProvider(self.provider)
 
     def initGui(self):
 
@@ -81,7 +84,8 @@ class GeoPublicHealthPlugin(object):
 
     def unload(self):
         self.plugin_menu.removeAction(self.main_action)
-        Processing.removeProvider(self.provider)
+        #QgsProcessingRegistry.removeProvider(self.provider)
+        QgsApplication.processingRegistry().removeProvider(self.provider)
 
     @staticmethod
     def open_main_window():
