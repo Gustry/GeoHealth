@@ -5,7 +5,8 @@ The project aims to upgrade the GeoPublicHealth 0.95 the GeoPublicHealth to work
 ##Current progress
 - qgis2to3 refactored
 - Revised code to work on QGIS API 3
-- <Working> Testing with PYSAL
+- Plugin loading success
+- <Working> Loading main windows failure
 
 
 GeoHealth aims to provide a simplified interface for users in epidemiology in QGIS : 
