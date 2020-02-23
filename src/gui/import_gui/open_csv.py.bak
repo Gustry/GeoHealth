@@ -42,7 +42,7 @@ class OpenCsv(QWidget):
         mdi_area = QMdiArea()
 
         # noinspection PyArgumentList
-        dialog = QgsProviderRegistry.instance().selectWidget('delimitedtext')
+        dialog = QgsProviderRegistry.instance().createSelectionWidget('delimitedtext')
         dialog.setWindowTitle(tr('Open a CSV'))
 
         layout = QVBoxLayout(self)

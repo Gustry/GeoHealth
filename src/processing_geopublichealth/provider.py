@@ -54,7 +54,8 @@ class Provider(QgsProcessingProvider):
 
     def id(self):
         return 'GeoPublicHealth'
-
+    def name(self):
+        return 'GeoPublicHealth'
     def getName(self):
         return 'GeoPublicHealth'
 

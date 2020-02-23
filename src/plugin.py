@@ -37,7 +37,7 @@ from GeoPublicHealth.src.utilities.resources import resource
 class GeoPublicHealthPlugin(object):
 
     def __init__(self, iface):
-
+        self.provider=None
         self.iface = iface
         self.plugin_dir = dirname(__file__)
         # initialize locale
@@ -65,14 +65,23 @@ class GeoPublicHealthPlugin(object):
         self.histogram_action = None
 
         # Add to processing
-        self.provider = Provider()
+        #self.provider = Provider()
+        #QgsApplication.processingRegistry().addProvider(self.provider)
+
+
+
         #self.provider=QgsProcessingProvider(0)
         #QgsProcessingRegistry.addProvider(self.provider, True)
         #QgsProcessingRegistry.addProvider(self.provider)
+
+    ## Add Processing to processing (Can be remove later)
+
+    def initProcessing(self):
+        self.provider=Provider()
         QgsApplication.processingRegistry().addProvider(self.provider)
 
     def initGui(self):
-
+        self.initProcessing()
         self.plugin_menu = self.iface.pluginMenu()
 
         # Main window
@@ -81,10 +90,13 @@ class GeoPublicHealthPlugin(object):
         self.plugin_menu.addAction(self.main_action)
         # noinspection PyUnresolvedReferences
         self.main_action.triggered.connect(self.open_main_window)
+        self.iface.addPluginToMenu("GeoPublicHealth",self.main_action)
+
 
     def unload(self):
         self.plugin_menu.removeAction(self.main_action)
         #QgsProcessingRegistry.removeProvider(self.provider)
+        self.iface.removePluginMenu("GeoPublicHealth",self.main_action)
         QgsApplication.processingRegistry().removeProvider(self.provider)
 
     @staticmethod

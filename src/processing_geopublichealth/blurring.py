@@ -22,9 +22,9 @@
 """
 
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtCore import QVariant, QSettings
+from qgis.PyQt.QtCore import QVariant, QSettings,QCoreApplication
 from qgis.utils import Qgis
-from qgis.core import QgsVectorFileWriter, QgsField, QgsProcessingAlgorithm,QgsProcessingUtils
+from qgis.core import QgsProcessing,QgsVectorFileWriter, QgsField, QgsProcessingAlgorithm,QgsProcessingUtils
 #from processing.core.GeoAlgorithm import GeoAlgorithm
 #from processing.core.parameters import (ParameterVector, ParameterNumber, ParameterBoolean)
 from qgis.core import QgsProcessingParameterNumber,QgsProcessingParameterVectorLayer, QgsProcessingParameterBoolean,QgsProcessingOutputVectorLayer
@@ -42,6 +42,7 @@ class BlurringGeoAlgorithm(QgsProcessingAlgorithm):
 #class BlurringGeoAlgorithm(GeoAlgorithm):
     """QGIS Processing"""
 
+
     OUTPUT_LAYER = 'OUTPUT_LAYER'
     INPUT_LAYER = 'INPUT_LAYER'
     RADIUS_FIELD = 'RADIUS_FIELD'
@@ -50,9 +51,9 @@ class BlurringGeoAlgorithm(QgsProcessingAlgorithm):
     DISTANCE_EXPORT = 'DISTANCE_EXPORT'
     ENVELOPE_LAYER = 'ENVELOPE_LAYER'
 
-    def initAlgorithm(self):
-        self.name = "Blurring a point layer"
-        self.group = "Blurring a point layer"
+    def initAlgorithm(self,config):
+        #self.name = "Blurring a point layer"
+        #self.group = "Blurring a point layer"
 
         self.addParameter(QgsProcessingParameterVectorLayer(
             self.INPUT_LAYER,
@@ -69,7 +70,7 @@ class BlurringGeoAlgorithm(QgsProcessingAlgorithm):
         self.addParameter(QgsProcessingParameterVectorLayer(
             self.ENVELOPE_LAYER,
             'Envelope layer',
-            [QgsProcessingParameterVectorLayer.TypeVectorPolygon],
+            [QgsProcessing.TypeVectorPolygon],
             True))
 
         self.addParameter(QgsProcessingParameterBoolean(
@@ -93,7 +94,16 @@ class BlurringGeoAlgorithm(QgsProcessingAlgorithm):
 
     def icon(self):
         return QIcon(resource('blur.png'))
-
+    def name(self):
+        return "Blurring a point layer"
+    def group(self):
+        return "Blurring a point layer"
+    def displayName(self):
+        return self.tr(self.name())
+    def createInstance(self):
+        return BlurringGeoAlgorithm()
+    def tr(self,string):
+        return QCoreApplication.translate("BlurringGeoAlgorithm",string)
     def processAlgorithm(self, progress):
 
         # Get parameters
