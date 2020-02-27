@@ -122,7 +122,8 @@ class BlurWidget(QWidget, FORM_CLASS):
                 msg = tr('The projection of the map or of the layer is not '
                             'in meters. These parameters should be in meters.')
                 display_message_bar(
-                    msg, level=QgsMessageBar.WARNING, duration=5)
+                    msg, level=Qgis.Warning, duration=5)
+                    #https://github.com/qgis/QGIS/commit/9302613f28207910608fe538a03e0bff82ca5629
 
             if not file_name:
                 file_name = getTempFilename('blurring.shp')
@@ -149,7 +150,7 @@ class BlurWidget(QWidget, FORM_CLASS):
                 nb_features = layer_to_blur.featureCount()
 
             # Fields
-            fields = layer_to_blur.pendingFields()
+            fields = layer_to_blur.fields()
             if export_radius:
                 fields.append(QgsField(u"Radius", QVariant.Int))
             if export_centroid:

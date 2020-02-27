@@ -37,7 +37,7 @@ from qgis.core import \
     QgsVectorLayer,\
     QgsProject,\
     QgsGeometry,\
-    QgsMapLayerProxyModel
+    QgsMapLayerProxyModel, QgsWkbTypes
 
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
@@ -161,12 +161,14 @@ class IncidenceDensityDialog(QDialog):
         else:
             # If we use a column with number of case.
             case_column = self.cbx_case_field.currentField()
-            index_case = self.admin_layer.fieldNameIndex(case_column)
+            index_case = self.admin_layer.fields().indexFromName(case_column)
+            #Replace laer.fieldNameIndex(name) to layer.fields().lookup\Field(name)
+            #http://learn.openwaterfoundation.org/owf-app-geoprocessor-python-doc-dev/resources/migrate-qgis2-qgis3/
 
         if not self.use_area:
             # If we don't use density.
             population = self.cbx_population_field.currentField()
-            index_population = self.admin_layer.fieldNameIndex(population)
+            index_population = self.admin_layer.fields().indexFromName(population)
 
         if not self.name_field:
             self.name_field = self.le_new_column.placeholderText()
@@ -222,9 +224,9 @@ class IncidenceDensityDialog(QDialog):
                 temp_file.close()
 
             admin_layer_provider = self.admin_layer.dataProvider()
-            fields = self.admin_layer.pendingFields()
+            fields = self.admin_layer.fields()
 
-            if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
+            if admin_layer_provider.fields().indexFromName(self.name_field) != -1:
                 raise FieldExistingException(field=self.name_field)
 
             fields.append(QgsField(self.name_field, QVariant.Double))
@@ -238,7 +240,7 @@ class IncidenceDensityDialog(QDialog):
                 self.output_file_path,
                 'utf-8',
                 fields,
-                Qgis.WKBPolygon,
+                QgsWkbTypes.Polygon,
                 self.admin_layer.crs(),
                 'ESRI Shapefile')
 
@@ -353,7 +355,6 @@ class IncidenceDensityDialog(QDialog):
         :type data: list
         """
         ax = self.figure.add_subplot(111)
-        ax.hold(False)
         ax.plot(data, '*-')
         ax.set_xlabel('Polygon')
         ax.set_ylabel(self.name_field)
@@ -369,7 +370,7 @@ class IncidenceDensityDialog(QDialog):
 
         # Compute renderer
         # noinspection PyArgumentList
-        symbol = QgsSymbol.defaultSymbol(Qgis.Polygon)
+        symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.geometryType(QgsWkbTypes.Polygon))
 
         color_ramp = QgsGradientColorRamp(low_color, high_color)
         # noinspection PyArgumentList
@@ -380,4 +381,4 @@ class IncidenceDensityDialog(QDialog):
             mode,
             symbol,
             color_ramp)
-        self.output_layer.setRendererV2(renderer)
+        self.output_layer.setRenderer(renderer)

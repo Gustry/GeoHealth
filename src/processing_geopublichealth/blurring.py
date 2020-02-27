@@ -27,7 +27,7 @@ from qgis.utils import Qgis
 from qgis.core import QgsProcessing,QgsVectorFileWriter, QgsField, QgsProcessingAlgorithm,QgsProcessingUtils
 #from processing.core.GeoAlgorithm import GeoAlgorithm
 #from processing.core.parameters import (ParameterVector, ParameterNumber, ParameterBoolean)
-from qgis.core import QgsProcessingParameterNumber,QgsProcessingParameterVectorLayer, QgsProcessingParameterBoolean,QgsProcessingOutputVectorLayer
+from qgis.core import QgsProcessingParameterNumber,QgsProcessingParameterVectorLayer, QgsProcessingParameterBoolean,QgsProcessingOutputVectorLayer,QgsWkbTypes
 #from processing.core.outputs import OutputVector
 #from processing.tools.vector import dataobjects, features
 #from processing.tools.vector import features
@@ -140,7 +140,7 @@ class BlurringGeoAlgorithm(QgsProcessingAlgorithm):
             output,
             system_encoding,
             fields,
-            Qgis.WKBPolygon,
+            QgsWkbTypes.Polygon,
             provider.crs())
 
         # Creating a algorithm with all these parameters.

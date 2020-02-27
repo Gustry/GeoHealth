@@ -210,9 +210,9 @@ class CommonCompositeIndexDialog(QDialog):
                 temp_file.close()
 
             admin_layer_provider = self.admin_layer.dataProvider()
-            fields = self.admin_layer.pendingFields() 
+            fields = self.admin_layer.fields() 
 
-            if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
+            if admin_layer_provider.fields().indexFromName(self.name_field) != -1:
                 raise FieldExistingException(field=self.name_field)
 
             for indicator_selected in selected_indicators:
@@ -236,7 +236,7 @@ class CommonCompositeIndexDialog(QDialog):
                 indicator_selected_name = str(indicator_selected[0])
 
                 for i, feature in enumerate(self.admin_layer.getFeatures()):
-                    index = self.admin_layer.fieldNameIndex(indicator_selected_name)
+                    index = self.admin_layer.fields().indexFromName(indicator_selected_name)
 
                     if feature[index]:
                         value = float(feature[index])
@@ -252,7 +252,7 @@ class CommonCompositeIndexDialog(QDialog):
                 composite_index_value = 0.0
                 for indicator_selected in selected_indicators:
                     indicator_selected_name = str(indicator_selected[0])
-                    index = self.admin_layer.fieldNameIndex(indicator_selected_name)
+                    index = self.admin_layer.fields().indexFromName(indicator_selected_name)
 
                     if feature[index]:
                         value = float(feature[index])
@@ -308,7 +308,7 @@ class CommonCompositeIndexDialog(QDialog):
         :type data: list
         """
         ax = self.figure.add_subplot(111)
-        ax.hold(False)
+        
         ax.plot(data, '*-')
         ax.set_xlabel('Polygon')
         ax.set_ylabel(self.name_field)
@@ -324,7 +324,7 @@ class CommonCompositeIndexDialog(QDialog):
 
         # Compute renderer
         # noinspection PyArgumentList
-        symbol = QgsSymbol.defaultSymbol(Qgis.Polygon)
+        symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.geometryType(QgsWkbTypes.Polygon))
 
         color_ramp = QgsGradientColorRamp(low_color, high_color)
         # noinspection PyArgumentList
@@ -335,7 +335,7 @@ class CommonCompositeIndexDialog(QDialog):
             mode,
             symbol,
             color_ramp)
-        self.output_layer.setRendererV2(renderer)
+        self.output_layer.setRenderer(renderer)
 
 class CompositeIndexDialog(CommonCompositeIndexDialog, FORM_CLASS):
     def __init__(self, parent=None):

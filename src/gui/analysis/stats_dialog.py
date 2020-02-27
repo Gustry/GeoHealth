@@ -261,7 +261,7 @@ class StatsWidget(QWidget, FORM_CLASS):
         # create an axis
         ax = self.figure.add_subplot(111)
         # discards the old graph
-        ax.hold(False)
+        
         # plot data
         ax.plot(data, '*-')
 

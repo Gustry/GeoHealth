@@ -77,7 +77,7 @@ def intersect_grid_and_roads(grid, roads):
     grid.startEditing()
     grid.addAttribute(
         QgsField('has_road', QVariant.String, len=10, prec=0))
-    intersection_index = grid.fieldNameIndex('has_road')
+    intersection_index = grid.fields().indexFromName('has_road')
 
     spatial_index = create_spatial_index(roads)
 
@@ -135,7 +135,7 @@ def create_graph(network, centroid_layer, target_point_layer):
 
 def intersecting_blocks(line, destination, grid):
     """Function to fetch intersectings polygons from the grid."""
-    dest_id_field = grid.fieldNameIndex('destination_id')
+    dest_id_field = grid.fields().indexFromName('destination_id')
     request = QgsFeatureRequest()
     request.setFilterRect(line.boundingBox())
     request.setFilterExpression('"destination_id" is None')
@@ -163,7 +163,7 @@ def assign_cost_to_cells(network_graph, source, destination, id_field):
     destination_features = {}
     for feature in destination.getFeatures():
         destination_features[feature.id()] = feature
-    index_id_field = destination.fieldNameIndex(id_field)
+    index_id_field = destination.fields().indexFromName(id_field)
 
     fields = [QgsField('distance', QVariant.Int)]
     routes = create_memory_layer(
@@ -173,9 +173,9 @@ def assign_cost_to_cells(network_graph, source, destination, id_field):
     source.startEditing()
     source.addAttribute(
         QgsField('destination_id', QVariant.Int, len=5, prec=0))
-    dest_id_field = source.fieldNameIndex('destination_id')
+    dest_id_field = source.fields().indexFromName('destination_id')
     source.addAttribute(QgsField('distance', QVariant.Int, len=5, prec=0))
-    distance_field = source.fieldNameIndex('distance')
+    distance_field = source.fields().indexFromName('distance')
     source.commitChanges()
 
     request = QgsFeatureRequest()

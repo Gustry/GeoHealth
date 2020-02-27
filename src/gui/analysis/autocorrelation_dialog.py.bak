@@ -177,7 +177,7 @@ class CommonAutocorrelationDialog(QDialog):
             admin_layer_provider = self.layer.dataProvider()
             fields = admin_layer_provider.fields()
 
-            if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
+            if admin_layer_provider.fields().indexFromName(self.name_field) != -1:
                 raise FieldExistingException(field=self.name_field)
 
             fields.append(QgsField('LISA_P', QVariant.Double))
@@ -266,9 +266,9 @@ class CommonAutocorrelationDialog(QDialog):
         renderer = QgsCategorizedSymbolRenderer(
             'LISA_Q',
             categories)
-        self.output_layer.setRendererV2(renderer)
+        self.output_layer.setRenderer(renderer)
 
-        symbol = QgsSymbol.defaultSymbol(Qgis.Polygon)
+        symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.geometryType(QgsWkbTypes.Polygon))
 
         color_ramp = QgsGradientColorRamp(QColor(0,0,0), QColor(255,0,0))
         # noinspection PyArgumentList
@@ -279,7 +279,7 @@ class CommonAutocorrelationDialog(QDialog):
             QgsGraduatedSymbolRenderer.Jenks,
             symbol,
             color_ramp)
-        self.newlayer.setRendererV2(renderer)
+        self.newlayer.setRenderer(renderer)
         self.newlayer.setLayerTransparency(40)
 
 class AutocorrelationDialog(CommonAutocorrelationDialog, FORM_CLASS):

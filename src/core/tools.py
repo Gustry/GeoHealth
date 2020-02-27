@@ -28,7 +28,7 @@ from qgis.PyQt.QtWidgets import QApplication
 from qgis.utils import iface
 from qgis.gui import QgsMessageBar
 from qgis.core import (
-    QgsVectorLayer, Qgis, QgsGeometry, QgsFeature, QgsSpatialIndex)
+    QgsVectorLayer, Qgis, QgsGeometry, QgsFeature, QgsSpatialIndex,QgsWkbTypes)
 
 
 def create_memory_layer(
@@ -51,13 +51,13 @@ def create_memory_layer(
     :rtype: QgsVectorLayer
     """
 
-    if geometry == Qgis.Point:
+    if geometry == QgsWkbTypes.Point:
         type_string = 'MultiPoint'
-    elif geometry == Qgis.Line:
+    elif geometry == QgsWkbTypes.Line:
         type_string = 'MultiLineString'
-    elif geometry == Qgis.Polygon:
+    elif geometry == QgsWkbTypes.Polygon:
         type_string = 'MultiPolygon'
-    elif geometry == Qgis.NoGeometry:
+    elif geometry == QgsWkbTypes.NoGeometry:
         type_string = 'none'
     else:
         raise Exception(
@@ -113,7 +113,7 @@ def remove_fields(layer, fields_to_remove):
     data_provider = layer.dataProvider()
 
     for field in fields_to_remove:
-        index = layer.fieldNameIndex(field)
+        index = layer.fields().indexFromName(field)
         if index != -1:
             index_to_remove.append(index)
 

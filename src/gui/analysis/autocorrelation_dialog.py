@@ -50,7 +50,8 @@ from qgis.core import (\
     QgsProject,\
     QgsGeometry,\
     QgsMapLayerProxyModel,\
-    QgsFieldProxyModel,)
+    QgsFieldProxyModel,QgsWkbTypes,QgsProcessingUtils,QgsProcessingContext)
+
 
 from matplotlib.backends.backend_qt4agg import \
     FigureCanvasQTAgg as FigureCanvas
@@ -66,6 +67,8 @@ from GeoPublicHealth.src.core.exceptions import \
     FieldException,\
     NotANumberException
 import pysal
+from pysal.explore.esda.moran import Moran_Local
+from libpysal.weights import Queen, Rook
 from GeoPublicHealth.src.core.stats import Stats
 import processing
 import numpy as np
@@ -142,9 +145,9 @@ class CommonAutocorrelationDialog(QDialog):
         self.admin_layer = self.cbx_aggregation_layer.currentLayer()
         input_name =  self.admin_layer.name()
         field = self.cbx_indicator_field.currentField()
-
-        self.layer = processing.getObject(input_name)
-
+        #context=QgsProcessingContext()
+        #self.layer = QgsProcessingUtils.mapLayerFromString(input_name,context)
+        self.layer=QgsProject.instance().mapLayersByName(input_name)[0]
         # Output.
         self.output_file_path = self.le_output_filepath.text()
 
@@ -175,7 +178,7 @@ class CommonAutocorrelationDialog(QDialog):
             admin_layer_provider = self.layer.dataProvider()
             fields = admin_layer_provider.fields()
 
-            if admin_layer_provider.fieldNameIndex(self.name_field) != -1:
+            if admin_layer_provider.fields().indexFromName(self.name_field) != -1:
                 raise FieldExistingException(field=self.name_field)
 
             fields.append(QgsField('LISA_P', QVariant.Double))
@@ -188,22 +191,37 @@ class CommonAutocorrelationDialog(QDialog):
                 self.output_file_path,
                 'utf-8',
                 fields,
-                Qgis.WKBPolygon,
+                QgsWkbTypes.Polygon,
                 self.admin_layer.crs(),
                 'ESRI Shapefile')
 
             if self.cbx_contiguity.currentIndex()  == 0: # queen
                 # fix_print_with_import
+
                 print('Info: Local Moran\'s using queen contiguity')
-                w = pysal.queen_from_shapefile(self.admin_layer.source())
+                #Pysal 2.0 change
+                #https://github.com/pysal/pysal/blob/master/MIGRATING.md
+
+                #w = pysal.queen_from_shapefile(self.admin_layer.source())
+                #w=pysal.weights.Queen.from_shapefile(self.admin_layer.source())
+                w=Queen.from_shapefile(self.admin_layer.source())
             else: # 1 for rook
                 # fix_print_with_import
                 print('Info: Local Moran\'s using rook contiguity')
-                w = pysal.rook_from_shapefile(self.admin_layer.source())
+                w=Rook.from_shapefile(self.admin_layer.source())
+                #w=pysal.weights.Rook.from_shapefile(self.admin_layer.source())
+                #w = pysal.rook_from_shapefile(self.admin_layer.source())
 
-            f = pysal.open(self.admin_layer.source().replace('.shp','.dbf'))
-            y = np.array(f.by_col[str(field)])
-            lm = pysal.Moran_Local(y, w, transformation = "r", permutations = 999)
+            #f = pysal.open(self.admin_layer.source().replace('.shp','.dbf'))
+
+            #Pysal 2.0
+            #https://stackoverflow.com/questions/59455383/pysal-does-not-have-attribute-open
+            import geopandas
+            #f = pysal.lib.io.open(self.admin_layer.source().replace('.shp','.dbf'))
+            f = geopandas.read_file(self.admin_layer.source().replace('.shp','.dbf'))
+            #y = np.array(f.by_col[str(field)])
+            y=f[str(field)]
+            lm = Moran_Local(y, w, transformation = "r", permutations = 999)
 
             sig_q = lm.q * (lm.p_sim <= 0.05) # could make significance level an option
             outFeat = QgsFeature()
@@ -260,18 +278,21 @@ class CommonAutocorrelationDialog(QDialog):
             self.output_layer.source(),
             self.output_layer.name() + " significance test",
             self.output_layer.providerType())
+        self.output_layer.setOpacity(0.4)
         QgsProject.instance().addMapLayer(self.newlayer)
 
         # noinspection PyArgumentList
         renderer = QgsCategorizedSymbolRenderer(
             'LISA_Q',
             categories)
-        self.output_layer.setRendererV2(renderer)
 
-        symbol = QgsSymbol.defaultSymbol(Qgis.Polygon)
+        self.output_layer.setRenderer(renderer)
+
+        symbol = QgsSymbol.defaultSymbol(QgsWkbTypes.geometryType(QgsWkbTypes.Polygon))
 
         color_ramp = QgsGradientColorRamp(QColor(0,0,0), QColor(255,0,0))
         # noinspection PyArgumentList
+
         renderer = QgsGraduatedSymbolRenderer.createRenderer(
             self.newlayer,
             'LISA_C',
@@ -279,8 +300,12 @@ class CommonAutocorrelationDialog(QDialog):
             QgsGraduatedSymbolRenderer.Jenks,
             symbol,
             color_ramp)
-        self.newlayer.setRendererV2(renderer)
-        self.newlayer.setLayerTransparency(40)
+
+        self.newlayer.setRenderer(renderer)
+        #The input val of seOPacity is 0-1 not 0-100 as setLyerTransvarency
+        #https://gis.stackexchange.com/questions/150858/setting-transparency-of-layer-group-with-python-in-qgis
+        self.newlayer.setOpacity(0.4)
+
 
 class AutocorrelationDialog(CommonAutocorrelationDialog, FORM_CLASS):
     def __init__(self, parent=None):

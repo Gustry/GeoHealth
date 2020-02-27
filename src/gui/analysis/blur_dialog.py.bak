@@ -149,7 +149,7 @@ class BlurWidget(QWidget, FORM_CLASS):
                 nb_features = layer_to_blur.featureCount()
 
             # Fields
-            fields = layer_to_blur.pendingFields()
+            fields = layer_to_blur.fields()
             if export_radius:
                 fields.append(QgsField(u"Radius", QVariant.Int))
             if export_centroid:

@@ -112,7 +112,7 @@ def remove_fields(layer, fields_to_remove):
     data_provider = layer.dataProvider()
 
     for field in fields_to_remove:
-        index = layer.fieldNameIndex(field)
+        index = layer.fields().indexFromName(field)
         if index != -1:
             index_to_remove.append(index)
 

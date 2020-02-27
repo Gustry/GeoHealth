@@ -22,7 +22,7 @@
 """
 
 from qgis.gui import QgsMessageBar
-from qgis.core import QgsProcessingException
+from qgis.core import QgsProcessingException,Qgis
 #from processing.core.GeoAlgorithmExecutionException import \
     #GeoAlgorithmExecutionException
 
@@ -34,7 +34,7 @@ from GeoPublicHealth.src.core.tools import tr
 class GeoPublicHealthException(QgsProcessingException):
     def __init__(self, msg=None):
         QgsProcessingException.__init__(self, msg)
-        self.level = QgsMessageBar.CRITICAL
+        self.level = Qgis.Critical
         self.duration = 7
 
 
