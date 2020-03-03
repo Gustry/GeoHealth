@@ -2,7 +2,13 @@
 
 The project aims to upgrade the GeoPublicHealth 0.95 the GeoPublicHealth to work under QGIS 3.0 (3.10) No change on the orginal function.
 
-Tested on QGIS 3.10 and QGIS 3.12 on Windows 10 only. 
+Tested on QGIS 3.10 and QGIS 3.12 on Windows 10 only. **Install provided Fiona from "installation" directory only as the newer version causes problem with GDAL.
+
+## To-do-list
+- Test it on MacOS
+- Cleaning the code
+- Test other functions 
+- Upload to Qgis repository
 
 ## Installation
 - PLEASE SEE INSTALLATION folder README first, after download the plugin or download an entire installation folder separately then follow the instruction inside. 
@@ -17,7 +23,7 @@ Please follow the follwing steps to make the plugin works.
 2. Run the following command
 2.1 py3_env
 
-Run the following command on OSGEO shell
+Navigate to plugin "instalation" folder and run the following command on OSGEO shell
 
 For windows 
 pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz
@@ -28,7 +34,7 @@ pip install Fiona-1.8.13.post1-cp27-cp27m-macosx_10_9_x86_64 pysal-2.1.0-py3-non
 3. Lauch QGIS, it should up and running.
 
 ## Current developing environment (Windows 10 only, I don't have Mac)
-- QGIS 3.10
+- QGIS 3.10 and QGIS 3.12
 - Python 3.7
 - Pysal 2.1
 
