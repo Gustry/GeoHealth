@@ -10,20 +10,21 @@ Tested on QGIS 3.10 and QGIS 3.12 on Windows 10 only. **Install provided Fiona f
 - Test other functions 
 - Upload to Qgis repository
 
-## Installation
-- PLEASE SEE INSTALLATION folder README first, after download the plugin or download an entire installation folder separately then follow the instruction inside. 
+## Installation (for Windows only)
+- PLEASE SEE INSTALLATION folder first and download install.zip, extract and run install.bat 
+I created the install.bat file to automatically install dependency (e.g. pysal, libpysal and fiona).
 
+**Having bat file prevent user from running OSGEO Shell to install them as seen in previous version.
 
 ## Installation details (Similar to README file in installation folder)
 - As QGIS 3 does not support python module integration, we have run it from OSGEO command prompt. 
 Please follow the follwing steps to make the plugin works.
 
+For windows 
+- Download Install.zip (provided inside install folder)
+- Extract 
+- Run install.bat
 
-1. Open osgeo shell from qgis directory (run as admin if you are on Windows)
-2. Run the following command
-2.1 py3_env
-
-Navigate to plugin "instalation" folder and run the following command on OSGEO shell
 
 For windows 
 pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz
