@@ -34,7 +34,7 @@ from qgis.PyQt.QtCore import QSize, QVariant, Qt, pyqtSignal
 from qgis.PyQt.QtWidgets import QFileDialog
 
 from qgis.utils import Qgis
-#from qgis.gui import QgsFieldProxyModel
+
 from qgis.core import (\
     QgsField,\
     QgsGradientColorRamp,\
@@ -258,9 +258,7 @@ class CommonCompositeIndexDialog(QDialog):
                     zscore = (value - stats[indicator_selected_name].average()) / stats[indicator_selected_name].standard_deviation()
                     attributes.append(float(zscore))
 
-                    #msgBox = QMessageBox()
-                    #msgBox.setText("indicator_selected: " + str(indicator_selected) + " value: " + str(value) + " stats[indicator_selected_name].average(): " + str(stats[indicator_selected_name].average()) + " zscore: " + str(zscore))
-                    #msgBox.exec_()
+
 
                     if indicator_selected[1] == '+':
                         composite_index_value -= zscore

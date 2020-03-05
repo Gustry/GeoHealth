@@ -64,17 +64,7 @@ class GeoPublicHealthPlugin(object):
         self.density_action = None
         self.histogram_action = None
 
-        # Add to processing
-        #self.provider = Provider()
-        #QgsApplication.processingRegistry().addProvider(self.provider)
 
-
-
-        #self.provider=QgsProcessingProvider(0)
-        #QgsProcessingRegistry.addProvider(self.provider, True)
-        #QgsProcessingRegistry.addProvider(self.provider)
-
-    ## Add Processing to processing (Can be remove later)
 
     def initProcessing(self):
         self.provider=Provider()
@@ -95,7 +85,6 @@ class GeoPublicHealthPlugin(object):
 
     def unload(self):
         self.plugin_menu.removeAction(self.main_action)
-        #QgsProcessingRegistry.removeProvider(self.provider)
         self.iface.removePluginMenu("GeoPublicHealth",self.main_action)
         QgsApplication.processingRegistry().removeProvider(self.provider)
 

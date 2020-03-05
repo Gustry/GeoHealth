@@ -35,8 +35,7 @@ from qgis.PyQt.QtWidgets import QFileDialog
 from qgis.PyQt.QtGui import QColor
 
 from qgis.utils import Qgis
-#from qgis.gui import \
-#    QgsFieldProxyModel
+
 from qgis.core import (\
     QgsField,\
     QgsRendererCategory,\
@@ -145,8 +144,7 @@ class CommonAutocorrelationDialog(QDialog):
         self.admin_layer = self.cbx_aggregation_layer.currentLayer()
         input_name =  self.admin_layer.name()
         field = self.cbx_indicator_field.currentField()
-        #context=QgsProcessingContext()
-        #self.layer = QgsProcessingUtils.mapLayerFromString(input_name,context)
+
         self.layer=QgsProject.instance().mapLayersByName(input_name)[0]
         # Output.
         self.output_file_path = self.le_output_filepath.text()
@@ -202,24 +200,20 @@ class CommonAutocorrelationDialog(QDialog):
                 #Pysal 2.0 change
                 #https://github.com/pysal/pysal/blob/master/MIGRATING.md
 
-                #w = pysal.queen_from_shapefile(self.admin_layer.source())
-                #w=pysal.weights.Queen.from_shapefile(self.admin_layer.source())
+
                 w=Queen.from_shapefile(self.admin_layer.source())
             else: # 1 for rook
                 # fix_print_with_import
                 print('Info: Local Moran\'s using rook contiguity')
                 w=Rook.from_shapefile(self.admin_layer.source())
-                #w=pysal.weights.Rook.from_shapefile(self.admin_layer.source())
-                #w = pysal.rook_from_shapefile(self.admin_layer.source())
 
-            #f = pysal.open(self.admin_layer.source().replace('.shp','.dbf'))
 
             #Pysal 2.0
             #https://stackoverflow.com/questions/59455383/pysal-does-not-have-attribute-open
             import geopandas
-            #f = pysal.lib.io.open(self.admin_layer.source().replace('.shp','.dbf'))
+
             f = geopandas.read_file(self.admin_layer.source().replace('.shp','.dbf'))
-            #y = np.array(f.by_col[str(field)])
+
             y=f[str(field)]
             lm = Moran_Local(y, w, transformation = "r", permutations = 999)
 
