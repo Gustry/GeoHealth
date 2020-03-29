@@ -51,27 +51,6 @@ pip install Fiona-1.8.13.post1-cp27-cp27m-macosx_10_9_x86_64 pysal-2.1.0-py3-non
   1. run `brew tap osgeo/osgeo4mac` to add OSGEO as source of formulas for brew
   1. Install QGIS, running `brew cask install qgis`
   1. run `pip3 install fiona libpysal pysal` or `pip install fiona libpysal pysal`
-
-
-
-
-### Installing PySAL for Windows using [OSGeo4W](http://trac.osgeo.org/osgeo4w/)
-
-  1. Run the OSGeo4W Shell on `Start -> All Programs -> OSGeo4W` menu
-  1. Run in the OSGeo4W Shell  the following command  `pip install pysal`
-  1. After the command finish, a success message as Successfully installed `pysal-X.XX.X` should appear.
-  
-  *Alternate way copying the PySAL from http://bit.ly/pysal-qgis*
-  
-  1. Download the pysal folders in the DropBox
-  1. Copy the pysal folder that is inside the folder to the Python folder in QGIS. That folder is usually in `C:\Program Files\QGIS 2.18\apps\Python27\lib\site packages`
-  1. The `pysal` folder after this copy then should be in this path (if your installation was the usual): `C:\Program Files\QGIS 2.18\apps\Python27\lib\site packages\pysal`
-
-#### Solving error messages:
-  * If you receive an error message as Could not import setuptools... please use `pip install setuptools` 
-  * If you receive an alert about You are using pip version… consider upgrading… please use `python -m pip install --upgrade pip`
-
-### Installing PySAL for Apple Mac - OSX QGIS
   1. In the Finder App, please locate the `Applications` folder the `QGIS.app`
   1. Right click over the icon
   1. Select from the menu `Show Package Contents`
@@ -79,18 +58,12 @@ pip install Fiona-1.8.13.post1-cp27-cp27m-macosx_10_9_x86_64 pysal-2.1.0-py3-non
   1. Write there in the Terminal prompt `cd ` (be sure that after the cd to enter a blank space)
   1. Drag from the Finder Window the `python` folder
   1. Something like `cd /Applications/QGIS3.12.app/Contents/Resources/python` should be in your Terminal. That depends on the actual folder where you installed QGIS
-  1. Run `sudo easy_install pip` in the Terminal
-  1. Run in the Terminal `pip install pysal`
-  1. After the command finishes a success message as `Successfully installed pysal-X.XX.X` should appear.
-  1. Run in the Terminal the command  `pip install pysal` again to obtain the folder for installation (eg: `/usr/local/lib/python3.7/site-packages`)
-  1. Copy the folder name, for example: `/opt/boxen/homebrew/lib/python2.7/site-package`
-  1. Run a command based on the copied folder name as: `cp -Rv /opt/boxen/homebrew/lib/python2.7/site-packages/pysal pysal`
-  
-  *Alternate way copying the PySAL from http://bit.ly/pysal-qgis*
-  
-  1. Download the pysal folders in the DropBox
-  1. Copy the pysal folder that is inside the folder to the Python folder in QGIS. That folder is usually in `/Applications/QGIS.app/Contents/Resources/python`
-  1. The `pysal` folder after this copy then should be in this path (if your installation was the usual): `/Applications/QGIS.app/Contents/Resources/python/pysal`
+  1. Run in the Terminal the command  `pip install pysal` again to obtain the folder for installation.
+  1. Copy the folder name, for example: `/usr/local/lib/python3.7/site-packages`
+  1. Run a command based on the copied folder name as: `cp -Rv /usr/local/lib/python3.7/site-packages/pysal pysal`
+  1. Run a command based on the copied folder name as: `cp -Rv /usr/local/lib/python3.7/site-packages/libpysal libpysal`
+  1. Run a command based on the copied folder name as: `cp -Rv /usr/local/lib/python3.7/site-packages/fiona fiona`
+  1. Run a command based on the copied folder name as: `cp -Rv /usr/local/lib/python3.7/site-packages/geopandas geopandas`
 
 ### Installing GeoPublicHealth Plugin
   1. Start QGIS and launch the plugins manager by going to the **Plugins menu and selecting Manage and Install Plugins….**
