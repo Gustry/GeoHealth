@@ -51,7 +51,7 @@ for /f "usebackq tokens=3*" %%a in (`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\QGIS
 ) ELSE (goto :unsupp)
 
 
-call "!_acrobat_path!" start cmd.exe /k  "%~dp0\script.bat"
+call "!_acrobat_path!" start cmd.exe /c  "_acrobat_path && py3_env && pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz"
 echo "Successfuly"
 endlocal
 goto :end
@@ -64,11 +64,17 @@ echo "QGIS 3.12 initiation"
 
 for /f "usebackq tokens=3*" %%a in (`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\QGIS 3.12" /v "InstallPath"`) do (
   set _acrobat_path=%%a %%b\OSGeo4W.bat
+  set py3_patn=%%a %%b\OSGeo4W.bat
   echo !_acrobat_path!
 
+ 
   )
 
-call "!_acrobat_path!" start cmd.exe /k  "%~dp0\script.bat"
+
+
+call "!_acrobat_path!" start cmd.exe /c  "_acrobat_path && py3_env && pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz"
+
+
 echo "Successfuly"
 endlocal
 goto :end
