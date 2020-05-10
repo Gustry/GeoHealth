@@ -39,6 +39,7 @@ from GeoHealth.src.doc.help import (
     help_incidence,
     help_incidence_point,
     help_density_point,
+    help_accessibility,
     help_attribute_table,
     help_export_kml,
 )
@@ -48,6 +49,7 @@ from GeoHealth.src.gui.import_gui.open_csv import OpenCsv
 from GeoHealth.src.gui.import_gui.open_raster import OpenRasterWidget
 from GeoHealth.src.gui.import_gui.open_xls_dbf import (
     OpenXlsDbfFileWidget)
+from GeoHealth.src.gui.analysis.accessibility import AccessibilityWidget
 from GeoHealth.src.gui.analysis.blur_dialog import BlurWidget
 from GeoHealth.src.gui.analysis.stats_dialog import StatsWidget
 from GeoHealth.src.gui.analysis.incidence_dialog import IncidenceDialog
@@ -181,6 +183,13 @@ class MainDialog(QDialog, FORM_CLASS):
                                 }
                             }
                         ]
+                    }, {
+                        'label': 'Accessibility',
+                        'icon': resource('accessibility.svg'),
+                        'content': {
+                            'widget': AccessibilityWidget(),
+                            'help': help_accessibility()
+                        }
                     }
                 ]
             },

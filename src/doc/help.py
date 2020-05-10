@@ -328,6 +328,23 @@ def help_incidence_point():
     return html
 
 
+def help_accessibility():
+    title = tr('Accessibility')
+    intro = tr('To write this later.')
+    inputs = [
+        tr('To write inputs 1'),
+        tr('To write inputs 2')]
+    outputs = [
+        tr('Output 1'),
+        tr('Output 2'),
+    ]
+    more = [
+        tr('More information how we do that'),
+    ]
+    html = html_table(title, intro, inputs, outputs, more)
+    return html
+
+
 def help_attribute_table():
     title = tr('Export attribute table')
     intro = tr('Export as CSV format without geometry.')
