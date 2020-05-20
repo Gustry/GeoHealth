@@ -87,5 +87,4 @@ goto :end
 
 :end
 echo "End script"
-pause
 exit /b 0
