@@ -72,7 +72,7 @@ for /f "usebackq tokens=3*" %%a in (`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\QGIS
 
 
 
-call "!_acrobat_path!" start cmd.exe /c  "_acrobat_path && py3_env && pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz"
+call "!_acrobat_path!" start cmd.exe /c  "_acrobat_path && py3_env && pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz pyproj-2.5.0-cp37-cp37m-win_amd64.whl"
 
 
 echo "Successfuly"
