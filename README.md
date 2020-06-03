@@ -1,6 +1,6 @@
 ## GeoHealth upgrade for QGIS 3.0 (In progress)
 
-The project aims to upgrade the GeoPublicHealth 0.95 the GeoPublicHealth to work under QGIS 3.0 (3.10) No change on the orginal function.
+The project aims to upgrade the GeoPublicHealth 0.95 the GeoPublicHealth to work under QGIS 3.0 (3.10 and 3.12) No change on the orginal function.
 
 Tested on QGIS 3.10 and QGIS 3.12 on Windows 10 only. **Install provided Fiona from "installation" directory only as the newer version causes problem with GDAL.
 
@@ -13,24 +13,14 @@ Tested on QGIS 3.10 and QGIS 3.12 on Windows 10 only. **Install provided Fiona f
 ## Installation (for Windows only)
 - PLEASE SEE INSTALLATION folder first and download install.zip, extract and run install.bat 
 I created the install.bat file to automatically install dependency (e.g. pysal, libpysal and fiona).
-
-**Having bat file prevent user from running OSGEO Shell to install them as seen in previous version.
-
-## Installation details (Similar to README file in installation folder)
-- As QGIS 3 does not support python module integration, we have run it from OSGEO command prompt. 
-Please follow the follwing steps to make the plugin works.
-
+  
+OR
+  
 For windows 
-- Download Install.zip (provided inside install folder)
-- Extract 
-- Run install.bat
-
-
-For windows 
-pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz
-
-For Mac
-pip install Fiona-1.8.13.post1-cp27-cp27m-macosx_10_9_x86_64 pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz
+- Start OSGeo4W Shell
+- py3_env
+- CD to installation folder
+- pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz pyproj-2.5.0-cp37-cp37m-win_amd64.whl
 
 3. Lauch QGIS, it should up and running.
 
