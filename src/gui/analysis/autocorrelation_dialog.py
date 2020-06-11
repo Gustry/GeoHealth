@@ -49,7 +49,7 @@ from qgis.core import (\
     QgsProject,\
     QgsGeometry,\
     QgsMapLayerProxyModel,\
-    QgsFieldProxyModel,QgsWkbTypes,QgsProcessingUtils,QgsProcessingContext)
+    QgsFieldProxyModel,QgsWkbTypes,QgsProcessingUtils,QgsProcessingContext,QgsCoordinateTransformContext)
 
 
 from matplotlib.backends.backend_qt4agg import \
@@ -135,7 +135,8 @@ class CommonAutocorrelationDialog(QDialog):
     def open_file_browser(self):
         output_file, __ = QFileDialog.getSaveFileName(
             self.parent, tr('Save shapefile'), filter='SHP (*.shp)')
-        self.le_output_filepath.setText(output_file[0])
+            #Fix the filename bug
+        self.le_output_filepath.setText(output_file)
 
     def run_stats(self):
         """Main function which do the process."""
@@ -172,6 +173,9 @@ class CommonAutocorrelationDialog(QDialog):
                 self.output_file_path = temp_file.name
                 temp_file.flush()
                 temp_file.close()
+            else:
+                with open(self.output_file_path, 'w') as document: pass
+
 
             admin_layer_provider = self.layer.dataProvider()
             fields = admin_layer_provider.fields()
@@ -184,6 +188,17 @@ class CommonAutocorrelationDialog(QDialog):
             fields.append(QgsField('LISA_Q', QVariant.Int))
             fields.append(QgsField('LISA_I', QVariant.Double))
             fields.append(QgsField('LISA_C', QVariant.Double))
+
+
+
+            # The QgsVectorFileWriter was Deprecated since 3.10 However,.......
+            #The create() function DOEST NOT Flush the feature unless QGIS close.
+            #options = QgsVectorFileWriter.SaveVectorOptions()
+            #options.driverName = "ESRI Shapefile"
+            #file_writer=QgsVectorFileWriter.create(self.output_file_path,fields,QgsWkbTypes.Polygon,self.admin_layer.crs(),QgsCoordinateTransformContext(),options)
+
+            #It's currently a bug https://github.com/qgis/QGIS/issues/35021
+            # So I will keep it for now
 
             file_writer = QgsVectorFileWriter(
                 self.output_file_path,
