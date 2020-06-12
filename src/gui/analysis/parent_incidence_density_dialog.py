@@ -24,7 +24,7 @@
 from tempfile import NamedTemporaryFile
 from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox, QTableWidgetItem, QApplication
 from qgis.PyQt.QtCore import QSize, QVariant, Qt, pyqtSignal
-from qgis.PyQt.QtWidgets import QFileDialog
+from qgis.PyQt.QtWidgets import QFileDialog,QMessageBox
 
 from qgis.utils import Qgis
 from qgis.core import \
@@ -192,9 +192,11 @@ class IncidenceDensityDialog(QDialog):
             QApplication.processEvents()
 
             if not self.admin_layer:
+                QMessageBox.information(None, "DEBUG:", str("There is no layer"))
                 raise NoLayerProvidedException
 
             if not self.admin_layer and self.use_point_layer:
+                QMessageBox.information(None, "DEBUG:", str("There is no layer"))
                 raise NoLayerProvidedException
 
             crs_admin_layer = self.admin_layer.crs()
@@ -202,17 +204,20 @@ class IncidenceDensityDialog(QDialog):
             if self.use_point_layer:
                 crs_point_layer = point_layer.crs()
                 if crs_admin_layer != crs_point_layer:
+                    QMessageBox.information(None, "DEBUG:", str("CRS of two layers are not the same. Please set CRS."))
                     raise DifferentCrsException(
                         epsg1=crs_point_layer.authid(),
                         epsg2=crs_admin_layer.authid())
 
             if not self.use_point_layer and not self.use_area:
                 if index_population == index_case:
+                    QMessageBox.information(None, "DEBUG:", str("You are using the same variable for case and population. Please change."))
                     raise FieldException(field_1='Population', field_2='Case')
 
             try:
                 ratio = float(ratio)
             except ValueError:
+                QMessageBox.information(None, "DEBUG:", str("The variable is not number."))
                 raise NotANumberException(suffix=ratio)
 
             # Output
@@ -230,6 +235,7 @@ class IncidenceDensityDialog(QDialog):
             fields = self.admin_layer.fields()
 
             if admin_layer_provider.fields().indexFromName(self.name_field) != -1:
+                QMessageBox.information(None, "DEBUG:", str("The field name already exist."))
                 raise FieldExistingException(field=self.name_field)
 
             fields.append(QgsField(self.name_field, QVariant.Double))
@@ -272,6 +278,7 @@ class IncidenceDensityDialog(QDialog):
                         try:
                             population = float(attributes[index_population])
                         except ValueError:
+                            QMessageBox.information(None, "DEBUG:", str("This is not a number."))
                             raise NotANumberException(
                                 suffix=attributes[index_population])
                         value = float(count) / population * ratio
