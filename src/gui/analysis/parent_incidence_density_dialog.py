@@ -147,7 +147,7 @@ class IncidenceDensityDialog(QDialog):
     def open_file_browser(self):
         output_file, __ = QFileDialog.getSaveFileName(
             self.parent, tr('Save shapefile'), filter='SHP (*.shp)')
-        self.le_output_filepath.setText(output_file[0])
+        self.le_output_filepath.setText(output_file)
 
     def run_stats(self):
         """Main function which do the process."""
@@ -170,6 +170,7 @@ class IncidenceDensityDialog(QDialog):
             population = self.cbx_population_field.currentField()
             index_population = self.admin_layer.fields().indexFromName(population)
 
+        self.name_field=self.le_new_column.text()
         if not self.name_field:
             self.name_field = self.le_new_column.placeholderText()
 
@@ -222,6 +223,8 @@ class IncidenceDensityDialog(QDialog):
                 self.output_file_path = temp_file.name
                 temp_file.flush()
                 temp_file.close()
+            else:
+                with open(self.output_file_path, 'w') as document: pass
 
             admin_layer_provider = self.admin_layer.dataProvider()
             fields = self.admin_layer.fields()
