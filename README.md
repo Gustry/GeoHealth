@@ -7,7 +7,7 @@ Tested on QGIS 3.10 and QGIS 3.12 on Windows 10 only. **Install provided Fiona f
 ## Installation (for Windows only)
   
 For windows 
-- Download all packages provided in the installation folder.
+- Download installation.zip. The zip file contains all package in installation folder
 - Start OSGeo4W Shell as administration
 - py3_env
 - CD to installation folder
