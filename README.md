@@ -4,20 +4,11 @@ The project aims to upgrade the GeoPublicHealth 0.95 the GeoPublicHealth to work
 
 Tested on QGIS 3.10 and QGIS 3.12 on Windows 10 only. **Install provided Fiona from "installation" directory only as the newer version causes problem with GDAL.
 
-## To-do-list
-- Test it on MacOS
-- Cleaning the code
-- Test other functions 
-- Upload to Qgis repository
-
 ## Installation (for Windows only)
-- PLEASE SEE INSTALLATION folder first and download install.zip, extract and run install.bat 
-I created the install.bat file to automatically install dependency (e.g. pysal, libpysal and fiona).
-  
-OR
   
 For windows 
-- Start OSGeo4W Shell
+- Download all packages provided in the installation folder.
+- Start OSGeo4W Shell as administration
 - py3_env
 - CD to installation folder
 - pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz pyproj-2.5.0-cp37-cp37m-win_amd64.whl
@@ -27,7 +18,7 @@ For windows
 ## Current developing environment (Windows 10 only, I don't have Mac)
 - QGIS 3.10 and QGIS 3.12
 - Python 3.7
-- Pysal 2.1
+- Pysal 2.1, Pyproj 2.5, Fiona 1.8.13, libpysal 4.2.2, and geopandas 0.7
 
 ## Quality control
  * Travis : [![Build Status](https://api.travis-ci.org/Gustry/GeoHealth.svg)](https://travis-ci.org/Gustry/GeoHealth)
