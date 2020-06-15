@@ -12,9 +12,7 @@ For windows
 - py3_env
 - CD to installation folder
 - pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz pyproj-2.5.0-cp37-cp37m-win_amd64.whl
-
-## Start QGIS and launch the plugins manager by going to the Plugins menu and selecting
-Manage and Install Plugins….
+- Start QGIS and launch the plugins manager by going to the Plugins menu and selecting Manage and Install Plugins….
 - In the Settings tab of the plugins settings dialog, scroll down and click on the Add…
 button.
 - Give the plugin repository the name epipublichealth and then add the complete URL
