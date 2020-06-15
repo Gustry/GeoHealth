@@ -13,7 +13,21 @@ For windows
 - CD to installation folder
 - pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz pyproj-2.5.0-cp37-cp37m-win_amd64.whl
 
-3. Lauch QGIS, it should up and running.
+## Start QGIS and launch the plugins manager by going to the Plugins menu and selecting
+Manage and Install Plugins….
+- In the Settings tab of the plugins settings dialog, scroll down and click on the Add…
+button.
+- Give the plugin repository the name epipublichealth and then add the complete URL
+https://raw.githubusercontent.com/ePublicHealth/GeoPublicHealth/master/docs/plugins.xml in the URL field.
+- Click on the OK button.
+- Please be sure that Show also experimental plugins is checked
+- Activate the All tab and in the Search field input “geopu”.
+- Select the GeoPublicHealth plugin
+- Click on the Install plugin button
+- Close the Plugins dialog
+- Check in the Plugins menu that the GeoPublicHealth plugin is a new option there
+
+Lauch QGIS, it should up and running.
 
 ## Current developing environment (Windows 10 only, I don't have Mac)
 - QGIS 3.10 and QGIS 3.12
