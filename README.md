@@ -7,7 +7,7 @@ GeoPublicHealth aims to provide a simplified interface for users in epidemiology
 The project aims to upgrade the GeoPublicHealth 0.95 the GeoPublicHealth to work under QGIS 3.0 (3.10 and 3.12) No change on the orginal function.
 
 
-Tested on QGIS 3.10 and QGIS 3.12 on Windows 10 only. **Install provided Fiona from "installation" directory only as the newer version causes problem with GDAL.
+Tested on QGIS 3.10, QGIS 3.12 and QGIS 3.14 on Windows 10 only. **Install provided Fiona from "installation" directory only as the newer version causes problem with GDAL.
 
 ## Installation (for Windows only)
   
@@ -16,7 +16,12 @@ For windows
 - Start OSGeo4W Shell as administration
 - py3_env
 - CD to installation folder
-- pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz pyproj-2.5.0-cp37-cp37m-win_amd64.whl
+
+### For QGIS 3.14
+- pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz  
+### For QGIS 3.12 and 3.10  
+- pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz pyproj-2.5.0-cp37-cp37m-win_amd64.whl  
+### Install the plugin
 - Start QGIS and launch the plugins manager by going to the Plugins menu and selecting Manage and Install Plugins….
 - In the Settings tab of the plugins settings dialog, scroll down and click on the Add…
 button.
