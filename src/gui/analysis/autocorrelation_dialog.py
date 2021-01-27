@@ -66,7 +66,8 @@ from GeoPublicHealth.src.core.exceptions import \
     FieldException,\
     NotANumberException
 import pysal
-from pysal.explore.esda.moran import Moran_Local
+import libpysal
+from esda.moran import Moran_Local
 from libpysal.weights import Queen, Rook
 from GeoPublicHealth.src.core.stats import Stats
 import processing
