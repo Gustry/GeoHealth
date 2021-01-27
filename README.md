@@ -61,12 +61,24 @@ Lauch QGIS, it should up and running.
   1. Run in the Terminal the command  `pip install pysal` again to obtain the folder for installation.
   1. Copy the folder name, for example: `/usr/local/lib/python3.7/site-packages`
   1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/Fiona-1.8.13.post1-py3.7-macosx-10.13.0-x86_64.egg Fiona-1.8.13.post1-py3.7-macosx-10.13.0-x86_64.egg` (or the corresponding version that you installed)
+  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/Fiona-1.8.18.dist-info Fiona-1.8.18.dist-info` (or the corresponding version that you installed)
   1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/pysal pysal`
   1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/pysal-2.1.0.dist-info pysal-2.1.0.dist-info`
   1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/libpysal libpysal`
   1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/libpysal-4.2.2.dist-info libpysal-4.2.2.dist-info`
   1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/geopandas geopandas`
   1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/geopandas-0.8.2.dist-info geopandas-0.8.2.dist-info`
+  1. To check this worked run `ls -la Fio* pysa* libpysa* geopan*` you should get something like:
+  ```
+lrwxr-xr-x  1 manuelvidaurre  staff  89 Jan 27 09:45 Fiona-1.8.13.post1-py3.7-macosx-10.13.0-x86_64.egg -> /usr/local/lib/python3.7/site-packages/Fiona-1.8.13.post1-py3.7-macosx-10.13.0-x86_64.egg
+lrwxr-xr-x  1 manuelvidaurre  staff  61 Jan 27 09:45 Fiona-1.8.18.dist-info -> /usr/local/lib/python3.7/site-packages/Fiona-1.8.18.dist-info
+lrwxr-xr-x  1 manuelvidaurre  staff  48 Jan 27 09:46 geopandas -> /usr/local/lib/python3.7/site-packages/geopandas
+lrwxr-xr-x  1 manuelvidaurre  staff  64 Jan 27 09:46 geopandas-0.8.2.dist-info -> /usr/local/lib/python3.7/site-packages/geopandas-0.8.2.dist-info
+lrwxr-xr-x  1 manuelvidaurre  staff  47 Jan 27 09:45 libpysal -> /usr/local/lib/python3.7/site-packages/libpysal
+lrwxr-xr-x  1 manuelvidaurre  staff  63 Jan 27 09:46 libpysal-4.2.2.dist-info -> /usr/local/lib/python3.7/site-packages/libpysal-4.2.2.dist-info
+lrwxr-xr-x  1 manuelvidaurre  staff  44 Jan 27 09:45 pysal -> /usr/local/lib/python3.7/site-packages/pysal
+lrwxr-xr-x  1 manuelvidaurre  staff  60 Jan 27 09:45 pysal-2.1.0.dist-info -> /usr/local/lib/python3.7/site-packages/pysal-2.1.0.dist-info
+  ```
 
 ### Installing GeoPublicHealth Plugin
   1. Start QGIS and launch the plugins manager by going to the **Plugins menu and selecting Manage and Install Plugins….**
