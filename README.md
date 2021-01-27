@@ -42,8 +42,8 @@ Lauch QGIS, it should up and running.
   1. Make sure you have python 3 installed (actually at least versio 3.6+), run `python --version`. To install python run `brew install python`
   1. Check pip version, run `pip --version`, if the result is `pip 19.3.1 from /usr/local/lib/python2.7/site-packages/pip (python 2.7)` or something like this with python 2.7, then try `pip3 --version`
   1. run `brew tap osgeo/osgeo4mac` to add OSGEO as source of formulas for brew
-  1. Install QGIS, running `brew install qgis`
-  1. run `pip3 install fiona` or `pip install fiona`
+  1. Install QGIS, running `brew install --cask qgis`
+  1. run `pip3 install fiona` or `pip install fiona` if you have problems later with the version of `fiona` you can try run `pip3 install 'fiona==1.8.13' --force-reinstall` or `pip install 'fiona==1.8.13' --force-reinstall`
   1. download [installation.zip](https://github.com/raynus/GeoPublicHealth/raw/master/installation/installation.zip) and unzip the contents
   1. **For QGIS 3.14 and 3.16**
   1. `pip3 install pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz`
