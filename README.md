@@ -11,7 +11,7 @@ Tested on QGIS 3.10 and QGIS 3.12 on Windows 10 only. **Install provided Fiona f
 ## Installation (for Windows only)
   
 For windows 
-- Download installation.zip. The zip file contains all package in installation folder
+- Download [installation.zip](https://github.com/raynus/GeoPublicHealth/raw/master/installation/installation.zip) The zip file contains all package in installation folder
 - Start OSGeo4W Shell as administration
 - py3_env
 - CD to installation folder
@@ -42,8 +42,13 @@ Lauch QGIS, it should up and running.
   1. Make sure you have python 3 installed (actually at least versio 3.6+), run `python --version`. To install python run `brew install python`
   1. Check pip version, run `pip --version`, if the result is `pip 19.3.1 from /usr/local/lib/python2.7/site-packages/pip (python 2.7)` or something like this with python 2.7, then try `pip3 --version`
   1. run `brew tap osgeo/osgeo4mac` to add OSGEO as source of formulas for brew
-  1. Install QGIS, running `brew cask install qgis`
-  1. run `pip3 install fiona libpysal pysal` or `pip install fiona libpysal pysal`
+  1. Install QGIS, running `brew install qgis`
+  1. run `pip3 install fiona` or `pip install fiona`
+  1. download [installation.zip](https://github.com/raynus/GeoPublicHealth/raw/master/installation/installation.zip) and unzip the contents
+  1. **For QGIS 3.14 and 3.16**
+  1. `pip3 install pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz`
+  1, **For QGIS 3.12 and 3.10**
+  1. `pip3 install pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz pyproj-2.5.0-cp38-cp38-macosx_10_9_x86_64.whl`  
   1. In the Finder App, please locate the `Applications` folder the `QGIS.app`
   1. Right click over the icon
   1. Select from the menu `Show Package Contents`
