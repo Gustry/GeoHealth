@@ -4,9 +4,11 @@ GeoPublicHealth aims to provide a simplified interface for users in epidemiology
 
 ## The master branch currently is a GeoHealth upgrade for QGIS 3.0 (In progress)
 
-This branch aims to upgrade the GeoPublicHealth 0.95 the GeoPublicHealth to work under QGIS 3.0 (3.10) No change on the orginal function.
+This branch aims to upgrade the GeoPublicHealth 0.95 the GeoPublicHealth to work under QGIS 3.x (from 3.10) No change on the orginal function.
 
-Tested on QGIS 3.10 and QGIS 3.12 on Windows 10 only. **Install provided Fiona from "installation" directory only as the newer version causes problem with GDAL.
+Tested on QGIS 3.10 to QGIS 3.16 on Windows 10 only and Mac. 
+
+**Install provided Fiona from "installation" directory only as the newer version causes problem with GDAL.
 
 ## Installation (for Windows only)
   
@@ -43,7 +45,7 @@ Lauch QGIS, it should up and running.
   1. Check pip version, run `pip --version`, if the result is `pip 19.3.1 from /usr/local/lib/python2.7/site-packages/pip (python 2.7)` or something like this with python 2.7, then try `pip3 --version`
   1. run `brew tap osgeo/osgeo4mac` to add OSGEO as source of formulas for brew
   1. Install QGIS, running `brew install --cask qgis`
-  1. run `pip3 install fiona` or `pip install fiona` if you have problems later with the version of `fiona` you can try run `pip3 install 'fiona==1.8.13' --force-reinstall` or `pip install 'fiona==1.8.13' --force-reinstall`
+  1. run `pip3 install fiona` or `pip install fiona` if you have problems later with the version of `fiona` you can try run `pip3 install 'fiona==1.8.18' --force-reinstall` or `pip install 'fiona==1.8.18' --force-reinstall`
   1. download [installation.zip](https://github.com/raynus/GeoPublicHealth/raw/master/installation/installation.zip) and unzip the contents
   1. **For QGIS 3.14 and 3.16**
   1. `pip3 install pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz`
@@ -55,13 +57,16 @@ Lauch QGIS, it should up and running.
   1. Open a terminal console. Click `[Command+Space]` and write `Terminal` and press `[return]` key
   1. Write there in the Terminal prompt `cd ` (be sure that after the cd to enter a blank space)
   1. Drag from the Finder Window the `python` folder
-  1. Something like `cd /Applications/QGIS3.12.app/Contents/Resources/python` should be in your Terminal. That depends on the actual folder where you installed QGIS
+  1. Something like `cd /Applications/QGIS3.12.app/Contents/Resources/python/site-packages` should be in your Terminal. That depends on the actual folder where you installed QGIS
   1. Run in the Terminal the command  `pip install pysal` again to obtain the folder for installation.
   1. Copy the folder name, for example: `/usr/local/lib/python3.7/site-packages`
-  1. Run a command based on the copied folder name as: `cp -Rv /usr/local/lib/python3.7/site-packages/pysal pysal`
-  1. Run a command based on the copied folder name as: `cp -Rv /usr/local/lib/python3.7/site-packages/libpysal libpysal`
-  1. Run a command based on the copied folder name as: `cp -Rv /usr/local/lib/python3.7/site-packages/fiona fiona`
-  1. Run a command based on the copied folder name as: `cp -Rv /usr/local/lib/python3.7/site-packages/geopandas geopandas`
+  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/Fiona-1.8.13.post1-py3.7-macosx-10.13.0-x86_64.egg Fiona-1.8.13.post1-py3.7-macosx-10.13.0-x86_64.egg` (or the corresponding version that you installed)
+  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/pysal pysal`
+  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/pysal-2.1.0.dist-info pysal-2.1.0.dist-info`
+  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/libpysal libpysal`
+  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/libpysal-4.2.2.dist-info libpysal-4.2.2.dist-info`
+  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/geopandas geopandas`
+  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/geopandas-0.8.2.dist-info geopandas-0.8.2.dist-info`
 
 ### Installing GeoPublicHealth Plugin
   1. Start QGIS and launch the plugins manager by going to the **Plugins menu and selecting Manage and Install Plugins….**
