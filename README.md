@@ -12,10 +12,15 @@ Tested on QGIS 3.10, QGIS 3.12 and QGIS 3.14 on Windows 10 only. **Install provi
 ## Installation (for Windows only)
   
 For windows 
-- Download installation.zip. The zip file contains all package in installation folder
+- Download installation21.zip. The zip file contains all package in installation folder
 - Start OSGeo4W Shell as administration
 - py3_env
 - CD to installation folder
+
+Then
+
+### For QGIS 3.16
+- pip install Fiona-1.8.18-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz  
 
 ### For QGIS 3.14
 - pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz  
