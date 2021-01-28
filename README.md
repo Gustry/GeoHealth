@@ -12,7 +12,7 @@ Tested on QGIS 3.10, QGIS 3.12 and QGIS 3.14 on Windows 10 only. **Install provi
 ## Installation (for Windows only)
   
 For windows 
-- Download installation21.zip. The zip file contains all package in installation folder
+- Download installation210128.zip. The zip file contains all package in installation folder
 - Start OSGeo4W Shell as administration
 - py3_env
 - CD to installation folder
@@ -43,9 +43,9 @@ https://raw.githubusercontent.com/ePublicHealth/GeoPublicHealth/master/docs/plug
 Lauch QGIS, it should up and running.
 
 ## Current developing environment (Windows 10 only, I don't have Mac)
-- QGIS 3.10 and QGIS 3.12
+- QGIS 3.16.3 
 - Python 3.7
-- Pysal 2.1, Pyproj 2.5, Fiona 1.8.13, libpysal 4.2.2, and geopandas 0.7
+- Pysal 2.1, Pyproj 2.6.1, Fiona 1.8.18, libpysal 4.2.2, and geopandas 0.8.2
 
 ## Install in Mac
   1. Make sure you have [homebrew](https://brew.sh/) installed. For installing homebrew fron a terminal run `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
