@@ -2,36 +2,25 @@
 
 GeoPublicHealth aims to provide a simplified interface for users in epidemiology and public health for QGIS. It is based on the [GeoHealth Plugin](https://github.com/Gustry/GeoHealth) developed by Etienne Trimaille. GeoPublicHealth includes additional methods that are very relevant for the use of GIS in public health and epidemiology.
 
-## The master branch currently is a GeoHealth upgrade for QGIS 3.0 (In progress)
+## The master branch currently is a GeoHealth upgrade for QGIS 3.x
 
-This branch aims to upgrade the GeoPublicHealth 0.95 the GeoPublicHealth to work under QGIS 3.x (from 3.10) No change on the orginal function.
+This branch aims to upgrade the GeoPublicHealth 0.95 the GeoPublicHealth to work under QGIS 3.x (from 3.10) No change on the original function.
 
-Tested on QGIS 3.10 to QGIS 3.16 on Windows 10 only and Mac. 
+We tested on QGIS 3.16 on Windows 10 only and Mac. 
 
-**Install provided Fiona from "installation" directory only as the newer version causes problem with GDAL.
+**Install provided Fiona from the "installation" directory only as the newer version causes problems with GDAL.
 
 ## Installation (for Windows only)
   
 For windows 
-- Download [installation.zip](https://github.com/raynus/GeoPublicHealth/raw/master/installation/installation.zip) The zip file contains all package in installation folder
-- Start OSGeo4W Shell as administration
-- py3_env
-- CD to installation folder
-- pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz pyproj-2.5.0-cp37-cp37m-win_amd64.whl
-- Start QGIS and launch the plugins manager by going to the Plugins menu and selecting Manage and Install Plugins….
-- In the Settings tab of the plugins settings dialog, scroll down and click on the Add…
-button.
-- Give the plugin repository the name epipublichealth and then add the complete URL
-https://raw.githubusercontent.com/ePublicHealth/GeoPublicHealth/master/docs/plugins.xml in the URL field.
-- Click on the OK button.
-- Please be sure that Show also experimental plugins is checked
-- Activate the All tab and in the Search field input “geopu”.
-- Select the GeoPublicHealth plugin
-- Click on the Install plugin button
-- Close the Plugins dialog
-- Check in the Plugins menu that the GeoPublicHealth plugin is a new option there
-
-Lauch QGIS, it should up and running.
+1. Go to https://github.com/raynus/GeoPublicHealth/blob/master/installation210128.zip?raw=true for downloading the required libraries, take note of the downloading folder
+1. Go to https://qgis.org/en/site/forusers/download.html and download OSGeo4W that correspond to your chip architecture (32 or 64)
+1. To get the long term release (that is not also the latest release) choose Advanced Install and select **qgis-ltr-full** also **Fiona-1.8.18**
+1. After installation is finished. Start OSGeo4W Shell as administration (go to the file and make right-click)
+1. run `py3_env` to set the environmental variables required
+1. CD to download folder, ex: `cd Downloads`
+1. run `pip install Fiona-1.8.18-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz esda`
+1. If there are no error messages, you are ready. An announcement regarding **pip** upgrade is OK.
 
 ## Current developing environment (Windows 10 only, I don't have Mac)
 - QGIS 3.10 and QGIS 3.12
@@ -39,61 +28,20 @@ Lauch QGIS, it should up and running.
 - Pysal 2.1, Pyproj 2.5, Fiona 1.8.13, libpysal 4.2.2, and geopandas 0.7
 
 ## Install in Mac
-  1. Make sure you have [homebrew](https://brew.sh/) installed. For installing homebrew fron a terminal run `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
-  1. run `brew install gdal`
-  1. Make sure you have python 3 installed (actually at least versio 3.6+), run `python --version`. To install python run `brew install python`
-  1. Check pip version, run `pip --version`, if the result is `pip 19.3.1 from /usr/local/lib/python2.7/site-packages/pip (python 2.7)` or something like this with python 2.7, then try `pip3 --version`
-  1. run `brew tap osgeo/osgeo4mac` to add OSGEO as source of formulas for brew
-  1. Install QGIS, running `brew install --cask qgis`
-  1. run `pip3 install fiona` or `pip install fiona` if you have problems later with the version of `fiona` you can try run `pip3 install 'fiona==1.8.18' --force-reinstall` or `pip install 'fiona==1.8.18' --force-reinstall`
-  1. download [installation.zip](https://github.com/raynus/GeoPublicHealth/raw/master/installation/installation.zip) and unzip the contents
-  1. **For QGIS 3.14 and 3.16**
-  1. `pip3 install pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz`
-  1, **For QGIS 3.12 and 3.10**
-  1. `pip3 install pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz pyproj-2.5.0-cp38-cp38-macosx_10_9_x86_64.whl`  
-  1. In the Finder App, please locate the `Applications` folder the `QGIS.app`
-  1. Right click over the icon
-  1. Select from the menu `Show Package Contents`
-  1. Open a terminal console. Click `[Command+Space]` and write `Terminal` and press `[return]` key
-  1. Write there in the Terminal prompt `cd ` (be sure that after the cd to enter a blank space)
-  1. Drag from the Finder Window the `python` folder
-  1. Something like `cd /Applications/QGIS3.12.app/Contents/Resources/python/site-packages` should be in your Terminal. That depends on the actual folder where you installed QGIS
-  1. Run in the Terminal the command  `pip install pysal` again to obtain the folder for installation.
-  1. Copy the folder name, for example: `/usr/local/lib/python3.7/site-packages`
-  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/Fiona-1.8.13.post1-py3.7-macosx-10.13.0-x86_64.egg Fiona-1.8.13.post1-py3.7-macosx-10.13.0-x86_64.egg` (or the corresponding version that you installed)
-  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/Fiona-1.8.18.dist-info Fiona-1.8.18.dist-info` (or the corresponding version that you installed)
-  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/pysal pysal`
-  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/pysal-2.1.0.dist-info pysal-2.1.0.dist-info`
-  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/libpysal libpysal`
-  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/libpysal-4.2.2.dist-info libpysal-4.2.2.dist-info`
-  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/geopandas geopandas`
-  1. Run a command based on the copied folder name as: `ln -s /usr/local/lib/python3.7/site-packages/geopandas-0.8.2.dist-info geopandas-0.8.2.dist-info`
-  1. To check this worked run `ls -la Fio* pysa* libpysa* geopan*` you should get something like:
-  ```
-lrwxr-xr-x  1 manuelvidaurre  staff  89 Jan 27 09:45 Fiona-1.8.13.post1-py3.7-macosx-10.13.0-x86_64.egg -> /usr/local/lib/python3.7/site-packages/Fiona-1.8.13.post1-py3.7-macosx-10.13.0-x86_64.egg
-lrwxr-xr-x  1 manuelvidaurre  staff  61 Jan 27 09:45 Fiona-1.8.18.dist-info -> /usr/local/lib/python3.7/site-packages/Fiona-1.8.18.dist-info
-lrwxr-xr-x  1 manuelvidaurre  staff  48 Jan 27 09:46 geopandas -> /usr/local/lib/python3.7/site-packages/geopandas
-lrwxr-xr-x  1 manuelvidaurre  staff  64 Jan 27 09:46 geopandas-0.8.2.dist-info -> /usr/local/lib/python3.7/site-packages/geopandas-0.8.2.dist-info
-lrwxr-xr-x  1 manuelvidaurre  staff  47 Jan 27 09:45 libpysal -> /usr/local/lib/python3.7/site-packages/libpysal
-lrwxr-xr-x  1 manuelvidaurre  staff  63 Jan 27 09:46 libpysal-4.2.2.dist-info -> /usr/local/lib/python3.7/site-packages/libpysal-4.2.2.dist-info
-lrwxr-xr-x  1 manuelvidaurre  staff  44 Jan 27 09:45 pysal -> /usr/local/lib/python3.7/site-packages/pysal
-lrwxr-xr-x  1 manuelvidaurre  staff  60 Jan 27 09:45 pysal-2.1.0.dist-info -> /usr/local/lib/python3.7/site-packages/pysal-2.1.0.dist-info
-  ```
+  1. Click on https://qgis.org/downloads/macos/qgis-macos-ltr.dmg to download the **QGIS macOS Installer Version 3.16** installer
+  2. Run the installer and follow instructions
 
 ### Installing GeoPublicHealth Plugin
   1. Start QGIS and launch the plugins manager by going to the **Plugins menu and selecting Manage and Install Plugins….**
   1. In the **Settings** tab of the plugins settings dialog, scroll down and click on the **Add…** button.
-  1. Give the plugin repository the name **epipublichealth** and then add the full URL **https://raw.githubusercontent.com/ePublicHealth/GeoPublicHealth/master/docs/plugins.xml** in the URL field.
-  1. Please be sure that `Show also experimental plugins` is checked
+  1. Give the plugin repository the name **epipublichealth** and then add the full URL **https://raw.githubusercontent.com/ePublicHealth/GeoPublicHealth/main/docs/plugins.xml** in the URL field.
+  1. Please be sure that `Show also experimental plugins` is checked [x]
   1. Click on the **OK** button.
-  1. Activate the **All** tab and in the **Search** field input **geopu**.
+  1. Activate the **All** tab and **Search** field input **geopu**.
   1. Select the *GeoPublicHealth* plugin
   1. Click on the **Install plugin** button
   1. Close the Plugins dialog 
   1. Check in the **Plugins** menu that the **GeoPublicHealth** plugin is a new option there
-
-For using the autocorrelation, please install [PySAL](https://pysal.readthedocs.io/ )
-
 
 ## Contributing
 Please review the [Contribution Guidelines](CONTRIBUTING.md)
@@ -153,7 +101,7 @@ Include details about your configuration and environment:
 # GeoPublicHealth 0.95
 
 ## History
-Dr. Carlos Castillo-Salgado has teach in The Bloomberg School of Public Health of Johns Hopkins University the 340.701.11 Epidemiologic Applications of GIS the last 15 years and also in his work as Chief of the Special Program for Health Analysis for the Panamerican Health Organization, Regional Office of the World Health Organization for the Regional Office of the Americas. In this capacity, he led the development of [SIGEpi](http://ais.paho.org/sigepi/index.asp?xml=sigepi/index.htm&lang=en) as a pioneer GIS for Epidemiology and Public Health. Now using the QGIS, the GeoPublicHealth will integrate several of the methods and techniques used in SIGEpi but enhancing those with the capacities of QGIS.
+Dr. Carlos Castillo-Salgado has taught in The Bloomberg School of Public Health of Johns Hopkins University the 340.701.11 Epidemiologic Applications of GIS the last 15 years and also in his work as Chief of the Special Program for Health Analysis for the Panamerican Health Organization, Regional Office of the World Health Organization for the Regional Office of the Americas. In this capacity, he led the development of [SIGEpi](http://ais.paho.org/sigepi/index.asp?xml=sigepi/index.htm&lang=en) as a pioneer GIS for Epidemiology and Public Health. Using the QGIS, the GeoPublicHealth will integrate several of the methods and techniques used in SIGEpi but enhance those with the capacities of QGIS. In February 2020, [Pai (Supharerk Thawillarp)](https://github.com/raynus) did the migration work for the plugin from QGIS 2 systems to QGIS 3.
   
 ## Credits
 
@@ -167,4 +115,4 @@ GeoPublicHealth:
   * This project was designed and extended by the Johns Hopkins/Bloomberg School of Public Health [Global Public Health Observatory](http://gpho.info/)
 
 ## License
-Please see [LICENSE](LICENSE)
+Please see [LICENSE](LICENSE) @ 2021
