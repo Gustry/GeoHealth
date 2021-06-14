@@ -29,7 +29,8 @@ For windows
 
 ## Install in Mac
   1. Click on https://qgis.org/downloads/macos/qgis-macos-ltr.dmg to download the **QGIS macOS Installer Version 3.16** installer
-  2. Run the installer and follow instructions
+  1. Run the installer and follow instructions
+  1. In some cases the **https://www.xquartz.org/** should be installed. If you have a error about `Library not loaded: /opt/X11/lib/libxcb.1.dylib` the installing of xquartz will fixed.
 
 ### Installing GeoPublicHealth Plugin
   1. Start QGIS and launch the plugins manager by going to the **Plugins menu and selecting Manage and Install Plugins….**
