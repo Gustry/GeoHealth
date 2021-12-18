@@ -7,8 +7,8 @@ GeoPublicHealth aims to provide a simplified interface for users in epidemiology
 For windows 
 - Download installation210128.zip(See the repository or this link https://github.com/raynus/GeoPublicHealth/blob/master/installation210128.zip 
 The zip file contains all package in installation folder
-- Start OSGeo4W Shell as administration
-- py3_env
+- Start OSGeo4W Shell (For QGIS below 3.22.1, start the shell as administration)
+- (For QGIS below 3.22.1) py3_env
 - CD to installation folder
 
 Then
