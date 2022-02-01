@@ -52,7 +52,7 @@ from qgis.core import (\
     QgsFieldProxyModel,QgsWkbTypes,QgsProcessingUtils,QgsProcessingContext,QgsCoordinateTransformContext)
 
 
-from matplotlib.backends.backend_qt4agg import \
+from matplotlib.backends.backend_qt5agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 

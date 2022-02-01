@@ -25,7 +25,7 @@ from __future__ import print_function
 from builtins import str
 from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox
 from qgis.PyQt.QtCore import QSize, pyqtSignal
-from matplotlib.backends.backend_qt4agg import \
+from matplotlib.backends.backend_qt5agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 

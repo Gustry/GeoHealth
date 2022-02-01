@@ -27,7 +27,7 @@ from os.path import dirname
 from qgis.core import Qgis, QgsFeatureRequest, QgsSpatialIndex, QgsMapLayerProxyModel
 
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_qt4agg import \
+from matplotlib.backends.backend_qt5agg import \
     FigureCanvasQTAgg as FigureCanvas
 from qgis.PyQt.QtWidgets import QWidget, QDialogButtonBox, QApplication, QTableWidgetItem, QFileDialog
 from qgis.PyQt.QtCore import pyqtSignal, QSize

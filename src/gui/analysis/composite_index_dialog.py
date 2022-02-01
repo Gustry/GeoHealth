@@ -47,7 +47,7 @@ from qgis.core import (\
     QgsGeometry,\
     QgsMapLayerProxyModel, QgsFieldProxyModel, QgsWkbTypes)
 
-from matplotlib.backends.backend_qt4agg import \
+from matplotlib.backends.backend_qt5agg import \
     FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
