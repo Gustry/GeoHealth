@@ -7,11 +7,14 @@ GeoPublicHealth aims to provide a simplified interface for users in epidemiology
 For windows 
 - Download installation210128.zip(See the repository or this link https://github.com/raynus/GeoPublicHealth/blob/master/installation210128.zip 
 The zip file contains all package in installation folder
-- Start OSGeo4W Shell as administration
-- py3_env
+- Start OSGeo4W Shell (For QGIS below 3.22.1, start the shell as administration)
+- (For QGIS below 3.22.1) py3_env
 - CD to installation folder
 
 Then
+
+### For GGIS 3.22.1
+- pip install GDAL-3.3.3-cp39-cp39-win_amd64.whl Fiona-1.8.20-cp39-cp39-win_amd64.whl libpysal-4.2.2.tar.gz pysal-2.1.0-py3-none-any.whl
 
 ### For QGIS 3.16.3
 - pip install Fiona-1.8.18-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz  
