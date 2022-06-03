@@ -1,7 +1,44 @@
-# GeoPublicHealth 0.95
+# GeoPublicHealth 0.97
 
 GeoPublicHealth aims to provide a simplified interface for users in epidemiology and public health for QGIS. It is based on the [GeoHealth Plugin](https://github.com/Gustry/GeoHealth) developed by Etienne Trimaille. GeoPublicHealth includes additional methods that are very relevant for the use of GIS in public health and epidemiology.
 
+## Installation (for Windows only)
+  
+For windows 
+- Download installation210128.zip(See the repository or this link https://github.com/raynus/GeoPublicHealth/blob/master/installation210128.zip 
+The zip file contains all package in installation folder
+- Start OSGeo4W Shell (For QGIS below 3.22.1, start the shell as administration)
+- (For QGIS below 3.22.1) py3_env
+- CD to installation folder
+
+Then
+
+### For GGIS 3.22.1
+- pip install GDAL-3.3.3-cp39-cp39-win_amd64.whl Fiona-1.8.20-cp39-cp39-win_amd64.whl libpysal-4.2.2.tar.gz pysal-2.1.0-py3-none-any.whl
+
+### For QGIS 3.16.3
+- pip install Fiona-1.8.18-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz  
+
+### For QGIS 3.14
+- pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz  
+### For QGIS 3.12 and 3.10  
+- pip install Fiona-1.8.13-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz pyproj-2.5.0-cp37-cp37m-win_amd64.whl  
+### Install the plugin
+- Start QGIS and launch the plugins manager by going to the Plugins menu and selecting Manage and Install Plugins….
+- In the Settings tab of the plugins settings dialog, scroll down and click on the Add…
+button.
+- Give the plugin repository the name epipublichealth and then add the complete URL
+https://raw.githubusercontent.com/ePublicHealth/GeoPublicHealth/master/docs/plugins.xml in the URL field.
+- Click on the OK button.
+- Please be sure that Show also experimental plugins is checked
+- Activate the All tab and in the Search field input “geopu”.
+- Select the GeoPublicHealth plugin
+- Click on the Install plugin button
+- Close the Plugins dialog
+- Check in the Plugins menu that the GeoPublicHealth plugin is a new option there
+
+Lauch QGIS, it should up and running.
+=======
 ## The master branch currently is a GeoHealth upgrade for QGIS 3.x
 
 This branch aims to upgrade the GeoPublicHealth 0.95 the GeoPublicHealth to work under QGIS 3.x (from 3.10) No change on the original function.
@@ -23,7 +60,7 @@ For windows
 1. If there are no error messages, you are ready. An announcement regarding **pip** upgrade is OK.
 
 ## Current developing environment (Windows 10 only, I don't have Mac)
-- QGIS 3.10 and QGIS 3.12
+- QGIS 3.16.3 
 - Python 3.7
 - Pysal 2.1, Pyproj 2.5, Fiona 1.8.13, libpysal 4.2.2, and geopandas 0.7
 
@@ -99,7 +136,7 @@ Include details about your configuration and environment:
   * Pai (Supharerk Thawillarp) -- QGIS2to3 Migration work
 =======
 
-# GeoPublicHealth 0.95
+# GeoPublicHealth 0.97
 
 ## History
 Dr. Carlos Castillo-Salgado has taught in The Bloomberg School of Public Health of Johns Hopkins University the 340.701.11 Epidemiologic Applications of GIS the last 15 years and also in his work as Chief of the Special Program for Health Analysis for the Panamerican Health Organization, Regional Office of the World Health Organization for the Regional Office of the Americas. In this capacity, he led the development of [SIGEpi](http://ais.paho.org/sigepi/index.asp?xml=sigepi/index.htm&lang=en) as a pioneer GIS for Epidemiology and Public Health. Using the QGIS, the GeoPublicHealth will integrate several of the methods and techniques used in SIGEpi but enhance those with the capacities of QGIS. In February 2020, [Pai (Supharerk Thawillarp)](https://github.com/raynus) did the migration work for the plugin from QGIS 2 systems to QGIS 3.
