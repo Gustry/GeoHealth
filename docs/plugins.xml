@@ -8,7 +8,7 @@
             <about></about>
             <version>0.97.1</version>
             <qgis_minimum_version>3.12.0</qgis_minimum_version>
-            <qgis_maximum_version>3.20.24</qgis_maximum_version>
+            <qgis_maximum_version>3.26.0</qgis_maximum_version>
             <homepage>
                 <![CDATA[https://github.com/ePublicHealth/GeoPublicHealth]]>
             </homepage>
@@ -20,7 +20,7 @@
                 <![CDATA[Manuel Vidaurre, Javier Cervantes, Etienne Trimaille, Dr Carlos Castillo-Salgado]]>
             </author_name>
             <download_url>
-                http://epublichealth.weebly.com/uploads/1/2/4/9/124930692/geopublichealth3.zip
+                https://github.com/ePublicHealth/GeoPublicHealth/raw/main/installation/geopublichealth3.zip
             </download_url>
             <uploaded_by>
                 <![CDATA[mvidaurre]]>
