@@ -16,6 +16,11 @@ Then
 ### For GGIS 3.22.1
 - pip install GDAL-3.3.3-cp39-cp39-win_amd64.whl Fiona-1.8.20-cp39-cp39-win_amd64.whl libpysal-4.2.2.tar.gz pysal-2.1.0-py3-none-any.whl
 
+**If error AttributeError: ‘PathMetadata’ object has no attribute ‘isdir’
+Run the following command and retry
+- pip install pip==21.3.1 --user
+
+
 ### For QGIS 3.16.3
 - pip install Fiona-1.8.18-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz  
 
