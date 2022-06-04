@@ -20,6 +20,9 @@ Then
 Run the following command and retry
 - pip install pip==21.3.1 --user
 
+**If module esda not found
+- pip install esda
+
 
 ### For QGIS 3.16.3
 - pip install Fiona-1.8.18-cp37-cp37m-win_amd64.whl pysal-2.1.0-py3-none-any.whl libpysal-4.2.2.tar.gz  
